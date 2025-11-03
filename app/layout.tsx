@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { DM_Sans, Manrope } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ 
+const dmSans = DM_Sans({ 
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-dm-sans',
   display: 'swap',
 })
 
-const spaceGrotesk = Space_Grotesk({ 
+const manrope = Manrope({ 
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-manrope',
   display: 'swap',
 })
 
@@ -45,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`dark ${dmSans.variable} ${manrope.variable}`}>
       <body className="dark font-sans">{children}</body>
     </html>
   )

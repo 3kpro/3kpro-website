@@ -154,14 +154,21 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center group">
               <div className="flex items-center">
-                {/* Modern hexagonal logo */}
-                <div className="relative w-10 h-10 mr-3 group-hover:scale-110 transition-transform duration-300">
-                  <div className="absolute inset-0 bg-tron-red/20 rotate-0 group-hover:rotate-180 transition-transform duration-700 hexagon-shape"></div>
-                  <div className="absolute inset-0 border-2 border-tron-red group-hover:border-tron-red-glow transition-colors hexagon-shape"></div>
+                {/* Modern circuit-style logo */}
+                <div className="relative w-10 h-10 mr-3 group-hover:scale-105 transition-all duration-300">
+                  {/* Outer square border */}
+                  <div className="absolute inset-0 border-2 border-tron-red rounded-lg group-hover:border-tron-red-glow transition-colors"></div>
+                  {/* Inner geometric pattern - diamond/square rotated 45deg */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-tron-red font-bold text-lg font-display">3K</span>
+                    <div className="w-4 h-4 border-2 border-tron-red transform rotate-45 group-hover:rotate-[225deg] transition-transform duration-500"></div>
                   </div>
-                  <div className="absolute inset-0 bg-tron-red/0 group-hover:bg-tron-red/10 transition-all duration-300 hexagon-glow"></div>
+                  {/* Corner accents */}
+                  <div className="absolute top-1 left-1 w-1.5 h-1.5 bg-tron-red"></div>
+                  <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-tron-red"></div>
+                  <div className="absolute bottom-1 left-1 w-1.5 h-1.5 bg-tron-red"></div>
+                  <div className="absolute bottom-1 right-1 w-1.5 h-1.5 bg-tron-red"></div>
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 bg-tron-red/0 group-hover:bg-tron-red/10 rounded-lg transition-all duration-300"></div>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl font-bold font-display text-tron-red group-hover:text-tron-red-glow group-hover:drop-shadow-[0_0_8px_rgba(255,0,64,0.6)] transition-all tracking-tight">
@@ -971,7 +978,7 @@ export default function Home() {
                   <svg className="w-5 h-5 text-tron-red mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-300">Priority support (response < 4hrs)</span>
+                  <span className="text-gray-300">Priority support (response &lt; 4hrs)</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-tron-red mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1081,11 +1088,17 @@ export default function Home() {
             <div>
               <div className="flex items-center mb-4">
                 <div className="relative w-8 h-8 mr-2">
-                  <div className="absolute inset-0 bg-tron-red/20 hexagon-shape"></div>
-                  <div className="absolute inset-0 border-2 border-tron-red hexagon-shape"></div>
+                  {/* Outer square border */}
+                  <div className="absolute inset-0 border-2 border-tron-red rounded-md"></div>
+                  {/* Inner diamond rotated 45deg */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-tron-red font-bold text-sm font-display">3K</span>
+                    <div className="w-3 h-3 border-2 border-tron-red transform rotate-45"></div>
                   </div>
+                  {/* Corner accents */}
+                  <div className="absolute top-0.5 left-0.5 w-1 h-1 bg-tron-red"></div>
+                  <div className="absolute top-0.5 right-0.5 w-1 h-1 bg-tron-red"></div>
+                  <div className="absolute bottom-0.5 left-0.5 w-1 h-1 bg-tron-red"></div>
+                  <div className="absolute bottom-0.5 right-0.5 w-1 h-1 bg-tron-red"></div>
                 </div>
                 <span className="text-xl font-bold font-display bg-gradient-to-r from-tron-red to-tron-red-glow bg-clip-text text-transparent">3KPRO</span>
               </div>
