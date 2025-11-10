@@ -20,23 +20,32 @@ export default function ContactForm() {
     setSubmitStatus('idle')
 
     try {
-      const response = await fetch('/api/contact', {
+      // Send to Web3Forms
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          access_key: '08a8ff4d-3827-4013-a124-55e2761e0709',
+          name: data.name,
+          email: data.email,
+          company: data.company || 'Not provided',
+          message: data.message,
+          subject: `New Contact Form Submission from ${data.name}`,
+        }),
       })
 
-      if (!response.ok) {
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitStatus('success')
+        reset()
+        // Reset success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000)
+      } else {
         throw new Error('Failed to send message')
       }
-
-      setSubmitStatus('success')
-      reset()
-
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000)
     } catch (error) {
       console.error('Form submission error:', error)
       setSubmitStatus('error')
