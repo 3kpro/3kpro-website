@@ -174,14 +174,14 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center group">
               <div className="flex items-center">
-                <svg className="w-8 h-8 text-tron-red mr-2 group-hover:drop-shadow-[0_0_8px_rgba(255,0,64,0.8)] transition-all" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-tron-red mr-2 group-hover:drop-shadow-[0_0_12px_rgba(255,0,64,1)] transition-all duration-300 animate-pulse-glow" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-                <span className="text-3xl font-bold text-tron-red group-hover:text-tron-red-glow group-hover:drop-shadow-[0_0_8px_rgba(255,0,64,0.6)] transition-all">
+                <span className="text-3xl font-bold bg-gradient-to-r from-tron-red via-tron-red-glow to-tron-red bg-clip-text text-transparent group-hover:drop-shadow-[0_0_12px_rgba(255,0,64,0.8)] transition-all duration-300 tracking-tight">
                   3KPRO
                 </span>
               </div>
-              <span className="ml-3 text-sm text-gray-300">Professional Services</span>
+              <span className="ml-3 text-sm text-gray-400 font-medium">Professional Services</span>
             </Link>
             <div className="flex items-center space-x-6">
               <div className="hidden md:flex space-x-8">
