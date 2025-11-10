@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
+  // Initialize Resend at runtime (not build time)
+  const resend = new Resend(process.env.RESEND_API_KEY || '');
+
   try {
     const body = await request.json();
     const { name, email, company, message } = body;
@@ -13,6 +14,15 @@ export async function POST(request: Request) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
+      );
+    }
+
+    // Check if API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY not configured');
+      return NextResponse.json(
+        { error: 'Email service not configured. Please contact james@3kpro.services directly.' },
+        { status: 500 }
       );
     }
 
