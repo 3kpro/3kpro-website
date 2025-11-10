@@ -6,10 +6,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['var(--font-dm-sans)', 'DM Sans', 'system-ui', 'sans-serif'],
-        display: ['var(--font-manrope)', 'Manrope', 'system-ui', 'sans-serif'],
-      },
       colors: {
         tron: {
           dark: '#0a0a0a',

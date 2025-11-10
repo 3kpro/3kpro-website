@@ -20,12 +20,17 @@ export default function ContactForm() {
     setSubmitStatus('idle')
 
     try {
-      // For now, just log to console
-      // In production, this would send to an API endpoint
-      console.log('Form submission:', data)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
 
       setSubmitStatus('success')
       reset()
@@ -140,8 +145,8 @@ export default function ContactForm() {
 
       <p className="text-center text-sm text-gray-400 mt-8">
         Or email us directly at{' '}
-        <a href="mailto:hello@3kpro.services" className="text-tron-red hover:text-tron-red-glow font-medium transition-colors">
-          hello@3kpro.services
+        <a href="mailto:james@3kpro.services" className="text-tron-red hover:text-tron-red-glow font-medium transition-colors">
+          james@3kpro.services
         </a>
       </p>
     </div>

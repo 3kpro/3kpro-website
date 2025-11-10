@@ -1,18 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { DM_Sans, Manrope } from 'next/font/google'
 import './globals.css'
-
-const dmSans = DM_Sans({ 
-  subsets: ['latin'],
-  variable: '--font-dm-sans',
-  display: 'swap',
-})
-
-const manrope = Manrope({ 
-  subsets: ['latin'],
-  variable: '--font-manrope',
-  display: 'swap',
-})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -45,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`dark ${dmSans.variable} ${manrope.variable}`}>
-      <body className="dark font-sans">{children}</body>
+    <html lang="en" className="dark">
+      <body className="dark">{children}</body>
     </html>
   )
 }
