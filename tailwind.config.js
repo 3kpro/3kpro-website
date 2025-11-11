@@ -10,14 +10,29 @@ module.exports = {
         sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
-        tron: {
-          dark: '#0a0a0a',
-          darker: '#050505',
-          grid: '#1a1a1a',
-          red: '#ff0040',
-          'red-glow': '#e63946',
-          accent: '#dc2626',
-          'red-dim': '#8b0000',
+        primary: {
+          50: '#fef2f2',
+          100: '#fee2e2',
+          200: '#fecaca',
+          300: '#fca5a5',
+          400: '#f87171',
+          500: '#e07856',  // Main coral/salmon
+          600: '#d16946',
+          700: '#b85a3a',
+          800: '#9a4b2f',
+          900: '#7c3d25',
+        },
+        dark: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',  // Card background
+          900: '#0f172a',  // Main dark background
         },
       },
       animation: {

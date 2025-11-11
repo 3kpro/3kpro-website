@@ -66,13 +66,13 @@ export default function ContactForm() {
               type="text"
               id="name"
               {...register('name', { required: 'Name is required' })}
-              className={`w-full px-4 py-3 bg-tron-darker/50 border-2 rounded-lg focus:ring-2 focus:ring-tron-red focus:border-tron-red transition-all text-white ${
-                errors.name ? 'border-tron-red' : 'border-tron-red/30'
+              className={`w-full px-4 py-3 bg-dark-800 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-white ${
+                errors.name ? 'border-primary-500' : 'border-dark-700'
               }`}
               placeholder="John Doe"
             />
             {errors.name && (
-              <p className="mt-1 text-sm text-tron-red-glow">{errors.name.message}</p>
+              <p className="mt-1 text-sm text-primary-500">{errors.name.message}</p>
             )}
           </div>
           <div>
@@ -89,13 +89,13 @@ export default function ContactForm() {
                   message: 'Invalid email address'
                 }
               })}
-              className={`w-full px-4 py-3 bg-tron-darker/50 border-2 rounded-lg focus:ring-2 focus:ring-tron-red focus:border-tron-red transition-all text-white ${
-                errors.email ? 'border-tron-red' : 'border-tron-red/30'
+              className={`w-full px-4 py-3 bg-dark-800 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-white ${
+                errors.email ? 'border-primary-500' : 'border-dark-700'
               }`}
               placeholder="john@company.com"
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-tron-red-glow">{errors.email.message}</p>
+              <p className="mt-1 text-sm text-primary-500">{errors.email.message}</p>
             )}
           </div>
         </div>
@@ -108,7 +108,7 @@ export default function ContactForm() {
             type="text"
             id="company"
             {...register('company')}
-            className="w-full px-4 py-3 bg-tron-darker/50 border-2 border-tron-red/30 rounded-lg focus:ring-2 focus:ring-tron-red focus:border-tron-red transition-all text-white"
+            className="w-full px-4 py-3 bg-dark-800 border-2 border-dark-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-white"
             placeholder="Your Company"
           />
         </div>
@@ -121,40 +121,40 @@ export default function ContactForm() {
             id="message"
             rows={6}
             {...register('message', { required: 'Message is required' })}
-            className={`w-full px-4 py-3 bg-tron-darker/50 border-2 rounded-lg focus:ring-2 focus:ring-tron-red focus:border-tron-red transition-all resize-none text-white ${
-              errors.message ? 'border-tron-red' : 'border-tron-red/30'
+            className={`w-full px-4 py-3 bg-dark-800 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all resize-none text-white ${
+              errors.message ? 'border-primary-500' : 'border-dark-700'
             }`}
             placeholder="Tell us about your project..."
           />
           {errors.message && (
-            <p className="mt-1 text-sm text-tron-red-glow">{errors.message.message}</p>
+            <p className="mt-1 text-sm text-primary-500">{errors.message.message}</p>
           )}
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full px-8 py-4 bg-tron-red text-white rounded-lg border-2 border-tron-red hover:shadow-[0_0_20px_rgba(255,0,64,0.8),0_0_40px_rgba(255,0,64,0.4)] transition-all duration-300 font-semibold transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          className="w-full px-8 py-4 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all duration-300 font-semibold transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg hover:shadow-primary-500/50"
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
       </form>
 
       {submitStatus === 'success' && (
-        <div className="mt-6 p-4 bg-tron-red/10 border-2 border-tron-red/30 rounded-lg">
-          <p className="text-tron-red-glow font-medium">Thank you! We'll get back to you soon.</p>
+        <div className="mt-6 p-4 bg-primary-500/10 border-2 border-primary-500/30 rounded-lg">
+          <p className="text-primary-500 font-medium">Thank you! We'll get back to you soon.</p>
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="mt-6 p-4 bg-red-900/20 border-2 border-red-500/50 rounded-lg">
+        <div className="mt-6 p-4 bg-red-500/10 border-2 border-red-500/30 rounded-lg">
           <p className="text-red-400 font-medium">Something went wrong. Please try again or email us directly.</p>
         </div>
       )}
 
       <p className="text-center text-sm text-gray-400 mt-8">
         Or email us directly at{' '}
-        <a href="mailto:james@3kpro.services" className="text-tron-red hover:text-tron-red-glow font-medium transition-colors">
+        <a href="mailto:james@3kpro.services" className="text-primary-500 hover:text-primary-600 font-medium transition-colors">
           james@3kpro.services
         </a>
       </p>
