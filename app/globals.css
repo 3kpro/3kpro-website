@@ -77,6 +77,20 @@ body {
   background-size: 1000px 100%;
 }
 
+/* Aurora Background Animation */
+@keyframes aurora {
+  0% {
+    background-position: 50% 50%, 50% 50%;
+  }
+  100% {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.aurora-animate::after {
+  animation: aurora 60s linear infinite !important;
+}
+
 /* Smooth transitions for all interactive elements */
 a, button {
   transition: all 0.3s ease;
