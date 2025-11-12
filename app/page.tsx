@@ -1,22 +1,64 @@
 'use client'
 
 import ContactForm from '@/components/ContactForm'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
+
+type Service = {
+  id: string
+  name: string
+  description: string
+  fullDescription: string
+  features: string[]
+  pricing?: string
+  icon: React.ReactElement
+}
 
 export default function Home() {
+  const [selectedService, setSelectedService] = useState<Service | null>(null)
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 }
   }
 
-  const services = [
+  const services: Service[] = [
+    {
+      id: 'local-websites',
+      name: 'Local Business Websites',
+      description: 'Professional websites for local businesses. One-time fee includes design, development, and FREE lifetime hosting.',
+      fullDescription: 'Perfect for local businesses with great reputations but no online presence. Get a professional, fast-loading website that converts visitors into customers.',
+      features: [
+        'Custom responsive design (mobile-first)',
+        'FREE lifetime hosting on Vercel',
+        'Domain registration via Namecheap',
+        'Contact forms with email notifications',
+        'Google Maps integration',
+        'Fast loading times (optimized for SEO)',
+        'Full code ownership',
+        'Local business schema markup for better Google visibility'
+      ],
+      pricing: 'One-time fee: $1,500-$2,000 (includes everything, no monthly costs)',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        </svg>
+      ),
+    },
     {
       id: 'cloud',
       name: 'Cloud Solutions',
       description: 'Scalable cloud infrastructure and migration services for modern businesses.',
+      fullDescription: 'Move your business to the cloud with confidence. We handle everything from architecture design to migration and ongoing management.',
+      features: [
+        'Cloud architecture design and planning',
+        'AWS, Azure, and Google Cloud expertise',
+        'Migration from on-premise to cloud',
+        'Cost optimization and monitoring',
+        'Auto-scaling and load balancing',
+        'Disaster recovery and backup solutions'
+      ],
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
@@ -27,6 +69,15 @@ export default function Home() {
       id: 'custom-dev',
       name: 'Custom Development',
       description: 'Tailored software solutions built with cutting-edge technologies.',
+      fullDescription: 'Build software that perfectly fits your business processes. From concept to deployment, we create custom applications with modern technologies.',
+      features: [
+        'Full-stack web applications',
+        'React, Next.js, Node.js, Python',
+        'Database design and optimization',
+        'API development and integration',
+        'Real-time features (WebSockets)',
+        'Testing and quality assurance'
+      ],
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -37,6 +88,15 @@ export default function Home() {
       id: 'data',
       name: 'Data Management',
       description: 'Robust database design, optimization, and data analytics services.',
+      fullDescription: 'Transform your data into actionable insights. Expert database design, optimization, and analytics solutions.',
+      features: [
+        'Database design and architecture',
+        'PostgreSQL, MySQL, MongoDB expertise',
+        'Performance optimization and indexing',
+        'Data migration and ETL pipelines',
+        'Analytics and reporting dashboards',
+        'Data security and backup strategies'
+      ],
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
@@ -47,6 +107,15 @@ export default function Home() {
       id: 'security',
       name: 'Cybersecurity',
       description: 'Comprehensive security solutions to protect your digital assets.',
+      fullDescription: 'Protect your business from cyber threats with enterprise-grade security solutions and best practices.',
+      features: [
+        'Security audits and penetration testing',
+        'SSL/TLS certificate management',
+        'Authentication and authorization systems',
+        'Data encryption and secure storage',
+        'Compliance (GDPR, HIPAA, SOC 2)',
+        'Incident response planning'
+      ],
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -57,6 +126,15 @@ export default function Home() {
       id: 'mobile',
       name: 'Mobile Solutions',
       description: 'Native and cross-platform mobile applications for iOS and Android.',
+      fullDescription: 'Reach your customers on mobile with native and cross-platform apps that deliver exceptional user experiences.',
+      features: [
+        'Native iOS and Android development',
+        'Cross-platform with React Native',
+        'App Store and Play Store deployment',
+        'Push notifications and real-time updates',
+        'Offline-first architecture',
+        'Backend API integration'
+      ],
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -67,6 +145,15 @@ export default function Home() {
       id: 'automation',
       name: 'Process Automation',
       description: 'Streamline operations with intelligent automation and workflows.',
+      fullDescription: 'Save time and reduce errors with intelligent automation. We build custom workflows that handle repetitive tasks automatically.',
+      features: [
+        'Business process automation',
+        'Workflow design and implementation',
+        'Integration with existing systems',
+        'Email and notification automation',
+        'Data processing pipelines',
+        'Reporting and analytics automation'
+      ],
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -189,32 +276,115 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="py-20 bg-dark-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Our <span className="text-primary-500">Services</span>
-            </h2>
-            <p className="text-dark-300 max-w-2xl mx-auto">
-              Comprehensive IT solutions designed to meet your unique business needs
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
+          <AnimatePresence mode="wait">
+            {!selectedService ? (
+              // Services Grid
               <motion.div
-                key={service.id}
-                className="group p-6 bg-dark-800 rounded-lg border border-dark-700 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                key="grid"
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
               >
-                <div className="w-14 h-14 bg-primary-500/10 rounded-lg flex items-center justify-center text-primary-500 mb-4 group-hover:bg-primary-500/20 transition-colors">
-                  {service.icon}
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Our <span className="text-primary-500">Services</span>
+                  </h2>
+                  <p className="text-dark-300 max-w-2xl mx-auto">
+                    Comprehensive IT solutions designed to meet your unique business needs
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{service.name}</h3>
-                <p className="text-dark-400">{service.description}</p>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {services.map((service, index) => (
+                    <motion.button
+                      key={service.id}
+                      onClick={() => setSelectedService(service)}
+                      className="group p-6 bg-dark-800 rounded-lg border border-dark-700 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 text-left cursor-pointer"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <div className="w-14 h-14 bg-primary-500/10 rounded-lg flex items-center justify-center text-primary-500 mb-4 group-hover:bg-primary-500/20 transition-colors">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold text-white mb-2">{service.name}</h3>
+                      <p className="text-dark-400 mb-4">{service.description}</p>
+                      <span className="text-primary-500 text-sm font-medium group-hover:underline">Learn more →</span>
+                    </motion.button>
+                  ))}
+                </div>
               </motion.div>
-            ))}
-          </div>
+            ) : (
+              // Service Detail Modal
+              <motion.div
+                key="detail"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="max-w-4xl mx-auto"
+              >
+                <button
+                  onClick={() => setSelectedService(null)}
+                  className="flex items-center text-dark-400 hover:text-primary-500 transition-colors mb-8 group"
+                >
+                  <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  Back to Services
+                </button>
+
+                <div className="bg-dark-800 rounded-2xl border border-dark-700 p-8 md:p-12">
+                  <div className="flex items-start gap-6 mb-8">
+                    <div className="w-16 h-16 bg-primary-500/10 rounded-lg border-2 border-primary-500/30 flex items-center justify-center text-primary-500 flex-shrink-0">
+                      {selectedService.icon}
+                    </div>
+                    <div>
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{selectedService.name}</h2>
+                      <p className="text-xl text-dark-300">{selectedService.fullDescription}</p>
+                    </div>
+                  </div>
+
+                  <div className="mb-8">
+                    <h3 className="text-2xl font-bold text-white mb-4">What's Included</h3>
+                    <div className="grid md:grid-cols-2 gap-3">
+                      {selectedService.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start">
+                          <svg className="w-6 h-6 text-primary-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="text-dark-300">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {selectedService.pricing && (
+                    <div className="bg-primary-500/10 border border-primary-500/30 rounded-lg p-6 mb-8">
+                      <h3 className="text-xl font-bold text-white mb-2">Pricing</h3>
+                      <p className="text-dark-300">{selectedService.pricing}</p>
+                    </div>
+                  )}
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a
+                      href="#contact"
+                      onClick={() => setSelectedService(null)}
+                      className="px-8 py-4 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all font-semibold text-center shadow-lg hover:shadow-primary-500/50"
+                    >
+                      Get Started →
+                    </a>
+                    <button
+                      onClick={() => setSelectedService(null)}
+                      className="px-8 py-4 bg-transparent text-white rounded-lg border-2 border-dark-700 hover:border-primary-500 transition-all font-semibold"
+                    >
+                      View All Services
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
