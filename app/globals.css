@@ -34,6 +34,14 @@
   --background-light: #1e293b;
   --text: #ffffff;
   --text-muted: #94a3b8;
+
+  /* Aurora effect variables */
+  --white: #ffffff;
+  --black: #0a0a0a;
+  --transparent: transparent;
+  --primary-500: #e07856;
+  --primary-600: #d16946;
+  --primary-700: #b85a3a;
 }
 
 * {
