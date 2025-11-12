@@ -97,9 +97,19 @@ export default function Home() {
       <nav className="bg-dark-900/95 backdrop-blur-sm border-b border-dark-800 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-primary-500">3KPRO</span>
-              <span className="ml-2 text-sm text-dark-400">.services</span>
+            <Link href="/" className="flex items-center group">
+              <div className="flex items-center gap-3">
+                {/* Logo Icon */}
+                <div className="relative">
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="36" rx="8" fill="#e07856"/>
+                    <path d="M12 10L18 10L18 13L15 13L15 16L17 16L17 19L15 19L15 26L12 26L12 10Z" fill="white"/>
+                    <path d="M19 10L22 10L26 17L26 10L29 10L29 26L26 26L22 19L22 26L19 26L19 10Z" fill="white"/>
+                  </svg>
+                </div>
+                {/* Logo Text */}
+                <span className="text-2xl font-bold text-white tracking-tight">3KPRO</span>
+              </div>
             </Link>
             <div className="flex items-center space-x-8">
               <a href="#services" className="text-dark-300 hover:text-primary-500 transition-colors">Services</a>
@@ -321,9 +331,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center mb-4">
-                <span className="text-2xl font-bold text-primary-500">3KPRO</span>
-                <span className="ml-2 text-sm text-dark-400">.services</span>
+              <div className="flex items-center gap-3 mb-4">
+                <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="36" height="36" rx="8" fill="#e07856"/>
+                  <path d="M12 10L18 10L18 13L15 13L15 16L17 16L17 19L15 19L15 26L12 26L12 10Z" fill="white"/>
+                  <path d="M19 10L22 10L26 17L26 10L29 10L29 26L26 26L22 19L22 26L19 26L19 10Z" fill="white"/>
+                </svg>
+                <span className="text-2xl font-bold text-white">3KPRO</span>
               </div>
               <p className="text-dark-400 text-sm">
                 Delivering cutting-edge IT solutions and professional services since 2010.
