@@ -188,10 +188,12 @@ export default function Home() {
               <div className="flex items-center gap-3">
                 {/* Logo Icon */}
                 <div className="relative">
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="36" height="36" rx="8" fill="#e07856"/>
-                    <path d="M12 10L18 10L18 13L15 13L15 16L17 16L17 19L15 19L15 26L12 26L12 10Z" fill="white"/>
-                    <path d="M19 10L22 10L26 17L26 10L29 10L29 26L26 26L22 19L22 26L19 26L19 10Z" fill="white"/>
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Geometric abstract logo - three overlapping shapes */}
+                    <circle cx="20" cy="20" r="18" fill="#e07856" opacity="0.2"/>
+                    <path d="M20 4 L35 16 L30 32 L10 32 L5 16 Z" fill="#e07856"/>
+                    <rect x="14" y="14" width="12" height="12" fill="white" opacity="0.9"/>
+                    <path d="M20 10 L26 20 L20 30 L14 20 Z" fill="white"/>
                   </svg>
                 </div>
                 {/* Logo Text */}
@@ -502,10 +504,11 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="36" height="36" rx="8" fill="#e07856"/>
-                  <path d="M12 10L18 10L18 13L15 13L15 16L17 16L17 19L15 19L15 26L12 26L12 10Z" fill="white"/>
-                  <path d="M19 10L22 10L26 17L26 10L29 10L29 26L26 26L22 19L22 26L19 26L19 10Z" fill="white"/>
+                <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="18" fill="#e07856" opacity="0.2"/>
+                  <path d="M20 4 L35 16 L30 32 L10 32 L5 16 Z" fill="#e07856"/>
+                  <rect x="14" y="14" width="12" height="12" fill="white" opacity="0.9"/>
+                  <path d="M20 10 L26 20 L20 30 L14 20 Z" fill="white"/>
                 </svg>
                 <span className="text-2xl font-bold text-white">3KPRO</span>
               </div>
