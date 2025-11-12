@@ -4,6 +4,7 @@ import ContactForm from '@/components/ContactForm'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { AuroraBackground } from '@/components/ui/aurora-background'
 
 type Service = {
   id: string
@@ -213,9 +214,8 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 py-20 md:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-500/10 via-transparent to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <AuroraBackground className="py-20 md:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             className="text-center max-w-4xl mx-auto"
             initial="initial"
@@ -257,7 +257,7 @@ export default function Home() {
         </div>
 
         {/* Stats Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -273,7 +273,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </AuroraBackground>
 
       {/* Services Section */}
       <section id="services" className="py-20 bg-dark-800/50">

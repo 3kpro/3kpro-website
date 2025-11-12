@@ -40,6 +40,7 @@ module.exports = {
         'fade-in': 'fadeIn 0.6s ease-out',
         'slide-up': 'slideUp 0.6s ease-out',
         'glow': 'glow 2s ease-in-out infinite alternate',
+        aurora: "aurora 60s linear infinite",
       },
       keyframes: {
         pulseGlow: {
@@ -76,6 +77,14 @@ module.exports = {
           },
           '100%': {
             boxShadow: '0 0 10px rgba(255, 0, 64, 0.4), 0 0 20px rgba(255, 0, 64, 0.4), 0 0 30px rgba(255, 0, 64, 0.3)',
+          },
+        },
+        aurora: {
+          from: {
+            backgroundPosition: "50% 50%, 50% 50%",
+          },
+          to: {
+            backgroundPosition: "350% 50%, 350% 50%",
           },
         },
       },
