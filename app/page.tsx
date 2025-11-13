@@ -189,7 +189,8 @@ export default function Home() {
               <div className="flex items-center gap-3">
                 {/* Logo Icon */}
                 <div className="relative">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3KPRO Logo">
+                    <title>3KPRO - Professional Website Development</title>
                     {/* Geometric abstract logo - three overlapping shapes */}
                     <circle cx="20" cy="20" r="18" fill="#e07856" opacity="0.2"/>
                     <path d="M20 4 L35 16 L30 32 L10 32 L5 16 Z" fill="#e07856"/>
@@ -203,6 +204,7 @@ export default function Home() {
             </Link>
             <div className="flex items-center space-x-8">
               <a href="#services" className="text-dark-300 hover:text-primary-500 transition-colors">Services</a>
+              <a href="#pricing" className="text-dark-300 hover:text-primary-500 transition-colors">Pricing</a>
               <a href="#about" className="text-dark-300 hover:text-primary-500 transition-colors">About</a>
               <a href="#contact" className="text-dark-300 hover:text-primary-500 transition-colors">Contact</a>
               <a href="#contact" className="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">
@@ -448,6 +450,168 @@ export default function Home() {
                   <div className="w-full bg-dark-700 rounded-full h-2">
                     <div className="bg-primary-500 h-2 rounded-full" style={{ width: '100%' }}></div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-20 bg-dark-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-6">
+              <span className="text-sm font-medium text-primary-500">Simple, Transparent Pricing</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Local Business Website <span className="text-primary-500">Packages</span>
+            </h2>
+            <p className="text-dark-300 max-w-2xl mx-auto">
+              One-time fee includes everything. No monthly costs. FREE lifetime hosting on Vercel.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Starter Package */}
+            <div className="bg-dark-800 border border-dark-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-white mb-2">Starter</h3>
+                <p className="text-dark-400 text-sm">Perfect for small businesses getting started online</p>
+              </div>
+              <div className="mb-6">
+                <div className="text-4xl font-bold text-primary-500 mb-1">$1,500</div>
+                <div className="text-dark-400 text-sm">One-time payment</div>
+              </div>
+              <div className="space-y-3 mb-8">
+                {[
+                  '3-page website (Home, About, Contact)',
+                  'Mobile-responsive design',
+                  'FREE lifetime hosting on Vercel',
+                  'Domain setup (domain fee separate)',
+                  'Contact form with email notifications',
+                  'Google Maps integration',
+                  'Basic SEO optimization',
+                  '2 rounds of revisions',
+                  '2-week delivery',
+                ].map((feature, idx) => (
+                  <div key={idx} className="flex items-start">
+                    <svg className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-dark-300 text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+              <a
+                href="#contact"
+                className="block w-full text-center px-6 py-3 bg-dark-700 text-white rounded-lg hover:bg-dark-600 transition-all font-semibold"
+              >
+                Get Started
+              </a>
+            </div>
+
+            {/* Professional Package */}
+            <div className="bg-dark-800 border-2 border-primary-500 rounded-2xl p-8 relative transform md:scale-105 shadow-xl">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-primary-500 text-white text-xs font-bold px-4 py-1 rounded-full">
+                  MOST POPULAR
+                </span>
+              </div>
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-white mb-2">Professional</h3>
+                <p className="text-dark-400 text-sm">Ideal for established local businesses</p>
+              </div>
+              <div className="mb-6">
+                <div className="text-4xl font-bold text-primary-500 mb-1">$2,000</div>
+                <div className="text-dark-400 text-sm">One-time payment</div>
+              </div>
+              <div className="space-y-3 mb-8">
+                {[
+                  '5-7 page website (custom pages)',
+                  'Premium mobile-responsive design',
+                  'FREE lifetime hosting on Vercel',
+                  'Domain setup (domain fee separate)',
+                  'Advanced contact forms',
+                  'Google Maps + Business Hours',
+                  'Photo gallery/portfolio',
+                  'Social media integration',
+                  'Advanced SEO optimization',
+                  'Google Business Profile setup',
+                  '3 rounds of revisions',
+                  '3-week delivery',
+                ].map((feature, idx) => (
+                  <div key={idx} className="flex items-start">
+                    <svg className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-dark-300 text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+              <a
+                href="#contact"
+                className="block w-full text-center px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all font-semibold shadow-lg"
+              >
+                Get Started
+              </a>
+            </div>
+
+            {/* Premium Package */}
+            <div className="bg-dark-800 border border-dark-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-white mb-2">Premium</h3>
+                <p className="text-dark-400 text-sm">Full-featured solution for growing businesses</p>
+              </div>
+              <div className="mb-6">
+                <div className="text-4xl font-bold text-primary-500 mb-1">Custom</div>
+                <div className="text-dark-400 text-sm">Starting at $3,000</div>
+              </div>
+              <div className="space-y-3 mb-8">
+                {[
+                  'Everything in Professional',
+                  'Unlimited pages',
+                  'E-commerce capabilities (optional)',
+                  'Customer appointment booking',
+                  'Blog/news section',
+                  'Email marketing integration',
+                  'Analytics dashboard',
+                  'Custom features & integrations',
+                  'Priority support',
+                  'Unlimited revisions',
+                  '4-6 week delivery',
+                ].map((feature, idx) => (
+                  <div key={idx} className="flex items-start">
+                    <svg className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-dark-300 text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+              <a
+                href="#contact"
+                className="block w-full text-center px-6 py-3 bg-dark-700 text-white rounded-lg hover:bg-dark-600 transition-all font-semibold"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="mt-12 text-center">
+            <div className="inline-block bg-dark-800 border border-dark-700 rounded-xl p-6 max-w-2xl">
+              <div className="flex items-start">
+                <svg className="w-6 h-6 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div className="text-left">
+                  <p className="text-white font-semibold mb-2">What's Included in Every Package:</p>
+                  <p className="text-dark-300 text-sm">
+                    All packages include FREE lifetime hosting on Vercel (no monthly fees ever), mobile-responsive design,
+                    SSL certificate (secure HTTPS), and full code ownership. Domain registration through Namecheap
+                    (~$12-15/year, paid directly to registrar). We also provide training on how to update your site content.
+                  </p>
                 </div>
               </div>
             </div>
