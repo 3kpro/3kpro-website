@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.1.0] - 2025-11-12
+
+### Added
+- Aurora Background animated effect on hero section (coral/salmon gradient flow)
+- Comprehensive SEO optimization (meta tags, JSON-LD structured data, Open Graph)
+- 3-tier pricing packages section ($1,500 Starter, $2,000 Professional, Custom Premium)
+- Dynamic sitemap.xml and robots.txt for search engine indexing
+- "Pricing" link in navigation
+- Accessibility improvements (aria-labels on logo SVG)
+
+### Changed
+- Updated meta tags to focus on local business website development
+- Enhanced keywords for local SEO targeting
+- Navigation now includes: Services, Pricing, About, Contact
+
+### Technical
+- Created `/components/ui/aurora-background.tsx` with custom CSS animation
+- Added `/lib/utils.ts` with cn() utility (clsx + tailwind-merge)
+- Implemented JSON-LD ProfessionalService schema for rich search results
+- Added Next.js 15 dynamic sitemap generation
+
 ## [2.0.0] - 2025-11-11
 
 ### Changed
