@@ -27,9 +27,9 @@ export default function Home() {
   const services: Service[] = [
     {
       id: 'local-websites',
-      name: 'Local Business Websites',
-      description: 'Professional websites for local businesses. One-time fee includes design, development, and FREE lifetime hosting.',
-      fullDescription: 'Perfect for local businesses with great reputations but no online presence. Get a professional, fast-loading website that converts visitors into customers.',
+      name: 'Website Development',
+      description: 'Affordable websites for small businesses. One-time fee includes design, development, and FREE hosting.',
+      fullDescription: 'Simple, professional websites for businesses that need an online presence. Fast delivery with no monthly fees.',
       features: [
         'Custom responsive design (mobile-first)',
         'FREE lifetime hosting on Vercel',
@@ -40,7 +40,7 @@ export default function Home() {
         'Full code ownership',
         'Local business schema markup for better Google visibility'
       ],
-      pricing: 'One-time fee: $1,500-$2,000 (includes everything, no monthly costs)',
+      pricing: 'One-time fee starting at $899 (no monthly costs)',
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -462,13 +462,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-6">
-              <span className="text-sm font-medium text-primary-500">Simple, Transparent Pricing</span>
+              <span className="text-sm font-medium text-primary-500">Affordable Website Packages</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Local Business Website <span className="text-primary-500">Packages</span>
+              Simple <span className="text-primary-500">Website Solutions</span>
             </h2>
             <p className="text-dark-300 max-w-2xl mx-auto">
-              One-time fee includes everything. No monthly costs. FREE lifetime hosting on Vercel.
+              One-time fee. No monthly costs. FREE hosting included.
             </p>
           </div>
 
@@ -480,7 +480,7 @@ export default function Home() {
                 <p className="text-dark-400 text-sm">Perfect for small businesses getting started online</p>
               </div>
               <div className="mb-6">
-                <div className="text-4xl font-bold text-primary-500 mb-1">$1,500</div>
+                <div className="text-4xl font-bold text-primary-500 mb-1">$899</div>
                 <div className="text-dark-400 text-sm">One-time payment</div>
               </div>
               <div className="space-y-3 mb-8">
@@ -493,7 +493,7 @@ export default function Home() {
                   'Google Maps integration',
                   'Basic SEO optimization',
                   '2 rounds of revisions',
-                  '2-week delivery',
+                  '1-2 weeks delivery',
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-start">
                     <svg className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -523,7 +523,7 @@ export default function Home() {
                 <p className="text-dark-400 text-sm">Ideal for established local businesses</p>
               </div>
               <div className="mb-6">
-                <div className="text-4xl font-bold text-primary-500 mb-1">$2,000</div>
+                <div className="text-4xl font-bold text-primary-500 mb-1">$1,499</div>
                 <div className="text-dark-400 text-sm">One-time payment</div>
               </div>
               <div className="space-y-3 mb-8">
@@ -539,7 +539,7 @@ export default function Home() {
                   'Advanced SEO optimization',
                   'Google Business Profile setup',
                   '3 rounds of revisions',
-                  '3-week delivery',
+                  '1-2 weeks delivery',
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-start">
                     <svg className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -565,7 +565,7 @@ export default function Home() {
               </div>
               <div className="mb-6">
                 <div className="text-4xl font-bold text-primary-500 mb-1">Custom</div>
-                <div className="text-dark-400 text-sm">Starting at $3,000</div>
+                <div className="text-dark-400 text-sm">Starting at $2,499</div>
               </div>
               <div className="space-y-3 mb-8">
                 {[
@@ -579,7 +579,7 @@ export default function Home() {
                   'Custom features & integrations',
                   'Priority support',
                   'Unlimited revisions',
-                  '4-6 week delivery',
+                  '2 weeks delivery',
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-start">
                     <svg className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
