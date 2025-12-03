@@ -22,7 +22,7 @@ export default function LaunchpadGuard({
       const ADMIN_EMAILS = ['mark@3kpro.services', 'mark@contentcascade.ai', 'owner@example.com', 'james.lawson@gmail.com'];
       
       if (!user || !user.email || !ADMIN_EMAILS.includes(user.email)) {
-        router.push('/dashboard'); // Redirect unauthorized users
+        window.location.href = 'https://trendpulse.3kpro.services/dashboard'; // Redirect unauthorized users to TrendPulse
         return;
       }
       
