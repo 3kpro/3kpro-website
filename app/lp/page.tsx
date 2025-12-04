@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   CheckCircle,
   Copy,
@@ -12,6 +13,8 @@ import {
   Sparkles,
   Zap,
   TrendingUp,
+  Archive,
+  Eye,
 } from "lucide-react";
 import { LAUNCH_TEMPLATES } from "@/lib/data/launch-templates";
 
@@ -64,12 +67,47 @@ const PLATFORM_ICONS: Record<string, any> = {
 
 export default function LaunchpadPage() {
   const [searchFilter, setSearchFilter] = useState("");
+  const [completedPosts, setCompletedPosts] = useState<Set<string>>(new Set());
+  const [showArchived, setShowArchived] = useState(false);
+
+  // Load completed posts from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('launchpad_completed');
+    if (saved) {
+      try {
+        setCompletedPosts(new Set(JSON.parse(saved)));
+      } catch (err) {
+        console.error('Failed to load completed posts:', err);
+      }
+    }
+  }, []);
+
+  // Save completed posts to localStorage
+  const toggleComplete = (postId: string) => {
+    setCompletedPosts(prev => {
+      const next = new Set(prev);
+      if (next.has(postId)) {
+        next.delete(postId);
+      } else {
+        next.add(postId);
+      }
+      localStorage.setItem('launchpad_completed', JSON.stringify([...next]));
+      return next;
+    });
+  };
 
   // Filter templates by search
-  const filteredTemplates = LAUNCH_TEMPLATES.filter((template: any) =>
-    template.community_name.toLowerCase().includes(searchFilter.toLowerCase()) ||
-    template.platform.toLowerCase().includes(searchFilter.toLowerCase())
-  );
+  const filteredTemplates = LAUNCH_TEMPLATES.filter((template: any) => {
+    const postId = `${template.platform}-${template.community_name}`;
+    const isCompleted = completedPosts.has(postId);
+
+    // If showArchived is false, hide completed posts
+    if (!showArchived && isCompleted) return false;
+
+    // Apply search filter
+    return template.community_name.toLowerCase().includes(searchFilter.toLowerCase()) ||
+      template.platform.toLowerCase().includes(searchFilter.toLowerCase());
+  });
 
   // Group by platform
   const groupedTemplates = filteredTemplates.reduce((acc: any, template: any) => {
@@ -80,15 +118,48 @@ export default function LaunchpadPage() {
     return acc;
   }, {});
 
+  // Count completed posts
+  const completedCount = completedPosts.size;
+  const totalCount = LAUNCH_TEMPLATES.length;
+
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">🚀 Launchpad</h1>
-          <p className="text-gray-400">
-            Pre-written launch posts for TrendPulse. Copy, customize, and post!
-          </p>
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div className="flex items-start gap-4">
+              <Image
+                src="/media/logo/Final_Logo.png"
+                alt="TrendPulse Logo"
+                width={64}
+                height={64}
+                className="rounded-lg"
+              />
+              <div>
+                <h1 className="text-4xl font-bold text-white mb-2">🚀 Launchpad</h1>
+                <p className="text-gray-400">
+                  Pre-written launch posts for TrendPulse. Copy, customize, and post!
+                </p>
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="text-sm text-gray-500 mb-2">
+                Progress: {completedCount} / {totalCount}
+              </div>
+              <button
+                onClick={() => setShowArchived(!showArchived)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
+                  showArchived
+                    ? 'bg-coral-500/20 text-coral-400 border border-coral-500/30'
+                    : 'bg-gray-800 text-gray-400 border border-gray-700 hover:bg-gray-700'
+                }`}
+              >
+                {showArchived ? <Eye className="w-4 h-4" /> : <Archive className="w-4 h-4" />}
+                {showArchived ? 'Showing All' : 'Show Archived'}
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Search Filter */}
@@ -120,6 +191,8 @@ export default function LaunchpadPage() {
                 <div className="space-y-6">
                   {templates.map((template: any, idx: number) => {
                     const content = template.content;
+                    const postId = `${template.platform}-${template.community_name}`;
+                    const isCompleted = completedPosts.has(postId);
 
                     return (
                       <motion.div
@@ -127,25 +200,39 @@ export default function LaunchpadPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: idx * 0.05 }}
-                        className="bg-gray-900/50 rounded-xl p-6 border border-gray-700/30 space-y-4"
+                        className={`bg-gray-900/50 rounded-xl p-6 border space-y-4 transition-all ${
+                          isCompleted
+                            ? 'border-green-500/30 bg-green-500/5'
+                            : 'border-gray-700/30'
+                        }`}
                       >
                         {/* Community/Target Header */}
                         <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <h3 className="text-lg font-semibold text-white mb-1">
-                              {template.community_name}
-                            </h3>
-                            {template.url && (
-                              <a
-                                href={template.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-coral-400 hover:text-coral-300 flex items-center gap-1"
-                              >
-                                <ExternalLink className="w-3 h-3" />
-                                Open {template.community_name}
-                              </a>
-                            )}
+                          <div className="flex items-start gap-3 flex-1">
+                            <input
+                              type="checkbox"
+                              checked={isCompleted}
+                              onChange={() => toggleComplete(postId)}
+                              className="w-5 h-5 mt-1 rounded border-gray-600 text-green-500 focus:ring-2 focus:ring-green-500 cursor-pointer"
+                            />
+                            <div className="flex-1">
+                              <h3 className={`text-lg font-semibold mb-1 ${
+                                isCompleted ? 'text-gray-500 line-through' : 'text-white'
+                              }`}>
+                                {template.community_name}
+                              </h3>
+                              {template.url && (
+                                <a
+                                  href={template.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-sm text-coral-400 hover:text-coral-300 flex items-center gap-1"
+                                >
+                                  <ExternalLink className="w-3 h-3" />
+                                  Open {template.community_name}
+                                </a>
+                              )}
+                            </div>
                           </div>
                           <div className="text-right">
                             <div className="text-xs text-gray-500 uppercase">Day {template.day}</div>
