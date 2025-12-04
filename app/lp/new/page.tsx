@@ -79,8 +79,13 @@ export default function NewCampaignPage() {
         </Link>
         <h1 className="text-3xl font-bold text-white">Initialize Mission</h1>
         <p className="text-gray-400 mt-2">
-          Define your product details to start the launch sequence.
+          Create launch posts for Product Hunt, Reddit, Twitter, and more. Fill in your product details below.
         </p>
+        <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+          <p className="text-sm text-blue-300">
+            💡 <strong>Tip:</strong> The better your product description, the better your launch posts will be. Be specific about the problem you solve!
+          </p>
+        </div>
       </div>
 
       <motion.form
@@ -92,15 +97,19 @@ export default function NewCampaignPage() {
         <div className="space-y-2">
           <label className="text-sm font-medium text-gray-300">
             Campaign Name
+            <span className="ml-2 text-xs text-gray-500">(Internal reference only)</span>
           </label>
           <input
             type="text"
             required
-            placeholder="e.g. Product Hunt Launch, Viral Twitter Thread"
+            placeholder="TrendPulse Product Hunt Launch - Dec 2025"
             className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-coral-500 focus:border-transparent outline-none transition-all"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
+          <p className="text-xs text-gray-500">
+            Examples: "Product Hunt Launch Dec 2025", "Twitter Launch Campaign", "Reddit Marketing Wave 1"
+          </p>
         </div>
 
         <div className="p-4 bg-gray-900/30 rounded-xl border border-gray-700/50 space-y-4">
@@ -116,11 +125,12 @@ export default function NewCampaignPage() {
               <input
                 type="text"
                 required
-                placeholder="My Awesome App"
+                placeholder="TrendPulse"
                 className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-coral-500 focus:border-transparent outline-none transition-all"
                 value={formData.product_name}
                 onChange={(e) => setFormData({ ...formData, product_name: e.target.value })}
               />
+              <p className="text-xs text-gray-500">Your product/service name</p>
             </div>
 
             <div className="space-y-2">
@@ -130,26 +140,36 @@ export default function NewCampaignPage() {
               <input
                 type="url"
                 required
-                placeholder="https://myapp.com"
+                placeholder="https://trendpulse.3kpro.services"
                 className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-coral-500 focus:border-transparent outline-none transition-all"
                 value={formData.product_url}
                 onChange={(e) => setFormData({ ...formData, product_url: e.target.value })}
               />
+              <p className="text-xs text-gray-500">Where users can access it</p>
             </div>
           </div>
 
           <div className="space-y-2">
             <label className="text-xs font-medium text-gray-500">
-              Core Value Proposition (What problem does it solve?)
+              Core Value Proposition
+              <span className="ml-2 text-coral-400">⭐ Most Important</span>
             </label>
             <textarea
               required
-              rows={3}
-              placeholder="It helps [target audience] to [core benefit] by [key feature]..."
+              rows={4}
+              placeholder="Example: TrendPulse helps content creators and marketers predict viral content BEFORE they create it. Our AI analyzes 1M+ viral posts to give you a Viral Score (0-100) with 87% accuracy, saving 15+ hours/week on content that flops."
               className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-coral-500 focus:border-transparent outline-none transition-all resize-none"
               value={formData.product_description}
               onChange={(e) => setFormData({ ...formData, product_description: e.target.value })}
             />
+            <div className="space-y-1">
+              <p className="text-xs text-gray-500">
+                <strong>Template:</strong> [Product] helps [target audience] to [solve problem] by [unique method]. [Key benefit/stat].
+              </p>
+              <p className="text-xs text-gray-500">
+                <strong>Include:</strong> Who it's for, what problem you solve, how it works, key stats/benefits
+              </p>
+            </div>
           </div>
         </div>
 
