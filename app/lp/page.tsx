@@ -131,7 +131,7 @@ export default function LaunchpadPage() {
             <div className="flex items-start gap-4">
               <Image
                 src="/media/logo/Final_Logo.png"
-                alt="TrendPulse Logo"
+                alt="XELORA Logo"
                 width={64}
                 height={64}
                 className="rounded-lg"
@@ -139,7 +139,7 @@ export default function LaunchpadPage() {
               <div>
                 <h1 className="text-4xl font-bold text-white mb-2">🚀 Launchpad</h1>
                 <p className="text-gray-400">
-                  Pre-written launch posts for TrendPulse. Copy, customize, and post!
+                  Pre-written launch posts for XELORA. Copy, customize, and post!
                 </p>
               </div>
             </div>
