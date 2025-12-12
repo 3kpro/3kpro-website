@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.2.0] - 2025-12-05
+
+### Added
+- Micro-SaaS Factory dashboard at `/factory` route
+- Product cards displaying all 7 product ideas with status indicators
+- "The Truth" section rendering TRUTH.md content from softdev/products/
+- Dynamic build checklist for each product (Define Specs, Build MVP, etc.)
+- Asset Locker linking to product files in softdev directory
+- Industrial/cyberpunk lab theme with dark mode and neon accents
+
+### Technical
+- Created `lib/markdown.ts` utility for reading markdown files from external paths
+- Updated `app/factory/page.tsx` with product data integration
+- Kanban/Grid view layout for product management
+
 ## [2.1.0] - 2025-11-12
 
 ### Added

@@ -1,8 +1,6 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /(portal)/
 
-# Disallow admin or private areas (if any in the future)
-# Disallow: /admin/
-
-Sitemap: https://3kpro.services/sitemap.xml
+Sitemap: https://trendpulse.3kpro.services/sitemap.xml
