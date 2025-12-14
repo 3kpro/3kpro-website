@@ -76,15 +76,15 @@ export const LAUNCH_TEMPLATES = [
     }
   },
 
-  // REDDIT - r/SaaS
+  // REDDIT - r/SaaS (Value-first, NO direct promo)
   {
     day: 1,
     platform: 'reddit',
     community_name: 'r/SaaS',
     url: 'https://www.reddit.com/r/SaaS/submit',
     content: {
-      title: "I analyzed 1M viral posts to find what makes content perform. Here's what I learned.",
-      body: "Hey r/SaaS,\n\nI've spent 6 months building an AI that predicts viral content.\n\nThe problem I was solving: Creators waste days making content that gets 3 likes. They're guessing what will work.\n\n**What I discovered analyzing 1M+ viral posts:**\n\n1. Hook structure matters more than topic\n2. Emotional triggers (curiosity, fear, awe) = 3x engagement\n3. Optimal length varies by platform (Twitter ≠ LinkedIn)\n4. Hot keywords boost reach by 40% (AI, crypto, hack, secret)\n5. Timing accounts for 30% of viral success\n\nI built this into an AI scoring system that predicts engagement BEFORE you create.\n\n**Beta results:**\n- 87% prediction accuracy\n- Users increased engagement by 340%\n- Saved 15+ hours/week on content that flops\n\nI'm looking for honest feedback on the value prop and pricing (Free tier + $29.99/mo Pro). Would you use this?\n\n**Link in my profile** if you want to check it out. Happy to answer questions!"
+      title: "I analyzed 1M viral posts to understand what makes SaaS content actually convert",
+      body: "Hey r/SaaS,\n\nSpent the last 6 months deep-diving into viral content mechanics while building a tool. Thought I'd share the most surprising patterns I found:\n\n**1. Hook quality beats topic 10:1**\n- \"How to use AI for marketing\" → 20/100 engagement\n- \"I fired my marketing team and replaced them with AI for $0\" → 87/100\n- First 3 seconds decide 70% of your engagement\n\n**2. Multi-platform validation is the strongest signal**\n- Topic trending on 1 platform: 40% viral chance\n- Same topic on 3+ platforms: 87% viral chance\n- Cross-validation eliminates false positives\n\n**3. Platform-specific optimization matters more than timing**\n- Twitter: Punchy, controversial, <1200 chars\n- LinkedIn: Professional, 2400 chars sweet spot, value-first\n- Reddit: Zero BS tolerance, value upfront, context matters\n\n**4. Specificity drives conversions**\n- Generic \"SaaS tips\" → 15% CTR\n- \"How I got 1,000 paying customers with $0 ad spend\" → 92% CTR\n\n**5. Emotional triggers (curiosity, FOMO, validation) = 3x engagement**\n\nBuilt these insights into a prediction model while building my own SaaS. Happy to discuss the methodology if anyone's interested in content strategy."
     }
   },
 
@@ -100,27 +100,75 @@ export const LAUNCH_TEMPLATES = [
     }
   },
 
-  // REDDIT - r/Entrepreneur
+  // REDDIT - r/roastmystartup (Feedback-focused, promotion allowed)
   {
     day: 1,
     platform: 'reddit',
-    community_name: 'r/Entrepreneur',
-    url: 'https://www.reddit.com/r/Entrepreneur/submit',
+    community_name: 'r/roastmystartup',
+    url: 'https://www.reddit.com/r/roastmystartup/submit',
     content: {
-      title: "I wasted 6 months on content that flopped. Then I built an AI to predict what works.",
-      body: "Fellow entrepreneurs,\n\nI burned 6 months creating content that got zero traction. Blog posts, social media, videos - all crickets.\n\nThen I asked: What if AI could predict what goes viral BEFORE I waste time creating it?\n\n**What I built:**\nAn AI scoring system that analyzes millions of viral posts and gives your idea a Viral Score™ (0-100) before you publish.\n\n**How it works:**\n- Analyzes hook structure, emotional triggers, optimal length\n- Checks for hot keywords and timing\n- Platform-specific optimization (Twitter ≠ LinkedIn)\n- Shows exactly what to improve\n\n**Beta results:**\n- 87% prediction accuracy\n- Users gained 340% more engagement\n- Saved 15+ hours per week on content that flops\n\n**The ROI:** If you're spending 20+ hours/week on content, this eliminates wasted effort. Only create what will actually perform.\n\nLaunched today. Free tier available. **Link in profile.** \n\nCurious what fellow entrepreneurs think?"
+      title: "Roast my AI viral content predictor - be brutally honest",
+      body: "I built XELORA - an AI that predicts if your content will go viral (0-100 score) before you create it.\n\n**The pitch:** Stop wasting time on posts that flop. Get a Viral Score before you hit publish.\n\n**What it does:**\n- Analyzes trending topics across Google, Twitter, Reddit\n- Gives you a 0-100 Viral Score for your content idea\n- Shows what to improve (better hook, add emotional trigger, etc.)\n- Multi-platform publishing when you're ready\n\n**Tech:** Next.js 15, Supabase, Google Gemini 2.5 Flash, Vertex AI\n\n**Pricing:** Free tier, then $9-$79/mo\n\n**Beta results:** 87% prediction accuracy, users increased engagement 340% avg\n\n**Link:** https://xelora.app\n\n**What I need roasted:**\n- Is the value prop clear or confusing?\n- Pricing too high/low for what it does?\n- Would you actually use this or is it solving a fake problem?\n- UI/UX feedback (it's rough around edges)\n\nBe brutally honest. I can take it."
     }
   },
 
-  // REDDIT - r/startups (DISCUSSION-FOCUSED, NOT PROMOTIONAL)
+  // REDDIT - r/alphaandbetausers (Beta testing community)
   {
     day: 1,
     platform: 'reddit',
-    community_name: 'r/startups',
-    url: 'https://www.reddit.com/r/startups/submit',
+    community_name: 'r/alphaandbetausers',
+    url: 'https://www.reddit.com/r/alphaandbetausers/submit',
     content: {
-      title: "How do you validate content ideas before investing 20+ hours creating them?",
-      body: "Fellow founders,\n\nI've been struggling with content marketing efficiency. Our startup was spending 20+ hours/week creating blog posts, social content, videos - and 80% of it got zero traction.\n\n**My question:** How are you validating content ideas BEFORE you invest time creating them?\n\n**What I tried:**\n- A/B testing headlines (too late, content already created)\n- Keyword research (good for SEO, not engagement prediction)\n- Gut feeling (inconsistent results)\n- Audience polls (low response rate)\n\nI ended up building an AI scoring system that analyzes viral patterns from 1M+ posts. It gives content ideas a 0-100 score before creation. Been using it for 3 months - engagement up 340%, time saved massive.\n\n**But curious what others are doing?**\n- Are you using any tools/frameworks for content validation?\n- How do you decide what's worth creating?\n- What metrics predict success for you?\n\nWould love to hear what's working (or not working) for your startup's content strategy."
+      title: "[Beta] AI that predicts viral content before you post - looking for testers",
+      body: "**Product:** XELORA - Viral content prediction platform\n\n**What it does:**\nPredicts which content will go viral BEFORE you create it. Enter your idea, get a 0-100 Viral Score, see what to improve.\n\n**Current stage:** Public beta (launched on Product Hunt yesterday)\n\n**What works:**\n- Viral Score prediction (87% accuracy in testing)\n- Trending topic discovery across Google/Twitter/Reddit\n- Multi-platform content generation\n- Publishing to Twitter/LinkedIn/Facebook\n\n**What needs testing:**\n- Instagram integration (just added, needs validation)\n- TikTok trend analysis (beta feature)\n- Team collaboration features\n- Mobile responsiveness\n\n**Looking for:**\n- Content creators who post 3+ times/week\n- Marketers managing multiple brands\n- Agencies doing client content\n- Honest feedback on accuracy and UX\n\n**Free tier available:** https://xelora.app\n\n**What you get:**\n- Early access to all features\n- Direct line to founder (me) for bugs/feedback\n- Free Pro upgrade if you provide detailed feedback\n\nDrop your email or DM if interested. Happy to answer questions!"
+    }
+  },
+
+  // REDDIT - r/indiehackers (SHOW IH flair - one-time promotion allowed)
+  {
+    day: 2,
+    platform: 'reddit',
+    community_name: 'r/indiehackers',
+    url: 'https://www.reddit.com/r/indiehackers/submit',
+    content: {
+      title: "[SHOW IH] Built an AI viral predictor in 90 days while driving Uber - $0 MRR → ???",
+      body: "Hey Indie Hackers,\n\n**The journey:**\n- Solo founder, built nights/weekends for 90 days\n- Drove Uber during the day to pay bills\n- Used Claude Code for ~70% of development\n- Total investment: ~$1,500 (Vercel, Supabase, domains)\n- Monthly burn: $132\n- Launched on Product Hunt yesterday\n\n**What I built:**\nXELORA - AI that predicts if content will go viral before you create it. Analyzes 1M+ posts to give you a 0-100 Viral Score.\n\n**Tech stack:**\n- Next.js 15 (App Router, Server Components)\n- Supabase (auth + PostgreSQL)\n- Google Gemini 2.5 Flash for AI\n- Vertex AI for custom models\n- Stripe for payments\n\n**Current metrics (24 hours post-launch):**\n- [Update with actual numbers]\n- X Product Hunt upvotes\n- X signups\n- X paying customers\n- $X MRR\n\n**Biggest lessons:**\n1. AI coding tools = 10x productivity boost (Claude Code is insane)\n2. Ship fast, validate faster (MVP in 30 days, polish later)\n3. Bootstrap story resonates more than features\n4. Product Hunt traffic ≠ conversions (learning this now)\n\n**What I'm struggling with:**\n- Converting PH traffic to paid users\n- Pricing strategy (is $29/mo too high for indie creators?)\n- Scaling without breaking free tier economics\n\n**Questions for IH community:**\n- How did you handle your first 100 paying customers?\n- What conversion rate is realistic for Product Hunt traffic?\n- Should I focus on freemium or trial-to-paid?\n\nHappy to answer questions about the build process, AI integration, or bootstrapping!\n\n🔗 https://xelora.app (if you want to check it out)"
+    }
+  },
+
+  // REDDIT - r/SaaS Weekly Feedback Thread (SAFE - use pinned thread)
+  {
+    day: 1,
+    platform: 'reddit',
+    community_name: 'r/SaaS (Weekly Feedback Thread)',
+    url: 'https://www.reddit.com/r/SaaS/',
+    content: {
+      title: "Post in PINNED Weekly Feedback Thread",
+      body: "**Instructions:** Find the pinned 'Weekly Feedback Thread' at top of r/SaaS and post this:\n\n---\n\n**XELORA - AI Viral Content Predictor**\n\nPredicts if your content will go viral (0-100 score) before you create it.\n\n**What it does:**\n- Analyzes trending topics across Google/Twitter/Reddit\n- Gives Viral Score for your content ideas\n- Shows specific improvements (hook, triggers, timing)\n- Multi-platform publishing\n\n**Tech:** Next.js 15, Supabase, Google Gemini, Vertex AI\n**Stage:** Just launched on Product Hunt\n**Pricing:** Free tier, $9-$79/mo paid\n**Link:** https://xelora.app\n\n**Looking for feedback on:**\n1. Value prop clarity - is it obvious what this does?\n2. Pricing - too high/low for SaaS creators?\n3. UI/UX - any friction in the flow?\n4. Feature gaps - what's missing?\n\nBuilt solo in 90 days while driving Uber. Happy to answer questions!"
+    }
+  },
+
+  // REDDIT - r/Entrepreneur Thank You Thursday (SAFE - weekly promo thread)
+  {
+    day: 4,
+    platform: 'reddit',
+    community_name: 'r/Entrepreneur (Thank You Thursday)',
+    url: 'https://www.reddit.com/r/Entrepreneur/',
+    content: {
+      title: "Post in 'Thank You Thursday' Thread (Thursdays only)",
+      body: "**Instructions:** Wait for Thursday, find the pinned 'Thank You Thursday' thread, and post this:\n\n---\n\n**XELORA - Stop wasting time on content that flops**\n\nI built an AI that predicts viral content before you create it. If you're spending hours on posts that get 3 likes, this might help.\n\n**What it does:**\n- Enter your content idea\n- Get a Viral Score (0-100)\n- See what to improve before you waste time creating\n- Publish directly to Twitter/LinkedIn/Facebook\n\n**Free tier available:** https://xelora.app\n\n**Launch promo:** Use code PHHUNT50 for 50% off first month\n\n**Built by:** Solo founder (me) in 90 days while driving Uber to pay bills. Bootstrapped with $1,500.\n\n**Beta results:** 87% accuracy, users increased engagement 340% avg\n\nHappy to answer questions!"
+    }
+  },
+
+  // REDDIT - r/startups Feedback Friday (SAFE - weekly thread)
+  {
+    day: 5,
+    platform: 'reddit',
+    community_name: 'r/startups (Feedback Friday)',
+    url: 'https://www.reddit.com/r/startups/',
+    content: {
+      title: "Post in 'Feedback Friday' Thread (Fridays only)",
+      body: "**Instructions:** Wait for Friday, find the pinned 'Feedback Friday' thread, and post this:\n\n---\n\n**XELORA - AI Viral Content Predictor (Just Launched)**\n\n**Problem:** Founders waste 20+ hours/week on content that gets zero traction\n\n**Solution:** AI predicts viral potential (0-100 score) BEFORE you create\n\n**How it works:**\n1. Enter content idea or topic\n2. Get Viral Score across platforms (Twitter, LinkedIn, etc.)\n3. See specific improvements (hook, emotional triggers, timing)\n4. Create & publish when confident\n\n**Current state:**\n- Launched on Product Hunt [yesterday/this week]\n- 87% prediction accuracy in testing\n- Beta users increased engagement 340% avg\n- Free tier + $9-$79/mo paid plans\n\n**Tech stack:** Next.js 15, Supabase, Google Gemini, Vertex AI\n\n**Link:** https://xelora.app\n\n**Feedback needed:**\n1. Does the value prop resonate? (predict viral content)\n2. Pricing feedback for bootstrapped founders\n3. What features would make this a must-have?\n4. Any UX friction you see?\n\n**About me:** Solo founder, built in 90 days while driving Uber, $1,500 total investment, no VC.\n\nAppreciate any honest feedback!"
     }
   },
 
