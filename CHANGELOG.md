@@ -2,6 +2,15 @@
 
 ## [2.3.0] - 2025-12-13
 
+### Fixed
+- **Product Hunt Forum URLs in LaunchPad**:
+  - Corrected p/introduce-yourself URL (was using wrong /discussions/ format)
+  - Corrected p/self-promotion URL
+  - Corrected p/general URL
+  - Moved AMA post to p/general (AMAs don't have dedicated forum)
+  - Corrected p/producthunt URL
+  - All URLs now verified to exist and functional
+
 ### Added
 - **Product Hunt Forum Posts to LaunchPad**:
   - Integrated 5 Product Hunt community engagement posts into LaunchPad platform
