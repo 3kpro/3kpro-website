@@ -20,6 +20,19 @@
   - All posts now verified against actual 2025 subreddit rules
 
 ### Added
+- **Reddit Karma Building Comment Templates**:
+  - Added 6 new sections with ready-to-use helpful comments to build Reddit reputation
+  - r/nextjs: Technical help (deployment, Server Components, API optimization, auth)
+  - r/webdev: General advice (tech stack, costs, AI coding, motivation)
+  - r/reactjs: React-specific help (hooks, performance, state management, forms)
+  - r/supabase: Supabase help (vs Firebase, auth, RLS, free tier, optimization)
+  - r/Entrepreneur: Relatable stories (launch fears, validation, burnout, solo struggles)
+  - r/SaaS: SaaS experiences (timelines, pricing, features, customers, burn rate)
+  - All comments based on real XELORA tech stack experience
+  - Copy-paste ready with adaptation instructions
+  - Target: 100-200 karma in 5-7 days to bypass subreddit restrictions
+  - Platform: reddit_karma (new category in LaunchPad)
+
 - **Product Hunt Forum Posts to LaunchPad**:
   - Integrated 5 Product Hunt community engagement posts into LaunchPad platform
   - Added p/introduce-yourself post (Day 1) - Solo founder introduction
