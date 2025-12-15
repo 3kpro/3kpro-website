@@ -15,64 +15,56 @@ export const LAUNCH_TEMPLATES = [
     }
   },
 
-  // PRODUCT HUNT FORUMS - Community Engagement
-  // p/introduce-yourself
-  {
-    day: 1,
-    platform: 'product_hunt',
-    community_name: 'p/introduce-yourself',
-    url: 'https://www.producthunt.com/p/introduce-yourself',
-    content: {
-      title: "Solo founder launching XELORA - AI viral content prediction",
-      body: "Hey Product Hunt! 👋\n\nI'm James, and I just launched XELORA today - an AI platform that predicts viral content before you post it.\n\n**The backstory:**\nBuilt this entire thing bootstrapped (~$1,500) while driving Uber to pay the bills. Solo founder + AI as my dev team = 90 days from idea to launch.\n\n**The hardest part?**\nBuilding the Viral Score™ algorithm that hits 87% accuracy. Analyzed millions of posts to figure out what actually makes content go viral.\n\n**The most surreal part?**\nSeeing it live on Product Hunt today after months of late-night coding sessions between Uber shifts.\n\n**What XELORA does:**\nPredicts which content angles will perform (0-100 score) before you waste time creating them. Multi-platform publishing, AI generation, trend discovery - all in one place.\n\nWould love to hear from other bootstrapped founders - what's been your biggest challenge building solo?\n\n🚀 Check out the launch: https://www.producthunt.com/products/xelora\n\nThanks for being such an awesome community!"
-    }
-  },
+  // ==================== PRODUCT HUNT FORUMS (COMPLIANT) ====================
+  // ⚠️ IMPORTANT: These posts follow PH Forum Guidelines (value-first, not promotional)
+  // Do NOT post all on same day - space 3-5 days apart
+  // Lead with VALUE, not product promotion
 
-  // p/self-promotion
-  {
-    day: 1,
-    platform: 'product_hunt',
-    community_name: 'p/self-promotion',
-    url: 'https://www.producthunt.com/p/self-promotion',
-    content: {
-      title: "Just launched XELORA - Predict viral content before you post",
-      body: "**The problem I'm solving:**\nCreators spend hours on posts that get 10 likes. They wonder \"what did I do wrong?\" The answer: They guessed instead of using data.\n\n**The solution:**\nXELORA analyzes trending topics across Google, Twitter, Reddit and predicts YOUR content's viral potential (0-100 score) BEFORE you create it.\n\n**The tech stack:**\n- Next.js 15 + React Server Components\n- Vertex AI + Google Gemini 2.5 Flash for predictions\n- Supabase (auth + PostgreSQL)\n- Multi-platform OAuth (Twitter, LinkedIn, Instagram, TikTok, Facebook)\n- Claude Code as my AI pair programmer\n\n**The interesting engineering:**\n- Custom Viral Score™ algorithm: Volume (40pts) + Multi-source (30pts) + Specificity (20pts) + Freshness (10pts)\n- Real-time trend aggregation with intelligent caching\n- Platform-specific content optimization\n- Optimized API response time from 9.6s → 4.8s\n\n**The bootstrap story:**\n- Built in 90 days (nights/weekends while driving Uber)\n- Total investment: ~$1,500\n- Monthly burn: $132 (Vercel + Supabase free tiers FTW)\n- No VC funding, 100% equity retained\n\n**Launch promo:**\nUse code `PHHUNT50` for 50% off first month\n\n🚀 Launched today: https://www.producthunt.com/products/xelora\n\n**Questions for the community:**\n- How would you validate \"87% accuracy\" claims in marketing?\n- What's fair pricing for viral prediction? (Currently $9-$79/mo)\n- Would you use this for your own content?\n\nWould love feedback from other builders - especially if you create content regularly!"
-    }
-  },
-
-  // p/general
+  // POST #1: Value-First Discussion - Viral Content Insights
   {
     day: 2,
     platform: 'product_hunt',
-    community_name: 'p/general',
+    community_name: 'p/general (Value Discussion)',
     url: 'https://www.producthunt.com/p/general',
     content: {
-      title: "I analyzed 1M+ posts to crack the viral algorithm. Here's what I learned.",
-      body: "After my LinkedIn post got 3 likes (after 3 hours of work), I got obsessed with understanding what actually makes content explode.\n\nSpent 3 months building an AI to predict it. Just launched on PH yesterday.\n\n**Key findings:**\n\n**1. Hook quality > Topic choice (3x more important)**\n- First 3 seconds decide 70% of engagement\n- \"How to use AI\" → 20/100 viral score\n- \"I replaced my marketing team with AI for $0\" → 87/100\n\n**2. Multi-source validation matters**\n- Topics trending on 1 platform: 40% viral chance\n- Topics trending on 3+ platforms: 87% viral chance\n- Cross-platform validation = strongest signal\n\n**3. Timing matters LESS than you think**\n- Quality beats schedule 9/10 times\n- Tuesday 10am ≈ Saturday 2pm if content is good\n- Consistency > perfect timing\n\n**4. Platform-specific optimization is everything**\n- Twitter: Punchy, < 1200 chars, controversy works\n- LinkedIn: Professional, 2400 chars optimal, value-first\n- Reddit: No BS, value upfront, hate self-promotion\n\n**5. Specificity drives engagement**\n- Generic: \"Marketing tips\" → 15/100\n- Specific: \"How I got 10K LinkedIn followers in 30 days with $0 ad spend\" → 92/100\n\nBuilt this intelligence into XELORA (launched yesterday on PH). It's been fascinating seeing these patterns play out across millions of posts.\n\n**What's your take?** Do you optimize for virality or just post authentically?\n\nLink in profile if you want to see the tool, but genuinely curious about your content strategy."
+      title: "What Actually Makes Content Go Viral? I Analyzed 1M+ Posts to Find Out.",
+      body: "After spending 3 hours on a LinkedIn post that got 3 likes, I went down a rabbit hole analyzing what makes content explode.\n\nSpent months digging into viral patterns across platforms. Here's what the data shows:\n\n## Key Findings:\n\n**1. Hook Quality > Topic Choice (3x more important)**\n- First 3 seconds decide 70% of engagement\n- \"How to use AI\" → 20/100 viral potential\n- \"I replaced my marketing team with AI for $0\" → 87/100\n\n**2. Multi-Source Validation Matters**\n- Topics trending on 1 platform: 40% viral chance\n- Topics trending on 3+ platforms: 87% viral chance\n- Cross-platform validation = strongest signal\n\n**3. Timing Matters LESS Than You Think**\n- Quality beats schedule 9/10 times\n- Tuesday 10am ≈ Saturday 2pm if content is good\n- Exception: Breaking news requires immediate posting\n\n**4. Platform-Specific Optimization**\n- Twitter: 1200 chars max, controversy works\n- LinkedIn: 2400 chars optimal, professional + vulnerable\n- Reddit: Value-first, no BS, hates self-promotion\n- TikTok: First 3 seconds or scroll\n\n**5. Specificity is a Cheat Code**\n- Generic: \"Marketing tips\" → 15/100\n- Specific: \"How I got 10K LinkedIn followers in 30 days with $0 ad spend\" → 92/100\n\nI built a scoring system based on this research for my own content. Been using it for a few months - accuracy is around 87% so far.\n\n**Questions for the community:**\n- Do you optimize for virality or just post authentically?\n- What's your biggest content creation frustration?\n- Have you noticed similar patterns in your niche?\n\nHappy to share more insights from the research if useful!"
     }
   },
 
-  // p/general (AMA format - AMAs go in General forum)
+  // POST #2: AMA - AI-Assisted Development
   {
-    day: 3,
+    day: 4,
     platform: 'product_hunt',
     community_name: 'p/general (AMA)',
     url: 'https://www.producthunt.com/p/general',
     content: {
-      title: "I'm James - built a viral prediction SaaS in 90 days using AI as my dev team. AMA",
-      body: "Hey PH! I'm James, founder of XELORA (launched 2 days ago on Product Hunt).\n\n**Quick intro:**\n- Solo founder, former Uber driver\n- Built XELORA while working full-time (nights/weekends for 90 days)\n- Used Claude Code for ~70% of development\n- Bootstrapped with ~$1,500, no VC funding\n- Product: AI that predicts viral content potential (87% accuracy)\n\n**What I can talk about:**\n- AI-assisted development (how I shipped 10x faster with Claude Code)\n- Viral content mechanics (analyzed 1M+ posts)\n- Bootstrapping on a shoestring budget ($132/mo burn rate)\n- Building with Next.js 15, Vertex AI, Supabase\n- Product Hunt launch strategy\n- Solo founder mental health (the real struggle)\n\n**Current stats (48 hours post-launch):**\n- [Update with your actual numbers]\n- X upvotes on PH\n- X signups\n- X paying customers\n- $X MRR\n\n**Ask me anything!** I'll answer honestly - the good, the messy, and the \"wtf was I thinking\" moments.\n\n🔗 XELORA: https://www.producthunt.com/products/xelora (if you want context)\n\nFire away! 🚀"
+      title: "I built a SaaS in 90 days using AI as my dev team (Claude Code). AMA about AI-assisted development.",
+      body: "Hey Product Hunt!\n\nI'm James, solo founder. Just finished building XELORA (viral content prediction platform) in 90 days using AI-assisted development.\n\n**Background:**\n- Former Uber driver (nights/weekends dev)\n- Used Claude Code for ~70% of my codebase\n- Bootstrapped with ~$1,500, no VC funding\n- Shipped in 90 days vs 6+ months traditional dev\n\n**What I can talk about:**\n- AI-assisted development (how I shipped 10x faster)\n- Viral content mechanics (analyzed 1M+ posts)\n- Bootstrapping on a shoestring ($132/mo burn rate)\n- Building with Next.js 15, Vertex AI, Supabase\n- Solo founder mental health (the real struggle)\n- Product Hunt launch strategy\n\n**NOT here to sell** - genuinely want to help other builders ship faster using AI.\n\n**Ask me anything!**\n\nSome topics I can dive into:\n- How I structured prompts to get production-ready code\n- What AI can vs can't do well in development\n- How I validated the idea before building\n- Dealing with imposter syndrome as a non-traditional dev\n- Bootstrapping without savings\n\nFire away! 🚀"
     }
   },
 
-  // p/producthunt (lessons learned)
+  // POST #3: Validation Question - Product Feedback
   {
-    day: 2,
+    day: 6,
     platform: 'product_hunt',
-    community_name: 'p/producthunt (Launch Lessons)',
+    community_name: 'p/producthunt (Validation)',
     url: 'https://www.producthunt.com/p/producthunt',
     content: {
-      title: "Launched XELORA yesterday. Here's what worked (and what didn't)",
-      body: "Just wrapped my first Product Hunt launch. Wanted to share what I learned while it's fresh.\n\n**What worked:**\n\n✅ **Launching at 12:01 AM PST sharp**\n- Got 6 hours of homepage visibility before US wakes up\n- Early momentum matters\n\n✅ **Responding to EVERY comment within 10 minutes**\n- Kept engagement high\n- Showed I'm a real human, not a ghost launcher\n\n✅ **Bootstrap story in first comment**\n- \"Built while driving Uber\" resonated hard\n- Authenticity > polish\n\n✅ **Demo video (no voice, just text overlays)**\n- 90 seconds, showed core value prop\n- People watched it (engagement metrics don't lie)\n\n✅ **Promo code (PHHUNT50 for 50% off)**\n- Converted lurkers to signups\n- Low friction way to try it\n\n**What didn't work:**\n\n❌ **Paid upvote offers (I declined them all)**\n- Got 6 LinkedIn messages offering upvotes for $$\n- Stayed organic - felt better\n\n❌ **Overthinking the tagline**\n- Spent 3 hours wordsmithing\n- First draft was fine\n\n❌ **Launching multiple places same day**\n- Wanted to post on Reddit too\n- Too scattered, focused on PH only\n\n**Key metrics (24 hours):**\n- [Update with your numbers]\n- X upvotes\n- X comments (responded to all)\n- X website visits\n- X signups\n- X paying customers ($X MRR)\n\n**One insight:**\nPeople care more about your story than your features. \"Built while driving Uber\" got more engagement than \"87% accuracy viral predictions.\"\n\n**For future launchers:**\n- Be authentic (your story is your advantage)\n- Respond fast (engagement drives visibility)\n- Don't buy upvotes (karma > ranking)\n\nHappy to answer questions about the launch process!\n\n🔗 XELORA: https://www.producthunt.com/products/xelora"
+      title: "Honest question: Is AI-powered \"viral prediction\" actually useful, or just marketing fluff?",
+      body: "I've been working on an AI that predicts which content will go viral (0-100 score) before you post it.\n\nCurrent accuracy: ~87% on 1M+ post training data using Google Vertex AI.\n\nBut I'm genuinely curious:\n\n**For marketers/creators:**\n- Would you trust an AI to tell you if your content will work?\n- What accuracy rate would you need to actually use it?\n- Or do you prefer just posting and seeing what sticks?\n\n**For builders:**\n- Is \"viral prediction\" a solved problem already?\n- Are there better approaches than ML scoring?\n- Should I open-source the algorithm for validation?\n\nI'm close to launching this on PH, but want to make sure it's actually solving a real problem - not just cool tech looking for a use case.\n\n**Brutal feedback welcome.** Is this useful or am I building something nobody wants?"
+    }
+  },
+
+  // POST #4: Lessons Learned - Bootstrapping
+  {
+    day: 8,
+    platform: 'product_hunt',
+    community_name: 'p/general (Lessons)',
+    url: 'https://www.producthunt.com/p/general',
+    content: {
+      title: "Bootstrapped a SaaS from $0 → Launch in 90 days. Here's what actually worked.",
+      body: "Just launched my first SaaS on Product Hunt yesterday. Wanted to share what worked (and what didn't) while it's fresh.\n\n## What Worked:\n\n**1. AI-Assisted Development = 10x Speed**\n- Used Claude Code for ~70% of codebase\n- Focused on product decisions, not syntax\n- Shipped in 90 days vs 6 months solo dev\n\n**2. Leverage Free Tiers Ruthlessly**\n- Vercel: Free hosting (up to 100GB bandwidth)\n- Supabase: Free backend (up to 500MB DB)\n- Google Cloud: $1,200 in AI credits (new accounts)\n- Monthly burn: $132 (can scale to $10K MRR at this rate)\n\n**3. Ship Before It's Perfect**\n- 87% accuracy is good enough (not 99%)\n- Missing features? Launch anyway\n- Users tell you what matters\n\n**4. Build What People WILL Pay For**\n- Validation: People DM'd asking to pay before I had Stripe set up\n- Problem: \"I spend 3 hours on content, get 3 likes\"\n- Solution: \"Know what works BEFORE you create\"\n\n**5. Product Hunt is Still Worth It (2025)**\n- Launched at 12:01 AM PST\n- Got [X] upvotes, [X] signups, [X] paying customers\n- Real users, real feedback, real momentum\n\n## What Didn't Work:\n\n- Overthinking the tagline (spent 3 hours, first draft was fine)\n- Building features users didn't ask for\n- Not setting up analytics Day 1 (added Week 3, regret it)\n- Trying to launch on multiple platforms same day (too scattered)\n\n## Key Insight:\n\nBootstrap forces discipline. No VC money = no room for waste. Every feature must drive revenue.\n\nHonestly? Better product because of constraints.\n\n**Questions I can answer:**\n- AI-assisted development workflows\n- Bootstrap economics (how to stay under $200/mo burn)\n- Shipping fast as solo founder\n- Free tier architecture strategies\n\nNot dropping links (don't want to be spammy), but happy to help other bootstrappers ship faster!"
     }
   },
 

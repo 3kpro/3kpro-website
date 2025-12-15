@@ -1,5 +1,36 @@
 # Changelog
 
+## [2.4.1] - 2025-12-15
+
+### Fixed
+- **LaunchPad Product Hunt Forum Posts - Compliance Update**:
+  - Replaced rejected Product Hunt forum posts with compliant versions
+  - **Why rejected**: Previous posts violated PH Forum Guidelines by being too "egocentric" (self-promotional) and not adding community value
+  - **New approach**: Value-first content that helps the community, invites genuine discussion
+  - **4 compliant posts** added:
+    1. **Day 2**: "What Actually Makes Content Go Viral?" (viral content insights for community)
+    2. **Day 4**: "I built a SaaS in 90 days using AI as dev team - AMA" (help other builders)
+    3. **Day 6**: "Is AI viral prediction useful or marketing fluff?" (genuine validation question)
+    4. **Day 8**: "Bootstrapped $0 → Launch in 90 days - What worked" (share lessons learned)
+  - **Key changes**:
+    - Lead with VALUE (insights, help, questions) not product promotion
+    - Space posts 3-5 days apart (NOT all on Day 1)
+    - Remove promo codes and product links (unless asked)
+    - Focus on helping community, not selling XELORA
+    - Humble, genuine tone (not salesy)
+  - Added prominent warnings in code comments about PH guidelines
+  - **Sources**: [PH Forum Guidelines](https://help.producthunt.com/en/articles/10478791-product-hunt-forum-guidelines), [Community Guidelines](https://help.producthunt.com/en/articles/3615694-community-guidelines)
+
+### Documentation
+- Created `docs/PRODUCT_HUNT_COMPLIANT_POSTS.md` with detailed analysis of:
+  - Why previous posts were rejected
+  - PH Forum Guidelines breakdown
+  - 4 compliant post templates with explanations
+  - What NOT to do (checklist)
+  - Posting strategy and timing recommendations
+
+**Status**: LaunchPad now contains Product Hunt-compliant forum posts that follow community guidelines
+
 ## [2.4.0] - 2025-12-15
 
 ### Added
