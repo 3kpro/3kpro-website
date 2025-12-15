@@ -172,6 +172,82 @@ export const LAUNCH_TEMPLATES = [
     }
   },
 
+  // ==================== REDDIT KARMA BUILDING ====================
+  // Use these to build reputation before promotional posts
+  // Target: 100-200 karma in 5-7 days
+
+  // KARMA BUILD - r/nextjs (Technical help)
+  {
+    day: 0,
+    platform: 'reddit_karma',
+    community_name: 'r/nextjs (Karma Building)',
+    url: 'https://www.reddit.com/r/nextjs/',
+    content: {
+      title: "Find posts asking for help - leave these comments",
+      body: "**Instructions:** Browse r/nextjs by 'New' or 'Rising'. Find questions about topics below and adapt these comments:\n\n---\n\n**Q: \"How do I deploy Next.js 15?\"**\nComment:\n> I've deployed several Next.js 15 apps on Vercel and it's been seamless. Just connect your GitHub repo and it auto-deploys on every push. The App Router works out of the box. If you're using Server Components, make sure to check the build logs - sometimes hydration issues don't show locally but break in production. Happy to help if you run into specific errors.\n\n---\n\n**Q: \"Should I use Server Components or Client Components?\"**\nComment:\n> I was confused about this too at first. Here's what worked for me: default to Server Components unless you need interactivity (onClick, useState, useEffect). Server Components are faster and reduce bundle size. I only use 'use client' when I actually need client-side state or browser APIs. The performance difference is noticeable - my API response times dropped from 9.6s to 4.8s when I optimized this.\n\n---\n\n**Q: \"Next.js 15 vs 14 - worth upgrading?\"**\nComment:\n> I upgraded from 14 to 15 for a production app. The React 19 support and improved caching were worth it, but the migration had some friction with third-party packages. If you're starting fresh, definitely go with 15. If you're mid-project, maybe wait until you hit a natural refactor point. The Turbopack improvements are nice but not game-changing yet.\n\n---\n\n**Q: \"How do I optimize Next.js API routes?\"**\nComment:\n> I ran into this exact issue. My API routes were taking 9+ seconds initially. What helped: (1) Move expensive operations to server actions, (2) Use React cache() for repeated fetches, (3) Enable streaming for large responses, (4) Check your middleware - I had accidentally added logging that slowed everything down. Got it down to ~4.8s average. What's your current bottleneck?\n\n---\n\n**Q: \"Best way to handle authentication in Next.js?\"**\nComment:\n> I've used both NextAuth and Supabase Auth. For my latest project, I went with Supabase because it handles the backend too. The middleware pattern works well - check auth in middleware.ts and redirect if needed. One gotcha: make sure you're not calling Supabase on every middleware execution or you'll hit rate limits. Cache the session check."
+    }
+  },
+
+  // KARMA BUILD - r/webdev (General advice)
+  {
+    day: 0,
+    platform: 'reddit_karma',
+    community_name: 'r/webdev (Karma Building)',
+    url: 'https://www.reddit.com/r/webdev/',
+    content: {
+      title: "Find posts asking for advice - leave these comments",
+      body: "**Instructions:** Browse r/webdev by 'New'. Find questions and adapt these comments:\n\n---\n\n**Q: \"What's the best tech stack for a SaaS in 2025?\"**\nComment:\n> I just shipped a SaaS with Next.js 15, Supabase, and Vercel. Total monthly cost: $132 for hosting + database. The free tiers got me to launch without spending much. Next.js App Router + Server Components are solid for SEO. Supabase handles auth + database + storage in one place. Vercel deployment is literally push-to-deploy. The developer experience is really smooth if you're comfortable with React.\n\n---\n\n**Q: \"How much does it cost to build a SaaS?\"**\nComment:\n> I built and launched a SaaS for about $1,500 total (domain, some paid tools, marketing assets). Monthly costs are ~$132 (Vercel Pro, Supabase free tier, APIs). Used free tiers heavily and upgraded only when I hit limits. The biggest cost was my time - about 90 days of nights/weekends. If you're bootstrapping, focus on free tiers and manual processes first, then automate as you grow.\n\n---\n\n**Q: \"Is AI coding worth it or just hype?\"**\nComment:\n> I used Claude Code for about 70% of my last project and it legitimately saved me months. It's not magic - you still need to know what you're building and how to architect it. But for boilerplate, API integrations, and repetitive code, it's insanely fast. The key is being specific with prompts and reviewing everything it generates. I wouldn't trust it blindly for security-critical code, but for standard CRUD and UI components, it's a huge productivity boost.\n\n---\n\n**Q: \"Should I learn [framework] in 2025?\"**\nComment:\n> I'd focus less on the specific framework and more on the fundamentals. I picked Next.js because it's heavily used in SaaS and has great deployment options, but honestly the React/TypeScript skills transfer anywhere. If you're trying to ship products fast, pick the stack with the best ecosystem for your use case. For me, that was Next.js + Supabase because they integrate well and both have free tiers.\n\n---\n\n**Q: \"How do you stay motivated on side projects?\"**\nComment:\n> Honestly, this is the hardest part. What worked for me was setting a hard deadline (Product Hunt launch date) and building in public. The accountability kept me going when I wanted to quit. Also, I shipped an MVP in 30 days instead of building the perfect product. Seeing real users interact with it - even if it's rough - is way more motivating than endless polish on something nobody's seen yet."
+    }
+  },
+
+  // KARMA BUILD - r/reactjs (React-specific help)
+  {
+    day: 0,
+    platform: 'reddit_karma',
+    community_name: 'r/reactjs (Karma Building)',
+    url: 'https://www.reddit.com/r/reactjs/',
+    content: {
+      title: "Find React questions - leave these comments",
+      body: "**Instructions:** Browse r/reactjs by 'New'. Find questions and adapt these:\n\n---\n\n**Q: \"When should I use useEffect vs useLayoutEffect?\"**\nComment:\n> I use useEffect 99% of the time. useLayoutEffect is only needed when you're measuring DOM elements or preventing visual flicker. If your effect doesn't directly manipulate the DOM or depend on layout measurements, stick with useEffect. I've shipped multiple production apps without ever needing useLayoutEffect. When in doubt, start with useEffect - you'll know if you need useLayoutEffect when you see visual glitches.\n\n---\n\n**Q: \"How do I optimize React performance?\"**\nComment:\n> Start by measuring first - use React DevTools Profiler to see what's actually slow. I wasted time optimizing things that weren't bottlenecks. Common wins: (1) React.memo for expensive components that re-render often, (2) useMemo for expensive calculations, (3) Code splitting with dynamic imports for large components. But honestly, most apps don't need heavy optimization. Ship first, optimize when users complain.\n\n---\n\n**Q: \"useState vs useReducer - which one?\"**\nComment:\n> I use useState for simple state (single values, toggles, input fields). Switch to useReducer when state updates depend on previous state or you have complex state logic with multiple sub-values. For me, the tipping point is when I'm calling multiple setStates in one function - that's usually a sign useReducer would be cleaner. But useState is perfectly fine for most cases.\n\n---\n\n**Q: \"Best state management in 2025?\"**\nComment:\n> For my latest project, I skipped Zustand/Redux entirely and used React Server Components + URL state. Most state I thought I needed turned out to be server state (data fetching) which Server Components handle natively. For client state, I just used useState/useContext. Only add a state library when you have a proven need. The bundle size savings are real.\n\n---\n\n**Q: \"How to handle forms in React?\"**\nComment:\n> I used to use React Hook Form for everything, but with Server Actions in Next.js, I'm using native forms more. If you need complex validation, React Hook Form is still great. For simple forms, FormData + Server Actions is surprisingly clean. The progressive enhancement is nice - forms work even if JS fails. Depends on your use case though."
+    }
+  },
+
+  // KARMA BUILD - r/supabase (Supabase help)
+  {
+    day: 0,
+    platform: 'reddit_karma',
+    community_name: 'r/supabase (Karma Building)',
+    url: 'https://www.reddit.com/r/supabase/',
+    content: {
+      title: "Find Supabase questions - leave these comments",
+      body: "**Instructions:** Browse r/supabase by 'New'. Find questions and adapt these:\n\n---\n\n**Q: \"Supabase vs Firebase?\"**\nComment:\n> I switched from Firebase to Supabase for my latest project. Pros: PostgreSQL is powerful (real relations, not Firestore's limited queries), better pricing for my use case, and I prefer SQL over Firestore's data model. Cons: Supabase is newer so fewer Stack Overflow answers, and the edge functions are not as mature as Cloud Functions. If you know SQL and want a real database, Supabase. If you need Google ecosystem integrations, Firebase.\n\n---\n\n**Q: \"How do I handle Supabase auth in Next.js?\"**\nComment:\n> I use the @supabase/ssr package for Next.js App Router. Key things: (1) Create separate clients for server/client components, (2) Use middleware to refresh sessions, (3) Don't call Supabase auth on every middleware run or you'll hit rate limits - cache it. The official Next.js guide is solid, follow that. One gotcha: make sure you're handling the session on both server and client correctly or you'll get weird hydration mismatches.\n\n---\n\n**Q: \"Supabase Row Level Security (RLS) best practices?\"**\nComment:\n> RLS can be confusing at first. What helped me: start with the simplest policy (auth.uid() = user_id), then add complexity only when needed. Test policies by switching to a different user account - you'll catch bugs fast. One mistake I made: forgetting to add policies for INSERT/UPDATE separately, not just SELECT. Your data is exposed without proper RLS, so test thoroughly before launch.\n\n---\n\n**Q: \"Is Supabase free tier enough for production?\"**\nComment:\n> I'm running on the free tier and it's been fine for early users (under 100). The 500MB database limit sounds small but goes further than you think. The 2GB bandwidth limit is the real constraint - if you're serving images/videos, you'll hit that fast. For a typical SaaS with text data, free tier gets you pretty far. I'll upgrade when I hit consistent revenue, not before.\n\n---\n\n**Q: \"How to optimize Supabase queries?\"**\nComment:\n> Add indexes on columns you filter/join on frequently - this was a game changer for my app. Use .select() to only fetch columns you need (don't use SELECT *). For complex queries, sometimes a Postgres function is faster than chaining Supabase methods. Check the Supabase dashboard's query performance tab - it shows you slow queries. Also, enable RLS early - it forces you to think about query patterns from the start."
+    }
+  },
+
+  // KARMA BUILD - r/Entrepreneur (Relatable stories)
+  {
+    day: 0,
+    platform: 'reddit_karma',
+    community_name: 'r/Entrepreneur (Karma Building - Comments Only)',
+    url: 'https://www.reddit.com/r/Entrepreneur/',
+    content: {
+      title: "Comment on others' posts - NO promotion, just relate",
+      body: "**Instructions:** Browse r/Entrepreneur. Comment on posts with relatable experiences. DO NOT mention your product.\n\n---\n\n**Post: \"I'm scared to launch\"**\nComment:\n> I felt this so hard before my launch. The fear of public failure was real. What helped: I set a hard deadline (Product Hunt launch date) so I couldn't keep \"perfecting\" forever. Turns out, most of my fears didn't happen. The product had bugs, but users were understanding. Nobody cares as much as you think they will. Ship it.\n\n---\n\n**Post: \"How do you validate ideas before building?\"**\nComment:\n> I used to build first, validate later. Big mistake. Now I do: (1) Reddit/Twitter search to see if people are already asking for this, (2) Manual version first (me doing the work) before automating anything, (3) Land one paying customer before building features. If nobody will pay for the manual version, they won't pay for the automated one either.\n\n---\n\n**Post: \"Feeling burned out\"**\nComment:\n> Burnout is real. I drove Uber during the day while building my SaaS at night for 90 days straight. What kept me going was seeing small wins - first signup, first payment, first positive feedback. When I felt burned out, I'd take a full day off with zero guilt. You can't sprint forever. Consistency > intensity.\n\n---\n\n**Post: \"Solo founder struggling with everything\"**\nComment:\n> Solo founder here. The hardest part for me was accepting I can't do everything perfectly. My design is okay, not amazing. My code works, but it's not elegant. My marketing is scrappy. But the product exists and people are paying for it. Done is better than perfect when you're solo.\n\n---\n\n**Post: \"Should I quit my job to go full-time?\"**\nComment:\n> I kept my day job (Uber) until I had consistent revenue. The financial pressure of quitting early would have killed my creativity. Build on the side, prove the model works, then quit. Your day job is funding your startup - that's not failure, that's smart. Quit when the math makes sense, not when it feels exciting."
+    }
+  },
+
+  // KARMA BUILD - r/SaaS (Comment strategy)
+  {
+    day: 0,
+    platform: 'reddit_karma',
+    community_name: 'r/SaaS (Karma Building - Comments Only)',
+    url: 'https://www.reddit.com/r/SaaS/',
+    content: {
+      title: "Comment on SaaS discussions - share experiences",
+      body: "**Instructions:** Browse r/SaaS. Comment with SaaS-building experiences. NO product mentions.\n\n---\n\n**Post: \"What's a realistic timeline to build a SaaS?\"**\nComment:\n> I shipped an MVP in 30 days, but spent another 60 polishing for launch. The difference between \"it works\" and \"it's ready for strangers\" was bigger than I expected. If you're solo, plan for 2-3x longer than you think. Not because you're slow, but because you're also doing design, marketing, support, legal, and everything else.\n\n---\n\n**Post: \"How do you price your SaaS?\"**\nComment:\n> I struggled with this so much. Started with what I thought was fair ($29/mo), then saw competitors charging $99+. Honestly, I'm still figuring it out. What helped: I added a free tier to reduce friction, then watched what features people hit limits on. Those are the features worth charging for. Pricing is never done - you iterate based on customer feedback.\n\n---\n\n**Post: \"How many features before launch?\"**\nComment:\n> I launched with way fewer features than I planned. The core value prop + auth + payments. That's it. Everything else I added after talking to real users. Best decision I made. Users told me what they actually needed, which was different from what I thought they'd need. Ship the minimum, then listen.\n\n---\n\n**Post: \"How to get first 10 customers?\"**\nComment:\n> My first customers came from being helpful in communities (not pitching). I'd answer questions genuinely, and people would check my profile and find the product. It's slow, but the customers you get this way are high-quality - they already trust you because you helped them first. Avoid the urge to spam your link everywhere.\n\n---\n\n**Post: \"What's your monthly burn rate?\"**\nComment:\n> I'm at about $132/mo (Vercel + Supabase + APIs). Kept it low by using free tiers aggressively and avoiding premature scaling. I'll upgrade infrastructure when revenue justifies it, not before. When you're bootstrapped, every dollar matters. Optimize for survival first, scale later."
+    }
+  },
+
   // TWITTER - #BuildInPublic
   {
     day: 1,
