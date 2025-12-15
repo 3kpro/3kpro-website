@@ -11,6 +11,14 @@
   - Corrected p/producthunt URL
   - All URLs now verified to exist and functional
 
+- **Reddit Posts Replaced to Prevent Bans**:
+  - REMOVED r/Entrepreneur direct post (permanent ban risk per subreddit rules)
+  - REMOVED r/startups direct post (moderator removal - only Feedback Friday allowed)
+  - FIXED r/SaaS post to be value-first with no direct promotion
+  - REPLACED with ban-safe alternatives: r/roastmystartup, r/alphaandbetausers, r/indiehackers
+  - ADDED weekly thread versions: r/SaaS Weekly Feedback, r/Entrepreneur Thank You Thursday, r/startups Feedback Friday
+  - All posts now verified against actual 2025 subreddit rules
+
 ### Added
 - **Product Hunt Forum Posts to LaunchPad**:
   - Integrated 5 Product Hunt community engagement posts into LaunchPad platform
