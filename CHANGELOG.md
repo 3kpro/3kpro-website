@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.3.1] - 2025-12-15
+
+### Fixed
+- **LaunchPad Reddit Safety Audit - Removed 16 Risky Posts**:
+  - REMOVED r/InternetIsBeautiful (prohibits paid products/signup forms - STRICT)
+  - REMOVED r/marketing (Day 1 & 2) - "Link in profile" flagged as spam
+  - REMOVED r/contentmarketing (Day 2) - "DM me for link" flagged as spam
+  - REMOVED r/ContentMarketing (Day 1) - Direct links flagged as spam
+  - REMOVED r/socialmedia - "Link in my profile" flagged as spam
+  - REMOVED r/digitalnomad - "DM me for link" + doesn't fit community focus
+  - REMOVED r/webdev - "DM me for link" (kept karma-building version only)
+  - REMOVED r/productivity - "Link in my profile" + "DM me" spam flags
+  - REMOVED r/Marketing (Day 1) - Direct links flagged as spam
+  - REMOVED r/IndieDev - Redundant with r/webdev tech content
+  - REMOVED r/smallbusiness - Only allows promotion in weekly "Promote Your Business" thread
+  - REMOVED r/passive_income - "Link in profile/DM me" spam flags
+  - REMOVED r/AI_Marketing - "Link in profile/DM me" spam flags
+  - REMOVED r/CreatorEconomy - "Link in profile/DM me" spam flags
+  - REMOVED r/growthhacking - "Link in profile/DM me" spam flags
+  - REMOVED r/SaaS (Follow-up Day 4) - Duplicate promotional post
+  - **Result**: 35 posts remaining (down from 51), all verified safe to post
+  - **Safe posts kept**: r/SideProject, r/roastmystartup, r/alphaandbetausers, r/indiehackers (SHOW IH), weekly threads only
+
 ## [2.3.0] - 2025-12-13
 
 ### Fixed
