@@ -242,7 +242,7 @@ Can I show you a quick example?"
 ```
 
 **Demo (5 minutes):**
-- Show the agent in action (use your own TrendPulse Helix as an example)
+- Show the agent in action (use your own Xelora Helix as an example)
 - Show before/after time savings
 - Show pricing vs. hiring another employee
 
@@ -316,7 +316,7 @@ Interested?"
 - 4-week delivery
 - Recurring revenue from maintenance
 
-**Tier 3: SaaS Products (TrendPulse $29.99/mo, CCAI Enterprise)**
+**Tier 3: SaaS Products (Xelora $29.99/mo, CCAI Enterprise)**
 - Passive income
 - Scales without your time
 - Can be white-labeled for agencies
@@ -327,7 +327,7 @@ Interested?"
 
 ### **Core Skills (Next 2 Weeks):**
 1. Vertex AI Agent Builder (Google Cloud tutorials)
-2. Gemini API integration (already using in TrendPulse)
+2. Gemini API integration (already using in Xelora)
 3. Cloud Run deployments (learn basics)
 4. IAM and security (leverage your IT background)
 

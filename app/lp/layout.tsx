@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import LaunchpadGuard from "./launchpad-guard";
 
 export const metadata: Metadata = {
-  title: "Launchpad | TrendPulse",
+  title: "Launchpad | Xelora",
   description: "Marketing Automation Command Center",
 };
 

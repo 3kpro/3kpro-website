@@ -102,7 +102,7 @@ export default function NewCampaignPage() {
           <input
             type="text"
             required
-            placeholder="TrendPulse Product Hunt Launch - Dec 2025"
+            placeholder="Xelora Product Launch - Dec 2025"
             className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-coral-500 focus:border-transparent outline-none transition-all"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -125,7 +125,7 @@ export default function NewCampaignPage() {
               <input
                 type="text"
                 required
-                placeholder="TrendPulse"
+                placeholder="Xelora"
                 className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-coral-500 focus:border-transparent outline-none transition-all"
                 value={formData.product_name}
                 onChange={(e) => setFormData({ ...formData, product_name: e.target.value })}
@@ -140,7 +140,7 @@ export default function NewCampaignPage() {
               <input
                 type="url"
                 required
-                placeholder="https://trendpulse.3kpro.services"
+                placeholder="https://xelora.app"
                 className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-coral-500 focus:border-transparent outline-none transition-all"
                 value={formData.product_url}
                 onChange={(e) => setFormData({ ...formData, product_url: e.target.value })}
@@ -157,7 +157,7 @@ export default function NewCampaignPage() {
             <textarea
               required
               rows={4}
-              placeholder="Example: TrendPulse helps content creators and marketers predict viral content BEFORE they create it. Our AI analyzes 1M+ viral posts to give you a Viral Score (0-100) with 87% accuracy, saving 15+ hours/week on content that flops."
+              placeholder="Example: Xelora helps content creators and marketers generate and publish professional social media content. Our AI creates engaging posts optimized for Instagram, TikTok, and Facebook, saving 10+ hours/week on content creation while maintaining consistent brand voice."
               className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-coral-500 focus:border-transparent outline-none transition-all resize-none"
               value={formData.product_description}
               onChange={(e) => setFormData({ ...formData, product_description: e.target.value })}

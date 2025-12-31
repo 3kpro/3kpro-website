@@ -77,20 +77,47 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: '3KPRO',
-    description: 'Professional website development for local businesses with one-time fees and free lifetime hosting.',
+    name: '3KPRO.SERVICES',
+    description: 'Professional IT solutions, SaaS development, and web services.',
     url: 'https://3kpro.services',
-    telephone: '+1-XXX-XXX-XXXX', // Add your phone number
+    logo: 'https://3kpro.services/og-image.png',
     email: 'james@3kpro.services',
     address: {
       '@type': 'PostalAddress',
+      addressLocality: 'Tulsa',
+      addressRegion: 'OK',
       addressCountry: 'US',
     },
     areaServed: {
       '@type': 'Country',
       name: 'United States',
     },
-    priceRange: '$1500-$2000',
+    priceRange: '$899-$2500',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'james@3kpro.services',
+      contactType: 'sales',
+    },
+    sameAs: [
+      'https://twitter.com/3KPRO_SAAS',
+      'https://linkedin.com/company/3k-pro-services',
+    ],
+    owns: [
+      {
+        '@type': 'SoftwareApplication',
+        name: 'XELORA',
+        url: 'https://xelora.app',
+        applicationCategory: 'BusinessApplication',
+        description: 'AI-powered predictive intelligence platform for content creators. Predict momentum. Engineer virality.',
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: 'TrendPulse',
+        url: 'https://trendpulse.3kpro.services',
+        applicationCategory: 'BusinessApplication',
+        description: 'Real-time trend monitoring and analytics platform.',
+      },
+    ],
     offers: {
       '@type': 'Offer',
       itemOffered: {
@@ -98,11 +125,11 @@ export default function RootLayout({
         name: 'Local Business Website Development',
         description: 'Custom responsive website with FREE lifetime hosting on Vercel',
       },
-      price: '1500-2000',
+      price: '899-2500',
       priceCurrency: 'USD',
       priceSpecification: {
         '@type': 'UnitPriceSpecification',
-        price: '1500-2000',
+        price: '899-2500',
         priceCurrency: 'USD',
         billingDuration: 'One-time payment',
       },

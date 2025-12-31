@@ -264,7 +264,7 @@ Fill this out:
 **vs. Other Freelancers:**
 - You offer FREE hosting (most charge $20-50/month)
 - You're local (build trust)
-- You have TrendPulse as proof of SaaS skills
+- You have Xelora as proof of SaaS skills
 
 ---
 

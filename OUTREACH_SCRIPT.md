@@ -313,7 +313,7 @@ Let me know!
 
 **What to Bring:**
 - Laptop/tablet
-- Examples of your work (3kpro.services, TrendPulse)
+- Examples of your work (3kpro.services, Xelora)
 - Contract template (printed or digital)
 - Business cards
 - Notepad for notes
@@ -347,7 +347,7 @@ professional website that makes them want to call YOU and not your competitor."
 
 **3. Show Examples (10 minutes)**
 - Show 3kpro.services
-- Show TrendPulse (demonstrates SaaS capabilities)
+- Show Xelora (demonstrates SaaS capabilities)
 - Show any other examples (even templates)
 
 **4. Pricing & Timeline (10 minutes)**

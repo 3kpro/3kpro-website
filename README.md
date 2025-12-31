@@ -6,7 +6,7 @@ Professional website for 3KPRO.services showcasing software and service solution
 
 This is the official corporate website for 3KPRO, a software and service solutions company specializing in:
 
-- SaaS Products (featuring TrendPulse)
+- SaaS Products (featuring Xelora)
 - Custom Software Development
 - AI Agent Solutions
 - IT Consulting
@@ -28,7 +28,7 @@ This is the official corporate website for 3KPRO, a software and service solutio
 - Functional contact form with validation
 - Professional color scheme (Sky Blue #0ea5e9)
 - Social media integration
-- Featured TrendPulse SaaS product
+- Featured Xelora SaaS product
 - Six service sections with clear descriptions
 
 ## Development

@@ -27,7 +27,7 @@ export default function ContactForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: '08a8ff4d-3827-4013-a124-55e2761e0709',
+          access_key: '3ac337df-1baf-4b0b-a320-638e3e1917b2',
           name: data.name,
           email: data.email,
           company: data.company || 'Not provided',
