@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.5.0] - 2026-01-06
+
+### Added
+- **Marketplace**: Dedicated section to showcase and sell digital products (`/marketplace`)
+- **Product Details**: Dynamic product pages with feature lists and "Contact Sales" workflow
+- **Stripe Integration**: Scaffolding for Stripe Payment Links (installed but payments deferred to Contact form)
+- **Navigation**: Updated main nav and homepage to include Marketplace
+
+### Technical
+- Created `lib/data/marketplace.ts` for product data management
+- Installed `stripe` and `@stripe/stripe-js`
+
 ## [2.4.1] - 2025-12-15
 
 ### Fixed

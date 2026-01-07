@@ -204,7 +204,7 @@ export default function Home() {
             </Link>
             <div className="flex items-center space-x-8">
               <a href="#services" className="text-dark-300 hover:text-primary-500 transition-colors">Services</a>
-              <a href="#products" className="text-dark-300 hover:text-primary-500 transition-colors">Products</a>
+              <Link href="/marketplace" className="text-dark-300 hover:text-primary-500 transition-colors">Marketplace</Link>
               <a href="#pricing" className="text-dark-300 hover:text-primary-500 transition-colors">Pricing</a>
               <a href="#about" className="text-dark-300 hover:text-primary-500 transition-colors">About</a>
               <a href="#contact" className="text-dark-300 hover:text-primary-500 transition-colors">Contact</a>
@@ -454,6 +454,15 @@ export default function Home() {
                 Visit XELORA →
               </span>
             </a>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/marketplace" className="inline-flex items-center px-6 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white font-semibold hover:border-primary-500/50 hover:bg-dark-700 transition-all group">
+              View All Products & Apps 
+              <svg className="w-5 h-5 ml-2 text-primary-500 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
