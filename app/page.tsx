@@ -408,13 +408,13 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="max-w-xl mx-auto">
             {/* XELORA */}
             <a
               href="https://xelora.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-dark-800 border border-dark-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10"
+              className="group block bg-dark-800 border border-dark-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10"
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
@@ -452,52 +452,6 @@ export default function Home() {
               </div>
               <span className="text-primary-500 text-sm font-medium group-hover:underline">
                 Visit XELORA →
-              </span>
-            </a>
-
-            {/* TrendPulse */}
-            <a
-              href="https://trendpulse.3kpro.services"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-dark-800 border border-dark-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-orange-600 rounded-xl flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white">TrendPulse</h3>
-                  <span className="text-primary-500 text-sm">trendpulse.3kpro.services</span>
-                </div>
-              </div>
-              <p className="text-dark-300 mb-4">
-                Real-time trend monitoring and analytics platform. Track what's trending across the web.
-              </p>
-              <div className="space-y-2 mb-6">
-                <div className="flex items-center text-dark-400 text-sm">
-                  <svg className="w-4 h-4 text-primary-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Real-time trend detection
-                </div>
-                <div className="flex items-center text-dark-400 text-sm">
-                  <svg className="w-4 h-4 text-primary-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Multi-source aggregation
-                </div>
-                <div className="flex items-center text-dark-400 text-sm">
-                  <svg className="w-4 h-4 text-primary-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Analytics dashboard
-                </div>
-              </div>
-              <span className="text-primary-500 text-sm font-medium group-hover:underline">
-                Visit TrendPulse →
               </span>
             </a>
           </div>
