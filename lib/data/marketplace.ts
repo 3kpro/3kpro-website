@@ -33,21 +33,22 @@ export const marketplaceItems: MarketplaceItem[] = [
     status: 'Available'
   },
   {
-    id: 'azure-optimizer',
-    slug: 'azure-optimizer',
-    name: 'Azure Optimizer',
-    tagline: 'Slash Cloud Costs',
-    description: 'Intelligent resource analysis tool that scans your Azure environment to identify unused resources, over-provisioned VMs, and optimization opportunities.',
+    id: 'cloud-ledger',
+    slug: 'cloud-ledger',
+    name: 'Cloud Ledger',
+    tagline: 'Azure Asset & Waste Audit',
+    description: 'Professional Azure audit tool to visualize your entire inventory and detect waste instantly. Read-only, secure, and agent-free.',
     features: [
-      'Idle Resource Detection',
-      'VM Rightsizing Recommendations',
-      'Storage Tier Optimization',
-      'Cost-Savings Report Generator'
+      'Full Resource Inventory',
+      'Waste Detection (Idle VMs, Disks, IPs)',
+      'Security Posture Overview',
+      'Exportable Audit Reports'
     ],
-    price: 99,
+    price: 49,
     currency: 'USD',
     category: 'Cloud Tool',
-    status: 'Coming Soon'
+    status: 'Available',
+    stripePaymentLink: '/cloud-ledger' // Internal redirect to sales page
   },
   {
     id: 'ai-prompt-templates',
