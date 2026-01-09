@@ -22,10 +22,12 @@ function CloudLedgerContent() {
         body: JSON.stringify({ planType }),
       });
       const data = await response.json();
-      if (data.url) {
+      if (response.ok && data.url) {
         window.location.href = data.url;
       } else {
-        alert("Something went wrong initializing checkout.");
+        const errorMessage = data.error || "Something went wrong initializing checkout.";
+        console.error("Checkout failed:", errorMessage);
+        alert(`Checkout Error: ${errorMessage}`);
       }
     } catch (error) {
       console.error(error);
