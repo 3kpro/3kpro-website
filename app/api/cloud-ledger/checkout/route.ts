@@ -71,7 +71,7 @@ export async function POST(request: Request) {
                 });
                 customerId = customer.id;
                 // Only try to update if table exists
-                await supabase.from("profiles").update({ stripe_customer_id: customerId }).eq("id", user.id).catch(() => {});
+                await supabase.from("profiles").update({ stripe_customer_id: customerId }).eq("id", user.id);
             }
         } catch (e) {
             console.warn("Could not sync with profiles table", e);
@@ -81,7 +81,7 @@ export async function POST(request: Request) {
     // 5. Create Session
     const session = await stripe.checkout.sessions.create({
       customer: customerId, // Optional if not logged in
-      customer_email: !customerId && user?.email ? user.email : undefined, // Prefill email if no customer object
+      customer_email: (!customerId && user?.email) ? user.email : undefined, // Prefill email if no customer object
       mode: mode,
       payment_method_types: ["card"],
       line_items: [

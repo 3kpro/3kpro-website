@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Check, Cloud, Shield, Coins, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { CloudLedgerNavigation } from "./CloudLedgerNavigation";
 import { CloudLedgerFooter } from "./CloudLedgerFooter";
 
 import { useSearchParams } from "next/navigation";
 
-export default function CloudLedgerPage() {
+function CloudLedgerContent() {
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
   const isSuccess = searchParams.get("success") === "true";
@@ -163,4 +163,12 @@ export default function CloudLedgerPage() {
       <CloudLedgerFooter />
     </div>
   );
+}
+
+export default function CloudLedgerPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-[#0f172a] text-white flex items-center justify-center">Loading Cloud Ledger...</div>}>
+            <CloudLedgerContent />
+        </Suspense>
+    );
 }
