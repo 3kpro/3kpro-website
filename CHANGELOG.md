@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.6.0] - 2026-01-08
+
+### Added
+- **Cloud Ledger**: Full Production Deployment
+  - Migrated Cloud Ledger sales page and components to `3kpro-website` repo.
+  - Configured Stripe Live Mode with restricted API keys.
+  - **Marketplace**: Updated "Azure Optimizer" to "Cloud Ledger" with "Available" status and redirect to sales page.
+  - **Sales Page**: Implemented checkout flow with error handling for Price ID validation.
+  - **Environment**: Configured production environment variables for Stripe and redirects.
+
+### Technical
+- Fixed Vercel build errors related to absolute file paths in `factory/page.tsx`.
+- Implemented `Suspense` boundary for `useSearchParams` in Cloud Ledger page.
+- Added detailed error alerts for checkout failures.
+
 ## [2.5.0] - 2026-01-06
 
 ### Added
