@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { FileText, Settings, Box, Cpu, Layers, Globe, Database } from 'lucide-react';
 import { getMarkdown } from '../../lib/markdown';
 
-const n8nTruth = getMarkdown('c:\\DEV\\3K-Pro-Services\\softdev\\products\\n8n-workflow-templates\\TRUTH.md');
-const aiTruth = getMarkdown('c:\\DEV\\3K-Pro-Services\\softdev\\products\\ai-prompt-templates\\TRUTH.md');
+const n8nTruth = "See n8n-workflow-templates/TRUTH.md";
+const aiTruth = "See ai-prompt-templates/TRUTH.md";
 
 const products = [
   {
