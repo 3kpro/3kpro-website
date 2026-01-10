@@ -9,6 +9,8 @@
   - **Marketplace**: Updated "Azure Optimizer" to "Cloud Ledger" with "Available" status and redirect to sales page.
   - **Sales Page**: Implemented checkout flow with error handling for Price ID validation.
   - **Environment**: Configured production environment variables for Stripe and redirects.
+  - **UI/UX Overhaul**: Complete redesign with 3KPRO "Aurora" branding, Bento Grid layout, and aggressive copy.
+  - **Branding**: Added "Microsoft Azure Compatible" badges and "Zombie Resource" theming.
 
 ### Technical
 - Fixed Vercel build errors related to absolute file paths in `factory/page.tsx`.

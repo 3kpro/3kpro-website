@@ -110,13 +110,6 @@ export default function RootLayout({
         applicationCategory: 'BusinessApplication',
         description: 'AI-powered predictive intelligence platform for content creators. Predict momentum. Engineer virality.',
       },
-      {
-        '@type': 'SoftwareApplication',
-        name: 'TrendPulse',
-        url: 'https://trendpulse.3kpro.services',
-        applicationCategory: 'BusinessApplication',
-        description: 'Real-time trend monitoring and analytics platform.',
-      },
     ],
     offers: {
       '@type': 'Offer',

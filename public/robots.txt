@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /(portal)/
 
-Sitemap: https://trendpulse.3kpro.services/sitemap.xml
+Sitemap: https://3kpro.services/sitemap.xml
