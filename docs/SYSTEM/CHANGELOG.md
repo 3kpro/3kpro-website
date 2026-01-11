@@ -38,6 +38,8 @@ All notable changes to the 3kpro.services company website and marketplace.
       
 ### Fixed
 - Corrected `sitemap.xml` domain from `trendpulse.3kpro.services` to `3kpro.services`
+- Consolidated sitemap source to `app/sitemap.ts` (dynamic) and removed static `public/sitemap.xml` to prevent conflicts.
+- Added `/marketplace`, `/cloud-ledger`, and `/thank-you` to sitemap with appropriate priorities.
 - Updated `robots.txt` to point to correct sitemap URL
 - **Impact:** Google Search Console can now verify the site and read the sitemap correctly.
 

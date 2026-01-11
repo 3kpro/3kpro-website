@@ -52,8 +52,20 @@ export default function ProductCard({ item }: { item: MarketplaceItem }) {
           <div>
             <div className="text-xs text-dark-400 uppercase tracking-wider mb-1">Pricing</div>
             <div className="text-xl font-bold text-white">
-              Contact Sales
+              {item.price === 0 ? 'Free' : item.price > 0 ? `$${item.price}` : 'Contact Sales'}
             </div>
+            {item.demoUrl && (
+              <button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(item.demoUrl, '_blank');
+                }}
+                className="mt-2 text-xs font-bold text-primary-500 hover:text-primary-400 flex items-center gap-1 transition-colors"
+              >
+                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                Watch Demo
+              </button>
+            )}
           </div>
           
           <div className="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center group-hover:bg-primary-500 transition-colors">

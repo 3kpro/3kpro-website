@@ -83,5 +83,23 @@ export const marketplaceItems: MarketplaceItem[] = [
     currency: 'USD',
     category: 'AI Tool',
     status: 'Beta'
+  },
+  {
+    id: 'xelora',
+    slug: 'xelora',
+    name: 'XELORA',
+    tagline: 'Viral DNA Decoder',
+    description: 'Decode Viral DNA and generate multi-platform content in seconds. Predicts viral potential before you post.',
+    features: [
+      'Viral Score™ Prediction',
+      'Trend Discovery Engine',
+      'Multi-Platform Gen',
+      'Psychometric Analysis'
+    ],
+    price: 99,
+    currency: 'USD',
+    category: 'SaaS',
+    status: 'Available'
+    // demoUrl: undefined - Video is currently local only
   }
 ]
