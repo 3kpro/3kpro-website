@@ -6,6 +6,29 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-01-15] - Xelora Campaign Fix
+
+### Fixed
+- **Campaign Navigation:** Fixed issue where "Save & Dashboard" button on `/campaigns/create` would not navigate after saving.
+- **Helix Context:** Fixed "Maximum update depth exceeded" error by memoizing `HelixContext` methods (`updateContext`, `registerAction`) to prevent infinite render loops in `NewCampaignPage`.
+- **Context:** Cross-project fixes in `landing-page` codebase.
+
+
+## [2026-01-14] - Marketplace Optimization
+
+### Added
+- **OAuth Token Manager:** Added new Micro-SaaS product to marketplace.
+- **Stripe Integration:** Added "Get It Now" buttons and Stripe link logic to product detail pages.
+- **UI Improvements:** Added category badges to product cards for better scanning.
+- **Product Links:** Added placeholder Stripe payment links for "Available" products (n8n Templates, AI Prompts).
+
+### Context
+- Completed "Marketplace Optimization" task.
+- Cleaned up Product Card UI (fixed unclosed divs, added badges).
+- Ensured all available products have a buy path.
+
+---
+
 ## [2026-01-09] - Brand Cleanup (TrendPulse Deprecation)
 
 ### Changed

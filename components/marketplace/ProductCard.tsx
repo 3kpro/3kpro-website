@@ -19,6 +19,7 @@ export default function ProductCard({ item }: { item: MarketplaceItem }) {
           <div className="w-12 h-12 bg-gradient-to-br from-dark-700 to-dark-800 rounded-xl flex items-center justify-center border border-dark-600 group-hover:border-primary-500/30 transition-colors">
             <Zap className="w-6 h-6 text-primary-500" />
           </div>
+          <div className="flex gap-2">
           <span className={`px-3 py-1 rounded-full text-xs font-medium border ${
             item.status === 'Available' 
               ? 'bg-green-500/10 text-green-500 border-green-500/20' 
@@ -28,6 +29,10 @@ export default function ProductCard({ item }: { item: MarketplaceItem }) {
           }`}>
             {item.status}
           </span>
+          <span className="ml-2 px-3 py-1 rounded-full text-xs font-medium border bg-dark-700 text-dark-300 border-dark-600">
+            {item.category}
+          </span>
+        </div>
         </div>
 
         <div className="mb-3">

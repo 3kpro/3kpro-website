@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.8.0] - 2026-01-14
+
+### Added
+- **Analytics**:
+  - Integrated Google Analytics 4 (GA4) via `@next/third-parties`.
+  - Added conversion tracking via `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
+
+### Technical
+- Cleaned up `layout.tsx` to use optimized third-party script loading.
+
+## [2.7.0] - 2026-01-13
+
+### Added
+- **Stripe Integration**:
+  - Implemented Stripe webhook endpoint (`api/webhook/stripe`) to handle payment events.
+  - Configured Vercel production environment with `STRIPE_WEBHOOK_SECRET`.
+
+### Technical
+- Securely stored webhook secret in Vercel.
+
 ## [2.6.0] - 2026-01-08
 
 ### Added

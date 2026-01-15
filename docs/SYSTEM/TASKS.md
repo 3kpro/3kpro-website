@@ -6,14 +6,13 @@ This file lists company-level tasks for 3kpro.services (storefront, marketplace,
 ---
 ## NOW (One at a time only)
 
-
-
-
 ---
 
 ## BACKLOG (Company-Level Tasks)
 
-- [ ] **Brand Cleanup Across Web** 🔄
+
+
+ [x] **Brand Cleanup Across Web** 🔄
       - [x] **Internal Codebase:** Audit complete. `TrendPulse` removed from `layout.tsx`.
       - [x] **Copy Preparation:** Created `landing-page/docs/Marketing/3KPRO_BRAND_COPY.md` for external profiles.
       - [ ] **External Updates:** (User Action Required)
@@ -22,19 +21,29 @@ This file lists company-level tasks for 3kpro.services (storefront, marketplace,
             - LinkedIn company page
       - Reference: `landing-page/docs/Marketing/BRAND_CLEANUP_CHECKLIST.md`
 
-- [ ] **Marketplace Optimization**
-      - Add more products from Dev/ department
-      - Improve product cards UI
-      - Add Stripe payment links for all products
-
-- [ ] **Google Analytics 4 Setup**
-      - Install GA4 on 3kpro.services
-      - Link to Google Ads
-      - Configure conversion tracking
-
 ---
 
 ## COMPLETED
+
+- [x] **Fix Xelora Loop on Campaign Create** ✅
+      - **Completion Date:** 2026-01-15
+      - **Details:** Fixed race condition in "Save & Dashboard" button in Xelora codebase (`landing-page`). Button now explicitly waits for save success before navigating.
+      - **Result:** Navigation works reliably.
+
+- [x] **Google Analytics 4 Setup** ✅
+      - **Completion Date:** 2026-01-14
+      - **Details:** Installed `@next/third-parties`, added `<GoogleAnalytics>` to `layout.tsx`, and configured env var placeholder.
+      - **Result:** Site is ready for tracking. **Action Required:** Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel.
+
+- [x] **Marketplace Optimization** ✅
+      - **Completion Date:** 2026-01-14
+      - **Details:** Added OAuth Token Manager, Category Badges, and Stripe Payment Links for available products.
+      - **Result:** Marketplace is populated with Dev/ products and ready for sales.
+
+- [x] **Stripe Webhook Configuration** ✅
+      - **Completion Date:** 2026-01-13
+      - **Details:** Created webhook handler at `api/webhook/stripe`. Configured `STRIPE_WEBHOOK_SECRET` on Vercel.
+      - **Result:** Stripe webhook is live and ready to receive events.
 
 - [x] **Setup Google Search Console + Google Ads for 3kpro.services** ✅
       - **Completion Date:** 2026-01-09

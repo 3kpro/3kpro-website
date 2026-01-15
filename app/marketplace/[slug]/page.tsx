@@ -70,13 +70,25 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               <div className="flex flex-col sm:flex-row gap-4">
                  {(product.status === 'Available' || product.status === 'Beta' || product.status === 'Coming Soon') && (
-                    <Link
-                      href="/#contact"
-                      className="px-8 py-4 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition-all font-bold text-lg shadow-lg hover:shadow-primary-500/30 flex items-center justify-center"
-                    >
-                      <Zap className="w-5 h-5 mr-2" />
-                      Contact Sales
-                    </Link>
+                    <>
+                      {product.stripePaymentLink ? (
+                        <a
+                          href={product.stripePaymentLink}
+                          className="px-8 py-4 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition-all font-bold text-lg shadow-lg hover:shadow-primary-500/30 flex items-center justify-center"
+                        >
+                          <Zap className="w-5 h-5 mr-2" />
+                          Get Access - ${product.price}
+                        </a>
+                      ) : (
+                        <Link
+                          href="/#contact"
+                          className="px-8 py-4 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition-all font-bold text-lg shadow-lg hover:shadow-primary-500/30 flex items-center justify-center"
+                        >
+                          <Zap className="w-5 h-5 mr-2" />
+                          Contact Sales
+                        </Link>
+                      )}
+                    </>
                  )}
                  
                  {product.demoUrl && (
@@ -105,13 +117,24 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       </span>
                    </div>
                    
-                   <div className="text-white font-medium mb-2">Enterprise Pricing</div>
+                   <div className="text-white font-medium mb-2">
+                     {product.price === 0 ? 'Free Access' : 'One-Time Payment'}
+                   </div>
                    <div className="text-4xl font-bold text-white mb-2">
-                     Contact Sales
+                     {product.price === 0 ? 'Free' : `$${product.price}`}
                    </div>
                    <div className="text-dark-400 text-sm mb-8">
                      Lifetime access • {product.category}
                    </div>
+
+                   {product.stripePaymentLink && (
+                     <a
+                       href={product.stripePaymentLink}
+                       className="block w-full py-4 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition-all font-bold text-lg shadow-lg hover:shadow-primary-500/30 mb-8"
+                     >
+                       Get It Now
+                     </a>
+                   )}
 
                    <div className="border-t border-dark-700 pt-8 text-left space-y-4">
                       <div className="flex items-center text-sm text-dark-300">
