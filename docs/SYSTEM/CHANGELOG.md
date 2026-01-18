@@ -6,12 +6,44 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-01-18] - Code Review & Handoff Implementation
+
+### Added
+- **Server Actions:** Implemented `submitContactForm` in `app/actions.ts` to handle form submissions securely on the backend (Web3Forms).
+- **CI/CD:** Created GitHub Actions workflow `.github/workflows/ci.yml` for automated linting and building on PRs.
+
+### Changed
+- **Contact Form:** Migrated from Web3Forms to **Resend** for email delivery. Implementation uses `resend` SDK on the server side.
+
+### Fixed
+- **Contact Form:** Refactored `components/ContactForm.tsx` to use the new Server Action instead of client-side fetch.
+- **Dependencies:** Pinned `tailwindcss` version to `4.1.15` in `package.json` for stability.
+- **Verification:** Verified `app/layout.tsx` metadata and successful build via `npm run build` (Exit code 0).
+
+### Context
+- Addressed "High Priority" and initial "Medium Priority" action items from `docs/SYSTEM/GE_CODE_REVIEW.md`.
+
 ## [2026-01-15] - Xelora Campaign Fix
 
 ### Fixed
 - **Campaign Navigation:** Fixed issue where "Save & Dashboard" button on `/campaigns/create` would not navigate after saving.
 - **Helix Context:** Fixed "Maximum update depth exceeded" error by memoizing `HelixContext` methods (`updateContext`, `registerAction`) to prevent infinite render loops in `NewCampaignPage`.
 - **Context:** Cross-project fixes in `landing-page` codebase.
+
+---
+
+## [2026-01-15] - Brand Cleanup (External Prep)
+
+### Added
+- Created `landing-page/docs/Marketing/EXTERNAL_UPDATE_GUIDE.md` containing specific copy-paste instructions for Google Business, LinkedIn, and Clearbit updates.
+
+### Fixed
+- Removing remaining "Content Cascade" references from `landing-page/app` (About page, Settings page).
+- Replaced "Content Cascade platform strategy" with "3kpro ecosystem" in About page.
+
+### Context
+- Agent verified public profiles (Google, LinkedIn) are still outdated.
+- Prepared all materials for user to perform the manual updates.
 
 
 ## [2026-01-14] - Marketplace Optimization

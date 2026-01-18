@@ -1,16 +1,23 @@
 # TASKS.md - 3kpro.services Company Site
 Last Updated: 2026-01-09
 
-This file lists company-level tasks for 3kpro.services (storefront, marketplace, SEO, brand management).
+
 
 ---
 ## NOW (One at a time only)
-
----
+For contact form setup, I setup an account on resend to send to james.lawson@gmail.com
+API Key:
+re_TSxJqPmQ_MA7N2TAiS5dKv6UrYk95wmMg
 
 ## BACKLOG (Company-Level Tasks)
 
-
+ [ ] **External Updates:** (User Action Required)
+            - Google Business Profile (Content Cascade AI → 3kpro)
+            - Clearbit profile
+            - LinkedIn company page
+      - **Agent Status:** ✅ Verified public profiles are outdated. ✅ Created guide at `landing-page/docs/Marketing/EXTERNAL_UPDATE_GUIDE.md`. ✅ Cleaned `landing-page` codebase.
+      - **Next Step:** User must log in and perform updates using the guide.
+      - Reference: `landing-page/docs/Marketing/BRAND_CLEANUP_CHECKLIST.md`
 
  [x] **Brand Cleanup Across Web** 🔄
       - [x] **Internal Codebase:** Audit complete. `TrendPulse` removed from `layout.tsx`.
@@ -24,6 +31,16 @@ This file lists company-level tasks for 3kpro.services (storefront, marketplace,
 ---
 
 ## COMPLETED
+
+- [x] **Configure Contact Form with Resend** ✅
+      - **Completion Date:** 2026-01-18
+      - **Details:** Switched email provider from Web3Forms to Resend.
+      - **Result:** Emails are now sent securely via Resend server-side SDK to james.lawson@gmail.com.
+
+- [x] **Code Review Handoff Implementation** ✅
+      - **Completion Date:** 2026-01-18
+      - **Details:** Implemented Server Action for contact form, added CI/CD pipeline, locked dependency versions, and verified metadata.
+      - **Result:** Architecture is more robust.
 
 - [x] **Fix Xelora Loop on Campaign Create** ✅
       - **Completion Date:** 2026-01-15

@@ -2,6 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+import { submitContactForm } from '@/app/actions'
 
 type FormData = {
   name: string
@@ -20,23 +21,13 @@ export default function ContactForm() {
     setSubmitStatus('idle')
 
     try {
-      // Send to Web3Forms
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: '3ac337df-1baf-4b0b-a320-638e3e1917b2',
-          name: data.name,
-          email: data.email,
-          company: data.company || 'Not provided',
-          message: data.message,
-          subject: `New Contact Form Submission from ${data.name}`,
-        }),
-      })
+      const formData = new FormData()
+      formData.append('name', data.name)
+      formData.append('email', data.email)
+      formData.append('company', data.company || '')
+      formData.append('message', data.message)
 
-      const result = await response.json()
+      const result = await submitContactForm(null, formData)
 
       if (result.success) {
         setSubmitStatus('success')
@@ -44,7 +35,7 @@ export default function ContactForm() {
         // Reset success message after 5 seconds
         setTimeout(() => setSubmitStatus('idle'), 5000)
       } else {
-        throw new Error('Failed to send message')
+        throw new Error(result.message || 'Failed to send message')
       }
     } catch (error) {
       console.error('Form submission error:', error)
