@@ -22,8 +22,59 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
+# ============================================
+# ENVIRONMENT & SECRETS - CRITICAL
+# ============================================
+# All .env variants (local development, vercel, production, etc.)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+.env.staging
+.env.vercel
+.env.vercel.*
+
+# Stripe CLI & Secrets
+.stripeclitorc
+stripe.json
+.stripe/
+stripe-debug.log
+
+# SSH, PEM, and Cryptographic Keys
+*.pem
+*.key
+*.cert
+*.secret
+*_TOKEN
+*_KEY
+*_SECRET
+id_rsa
+id_rsa.pub
+
+# API Keys & Credentials (by name pattern)
+*.apikey
+*.token
+.token
+.apikey
+config/secrets.json
+firebase-adminsdk-*.json
+service-account-key.json
+credentials.json
+service-account*.json
+.google-credentials.json
+.gcloud-credentials.json
+
+# Cloud provider credentials
+.aws/
+.gcloud/
+~/.aws/credentials
+
+# Sensitive documentation
+*HANDOFF*.md
+*SECRET*
+*-secrets.md
 
 # vercel
 .vercel
@@ -31,3 +82,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# DaVinci Resolve project files
+**/Davinci/.gallery/
+**/Davinci/CacheClip/
+**/Davinci/Resolve Project Backups/
+*.pfl

@@ -1,13 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Cloud, Shield, Coins, ArrowRight, Zap, Database, Server, Lock } from "lucide-react";
+import { Check, Cloud, Shield, Coins, ArrowRight, Zap, Database, Server, Lock, Download, Activity, Target } from "lucide-react";
 import { useState, Suspense } from "react";
 import { CloudLedgerNavigation } from "./CloudLedgerNavigation";
 import { CloudLedgerFooter } from "./CloudLedgerFooter";
-import { AuroraBackground } from "@/components/ui/aurora-background";
 import { useSearchParams } from "next/navigation";
-import { cn } from "@/lib/utils";
 
 function CloudLedgerContent() {
   const [isLoading, setIsLoading] = useState(false);
@@ -40,27 +38,26 @@ function CloudLedgerContent() {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-dark-900 text-white font-sans flex flex-col">
+      <div className="min-h-screen bg-white bg-grid text-black font-sans flex flex-col selection:bg-black selection:text-white">
         <CloudLedgerNavigation />
         <div className="flex-1 flex items-center justify-center px-4 relative overflow-hidden">
-             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100"></div>
             <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-dark-800/80 backdrop-blur-xl p-10 rounded-3xl border border-primary-500/30 max-w-lg w-full text-center shadow-2xl relative z-10"
+                className="bg-white p-12 md:p-16 border-2 border-black max-w-lg w-full text-center shadow-[20px_20px_0px_0px_rgba(0,0,0,0.05)] relative z-10"
             >
-                <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 ring-1 ring-green-500/50">
-                    <Check className="w-10 h-10 text-green-400" />
+                <div className="w-20 h-20 border border-black flex items-center justify-center mx-auto mb-10">
+                    <Check className="w-10 h-10 text-black" />
                 </div>
-                <h1 className="text-3xl font-bold mb-4 font-space-grotesk text-white">Access Granted</h1>
-                <p className="text-dark-300 mb-8 text-lg">
-                    Your environment is being provisioned. Ready to find those savings?
+                <h1 className="text-4xl font-bold mb-6 tracking-tighter uppercase">Access Authorized.</h1>
+                <p className="text-black/60 mb-12 text-sm font-medium uppercase tracking-widest leading-relaxed">
+                    Environmental provisioning complete. Systems online. Data channels established.
                 </p>
                 <a 
                     href={process.env.NEXT_PUBLIC_CLOUD_LEDGER_URL || "http://localhost:3002"}
-                    className="block w-full py-4 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold transition-all shadow-lg hover:shadow-primary-500/25"
+                    className="block w-full py-6 bg-black text-white hover:bg-white hover:text-black border border-black font-bold uppercase tracking-[0.3em] text-xs transition-all"
                 >
-                    Launch Dashboard
+                    Launch Command Center
                 </a>
             </motion.div>
         </div>
@@ -70,158 +67,193 @@ function CloudLedgerContent() {
   }
 
   return (
-    <div className="min-h-screen bg-dark-900 text-white font-sans selection:bg-primary-500/30">
+    <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
       <CloudLedgerNavigation />
 
-      {/* 3KPRO-Style Hero with Aurora */}
-      <AuroraBackground className="min-h-[90vh] pb-20">
-        <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-            className="relative flex flex-col gap-4 items-center justify-center px-4 max-w-5xl mx-auto text-center z-10"
-        >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium uppercase tracking-wider mb-4 animate-pulse">
-                <Cloud className="w-3 h-3" /> Microsoft Azure Compatible
-            </div>
-            
-            <h1 className="text-5xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 font-space-grotesk tracking-tight leading-[1.1]">
-              Stop Paying for <br/>
-              <span className="text-primary-500">Zombie Resources.</span>
-            </h1>
-            
-            <p className="font-light text-xl md:text-2xl text-dark-300 py-6 max-w-2xl mx-auto">
-              The intelligent audit tool that scans your Azure estate, kills waste, and generates a savings report in seconds.
-            </p>
-            
-            <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto mt-4">
-                <button 
-                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white rounded-full font-bold text-lg shadow-[0_0_40px_-10px_rgba(224,120,86,0.5)] transition-all hover:scale-105 flex items-center justify-center gap-2"
-                >
-                    Start Free Audit <ArrowRight className="w-5 h-5" />
-                </button>
-                <div className="flex items-center gap-4 px-6 text-sm text-dark-400">
-                    <span className="flex items-center gap-1"><Check className="w-4 h-4 text-green-500" /> Read-Only</span>
-                    <span className="flex items-center gap-1"><Check className="w-4 h-4 text-green-500" /> No Agents</span>
-                </div>
-            </div>
-        </motion.div>
-      </AuroraBackground>
+      {/* Structural Hero Section */}
+      <section className="relative min-h-screen pt-40 pb-32 bg-grid flex flex-col items-center justify-center">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+          <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-3 px-3 py-1 border border-black mb-12 text-[10px] uppercase tracking-[0.3em] font-bold"
+          >
+              <Cloud className="w-3 h-3" /> Azure Logic Verification // Read-Only
+          </motion.div>
+          
+          <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="text-6xl md:text-9xl font-bold tracking-tighter leading-[0.9] uppercase mb-12"
+          >
+            ERADICATE <br/>
+            <span className="opacity-40">ZOMBIE WASTE.</span>
+          </motion.h1>
+          
+          <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="font-medium text-lg md:text-xl text-black/60 max-w-2xl mx-auto mb-16 uppercase tracking-widest leading-relaxed"
+          >
+            The structural intelligence layer that scans your Azure estate, identifies idle assets, and recovers leaked capital in seconds.
+          </motion.p>
+          
+          <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="flex flex-col md:flex-row gap-6 w-full md:w-auto justify-center"
+          >
+              <button 
+                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-12 py-6 bg-black text-white hover:bg-white hover:text-black border border-black font-bold uppercase tracking-[0.3em] text-xs transition-all"
+              >
+                  Initialize Audit
+              </button>
+              <div className="flex items-center justify-center gap-8 px-8 text-[10px] font-bold uppercase tracking-widest opacity-40">
+                  <span className="flex items-center gap-2"><Check className="w-3 h-3" /> Agent-Free</span>
+                  <span className="flex items-center gap-2"><Check className="w-3 h-3" /> Non-Destructive</span>
+              </div>
+          </motion.div>
+        </div>
+      </section>
 
-      {/* BENTO GRID FEATURES */}
-      <section className="py-24 bg-dark-900 border-t border-dark-800">
-        <div className="container mx-auto px-4 max-w-6xl">
-            <div className="mb-16 text-center">
-                <h2 className="text-3xl md:text-5xl font-bold font-space-grotesk mb-6">See What Microsoft Hides</h2>
-                <p className="text-dark-400 text-xl max-w-2xl mx-auto">Complex billing portals are designed to confuse you. Cloud Ledger is designed to save you money.</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
-                {/* Large Left Card */}
-                <div className="md:col-span-2 md:row-span-2 bg-dark-800 rounded-3xl p-8 border border-dark-700 relative overflow-hidden group hover:border-primary-500/50 transition-all">
-                    <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                         <Coins className="w-64 h-64 text-primary-500" />
+      {/* Analytical Bento Matrix */}
+      <section className="py-32 border-t border-black bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-24">
+                <div className="max-w-2xl">
+                    <div className="inline-flex items-center px-3 py-1 border border-black mb-8">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Detection Matrix</span>
                     </div>
+                    <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-8">SUBSTRATE <br/> VISIBILITY.</h2>
+                    <p className="text-lg text-black/60 font-medium leading-relaxed uppercase tracking-widest">Complex billing architectures are designed for opacity. Cloud Ledger is designed for precision.</p>
+                </div>
+                <div className="hidden md:block w-32 h-px bg-black"></div>
+            </div>
+
+            <div className="flex flex-wrap justify-center overflow-hidden border-t border-l border-black">
+                {/* Large Analytical Block */}
+                <div className="w-full lg:w-2/3 p-12 md:p-20 bg-white border-r border-b border-black group hover:bg-black hover:text-white transition-all duration-700">
                     <div className="relative z-10 flex flex-col h-full justify-between">
                         <div>
-                            <div className="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center mb-6">
-                                <Zap className="w-6 h-6 text-primary-500" />
+                            <div className="w-16 h-16 border border-black group-hover:border-white/20 flex items-center justify-center mb-10 transition-colors">
+                                <Target className="w-8 h-8" />
                             </div>
-                            <h3 className="text-3xl font-bold mb-4">The Zombie Hunter</h3>
-                            <p className="text-dark-300 text-lg leading-relaxed max-w-md">
-                                Instantly detect "Zombie" resources—VMs that are running but idle, unattached managed disks costing $30/month each, and public IPs leading nowhere. 
-                                <br/><br/>
-                                <span className="text-white font-semibold">We typically find $500–$2,000 in waste on the first scan.</span>
+                            <h3 className="text-3xl font-bold mb-8 uppercase tracking-tight">The Zombie Protocol</h3>
+                            <p className="text-sm opacity-70 leading-relaxed max-w-lg uppercase tracking-widest font-bold mb-12">
+                                Instantly isolate idle VMs, unattached managed disks, and orphan public IPs. We typically identify 15-30% in immediate monthly savings on the first recursive scan.
                             </p>
                         </div>
                         <div className="mt-8">
-                             <div className="bg-dark-900/50 rounded-xl p-4 border border-dark-700 backdrop-blur-sm">
-                                <div className="flex justify-between text-sm mb-2">
-                                    <span className="text-dark-400">Potential Savings Found</span>
-                                    <span className="text-green-400 font-mono font-bold">-$1,240.50/mo</span>
+                             <div className="border border-black group-hover:border-white/20 p-8 bg-black/[0.02] group-hover:bg-white/5 transition-all">
+                                <div className="flex justify-between items-center mb-6">
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-60">System Waste Recovery</span>
+                                    <span className="text-xl font-bold tracking-tighter">-$1,240.50/MO</span>
                                 </div>
-                                <div className="w-full bg-dark-700 rounded-full h-2">
-                                    <div className="bg-gradient-to-r from-green-500 to-emerald-400 h-2 rounded-full w-[75%] animate-pulse"></div>
+                                <div className="w-full bg-black/5 group-hover:bg-white/10 h-1">
+                                    <div className="bg-black group-hover:bg-white h-full w-[75%]"></div>
                                 </div>
                              </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Top Right */}
-                <div className="bg-dark-800 rounded-3xl p-8 border border-dark-700 hover:border-blue-500/50 transition-all group">
-                    <Server className="w-8 h-8 text-blue-400 mb-4 group-hover:scale-110 transition-transform" />
-                    <h3 className="text-xl font-bold mb-2">Inventory Matrix</h3>
-                    <p className="text-dark-400 text-sm">A single pane of glass for every resource across every subscription. No more clicking through 50 portals.</p>
-                </div>
+                {/* Vertical Matrix Column */}
+                <div className="w-full lg:w-1/3 flex flex-col">
+                    <div className="p-12 bg-white border-r border-b border-black flex-1 group hover:bg-black hover:text-white transition-all duration-500">
+                        <Activity className="w-8 h-8 mb-8" />
+                        <h3 className="text-xl font-bold mb-4 uppercase tracking-tighter">Inventory Matrix</h3>
+                        <p className="text-xs opacity-60 font-bold uppercase tracking-widest leading-relaxed">A unified pane for every resource across the entire structural estate. No more portal fragmenting.</p>
+                    </div>
 
-                 {/* Bottom Right */}
-                 <div className="bg-dark-800 rounded-3xl p-8 border border-dark-700 hover:border-purple-500/50 transition-all group">
-                    <Lock className="w-8 h-8 text-purple-400 mb-4 group-hover:scale-110 transition-transform" />
-                    <h3 className="text-xl font-bold mb-2">Zero-Trust Security</h3>
-                    <p className="text-dark-400 text-sm">We use ephemeral Read-Only tokens. We can't change your settings, we can only help you fix them.</p>
+                    <div className="p-12 bg-white border-r border-b border-black flex-1 group hover:bg-black hover:text-white transition-all duration-500">
+                        <Lock className="w-8 h-8 mb-8" />
+                        <h3 className="text-xl font-bold mb-4 uppercase tracking-tighter">READ-ONLY INTEGRITY</h3>
+                        <p className="text-xs opacity-60 font-bold uppercase tracking-widest leading-relaxed">Ephemeral tokens. Non-destructive scanning. We never touch your production state.</p>
+                    </div>
                 </div>
             </div>
         </div>
       </section>
 
-      {/* PRICING */}
-      <section id="pricing" className="py-24 bg-dark-900 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(224,120,86,0.05)_0,transparent_70%)]"></div>
-        <div className="container mx-auto px-4 max-w-5xl relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-space-grotesk">Fair Pricing.</h2>
-            <p className="text-center text-dark-400 mb-16 text-lg">Most tools charge a % of your spend. We think that's a tax on success.</p>
+      {/* PRICING MATRIX */}
+      <section id="pricing" className="py-32 bg-grid border-t border-black relative">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <h2 className="text-5xl md:text-8xl font-bold mb-8 tracking-tighter uppercase italic opacity-10">ALLOCATION</h2>
+            <h2 className="text-5xl md:text-7xl font-bold mb-10 tracking-tighter uppercase -mt-20">FAIR PRICING.</h2>
+            <p className="text-black/60 mb-20 text-xs font-bold uppercase tracking-[0.3em] max-w-xl mx-auto leading-loose">
+              Capital efficiency shouldn't be taxed. We reject percentage-of-spend models in favor of structural flat-rate indices.
+            </p>
             
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-                {/* One Time */}
-                <div className="bg-dark-800/50 rounded-[2rem] p-8 border border-dark-700 hover:bg-dark-800 transition-colors flex flex-col h-full">
-                    <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-white mb-2">One-Time Cleanup</h3>
-                        <p className="text-dark-400">Perfect for quarterly audits.</p>
+            <div className="grid md:grid-cols-2 gap-px bg-black border border-black overflow-hidden max-w-5xl mx-auto shadow-[30px_30px_0px_0px_rgba(0,0,0,0.05)]">
+                {/* Single Audit */}
+                <div className="bg-white p-12 md:p-16 flex flex-col text-left group hover:bg-zinc-50 transition-colors">
+                    <div className="mb-12">
+                        <div className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 mb-4">Tactical Intervention</div>
+                        <h3 className="text-3xl font-bold uppercase tracking-tighter mb-8">One-Time Cleanup</h3>
+                        <div className="text-6xl font-bold mb-4 tracking-tighter">$49</div>
+                        <div className="text-[10px] font-bold uppercase tracking-widest opacity-40">PER DIAGNOSTIC RUN</div>
                     </div>
-                    <div className="text-5xl font-bold mb-8 tracking-tight">$49<span className="text-lg text-dark-500 font-normal">/run</span></div>
-                    <ul className="mb-8 space-y-4 flex-1">
-                        <li className="flex gap-3 items-center text-dark-200"><Check className="w-5 h-5 text-primary-500" /> Full Resource Inventory</li>
-                        <li className="flex gap-3 items-center text-dark-200"><Check className="w-5 h-5 text-primary-500" /> Zombie Resource Report</li>
-                        <li className="flex gap-3 items-center text-dark-200"><Check className="w-5 h-5 text-primary-500" /> CSV/PDF Export</li>
-                    </ul>
+                    <div className="space-y-6 mb-16 flex-1">
+                        {[
+                          'Full Structural Inventory',
+                          'Zombie Resource Diagnostic',
+                          'Capital Recovery Export (PDF)',
+                          'Priority Execution Support'
+                        ].map((feat, i) => (
+                          <div key={i} className="flex gap-4 items-center text-[10px] font-bold uppercase tracking-widest opacity-60">
+                            <div className="w-1 h-1 bg-black"></div>
+                            {feat}
+                          </div>
+                        ))}
+                    </div>
                     <button 
                         onClick={() => handleCheckout("one-time")}
                         disabled={isLoading}
-                        className="w-full py-4 rounded-xl bg-dark-700 hover:bg-dark-600 text-white font-semibold transition-all disabled:opacity-50 border border-dark-600"
+                        className="w-full py-6 border border-black bg-white text-black hover:bg-black hover:text-white font-bold uppercase tracking-[0.3em] text-[10px] transition-all disabled:opacity-50"
                     >
-                        {isLoading ? "Loading..." : "Get Instant Report"}
+                        {isLoading ? "PROCESSING..." : "GET INSTANT DIAGNOSTIC"}
                     </button>
                 </div>
 
-                {/* Subscription - Highlighted */}
-                <div className="bg-gradient-to-b from-dark-800 to-dark-900 rounded-[2rem] p-1 border border-primary-500/50 shadow-2xl shadow-primary-900/20 relative">
-                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Most Popular</div>
-                     <div className="rounded-[1.9rem] bg-dark-900/90 h-full p-8 flex flex-col backdrop-blur-sm">
-                        <div className="mb-8">
-                            <h3 className="text-2xl font-bold text-white mb-2">Continuous Watchdog</h3>
-                            <p className="text-dark-400">Sleep better knowing waste is caught early.</p>
-                        </div>
-                        <div className="text-5xl font-bold mb-8 tracking-tight text-primary-500">$9<span className="text-lg text-dark-500 font-normal text-white">/mo</span></div>
-                        <ul className="mb-8 space-y-4 flex-1">
-                            <li className="flex gap-3 items-center text-white"><Check className="w-5 h-5 text-primary-500" /> <strong>All Audit Features</strong></li>
-                            <li className="flex gap-3 items-center text-white"><Check className="w-5 h-5 text-primary-500" /> Weekly Variance Reports</li>
-                            <li className="flex gap-3 items-center text-white"><Check className="w-5 h-5 text-primary-500" /> New Trash Alerts (Email)</li>
-                            <li className="flex gap-3 items-center text-white"><Check className="w-5 h-5 text-primary-500" /> Priority Support</li>
-                        </ul>
-                        <button 
-                             onClick={() => handleCheckout("monthly")}
-                             disabled={isLoading}
-                            className="w-full py-4 rounded-xl bg-primary-600 hover:bg-primary-500 text-white font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-900/30 disabled:opacity-50"
-                        >
-                            {isLoading ? "Processing..." : <>Start Subscription <ArrowRight /></>}
-                        </button>
-                     </div>
+                {/* Subscription - Most Popular */}
+                <div className="bg-white p-12 md:p-16 flex flex-col text-left relative group bg-zinc-50/50">
+                     <div className="absolute top-0 left-0 w-full h-1 bg-black"></div>
+                     <div className="mb-12">
+                        <div className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 mb-4">Continuous Overwatch</div>
+                        <h3 className="text-3xl font-bold uppercase tracking-tighter mb-8 text-black">Strategic Watchdog</h3>
+                        <div className="text-6xl font-bold mb-4 tracking-tighter">$9</div>
+                        <div className="text-[10px] font-bold uppercase tracking-widest opacity-40">PER MONTHLY CYCLE</div>
+                    </div>
+                    <div className="space-y-6 mb-16 flex-1">
+                        {[
+                          'Recursive Structural Scanning',
+                          'Weekly Variance Reports',
+                          'Waste Alerts (Email Channel)',
+                          'Premium Asset Management',
+                          'Unlimited Audit Cycles'
+                        ].map((feat, i) => (
+                          <div key={i} className="flex gap-4 items-center text-[10px] font-bold uppercase tracking-widest">
+                            <div className="w-1.5 h-1.5 bg-black rotate-45"></div>
+                            {feat}
+                          </div>
+                        ))}
+                    </div>
+                    <button 
+                         onClick={() => handleCheckout("monthly")}
+                         disabled={isLoading}
+                        className="w-full py-6 bg-black text-white hover:bg-black/90 font-bold uppercase tracking-[0.3em] text-xs transition-all flex items-center justify-center gap-4 disabled:opacity-50"
+                    >
+                        {isLoading ? "LOGGING..." : "INITIALIZE SUBSCRIPTION"}
+                    </button>
                 </div>
             </div>
-            <div className="mt-12 text-center">
-                <p className="text-dark-500 text-sm">Secure handling via Stripe. We never store your payment data.</p>
+            <div className="mt-16">
+                <p className="text-[10px] font-bold uppercase tracking-widest opacity-40">Secure Transaction Layer via Stripe. Zero storage policy for payment credentials.</p>
             </div>
         </div>
       </section>
@@ -233,7 +265,7 @@ function CloudLedgerContent() {
 
 export default function CloudLedgerPage() {
     return (
-        <Suspense fallback={<div className="min-h-screen bg-dark-900 text-white flex items-center justify-center">Loading Cloud Ledger...</div>}>
+        <Suspense fallback={<div className="min-h-screen bg-white text-black flex items-center justify-center font-bold uppercase tracking-[0.4em]">Initializing Structural Data...</div>}>
             <CloudLedgerContent />
         </Suspense>
     );

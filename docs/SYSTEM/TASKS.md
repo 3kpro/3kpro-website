@@ -1,10 +1,96 @@
 # TASKS.md - 3kpro.services Company Site
 Last Updated: 2026-01-09
 
+---
 
+## DEVELOPMENT WORKFLOW
+
+**Critical: Human-Controlled Dev Servers**
+
+All agents (Gemini, Claude, opencode, etc.) working on 3kpro.services MUST follow these rules:
+
+1. **NEVER run `npm run dev`** - Dev server control is reserved for the human
+2. **NEVER start/stop dev servers** - Human manages 3kpro.services dev server using:
+   - `C:\DEV\3K-Pro-Services\3001.bat` - Starts 3kpro.services on localhost:3001
+3. **Focus on code changes only** - Write, edit, and commit code; let human test
+4. **Assume server is running** - Human will restart as needed to see changes
+
+**Why:** Human is multitasking across XELORA and 3kpro.services. Agents starting/stopping servers creates conflicts.
 
 ---
 ## NOW (One at a time only)
+
+- [x] **3kpro.services Full Visual Rebrand** 🎨
+      - **Goal:** Transform 3kpro.services from standard SaaS/IT site to modern, eye-catching professional services portal.
+      - **Specification:** `docs/upgrades/3kpro_polish.md`
+      - **Design Philosophy:**
+        - Bold, professional, modern aesthetic
+        - Clean with strong personality
+        - Interactive card-based layouts
+        - Subtle animations and micro-interactions
+      - **Critical Focus:**
+        1. **Visual Identity & Color Palette**
+           - Define core messaging angles (5 options)
+           - Create 3 complete visual identity palettes:
+             * Primary background (dark theme)
+             * Primary text color
+             * Main accent (CTAs)
+             * Secondary accent (highlights)
+             * Headline font (Google Fonts)
+             * Body font (Google Fonts)
+           - Present in markdown table for selection
+
+        2. **Hero Section Redesign**
+           - Bold above-the-fold design
+           - Main headline + subheading placement
+           - Primary CTA button (hover effect with secondary accent)
+           - Secondary link (less prominent)
+           - Subtle background animation/graphic
+           - "Fade and slide up" animation on load (vanilla JS)
+           - Modern CSS (Flexbox/Grid, well-commented)
+
+        3. **Services Section (Card Layout)**
+           - Move beyond bullet lists
+           - 3 service cards with:
+             * Catchy name
+             * One-sentence summary
+             * 3 key benefits
+           - Card hover effects:
+             * Lift slightly (box-shadow + transform)
+             * "Learn More" link becomes prominent
+           - Reusable Modal component for service details
+
+        4. **CSS Architecture**
+           - Consistent color palette usage
+           - Modern practices (Flexbox/Grid)
+           - Well-commented code
+           - Interactive hover states
+           - Smooth transitions
+
+      - **Agentic Workflow:**
+        - **Gemini**: Strategy, layout design, content brainstorming
+        - **Claude**: HTML/CSS components, detailed copy
+        - **opencode**: Optimized JS functions, animations, modal logic
+
+      - **Implementation Steps:**
+        1. Define visual identity (Gemini + Claude)
+        2. Build hero section (Gemini layout → Claude HTML/CSS → opencode animation)
+        3. Create services section (Gemini content → Claude cards → opencode modal)
+        4. Integrate and refine all components
+        5. Visual regression testing
+
+      - **Testing Checklist:**
+        - [ ] Hero animation works on page load
+        - [ ] Service cards hover effects smooth
+        - [ ] Modal open/close functionality works
+        - [ ] Color palette applied consistently
+        - [ ] Mobile responsiveness verified
+        - [ ] All fonts load correctly
+
+      - **Priority:** HIGH
+      - **Branch:** `feature/3kpro-visual-rebrand`
+      - **Assigned:** Gemini + Claude
+
 For contact form setup, I setup an account on resend to send to james.lawson@gmail.com
 API Key:
 re_TSxJqPmQ_MA7N2TAiS5dKv6UrYk95wmMg

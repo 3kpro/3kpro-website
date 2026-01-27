@@ -107,7 +107,7 @@ export default function RootLayout({
       {
         '@type': 'SoftwareApplication',
         name: 'XELORA',
-        url: 'https://xelora.app',
+        url: 'https://getxelora.com',
         applicationCategory: 'BusinessApplication',
         description: 'AI-powered predictive intelligence platform for content creators. Predict momentum. Engineer virality.',
       },
@@ -161,14 +161,14 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="dark">{children}</body>
+      <body>{children}</body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
     </html>
   )

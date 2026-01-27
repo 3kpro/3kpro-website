@@ -2,79 +2,58 @@
 
 import Link from 'next/link'
 import { MarketplaceItem } from '@/lib/data/marketplace'
-import { ArrowRight, Check, Zap } from 'lucide-react'
 
 export default function ProductCard({ item }: { item: MarketplaceItem }) {
-  const isAvailable = item.status === 'Available' || item.status === 'Beta'
-
   return (
     <Link
       href={`/marketplace/${item.slug}`}
-      className="group block bg-dark-800 border border-dark-700 rounded-2xl p-6 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 h-full flex flex-col relative overflow-hidden"
+      className="group block bg-white p-10 hover:bg-black hover:text-white transition-all duration-500 relative overflow-hidden h-full flex flex-col"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
       <div className="relative z-10 flex flex-col h-full">
-        <div className="flex justify-between items-start mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-dark-700 to-dark-800 rounded-xl flex items-center justify-center border border-dark-600 group-hover:border-primary-500/30 transition-colors">
-            <Zap className="w-6 h-6 text-primary-500" />
+        <div className="flex justify-between items-start mb-10">
+          <div className="w-12 h-12 border border-current flex items-center justify-center group-hover:rotate-12 transition-transform">
+             <span className="font-bold text-xl uppercase tracking-tighter">
+                {item.name.substring(0, 1)}
+             </span>
           </div>
-          <div className="flex gap-2">
-          <span className={`px-3 py-1 rounded-full text-xs font-medium border ${
-            item.status === 'Available' 
-              ? 'bg-green-500/10 text-green-500 border-green-500/20' 
-              : item.status === 'Beta'
-              ? 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20'
-              : 'bg-dark-700 text-dark-300 border-dark-600'
-          }`}>
-            {item.status}
-          </span>
-          <span className="ml-2 px-3 py-1 rounded-full text-xs font-medium border bg-dark-700 text-dark-300 border-dark-600">
-            {item.category}
-          </span>
-        </div>
+          <div className="flex flex-col items-end gap-2">
+            <span className="text-[10px] font-bold uppercase tracking-widest opacity-40">
+              {item.status}
+            </span>
+            <span className="text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 border border-current opacity-20 group-hover:opacity-40">
+              {item.category}
+            </span>
+          </div>
         </div>
 
-        <div className="mb-3">
-          <h3 className="text-xl font-bold text-white group-hover:text-primary-500 transition-colors mb-1">{item.name}</h3>
-          <p className="text-sm text-primary-500 font-medium">{item.tagline}</p>
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold uppercase tracking-tighter mb-2">{item.name}</h3>
+          <div className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">{item.tagline}</div>
         </div>
 
-        <p className="text-dark-300 text-sm mb-6 flex-grow line-clamp-3">
+        <p className="text-sm font-medium opacity-60 mb-10 leading-relaxed flex-grow line-clamp-3">
           {item.description}
         </p>
 
-        <div className="space-y-2 mb-6">
+        <div className="space-y-3 mb-12">
           {item.features.slice(0, 2).map((feature, idx) => (
-            <div key={idx} className="flex items-center text-xs text-dark-400">
-              <Check className="w-3 h-3 text-primary-500 mr-2" />
+            <div key={idx} className="flex items-center text-[10px] font-bold uppercase tracking-tight">
+              <div className="w-1 h-1 bg-current mr-3"></div>
               {feature}
             </div>
           ))}
         </div>
 
-        <div className="pt-6 border-t border-dark-700/50 flex items-end justify-between mt-auto">
+        <div className="pt-8 border-t border-current/10 flex items-center justify-between mt-auto">
           <div>
-            <div className="text-xs text-dark-400 uppercase tracking-wider mb-1">Pricing</div>
-            <div className="text-xl font-bold text-white">
-              {item.price === 0 ? 'Free' : item.price > 0 ? `$${item.price}` : 'Contact Sales'}
+            <div className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 mb-1">Provisioning Cost</div>
+            <div className="text-2xl font-bold">
+              {item.price === 0 ? 'FIXED: NULL' : item.price > 0 ? `FIXED: $${item.price}` : 'QUOTATION REQ'}
             </div>
-            {item.demoUrl && (
-              <button 
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open(item.demoUrl, '_blank');
-                }}
-                className="mt-2 text-xs font-bold text-primary-500 hover:text-primary-400 flex items-center gap-1 transition-colors"
-              >
-                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                Watch Demo
-              </button>
-            )}
           </div>
           
-          <div className="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center group-hover:bg-primary-500 transition-colors">
-            <ArrowRight className="w-5 h-5 text-dark-300 group-hover:text-white transition-colors" />
+          <div className="text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
+            Analyze →
           </div>
         </div>
       </div>

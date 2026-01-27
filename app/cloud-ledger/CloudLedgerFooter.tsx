@@ -3,54 +3,59 @@ import Link from "next/link";
 
 export const CloudLedgerFooter: React.FC = () => {
   return (
-    <footer className="bg-[#0f172a] text-white py-16 border-t border-gray-800">
+    <footer className="bg-white text-black py-24 border-t border-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-12">
           
           {/* Brand */}
-          <div className="flex flex-col items-center md:items-start">
-            <div className="flex items-center space-x-2 mb-2">
-              <Cloud className="w-6 h-6 text-blue-500" />
-              <span className="text-xl font-bold">Cloud Ledger</span>
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 border border-black flex items-center justify-center font-bold text-xs">3K</div>
+              <span className="text-xl font-bold uppercase tracking-tighter text-black">Cloud Ledger</span>
             </div>
-            <p className="text-gray-400 text-sm">
-                Powered by <a href="/" className="text-blue-400 hover:text-blue-300">3K Pro Services</a>.
+            <p className="text-[10px] font-bold uppercase tracking-widest opacity-40">
+                PROVOKED BY <a href="/" className="text-black hover:underline transition-all">3K PRO SERVICES</a>.
             </p>
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
-             <Link href="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
-             <Link href="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
-             <a href="mailto:info@3kpro.services" className="hover:text-blue-400 transition-colors">Contact Support</a>
+          <div className="flex flex-wrap justify-center gap-12 text-[10px] font-bold uppercase tracking-widest opacity-40">
+             <Link href="/privacy" className="hover:opacity-100 transition-opacity">Privacy Matrix</Link>
+             <Link href="/terms" className="hover:opacity-100 transition-opacity">Terms of Engagement</Link>
+             <a href="mailto:info@3kpro.services" className="hover:opacity-100 transition-opacity">Direct Channel</a>
           </div>
 
           {/* Socials */}
-          <div className="flex space-x-6">
+          <div className="flex space-x-10">
               <a
                 href="https://x.com/3KPRO_SAAS"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
+                className="opacity-40 hover:opacity-100 transition-opacity"
               >
-                <Twitter className="w-6 h-6" />
+                <Twitter className="w-5 h-5 text-black" />
               </a>
 
               <a
                 href="https://linkedin.com/company/3k-pro-services"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
-                aria-label="Connect with us on LinkedIn"
+                className="opacity-40 hover:opacity-100 transition-opacity"
               >
-                <Linkedin className="w-6 h-6" />
+                <Linkedin className="w-5 h-5 text-black" />
               </a>
           </div>
 
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
-            &copy; {new Date().getFullYear()} Cloud Ledger. All rights reserved. An independent product by 3K Pro Services.
+        <div className="mt-16 pt-8 border-t border-black/10 text-center flex flex-col md:flex-row items-center justify-center gap-6">
+            <p className="text-[10px] font-bold uppercase tracking-widest opacity-40">
+              © {new Date().getFullYear()} CLOUD_LEDGER_SYSTEM. ALL RIGHTS RESERVED.
+            </p>
+            <div className="w-1 h-1 bg-black/10 hidden md:block"></div>
+            <p className="text-[10px] font-bold uppercase tracking-widest opacity-40 leading-relaxed max-w-md">
+              AN INDEPENDENT STRUCTURAL ASSET OF 3K PRO SYSTEMS
+            </p>
         </div>
       </div>
     </footer>

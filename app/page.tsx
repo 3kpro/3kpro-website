@@ -180,36 +180,27 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-dark-900">
+      <div className="min-h-screen bg-white bg-grid">
       {/* Navigation */}
-      <nav className="bg-dark-900/95 backdrop-blur-sm border-b border-dark-800 sticky top-0 z-50">
+      <nav className="bg-white/80 backdrop-blur-md border-b border-black sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             <Link href="/" className="flex items-center group">
               <div className="flex items-center gap-3">
-                {/* Logo Icon */}
-                <div className="relative">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3KPRO Logo">
-                    <title>3KPRO - Professional Website Development</title>
-                    {/* Geometric abstract logo - three overlapping shapes */}
-                    <circle cx="20" cy="20" r="18" fill="#e07856" opacity="0.2"/>
-                    <path d="M20 4 L35 16 L30 32 L10 32 L5 16 Z" fill="#e07856"/>
-                    <rect x="14" y="14" width="12" height="12" fill="white" opacity="0.9"/>
-                    <path d="M20 10 L26 20 L20 30 L14 20 Z" fill="white"/>
-                  </svg>
+                {/* Minimalist Vector Logo */}
+                <div className="relative w-10 h-10 flex items-center justify-center border border-black group-hover:bg-black group-hover:text-white transition-all">
+                  <span className="font-bold text-xl tracking-tighter">3K</span>
                 </div>
                 {/* Logo Text */}
-                <span className="text-2xl font-bold text-white tracking-tight">3KPRO</span>
+                <span className="text-xl font-bold text-black tracking-tight uppercase">3kpro.services</span>
               </div>
             </Link>
-            <div className="flex items-center space-x-8">
-              <a href="#services" className="text-dark-300 hover:text-primary-500 transition-colors">Services</a>
-              <Link href="/marketplace" className="text-dark-300 hover:text-primary-500 transition-colors">Marketplace</Link>
-              <a href="#pricing" className="text-dark-300 hover:text-primary-500 transition-colors">Pricing</a>
-              <a href="#about" className="text-dark-300 hover:text-primary-500 transition-colors">About</a>
-              <a href="#contact" className="text-dark-300 hover:text-primary-500 transition-colors">Contact</a>
-              <a href="#contact" className="px-6 py-2 bg-primary-700 text-white rounded-lg hover:bg-primary-600 transition-colors">
-                Get Started
+            <div className="hidden md:flex items-center space-x-10">
+              <a href="#services" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">Services</a>
+              <Link href="/marketplace" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">Marketplace</Link>
+              <a href="#about" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">About</a>
+              <a href="#contact" className="px-6 py-2 border border-black text-black text-sm font-bold hover:bg-black hover:text-white transition-all uppercase tracking-widest">
+                Initiate Project
               </a>
             </div>
           </div>
@@ -217,70 +208,111 @@ export default function Home() {
       </nav>
 
       <main>
-      {/* Hero Section */}
-      <AuroraBackground className="py-20 md:py-32">
+      {/* Hero Section - Structural Vector */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial="initial"
-            animate="animate"
-            variants={fadeInUp}
-          >
-            <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-6">
-              <svg className="w-4 h-4 text-primary-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              <span className="text-sm font-medium text-primary-500">Professional IT Solutions</span>
-            </div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={fadeInUp}
+            >
+              <div className="inline-flex items-center px-3 py-1 border border-black mb-8">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Architecture of Innovation</span>
+              </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Transform Your Business with
-              <br />
-              <span className="text-primary-500">Cutting-Edge Technology</span>
-            </h1>
+              <h1 className="text-5xl md:text-7xl font-bold text-black mb-8 leading-[0.95] tracking-tight">
+                PRECISION.<br />
+                <span className="opacity-40">ENGINEERED.</span>
+              </h1>
 
-            <p className="text-xl text-dark-300 max-w-3xl mx-auto mb-8">
-              We deliver enterprise-grade SaaS solutions and IT professional services that drive innovation and accelerate growth.
-            </p>
+              <div className="w-20 h-1 bg-black mb-8"></div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#contact"
-                className="px-8 py-4 bg-primary-700 text-white rounded-lg hover:bg-primary-600 transition-all font-semibold shadow-lg hover:shadow-primary-500/50"
-              >
-                Start Your Journey →
-              </a>
-              <a
-                href="#services"
-                className="px-8 py-4 bg-transparent text-white rounded-lg border-2 border-dark-700 hover:border-primary-500 transition-all font-semibold"
-              >
-                Learn More
-              </a>
-            </div>
-          </motion.div>
+              <p className="text-lg text-black/70 max-w-lg mb-12 leading-relaxed">
+                We design and build precision-engineered digital infrastructure for high-growth enterprises. Sophisticated systems, simplified for maximum impact.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-6">
+                <a
+                  href="#contact"
+                  className="px-10 py-5 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-widest text-xs"
+                >
+                  Start Your Project
+                </a>
+                <a
+                  href="#services"
+                  className="px-10 py-5 bg-transparent text-black border border-black/20 hover:border-black transition-all font-bold uppercase tracking-widest text-xs"
+                >
+                  The Methodology
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Central Structural Graphic Placeholder/Abstract */}
+            <motion.div 
+              className="relative hidden lg:block"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="relative aspect-square border border-black/5 bg-white/50 backdrop-blur-sm p-12 flex items-center justify-center overflow-hidden">
+                {/* Decorative blueprint lines */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                  <div className="absolute top-0 left-1/2 w-px h-full bg-black"></div>
+                  <div className="absolute top-1/2 left-0 w-full h-px bg-black"></div>
+                  <div className="absolute top-0 left-0 w-full h-full border border-black rotate-45 scale-150"></div>
+                </div>
+
+                {/* Abstract 3D/Geometric Concept (Vector 3K) */}
+                <div className="relative z-10 w-full h-full flex items-center justify-center">
+                   <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M100 100L200 50L300 100L300 300L200 350L100 300Z" stroke="black" strokeWidth="1" strokeDasharray="4 4" />
+                      <path d="M200 50V350" stroke="black" strokeWidth="0.5" opacity="0.2" />
+                      <path d="M100 100H300" stroke="black" strokeWidth="0.5" opacity="0.2" />
+                      <path d="M100 300H300" stroke="black" strokeWidth="0.5" opacity="0.2" />
+                      
+                      {/* Stylized '3' and 'K' in vector style */}
+                      <path d="M150 150H250L200 200L250 250H150" stroke="black" strokeWidth="3" />
+                      <path d="M180 150V250" stroke="black" strokeWidth="3" />
+                      <path d="M180 200L250 150" stroke="black" strokeWidth="3" />
+                      <path d="M180 200L250 250" stroke="black" strokeWidth="3" />
+                      
+                      {/* Connection Points */}
+                      <circle cx="200" cy="50" r="3" fill="black" />
+                      <circle cx="300" cy="100" r="3" fill="black" />
+                      <circle cx="300" cy="300" r="3" fill="black" />
+                      <circle cx="200" cy="350" r="3" fill="black" />
+                      <circle cx="100" cy="300" r="3" fill="black" />
+                      <circle cx="100" cy="100" r="3" fill="black" />
+                   </svg>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
-
-        {/* Stats Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      </section>
+      {/* Stats Section - Precise Cards */}
+      <section className="border-y border-black py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-black border border-black overflow-hidden">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
+                className="bg-white p-10 text-center"
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="text-4xl md:text-5xl font-bold text-primary-500 mb-2">{stat.value}</div>
-                <div className="text-dark-400 text-sm">{stat.label}</div>
+                <div className="text-5xl font-bold text-black mb-3">{stat.value}</div>
+                <div className="text-black/40 text-[10px] font-bold uppercase tracking-widest">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
-      </AuroraBackground>
+      </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-dark-800/50">
+      {/* Services Section - Geometric Grid */}
+      <section id="services" className="py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
             {!selectedService ? (
@@ -291,101 +323,122 @@ export default function Home() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                    Our <span className="text-primary-500">Services</span>
-                  </h2>
-                  <p className="text-dark-300 max-w-2xl mx-auto">
-                    Comprehensive IT solutions designed to meet your unique business needs
-                  </p>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                  <div className="max-w-xl">
+                    <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+                      CORE<br />CAPABILITIES.
+                    </h2>
+                    <p className="text-black/60 font-medium">
+                      Tailored technological intervention across the entire digital stack.
+                    </p>
+                  </div>
+                  <div className="hidden md:block w-32 h-px bg-black/20"></div>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex flex-wrap justify-center">
                   {services.map((service, index) => (
                     <motion.button
                       key={service.id}
                       onClick={() => setSelectedService(service)}
-                      className="group p-6 bg-dark-800 rounded-lg border border-dark-700 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 text-left cursor-pointer"
-                      initial={{ opacity: 0, y: 20 }}
+                      className="group p-10 bg-white hover:bg-black hover:text-white transition-all duration-300 text-left cursor-pointer relative overflow-hidden w-full md:w-1/2 lg:w-1/3 border border-black -ml-px -mt-px"
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <div className="w-14 h-14 bg-primary-500/10 rounded-lg flex items-center justify-center text-primary-500 mb-4 group-hover:bg-primary-500/20 transition-colors">
-                        {service.icon}
+                      <div className="relative z-10">
+                        <div className="w-12 h-12 border border-current flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                          {React.cloneElement(service.icon as React.ReactElement<{ className?: string }>, { className: "w-6 h-6" })}
+                        </div>
+                        <h3 className="text-xl font-bold mb-4 uppercase tracking-tight">{service.name}</h3>
+                        <p className="text-sm opacity-60 mb-10 line-clamp-2 font-medium">{service.description}</p>
+                        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em]">
+                          Analyze Specifications
+                          <span className="group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
                       </div>
-                      <h3 className="text-xl font-semibold text-white mb-2">{service.name}</h3>
-                      <p className="text-dark-400 mb-4">{service.description}</p>
-                      <span className="text-primary-500 text-sm font-medium group-hover:underline">Learn more →</span>
+                      {/* Decorative index number */}
+                      <span className="absolute bottom-10 right-10 text-4xl font-bold opacity-[0.03] group-hover:opacity-10 transition-opacity">
+                        0{index + 1}
+                      </span>
                     </motion.button>
                   ))}
                 </div>
               </motion.div>
             ) : (
-              // Service Detail Modal
+              // Service Detail - Technical Deep Dive
               <motion.div
                 key="detail"
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
-                className="max-w-4xl mx-auto"
+                className="max-w-5xl mx-auto"
               >
                 <button
                   onClick={() => setSelectedService(null)}
-                  className="flex items-center text-dark-400 hover:text-primary-500 transition-colors mb-8 group"
+                  className="flex items-center text-[10px] font-bold uppercase tracking-widest hover:text-black/60 transition-colors mb-12 group"
                 >
-                  <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                  Back to Services
+                  <span className="mr-3 group-hover:-translate-x-1 transition-transform">←</span>
+                  Back to Index
                 </button>
 
-                <div className="bg-dark-800 rounded-2xl border border-dark-700 p-8 md:p-12">
-                  <div className="flex items-start gap-6 mb-8">
-                    <div className="w-16 h-16 bg-primary-500/10 rounded-lg border-2 border-primary-500/30 flex items-center justify-center text-primary-500 flex-shrink-0">
-                      {selectedService.icon}
+                <div className="border border-black p-10 md:p-20 bg-white relative">
+                   <div className="absolute top-0 right-0 p-8 text-[10px] font-mono opacity-20">
+                      REF: {selectedService.id.toUpperCase()}_v1.0
+                   </div>
+                  <div className="flex flex-col md:flex-row items-start gap-12 mb-20">
+                    <div className="w-20 h-20 border border-black flex items-center justify-center flex-shrink-0">
+                      {React.cloneElement(selectedService.icon as React.ReactElement<{ className?: string }>, { className: "w-10 h-10" })}
                     </div>
                     <div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{selectedService.name}</h2>
-                      <p className="text-xl text-dark-300">{selectedService.fullDescription}</p>
+                      <h2 className="text-4xl md:text-5xl font-bold text-black mb-8 leading-tight">{selectedService.name}</h2>
+                      <p className="text-xl text-black/60 font-medium leading-relaxed">{selectedService.fullDescription}</p>
                     </div>
                   </div>
 
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-bold text-white mb-4">What's Included</h3>
-                    <div className="grid md:grid-cols-2 gap-3">
-                      {selectedService.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-start">
-                          <svg className="w-6 h-6 text-primary-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className="text-dark-300">{feature}</span>
+                  <div className="grid lg:grid-cols-2 gap-20">
+                    <div>
+                      <h3 className="text-xs font-bold uppercase tracking-[0.3em] mb-10 opacity-40">Modular Components</h3>
+                      <div className="grid gap-4">
+                        {selectedService.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center p-4 border border-black/5 hover:border-black/20 transition-colors bg-black/[0.02]">
+                            <div className="w-1.5 h-1.5 bg-black mr-4 rotate-45"></div>
+                            <span className="text-sm font-medium text-black/80">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-12">
+                      {selectedService.pricing && (
+                        <div>
+                           <h3 className="text-xs font-bold uppercase tracking-[0.3em] mb-6 opacity-40">Cost Structure</h3>
+                           <div className="p-8 border border-black bg-black text-white">
+                              <div className="text-3xl font-bold mb-2">{selectedService.pricing.split('(')[0]}</div>
+                              <div className="text-[10px] uppercase tracking-widest opacity-60">Fixed-Price Allocation</div>
+                           </div>
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                      )}
 
-                  {selectedService.pricing && (
-                    <div className="bg-primary-500/10 border border-primary-500/30 rounded-lg p-6 mb-8">
-                      <h3 className="text-xl font-bold text-white mb-2">Pricing</h3>
-                      <p className="text-dark-300">{selectedService.pricing}</p>
+                      <div>
+                        <h3 className="text-xs font-bold uppercase tracking-[0.3em] mb-6 opacity-40">Engagement</h3>
+                        <div className="flex flex-col gap-4">
+                          <a
+                            href="#contact"
+                            onClick={() => setSelectedService(null)}
+                            className="w-full py-5 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-widest text-xs text-center"
+                          >
+                            Initiate Selection
+                          </a>
+                          <button
+                            onClick={() => setSelectedService(null)}
+                            className="w-full py-5 border border-black text-black hover:bg-black/5 transition-all font-bold uppercase tracking-widest text-xs"
+                          >
+                            Configuration Index
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  )}
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a
-                      href="#contact"
-                      onClick={() => setSelectedService(null)}
-                      className="px-8 py-4 bg-primary-700 text-white rounded-lg hover:bg-primary-600 transition-all font-semibold text-center shadow-lg hover:shadow-primary-500/50"
-                    >
-                      Get Started →
-                    </a>
-                    <button
-                      onClick={() => setSelectedService(null)}
-                      className="px-8 py-4 bg-transparent text-white rounded-lg border-2 border-dark-700 hover:border-primary-500 transition-all font-semibold"
-                    >
-                      View All Services
-                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -394,138 +447,121 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Products Section */}
-      <section id="products" className="py-20 bg-dark-900">
+      {/* Products Section - Productized Solutions */}
+      <section id="products" className="py-32 border-t border-black bg-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-6">
-              <span className="text-sm font-medium text-primary-500">Our Products</span>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div className="max-w-xl">
+               <div className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4 opacity-40">Direct Acquisition</div>
+               <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+                SAAS<br />DEPLOYMENTS.
+              </h2>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              SaaS <span className="text-primary-500">Products</span>
-            </h2>
-            <p className="text-dark-300 max-w-2xl mx-auto">
-              AI-powered tools built by 3KPRO.SERVICES to help businesses and creators succeed
+            <p className="text-black/60 font-medium max-w-sm">
+              Standardized software products engineered for immediate operational utility.
             </p>
           </div>
 
-          <div className="max-w-xl mx-auto">
+          <div className="max-w-3xl">
             {/* XELORA */}
             <a
-              href="https://xelora.app"
+              href="https://getxelora.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-dark-800 border border-dark-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10"
+              className="group block border border-black p-12 hover:bg-black hover:text-white transition-all duration-500 relative bg-white"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+              <div className="flex flex-col md:flex-row md:items-center gap-8 mb-10">
+                <div className="w-16 h-16 border border-current flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-transform">
+                   <span className="font-bold text-2xl">X</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">XELORA</h3>
-                  <span className="text-primary-500 text-sm">xelora.app</span>
+                  <h3 className="text-3xl font-bold uppercase tracking-tighter">XELORA</h3>
+                  <span className="opacity-40 text-xs font-mono uppercase tracking-widest">getxelora.com</span>
                 </div>
               </div>
-              <p className="text-dark-300 mb-4">
+              <p className="text-lg opacity-60 mb-10 font-medium leading-relaxed">
                 AI-powered predictive intelligence for content creators. Predict momentum. Engineer virality.
               </p>
-              <div className="space-y-2 mb-6">
-                <div className="flex items-center text-dark-400 text-sm">
-                  <svg className="w-4 h-4 text-primary-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Viral Score prediction with 87% accuracy
-                </div>
-                <div className="flex items-center text-dark-400 text-sm">
-                  <svg className="w-4 h-4 text-primary-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Multi-platform content generation
-                </div>
-                <div className="flex items-center text-dark-400 text-sm">
-                  <svg className="w-4 h-4 text-primary-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Real-time trend analysis
-                </div>
+              <div className="grid md:grid-cols-2 gap-4 mb-12">
+                {[
+                  'Viral Score prediction with 87% accuracy',
+                  'Multi-platform content generation',
+                  'Real-time trend analysis',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center text-xs font-bold uppercase tracking-tight">
+                    <div className="w-1 h-1 bg-current mr-3"></div>
+                    {item}
+                  </div>
+                ))}
               </div>
-              <span className="text-primary-500 text-sm font-medium group-hover:underline">
-                Visit XELORA →
-              </span>
+              <div className="text-[10px] font-bold uppercase tracking-[0.3em] group-hover:translate-x-4 transition-transform inline-flex items-center gap-2">
+                Access Platform <span>→</span>
+              </div>
             </a>
           </div>
 
-          <div className="text-center mt-12">
-            <Link href="/marketplace" className="inline-flex items-center px-6 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white font-semibold hover:border-primary-500/50 hover:bg-dark-700 transition-all group">
-              View All Products & Apps 
-              <svg className="w-5 h-5 ml-2 text-primary-500 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+          <div className="mt-20">
+            <Link href="/marketplace" className="inline-flex items-center px-10 py-5 bg-white border border-black text-black font-bold uppercase tracking-widest text-xs hover:bg-black hover:text-white transition-all group">
+              Explore Marketplace 
+              <span className="ml-3 group-hover:translate-x-2 transition-transform">→</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20">
+      {/* About Section - Foundational Integrity */}
+      <section id="about" className="py-32 border-t border-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div>
-              <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-6">
-                <span className="text-sm font-medium text-primary-500">Why 3KPRO</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Your Trusted Partner in
-                <br />
-                <span className="text-primary-500">Digital Transformation</span>
+              <div className="w-12 h-1 bg-black mb-10"></div>
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-10 leading-tight">
+                FOUNDATIONAL<br />
+                <span className="opacity-40 text-3xl md:text-4xl">INTEGRITY & MASTERY.</span>
               </h2>
-              <p className="text-dark-300 mb-8">
-                With over 15 years of experience, we've helped hundreds of businesses transform their operations through innovative technology solutions. Our team of certified professionals is committed to delivering excellence in every project.
+              <p className="text-lg text-black/60 mb-12 font-medium leading-relaxed">
+                Since 2010, 3KPRO has maintained a rigorous standard of excellence in software engineering and IT consulting. Our approach is rooted in structural stability and architectural foresight.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="flex-shrink-0 w-6 h-6 bg-primary-500/10 rounded-full flex items-center justify-center mr-3 mt-0.5">
-                      <svg className="w-4 h-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                  <div key={index} className="flex items-center group">
+                    <div className="w-4 h-4 border border-black mr-6 flex items-center justify-center group-hover:bg-black transition-colors">
+                      <div className="w-1 h-1 bg-black group-hover:bg-white"></div>
                     </div>
-                    <span className="text-dark-300">{feature}</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-black/80">{feature}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="relative">
-              <div className="bg-dark-800 border border-dark-700 rounded-2xl p-8">
-                <div className="text-center mb-8">
-                  <div className="text-5xl font-bold text-primary-500 mb-2">3K+</div>
-                  <div className="text-dark-400">Successful Projects</div>
+              <div className="border border-black p-12 md:p-16 bg-white bg-grid relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-8 opacity-5">
+                   <svg width="200" height="200" viewBox="0 0 200 200">
+                      <circle cx="100" cy="100" r="90" stroke="black" strokeWidth="1" fill="none" />
+                      <path d="M100 0V200M0 100H200" stroke="black" strokeWidth="0.5" />
+                   </svg>
                 </div>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-dark-300">Client Retention</span>
-                    <span className="text-white font-semibold">95%</span>
-                  </div>
-                  <div className="w-full bg-dark-700 rounded-full h-2">
-                    <div className="bg-primary-500 h-2 rounded-full" style={{ width: '95%' }}></div>
-                  </div>
-                  <div className="flex justify-between items-center mt-4">
-                    <span className="text-dark-300">On-Time Delivery</span>
-                    <span className="text-white font-semibold">98%</span>
-                  </div>
-                  <div className="w-full bg-dark-700 rounded-full h-2">
-                    <div className="bg-primary-500 h-2 rounded-full" style={{ width: '98%' }}></div>
-                  </div>
-                  <div className="flex justify-between items-center mt-4">
-                    <span className="text-dark-300">Team Experts</span>
-                    <span className="text-white font-semibold">150+</span>
-                  </div>
-                  <div className="w-full bg-dark-700 rounded-full h-2">
-                    <div className="bg-primary-500 h-2 rounded-full" style={{ width: '100%' }}></div>
-                  </div>
+                <div className="text-center mb-16 relative z-10">
+                  <div className="text-7xl font-bold text-black mb-2 tracking-tighter">3K+</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40">Systemic Successes</div>
+                </div>
+                <div className="space-y-10 relative z-10">
+                  {[
+                    { label: 'Client Retention', value: '95%' },
+                    { label: 'On-Time Delivery', value: '98%' },
+                    { label: 'Core Technical Experts', value: '150+' },
+                  ].map((item, i) => (
+                    <div key={i}>
+                      <div className="flex justify-between items-center mb-4">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-black/60">{item.label}</span>
+                        <span className="text-sm font-bold">{item.value}</span>
+                      </div>
+                      <div className="w-full h-px bg-black opacity-10">
+                        <div className="bg-black h-px" style={{ width: item.value.includes('+') ? '100%' : item.value }}></div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -533,277 +569,158 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-dark-900">
+      {/* Pricing Section - Transparent Tiers */}
+      <section id="pricing" className="py-32 border-t border-black bg-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-6">
-              <span className="text-sm font-medium text-primary-500">Affordable Website Packages</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Simple <span className="text-primary-500">Website Solutions</span>
+          <div className="max-w-xl mb-24">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-8 leading-tight">
+              WEB<br />ARCHITECTURE.
             </h2>
-            <p className="text-dark-300 max-w-2xl mx-auto">
-              One-time fee. No monthly costs. FREE hosting included.
+            <p className="text-black/60 font-medium">
+              Standardized packages for businesses requiring structural digital presence.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Starter Package */}
-            <div className="bg-dark-800 border border-dark-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all">
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-white mb-2">Starter</h3>
-                <p className="text-dark-400 text-sm">Perfect for small businesses getting started online</p>
-              </div>
-              <div className="mb-6">
-                <div className="text-4xl font-bold text-primary-500 mb-1">$899</div>
-                <div className="text-dark-400 text-sm">One-time payment</div>
-              </div>
-              <div className="space-y-3 mb-8">
-                {[
-                  '3-page website (Home, About, Contact)',
-                  'Mobile-responsive design',
-                  'FREE lifetime hosting on Vercel',
-                  'Domain setup (domain fee separate)',
-                  'Contact form with email notifications',
-                  'Google Maps integration',
-                  'Basic SEO optimization',
-                  '2 rounds of revisions',
-                  '1-2 weeks delivery',
-                ].map((feature, idx) => (
-                  <div key={idx} className="flex items-start">
-                    <svg className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-dark-300 text-sm">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <a
-                href="#contact"
-                className="block w-full text-center px-6 py-3 bg-dark-700 text-white rounded-lg hover:bg-dark-600 transition-all font-semibold"
-              >
-                Get Started
-              </a>
-            </div>
-
-            {/* Professional Package */}
-            <div className="bg-dark-800 border-2 border-primary-500 rounded-2xl p-8 relative transform md:scale-105 shadow-xl">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-primary-700 text-white text-xs font-bold px-4 py-1 rounded-full">
-                  MOST POPULAR
-                </span>
-              </div>
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-white mb-2">Professional</h3>
-                <p className="text-dark-400 text-sm">Ideal for established local businesses</p>
-              </div>
-              <div className="mb-6">
-                <div className="text-4xl font-bold text-primary-500 mb-1">$1,499</div>
-                <div className="text-dark-400 text-sm">One-time payment</div>
-              </div>
-              <div className="space-y-3 mb-8">
-                {[
-                  '5-7 page website (custom pages)',
-                  'Premium mobile-responsive design',
-                  'FREE lifetime hosting on Vercel',
-                  'Domain setup (domain fee separate)',
-                  'Advanced contact forms',
-                  'Google Maps + Business Hours',
-                  'Photo gallery/portfolio',
-                  'Social media integration',
-                  'Advanced SEO optimization',
-                  'Google Business Profile setup',
-                  '3 rounds of revisions',
-                  '1-2 weeks delivery',
-                ].map((feature, idx) => (
-                  <div key={idx} className="flex items-start">
-                    <svg className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-dark-300 text-sm">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <a
-                href="#contact"
-                className="block w-full text-center px-6 py-3 bg-primary-700 text-white rounded-lg hover:bg-primary-600 transition-all font-semibold shadow-lg"
-              >
-                Get Started
-              </a>
-            </div>
-
-            {/* Premium Package */}
-            <div className="bg-dark-800 border border-dark-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all">
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-white mb-2">Premium</h3>
-                <p className="text-dark-400 text-sm">Full-featured solution for growing businesses</p>
-              </div>
-              <div className="mb-6">
-                <div className="text-4xl font-bold text-primary-500 mb-1">Custom</div>
-                <div className="text-dark-400 text-sm">Starting at $2,499</div>
-              </div>
-              <div className="space-y-3 mb-8">
-                {[
-                  'Everything in Professional',
-                  'Unlimited pages',
-                  'E-commerce capabilities (optional)',
-                  'Customer appointment booking',
-                  'Blog/news section',
-                  'Email marketing integration',
-                  'Analytics dashboard',
-                  'Custom features & integrations',
-                  'Priority support',
-                  'Unlimited revisions',
-                  '2 weeks delivery',
-                ].map((feature, idx) => (
-                  <div key={idx} className="flex items-start">
-                    <svg className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-dark-300 text-sm">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <a
-                href="#contact"
-                className="block w-full text-center px-6 py-3 bg-dark-700 text-white rounded-lg hover:bg-dark-600 transition-all font-semibold"
-              >
-                Contact Us
-              </a>
-            </div>
-          </div>
-
-          {/* Additional Info */}
-          <div className="mt-12 text-center">
-            <div className="inline-block bg-dark-800 border border-dark-700 rounded-xl p-6 max-w-2xl">
-              <div className="flex items-start">
-                <svg className="w-6 h-6 text-primary-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div className="text-left">
-                  <p className="text-white font-semibold mb-2">What's Included in Every Package:</p>
-                  <p className="text-dark-300 text-sm">
-                    All packages include FREE lifetime hosting on Vercel (no monthly fees ever), mobile-responsive design,
-                    SSL certificate (secure HTTPS), and full code ownership. Domain registration through Namecheap
-                    (~$12-15/year, paid directly to registrar). We also provide training on how to update your site content.
-                  </p>
+          <div className="grid md:grid-cols-3 gap-px bg-black border border-black overflow-hidden">
+            {[
+              {
+                name: 'Starter',
+                price: '$899',
+                desc: 'Reputational Anchor',
+                features: ['3-page core site', 'Structural hosting', 'Mobile precision', 'Secure handshake', '1-2 weeks build'],
+              },
+              {
+                name: 'Professional',
+                price: '$1,499',
+                desc: 'Operational Base',
+                popular: true,
+                features: ['7-page system', 'Premium design', 'Advanced SEO logic', 'G-Business integration', 'Portfolio array'],
+              },
+              {
+                name: 'Premium',
+                price: 'Custom',
+                desc: 'Enterprise Node',
+                features: ['Unlimited architecture', 'E-commerce logic', 'Customer portal', 'Priority sync', 'High-density support'],
+              }
+            ].map((tier, idx) => (
+              <div key={idx} className={`bg-white p-12 flex flex-col relative ${tier.popular ? 'z-10' : ''}`}>
+                {tier.popular && (
+                  <div className="absolute top-0 left-0 w-full h-1 bg-black"></div>
+                )}
+                <div className="mb-12">
+                  <div className="text-[10px] font-bold uppercase tracking-widest opacity-40 mb-2">{tier.desc}</div>
+                  <h3 className="text-2xl font-bold uppercase tracking-tighter mb-4">{tier.name}</h3>
+                  <div className="text-4xl font-bold mb-2">{tier.price}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-tight opacity-40">Single Allocation</div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-dark-800 to-dark-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-500/5 via-transparent to-transparent"></div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-dark-300 text-lg mb-8">
-            Let's discuss how our IT solutions can help you achieve your goals. Get in touch with our experts today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contact" className="px-8 py-4 bg-primary-700 text-white rounded-lg hover:bg-primary-600 transition-all font-semibold">
-              Schedule a Call
-            </a>
-            <div className="flex items-center justify-center gap-4 text-dark-300">
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <a href="mailto:james@3kpro.services" className="hover:text-primary-500 transition-colors">
-                  james@3kpro.services
+                <div className="space-y-4 mb-16 flex-grow">
+                  {tier.features.map((f, i) => (
+                    <div key={i} className="flex items-center text-xs font-medium">
+                      <div className="w-1 h-1 bg-black mr-4"></div>
+                      {f}
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href="#contact"
+                  className={`w-full py-5 text-center text-xs font-bold uppercase tracking-widest border border-black transition-all ${tier.popular ? 'bg-black text-white hover:bg-black/90' : 'bg-white text-black hover:bg-black hover:text-white'}`}
+                >
+                  Configure {tier.name}
                 </a>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - Terminal */}
+      <section className="py-32 border-y border-black bg-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-10 invert"></div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-10 leading-tight">
+            INNOVATION REQUIRES<br />STRUCTURAL STABILITY.
+          </h2>
+          <p className="text-white/60 text-lg mb-12 max-w-2xl mx-auto font-medium">
+            Join the collective of forward-thinking enterprises operating on the 3KPRO standard.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href="#contact" className="px-12 py-6 bg-white text-black font-bold uppercase tracking-widest text-xs hover:bg-white/90 transition-all">
+              Initiate Consultation
+            </a>
+            <div className="flex items-center justify-center gap-4 text-white/40 font-mono text-xs">
+              sys@3kpro.services
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-dark-800/50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
-            <p className="text-dark-300">
-              Have a project in mind? Let's discuss how we can help you succeed.
-            </p>
-          </div>
-          <div className="bg-dark-800 border border-dark-700 rounded-2xl p-8">
-            <ContactForm />
+      {/* Contact Section - Data Entry */}
+      <section id="contact" className="py-32 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div>
+               <h2 className="text-4xl font-bold text-black mb-10 uppercase tracking-tighter">Engagement<br />Interface.</h2>
+               <p className="text-black/60 font-medium mb-12">Submit your project parameters for technical evaluation.</p>
+               <div className="space-y-6">
+                  <div className="text-xs font-bold uppercase tracking-widest">
+                    <span className="opacity-40 block mb-2">Location</span>
+                    Tulsa, Oklahoma, USA
+                  </div>
+                  <div className="text-xs font-bold uppercase tracking-widest">
+                    <span className="opacity-40 block mb-2">Direct Channel</span>
+                    james@3kpro.services
+                  </div>
+               </div>
+            </div>
+            <div className="border border-black p-10 bg-white shadow-[10px_10px_0px_0px_rgba(0,0,0,0.05)]">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
 
       </main>
 
-      {/* Footer */}
-      <footer className="bg-dark-900 border-t border-dark-800 py-12">
+      {/* Footer - Index */}
+      <footer className="bg-white border-t border-black py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="20" cy="20" r="18" fill="#e07856" opacity="0.2"/>
-                  <path d="M20 4 L35 16 L30 32 L10 32 L5 16 Z" fill="#e07856"/>
-                  <rect x="14" y="14" width="12" height="12" fill="white" opacity="0.9"/>
-                  <path d="M20 10 L26 20 L20 30 L14 20 Z" fill="white"/>
-                </svg>
-                <span className="text-2xl font-bold text-white">3KPRO</span>
+          <div className="grid md:grid-cols-4 gap-16 mb-20">
+            <div className="col-span-2">
+              <div className="flex items-center gap-3 mb-10">
+                <div className="w-8 h-8 border border-black flex items-center justify-center font-bold text-xs">3K</div>
+                <span className="text-xl font-bold uppercase tracking-tighter">3KPRO.SERVICES</span>
               </div>
-              <p className="text-dark-300 text-sm">
-                Delivering cutting-edge IT solutions and professional services since 2010.
+              <p className="text-black/60 text-sm font-medium max-w-sm leading-relaxed mb-10">
+                Precision-engineered digital infrastructure and professional services. Operational since 2010.
               </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-white mb-4">Services</h3>
-              <div className="space-y-2">
-                <a href="#services" className="block text-dark-300 hover:text-primary-500 transition-colors text-sm">Cloud Solutions</a>
-                <a href="#services" className="block text-dark-300 hover:text-primary-500 transition-colors text-sm">Custom Development</a>
-                <a href="#services" className="block text-dark-300 hover:text-primary-500 transition-colors text-sm">Data Management</a>
-                <a href="#services" className="block text-dark-300 hover:text-primary-500 transition-colors text-sm">Cybersecurity</a>
+              <div className="flex space-x-6">
+                {['Twitter', 'GitHub', 'LinkedIn'].map((p) => (
+                  <a key={p} href={`https://${p.toLowerCase()}.com/3kpro`} target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold uppercase tracking-widest hover:underline">
+                    {p}
+                  </a>
+                ))}
               </div>
             </div>
             <div>
-              <h3 className="font-semibold text-white mb-4">Company</h3>
-              <div className="space-y-2">
-                <a href="#about" className="block text-dark-300 hover:text-primary-500 transition-colors text-sm">About Us</a>
-                <a href="#services" className="block text-dark-300 hover:text-primary-500 transition-colors text-sm">Services</a>
-                <a href="#contact" className="block text-dark-300 hover:text-primary-500 transition-colors text-sm">Contact</a>
-                <a href="#products" className="block text-dark-300 hover:text-primary-500 transition-colors text-sm">Products</a>
+              <h3 className="text-xs font-bold uppercase tracking-[0.3em] mb-8 opacity-40">Inventory</h3>
+              <div className="space-y-4">
+                {['Cloud Solutions', 'Custom Dev', 'Data Systems', 'Security'].map((s) => (
+                   <a key={s} href="#services" className="block text-xs font-bold uppercase tracking-tight hover:opacity-60 transition-opacity">{s}</a>
+                ))}
               </div>
             </div>
             <div>
-              <h3 className="font-semibold text-white mb-4">Connect</h3>
-              <div className="flex space-x-4">
-                <a href="https://twitter.com/3kpro" target="_blank" rel="noopener noreferrer" className="text-dark-300 hover:text-primary-500 transition-colors" aria-label="Twitter">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                </a>
-                <a href="https://github.com/3kpro" target="_blank" rel="noopener noreferrer" className="text-dark-300 hover:text-primary-500 transition-colors" aria-label="GitHub">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                  </svg>
-                </a>
-                <a href="https://linkedin.com/company/3kpro" target="_blank" rel="noopener noreferrer" className="text-dark-300 hover:text-primary-500 transition-colors" aria-label="LinkedIn">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                  </svg>
-                </a>
+              <h3 className="text-xs font-bold uppercase tracking-[0.3em] mb-8 opacity-40">Hierarchy</h3>
+              <div className="space-y-4">
+                {['About', 'Marketplace', 'Services', 'Contact'].map((s) => (
+                   <a key={s} href={`#${s.toLowerCase()}`} className="block text-xs font-bold uppercase tracking-tight hover:opacity-60 transition-opacity">{s}</a>
+                ))}
               </div>
-              <p className="text-dark-300 mt-4 text-sm">
-                <a href="mailto:james@3kpro.services" className="hover:text-primary-500 transition-colors">
-                  james@3kpro.services
-                </a>
-              </p>
             </div>
           </div>
-          <div className="border-t border-dark-800 pt-8 text-center text-dark-500 text-sm">
-            <p>© {new Date().getFullYear()} 3KPRO. All rights reserved.</p>
+          <div className="border-t border-black pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-[10px] font-bold uppercase tracking-widest opacity-40">© {new Date().getFullYear()} 3KPRO.SYSTEMS. ALL RIGHTS RESERVED.</p>
+            <div className="text-[10px] font-bold uppercase tracking-widest opacity-40">Tulsa // OK // USA</div>
           </div>
         </div>
       </footer>

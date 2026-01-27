@@ -12,35 +12,36 @@ export const CloudLedgerNavigation: React.FC<NavigationProps> = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#0f172a]/95 backdrop-blur-md border-b border-blue-500/10 fixed top-0 w-full z-50">
+    <nav className="bg-white/80 backdrop-blur-md border-b border-black fixed top-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link
             href="/cloud-ledger"
-            className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer group"
           >
-            <Cloud className="w-8 h-8 text-blue-500" />
-            <span className="text-xl font-bold text-white">
-              Cloud <span className="text-blue-500">Ledger</span>
+            <div className="w-10 h-10 border border-black flex items-center justify-center font-bold text-xl tracking-tighter group-hover:bg-black group-hover:text-white transition-all">
+              3K
+            </div>
+            <span className="text-xl font-bold text-black uppercase tracking-tight">
+              Cloud <span className="opacity-40">Ledger</span>
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
-              3K Pro Services
+          <div className="hidden md:flex items-center space-x-10">
+            <Link href="/" className="text-[10px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-colors">
+              Repository
             </Link>
-            <div className="h-4 w-px bg-gray-700"></div>
-            <Link href="/privacy" className="text-gray-300 hover:text-white transition-colors font-medium">
+            <Link href="/privacy" className="text-[10px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-colors">
               Privacy
             </Link>
-            <Link href="/terms" className="text-gray-300 hover:text-white transition-colors font-medium">
+            <Link href="/terms" className="text-[10px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-colors">
               Terms
             </Link>
              <a
               href={process.env.NEXT_PUBLIC_CLOUD_LEDGER_URL || "http://localhost:3002"}
-              className="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all shadow-lg shadow-blue-500/20"
+              className="px-6 py-2 border border-black bg-black text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
             >
-              Log In
+              Analyze Access
             </a>
           </div>
 
@@ -48,7 +49,7 @@ export const CloudLedgerNavigation: React.FC<NavigationProps> = () => {
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-300 hover:text-white transition-colors p-2"
+              className="text-black p-2"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -62,31 +63,31 @@ export const CloudLedgerNavigation: React.FC<NavigationProps> = () => {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-700/30 py-4 bg-[#0f172a]/95">
+          <div className="md:hidden border-t border-black py-4 bg-white/95 backdrop-blur-md">
             <div className="flex flex-col space-y-4 px-4">
               <Link
                 href="/"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-[10px] font-bold uppercase tracking-widest text-black"
               >
-                3K Pro Services
+                Repository
               </Link>
               <Link
                 href="/privacy"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-[10px] font-bold uppercase tracking-widest text-black"
               >
                 Privacy
               </Link>
               <Link
                 href="/terms"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-[10px] font-bold uppercase tracking-widest text-black"
               >
                 Terms
               </Link>
               <a
                 href={process.env.NEXT_PUBLIC_CLOUD_LEDGER_URL || "http://localhost:3002"}
-                className="block text-center w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold"
+                className="block text-center w-full py-4 border border-black bg-black text-white text-[10px] font-bold uppercase tracking-widest"
               >
-                Log In
+                Analyze Access
               </a>
             </div>
           </div>

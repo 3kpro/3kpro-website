@@ -37,7 +37,7 @@ export const marketplaceItems: MarketplaceItem[] = [
     currency: 'USD',
     category: 'SaaS',
     status: 'Available',
-    demoUrl: 'https://xelora.app',
+    demoUrl: 'https://getxelora.com',
     pricingTiers: [
       { name: 'Free', price: 0, features: ['5 campaigns/month', 'Basic analytics'] },
       { name: 'Pro', price: 29, features: ['50 campaigns/month', 'Full analytics', 'All platforms'] },

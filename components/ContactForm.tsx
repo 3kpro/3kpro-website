@@ -45,110 +45,104 @@ export default function ContactForm() {
     }
   }
 
+  const inputClasses = "w-full px-4 py-4 bg-white border border-black focus:outline-none focus:ring-0 focus:border-black/40 transition-all text-black font-medium placeholder:text-black/20 text-sm"
+
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-              Name *
-            </label>
-            <input
-              type="text"
-              id="name"
-              {...register('name', { required: 'Name is required' })}
-              className={`w-full px-4 py-3 bg-dark-800 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-white ${
-                errors.name ? 'border-primary-500' : 'border-dark-700'
-              }`}
-              placeholder="John Doe"
-            />
-            {errors.name && (
-              <p className="mt-1 text-sm text-primary-500">{errors.name.message}</p>
-            )}
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-              Email *
-            </label>
-            <input
-              type="email"
-              id="email"
-              {...register('email', {
-                required: 'Email is required',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Invalid email address'
-                }
-              })}
-              className={`w-full px-4 py-3 bg-dark-800 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-white ${
-                errors.email ? 'border-primary-500' : 'border-dark-700'
-              }`}
-              placeholder="john@company.com"
-            />
-            {errors.email && (
-              <p className="mt-1 text-sm text-primary-500">{errors.email.message}</p>
-            )}
-          </div>
+    <div className="font-sans">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+        <div>
+          <label htmlFor="name" className="block text-[10px] font-bold uppercase tracking-[0.25em] text-black mb-3">
+            Entity Name / Representative *
+          </label>
+          <input
+            type="text"
+            id="name"
+            {...register('name', { required: 'Identification required' })}
+            className={`${inputClasses} ${errors.name ? 'border-red-500' : 'border-black'}`}
+            placeholder="E.G. JOHN DOE"
+          />
+          {errors.name && (
+            <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-red-500">{errors.name.message}</p>
+          )}
         </div>
 
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
-            Company
+          <label htmlFor="email" className="block text-[10px] font-bold uppercase tracking-[0.25em] text-black mb-3">
+            Communication Channel *
+          </label>
+          <input
+            type="email"
+            id="email"
+            {...register('email', {
+              required: 'Communication channel required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Invalid channel format'
+              }
+            })}
+            className={`${inputClasses} ${errors.email ? 'border-red-500' : 'border-black'}`}
+            placeholder="NAME@ORGANIZATION.COM"
+          />
+          {errors.email && (
+            <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-red-500">{errors.email.message}</p>
+          )}
+        </div>
+
+        <div>
+          <label htmlFor="company" className="block text-[10px] font-bold uppercase tracking-[0.25em] text-black mb-3">
+            Organization (Optional)
           </label>
           <input
             type="text"
             id="company"
             {...register('company')}
-            className="w-full px-4 py-3 bg-dark-800 border-2 border-dark-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-white"
-            placeholder="Your Company"
+            className={inputClasses}
+            placeholder="LEGAL ENTITY NAME"
           />
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-            What can we help you with? *
+          <label htmlFor="message" className="block text-[10px] font-bold uppercase tracking-[0.25em] text-black mb-3">
+            What can we bring to life? *
           </label>
           <textarea
             id="message"
-            rows={6}
-            {...register('message', { required: 'Message is required' })}
-            className={`w-full px-4 py-3 bg-dark-800 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all resize-none text-white ${
-              errors.message ? 'border-primary-500' : 'border-dark-700'
-            }`}
-            placeholder="Tell us about your project..."
+            rows={5}
+            {...register('message', { required: 'Parameters required' })}
+            className={`${inputClasses} resize-none ${errors.message ? 'border-red-500' : 'border-black'}`}
+            placeholder="DESCRIBE THE SYSTEM PARAMETERS OR YOUR VISION..."
           />
           {errors.message && (
-            <p className="mt-1 text-sm text-primary-500">{errors.message.message}</p>
+            <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-red-500">{errors.message.message}</p>
           )}
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full px-8 py-4 bg-primary-700 text-white rounded-lg hover:bg-primary-600 transition-all duration-300 font-semibold transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg hover:shadow-primary-500/50"
+          className="w-full py-6 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-[0.3em] text-xs disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
+          {isSubmitting ? 'PROCESSING...' : 'INITIALIZE SUBMISSION'}
         </button>
       </form>
 
       {submitStatus === 'success' && (
-        <div className="mt-6 p-4 bg-primary-500/10 border-2 border-primary-500/30 rounded-lg">
-          <p className="text-primary-500 font-medium">Thank you! We'll get back to you soon.</p>
+        <div className="mt-8 p-6 border border-black bg-black text-white">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em]">Transmission Successful. Our engineers will review your parameters shortly.</p>
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="mt-6 p-4 bg-red-500/10 border-2 border-red-500/30 rounded-lg">
-          <p className="text-red-400 font-medium">Something went wrong. Please try again or email us directly.</p>
+        <div className="mt-8 p-6 border border-red-500 bg-red-500/5">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-500">Transmission Interrupted. Please re-validate your parameters or contact james@3kpro.services directly.</p>
         </div>
       )}
 
-      <p className="text-center text-sm text-gray-400 mt-8">
-        Or email us directly at{' '}
-        <a href="mailto:james@3kpro.services" className="text-primary-500 hover:text-primary-600 font-medium transition-colors">
-          james@3kpro.services
-        </a>
-      </p>
+      <div className="mt-12 pt-8 border-t border-black/10 text-center">
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40">
+          Direct Data Channel: <a href="mailto:james@3kpro.services" className="text-black hover:underline">james@3kpro.services</a>
+        </p>
+      </div>
     </div>
   )
 }
