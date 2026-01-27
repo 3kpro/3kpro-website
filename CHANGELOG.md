@@ -18,6 +18,7 @@
 - **Global Theme**: Shifted from dark-mode aurora to a high-contrast minimalist white/black aesthetic.
 - **Hero Section**: New "Precision. Engineered." messaging with an isometric technical vector graphic.
 - **Core Capabilities**: Redesigned services grid into a "Technical Index" with detailed analytical modals.
+- **Statistical Correction**: Replaced "Core Technical Experts (150+)" with "Structural Assets (85+)" to accurately represent the current operational scale.
 - **Engagement Interface (Contact Form)**: 
     - Switched inputs to architectural white/black borders.
     - Simplified and bolded labels for maximum visibility ("Entity Name", "Communication Channel").

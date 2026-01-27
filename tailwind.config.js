@@ -6,34 +6,43 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
-      },
       colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#e07856',  // Main coral/salmon
-          600: '#d16946',
-          700: '#b85a3a',
-          800: '#9a4b2f',
-          900: '#7c3d25',
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
-        dark: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',  // Card background
-          900: '#0f172a',  // Main dark background
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      fontFamily: {
+        sans: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
         'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -46,20 +55,16 @@ module.exports = {
         pulseGlow: {
           '0%, 100%': {
             opacity: '1',
-            boxShadow: '0 0 20px rgba(255, 0, 64, 0.5)',
+            boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
           },
           '50%': {
             opacity: '0.8',
-            boxShadow: '0 0 30px rgba(255, 0, 64, 0.8)',
+            boxShadow: '0 0 30px rgba(0, 0, 0, 0.2)',
           },
         },
         fadeIn: {
-          '0%': {
-            opacity: '0',
-          },
-          '100%': {
-            opacity: '1',
-          },
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
         slideUp: {
           '0%': {
@@ -72,25 +77,17 @@ module.exports = {
           },
         },
         glow: {
-          '0%': {
-            boxShadow: '0 0 5px rgba(255, 0, 64, 0.2), 0 0 10px rgba(255, 0, 64, 0.2)',
-          },
-          '100%': {
-            boxShadow: '0 0 10px rgba(255, 0, 64, 0.4), 0 0 20px rgba(255, 0, 64, 0.4), 0 0 30px rgba(255, 0, 64, 0.3)',
-          },
+          '0%': { boxShadow: '0 0 5px rgba(0, 0, 0, 0.05)' },
+          '100%': { boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' },
         },
         aurora: {
-          from: {
-            backgroundPosition: "50% 50%, 50% 50%",
-          },
-          to: {
-            backgroundPosition: "350% 50%, 350% 50%",
-          },
+          from: { backgroundPosition: "50% 50%, 50% 50%" },
+          to: { backgroundPosition: "350% 50%, 350% 50%" },
         },
       },
       boxShadow: {
-        'tron-glow': '0 0 20px rgba(255, 0, 64, 0.5)',
-        'tron-glow-lg': '0 0 30px rgba(255, 0, 64, 0.6), 0 0 60px rgba(255, 0, 64, 0.4)',
+        'structural': '10px 10px 0px 0px rgba(0,0,0,0.05)',
+        'structural-lg': '30px 30px 0px 0px rgba(0,0,0,0.05)',
       },
     },
   },

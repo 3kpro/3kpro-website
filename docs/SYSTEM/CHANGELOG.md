@@ -6,6 +6,13 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-01-26] - Fix Tailwind v4 Build Error
+
+### Fixed
+- **Tailwind v4 Configuration:** Migrated theme configuration from `tailwind.config.js` to `globals.css` using the `@theme` block.
+- **Build Error:** Resolved `Cannot apply unknown utility class border-border` by explicitly defining the `border` color in the Tailwind v4 theme.
+- **Verified:** Successful production build (`npm run build`) confirmed.
+
 ## [2026-01-18] - Code Review & Handoff Implementation
 
 ### Added

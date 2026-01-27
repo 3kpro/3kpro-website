@@ -24,17 +24,18 @@ All agents (Gemini, Claude, opencode, etc.) working on 3kpro.services MUST follo
 After completing requested work, agents MUST follow this workflow:
 
 1. **Complete the work** - Make all requested code changes
-2. **Verify the result** - Review changes to ensure they match requirements
-3. **Ask for approval** - Present summary and ask: "Work complete. Ready to commit and push to production? (Y/N)"
-4. **On "Y" confirmation:**
+2. **Verify build** - Run `npm run build` to catch any build errors
+3. **Fix if needed** - If build fails, fix errors and repeat step 2
+4. **Ask for approval** - Present summary and ask: "Work complete. Build passed. Ready to commit and push to production? (Y/N)"
+5. **On "Y" confirmation:**
    - Run `git status` to show what changed
    - Run `git add -A` to stage all changes
    - Run `git commit -m "descriptive message"` (message based on work completed)
    - Run `git push` to current branch
    - Report success with commit hash and branch
-5. **On "N":** Wait for further instructions or clarifications
+6. **On "N":** Wait for further instructions or clarifications
 
-**Why:** This keeps human in control of production deployments while reducing friction. Agent handles git mechanics after receiving explicit approval.
+**Why:** This keeps human in control of production deployments while reducing friction. Build verification prevents broken code from reaching production. Agent handles git mechanics after receiving explicit approval.
 
 ---
 ## NOW (One at a time only)
@@ -136,6 +137,11 @@ re_TSxJqPmQ_MA7N2TAiS5dKv6UrYk95wmMg
 ---
 
 ## COMPLETED
+
+- [x] **Fix Build Error localdev:3001** ✅
+      - **Completion Date:** 2026-01-26
+      - **Details:** Fixed Tailwind v4 `CssSyntaxError` by migrating theme to `@theme` block in `globals.css`.
+      - **Result:** Production build passing.
 
 - [x] **Configure Contact Form with Resend** ✅
       - **Completion Date:** 2026-01-18
