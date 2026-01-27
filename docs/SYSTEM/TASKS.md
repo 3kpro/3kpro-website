@@ -18,6 +18,25 @@ All agents (Gemini, Claude, opencode, etc.) working on 3kpro.services MUST follo
 **Why:** Human is multitasking across XELORA and 3kpro.services. Agents starting/stopping servers creates conflicts.
 
 ---
+
+**Git Workflow: Human-in-Loop Approval**
+
+After completing requested work, agents MUST follow this workflow:
+
+1. **Complete the work** - Make all requested code changes
+2. **Verify the result** - Review changes to ensure they match requirements
+3. **Ask for approval** - Present summary and ask: "Work complete. Ready to commit and push to production? (Y/N)"
+4. **On "Y" confirmation:**
+   - Run `git status` to show what changed
+   - Run `git add -A` to stage all changes
+   - Run `git commit -m "descriptive message"` (message based on work completed)
+   - Run `git push` to current branch
+   - Report success with commit hash and branch
+5. **On "N":** Wait for further instructions or clarifications
+
+**Why:** This keeps human in control of production deployments while reducing friction. Agent handles git mechanics after receiving explicit approval.
+
+---
 ## NOW (One at a time only)
 
 - [x] **3kpro.services Full Visual Rebrand** 🎨
