@@ -550,7 +550,7 @@ export default function Home() {
                   {[
                     { label: 'Client Retention', value: '95%' },
                     { label: 'On-Time Delivery', value: '98%' },
-                    { label: 'Core Technical Experts', value: '150+' },
+                    { label: 'Structural Assets', value: '85+' },
                   ].map((item, i) => (
                     <div key={i}>
                       <div className="flex justify-between items-center mb-4">

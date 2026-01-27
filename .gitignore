@@ -62,9 +62,11 @@ config/secrets.json
 firebase-adminsdk-*.json
 service-account-key.json
 credentials.json
+client_secret*.json
 service-account*.json
 .google-credentials.json
 .gcloud-credentials.json
+token.json
 
 # Cloud provider credentials
 .aws/
@@ -88,3 +90,9 @@ next-env.d.ts
 **/Davinci/CacheClip/
 **/Davinci/Resolve Project Backups/
 *.pfl
+
+# Scripts with credentials
+scripts/
+
+# Windows null device output files
+nul
