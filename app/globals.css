@@ -137,9 +137,11 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-/* Structural Dotted Grid Background */
+/* Structural Grid Background */
 .bg-grid {
-  background-image: radial-gradient(var(--grid-color) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 

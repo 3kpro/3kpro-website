@@ -164,9 +164,9 @@ export default function Home() {
   ]
 
   const stats = [
-    { value: '500+', label: 'Projects Delivered' },
-    { value: '98%', label: 'Client Satisfaction' },
-    { value: '24/7', label: 'Support Available' },
+    { value: '10+', label: 'Industries Served' },
+    { value: '$2M+', label: 'Revenue Generated for Clients' },
+    { value: '95%', label: 'Project Success Rate' },
     { value: '15+', label: 'Years Experience' },
   ]
 
