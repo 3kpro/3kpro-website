@@ -1,8 +1,46 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { marketplaceItems } from '@/lib/data/marketplace'
 import { Check, ArrowLeft, Shield, Zap, Globe } from 'lucide-react'
+import { PurchaseAction } from '@/components/marketplace/PurchaseAction'
+import { FairMergeVisuals } from '@/components/marketplace/FairMergeVisuals'
 import Image from 'next/image'
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const product = marketplaceItems.find((p) => p.slug === slug)
+
+  if (!product) {
+    return {
+      title: 'Product Not Found | 3KPRO',
+    }
+  }
+
+  return {
+    title: `${product.name} | Marketplace | 3KPRO`,
+    description: product.description,
+    openGraph: {
+      title: `${product.name} - ${product.tagline}`,
+      description: product.description,
+      type: 'website',
+      images: [
+        {
+          url: product.image || '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | 3KPRO`,
+      description: product.description,
+      images: [product.image || '/og-image.png'],
+    },
+  }
+}
 
 export async function generateStaticParams() {
   return marketplaceItems.map((item) => ({
@@ -66,6 +104,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   </p>
                 </div>
 
+                {product.slug === 'fairmerge' && <FairMergeVisuals />}
+
                 <div className="space-y-6">
                   <h3 className="text-xs font-bold uppercase tracking-[0.3em] opacity-40">System Capabilities</h3>
                   <div className="grid gap-3">
@@ -80,25 +120,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
                 <div className="flex flex-col sm:flex-row gap-6 pt-10">
                    {(product.status === 'Available' || product.status === 'Beta' || product.status === 'Coming Soon') && (
-                      <>
-                        {product.stripePaymentLink ? (
-                          <a
-                            href={product.stripePaymentLink}
-                            className="px-10 py-5 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-widest text-xs flex items-center justify-center"
-                          >
-                            <Zap className="w-4 h-4 mr-3" />
-                            Initialize Acquisition - ${product.price}
-                          </a>
-                        ) : (
-                          <Link
-                            href="/#contact"
-                            className="px-10 py-5 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-widest text-xs flex items-center justify-center"
-                          >
-                            <Zap className="w-4 h-4 mr-3" />
-                            Request Specifications
-                          </Link>
-                        )}
-                      </>
+                      <PurchaseAction product={product} />
                    )}
                    
                    {product.demoUrl && (

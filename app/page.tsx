@@ -218,33 +218,33 @@ export default function Home() {
               variants={fadeInUp}
             >
               <div className="inline-flex items-center px-3 py-1 border border-black mb-8">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Architecture of Innovation</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">The Velocity Standard</span>
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold text-black mb-8 leading-[0.95] tracking-tight">
-                PRECISION.<br />
-                <span className="opacity-40">ENGINEERED.</span>
+                ENGINEERING.<br />
+                <span className="opacity-40">VELOCITY.</span>
               </h1>
 
               <div className="w-20 h-1 bg-black mb-8"></div>
 
               <p className="text-lg text-black/70 max-w-lg mb-12 leading-relaxed">
-                We design and build precision-engineered digital infrastructure for high-growth enterprises. Sophisticated systems, simplified for maximum impact.
+                Stop bike-shedding. Ship 20% faster. Precision-engineered tools to eliminate bottlenecks.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6">
-                <a
-                  href="#contact"
-                  className="px-10 py-5 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-widest text-xs"
+                <Link
+                  href="/marketplace/fairmerge"
+                  className="px-10 py-5 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-widest text-xs flex items-center justify-center"
                 >
-                  Start Your Project
-                </a>
-                <a
-                  href="#services"
-                  className="px-10 py-5 bg-transparent text-black border border-black/20 hover:border-black transition-all font-bold uppercase tracking-widest text-xs"
+                  Initialize FairMerge
+                </Link>
+                <Link
+                  href="/marketplace"
+                  className="px-10 py-5 bg-transparent text-black border border-black/20 hover:border-black transition-all font-bold uppercase tracking-widest text-xs flex items-center justify-center"
                 >
-                  The Methodology
-                </a>
+                  View all Systems
+                </Link>
               </div>
             </motion.div>
 
@@ -462,7 +462,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="max-w-3xl">
+          <div className="max-w-3xl space-y-12">
             {/* XELORA */}
             <a
               href="https://getxelora.com"
@@ -498,6 +498,43 @@ export default function Home() {
                 Access Platform <span>→</span>
               </div>
             </a>
+
+            {/* FairMerge */}
+            <Link
+              href="/marketplace/fairmerge"
+              className="group block border border-black p-12 hover:bg-black hover:text-white transition-all duration-500 relative bg-white"
+            >
+              <div className="flex flex-col md:flex-row md:items-center gap-8 mb-10">
+                <div className="w-16 h-16 border border-current flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-transform">
+                   <span className="font-bold text-2xl">F</span>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold uppercase tracking-tighter">FAIRMERGE</h3>
+                  <span className="opacity-40 text-xs font-mono uppercase tracking-widest">Engineering Velocity Engine</span>
+                </div>
+              </div>
+              <div className="inline-flex items-center px-3 py-1 border border-current mb-8">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] animate-pulse">New Launch</span>
+              </div>
+              <p className="text-lg opacity-60 mb-10 font-medium leading-relaxed">
+                Stop bike-shedding. Ship 20% faster. Analyze PR patterns to identify bottlenecks, reduce nitpicks, and improve team velocity.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 mb-12">
+                {[
+                  'Nitpick Ratio Analysis',
+                  'Review Load Balancing',
+                  'Staleness Detection',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center text-xs font-bold uppercase tracking-tight">
+                    <div className="w-1 h-1 bg-current mr-3"></div>
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.3em] group-hover:translate-x-4 transition-transform inline-flex items-center gap-2">
+                Initialize FairMerge <span>→</span>
+              </div>
+            </Link>
           </div>
 
           <div className="mt-20">

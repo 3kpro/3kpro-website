@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 3010",
     "build": "next build",
     "start": "next start"
   },
@@ -15,9 +15,12 @@
   "dependencies": {
     "@ai-sdk/google": "^2.0.45",
     "@next/third-parties": "^16.1.2",
+    "@sentry/nextjs": "^10.37.0",
     "@stripe/stripe-js": "^8.6.1",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.86.0",
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.36.1",
     "ai": "^5.0.110",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",

@@ -59,13 +59,15 @@ export default function MarketplacePage() {
 
         {/* Product Grid */}
         <section className="py-24">
-          <div className="max-w-7xl auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap justify-center overflow-hidden">
-              {marketplaceItems.map((item) => (
-                <div key={item.id} className="w-full md:w-1/2 lg:w-1/3 border border-black -ml-px -mt-px">
-                  <ProductCard item={item} />
-                </div>
-              ))}
+              {marketplaceItems
+                .filter((item) => item.id === 'fairmerge')
+                .map((item) => (
+                  <div key={item.id} className="w-full md:w-1/2 lg:w-1/3 border border-black -ml-px -mt-px">
+                    <ProductCard item={item} />
+                  </div>
+                ))}
             </div>
           </div>
         </section>

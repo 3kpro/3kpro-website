@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
-import { stripe, STRIPE_PRICES } from "@/lib/stripe";
+import { stripe, STRIPE_PRICES, createProductionCheckoutSession } from "@/lib/stripe";
 import { z } from "zod";
 
 const checkoutSchema = z.object({
@@ -79,25 +79,18 @@ export async function POST(request: Request) {
     }
 
     // 5. Create Session
-    const session = await stripe.checkout.sessions.create({
-      customer: customerId, // Optional if not logged in
-      customer_email: (!customerId && user?.email) ? user.email : undefined, // Prefill email if no customer object
-      mode: mode,
-      payment_method_types: ["card"],
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/cloud-ledger?success=true&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/cloud-ledger?canceled=true`,
+    const session = await createProductionCheckoutSession({
+      customerId,
+      customerEmail: user?.email || undefined,
+      priceId,
+      productCode: "cloud-ledger",
+      mode,
+      successUrl: `${process.env.NEXT_PUBLIC_APP_URL}/cloud-ledger?success=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancelUrl: `${process.env.NEXT_PUBLIC_APP_URL}/cloud-ledger?canceled=true`,
       metadata: {
-        product: "cloud-ledger",
         plan_type: planType,
         supabase_user_id: user?.id || "guest",
       },
-      allow_promotion_codes: true,
     });
 
     return NextResponse.json({ success: true, url: session.url });

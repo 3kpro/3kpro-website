@@ -312,24 +312,26 @@ export const marketplaceItems: MarketplaceItem[] = [
     ]
   },
   {
-    id: 'code-review-bias',
-    slug: 'code-review-bias',
-    name: 'Code Review Bias Detector',
-    tagline: 'PR Quality Analysis',
-    description: 'Analyze code review patterns to detect bias, inconsistency, and quality issues.',
+    id: 'fairmerge',
+    slug: 'fairmerge',
+    name: 'FairMerge',
+    tagline: 'Engineering Velocity Engine',
+    description: 'Stop bike-shedding and ship 20% faster. Analyze PR patterns to identify bottlenecks, reduce nitpicks, and improve team velocity.',
     features: [
-      'Review pattern analysis',
-      'Bias detection',
-      'Quality metrics',
-      'Team insights'
+      'Nitpick Ratio Analysis',
+      'Review Load Balancing',
+      'Staleness Detection',
+      'Bias & Inconsistency Checks'
     ],
-    price: 29,
+    price: 149,
     currency: 'USD',
-    category: 'Micro-SaaS',
-    status: 'Coming Soon',
+    category: 'SaaS',
+    status: 'Beta',
+    stripePaymentLink: '/api/checkout?slug=fairmerge',
     pricingTiers: [
-      { name: 'Monthly', price: 29, features: ['Up to 100 PRs/month'] },
-      { name: 'Lifetime', price: 249, features: ['Unlimited PRs', 'Custom reports'] }
+      { name: 'Team', price: 149, features: ['Up to 20 contributors', 'Velocity analytics', 'Slack integration'] },
+      { name: 'Growth', price: 349, features: ['Up to 50 contributors', 'Advanced bias detection', 'SSO'] },
+      { name: 'Enterprise', price: 749, features: ['Unlimited', 'Custom reports', 'Dedicated support'] }
     ]
   },
   {
@@ -403,7 +405,7 @@ export const marketplaceItems: MarketplaceItem[] = [
     currency: 'USD',
     category: 'Cloud Tool',
     status: 'Available',
-    stripePaymentLink: '/cloud-ledger'
+    stripePaymentLink: '/api/checkout?slug=cloud-ledger'
   },
 
   // TIER 4: SPECIALIZED (Niche)

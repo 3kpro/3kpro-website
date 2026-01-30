@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next'
+import { marketplaceItems } from '@/lib/data/marketplace'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://3kpro.services'
 
-  return [
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -35,16 +36,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/cloud-ledger`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/thank-you`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
     },
   ]
+
+  // Dynamic Marketplace Routes
+  const productRoutes: MetadataRoute.Sitemap = marketplaceItems.map((item) => ({
+    url: `${baseUrl}/marketplace/${item.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }))
+
+  return [...staticRoutes, ...productRoutes]
 }

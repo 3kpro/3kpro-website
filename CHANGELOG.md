@@ -3,6 +3,7 @@
 ### [2026-01-26] - Structural Vector Rebrand (Ecosystem Expansion)
 
 #### Added
+- **Unified Webhook Infrastructure**: Implemented multi-product Stripe webhook routing in `app/api/webhook/stripe` to support ReviewLens beta launch.
 - New **Structural Vector** design system implemented across the entire landing page.
 - Blueprint-inspired `bg-grid` background utility.
 - Custom vector logo (monochromatic "3K" mark).

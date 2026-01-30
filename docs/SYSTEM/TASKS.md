@@ -205,6 +205,7 @@ re_TSxJqPmQ_MA7N2TAiS5dKv6UrYk95wmMg
 ## NOTES
 
 **Task Organization:**
-- This file is for **company-level** tasks (3kpro.services site, marketplace, SEO, brand)
+- This file is for **company-level** tasks (3kpro.services site, SEO, brand, Google Business)
 - XELORA product tasks: `landing-page/docs/SYSTEM/TASKS.md`
+- Marketplace coordination tasks: `Dev/docs/SYSTEM/TASKS.md` (Stripe, auth, product launches)
 - Dev/ product tasks: `Dev/products/[product]/TASKS.md`
