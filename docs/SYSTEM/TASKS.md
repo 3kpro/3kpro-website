@@ -40,80 +40,37 @@ After completing requested work, agents MUST follow this workflow:
 ---
 ## NOW (One at a time only)
 
-- [x] **3kpro.services Full Visual Rebrand** 🎨
-      - **Goal:** Transform 3kpro.services from standard SaaS/IT site to modern, eye-catching professional services portal.
-      - **Specification:** `docs/upgrades/3kpro_polish.md`
-      - **Design Philosophy:**
-        - Bold, professional, modern aesthetic
-        - Clean with strong personality
-        - Interactive card-based layouts
-        - Subtle animations and micro-interactions
-      - **Critical Focus:**
-        1. **Visual Identity & Color Palette**
-           - Define core messaging angles (5 options)
-           - Create 3 complete visual identity palettes:
-             * Primary background (dark theme)
-             * Primary text color
-             * Main accent (CTAs)
-             * Secondary accent (highlights)
-             * Headline font (Google Fonts)
-             * Body font (Google Fonts)
-           - Present in markdown table for selection
+- [ ] **Fix Google Business Profile for 3kpro.services** 🏢
+      - **Goal:** Create and configure Google Business Profile listing so customers can find contact info
+      - **Action Items:**
+        1. Create Google Business Profile at business.google.com
+        2. Set business name: "3K Pro Services"
+        3. Set category: "Software company"
+        4. Set website: https://3kpro.services
+        5. Set phone: 918-816-8832
+        6. Set email: james@3kpro.services
+        7. Set business type: Service area (Tulsa, Oklahoma) - NO physical address
+        8. Verify profile appears in Google Search
+      - **Context:** Currently no profile exists. User getting customer complaints about unreachable contact info.
+      - **Priority:** HIGH (customer feedback issue)
+      - **Assigned:** Gemini
+      - **Status:** Ready to start
 
-        2. **Hero Section Redesign**
-           - Bold above-the-fold design
-           - Main headline + subheading placement
-           - Primary CTA button (hover effect with secondary accent)
-           - Secondary link (less prominent)
-           - Subtle background animation/graphic
-           - "Fade and slide up" animation on load (vanilla JS)
-           - Modern CSS (Flexbox/Grid, well-commented)
-
-        3. **Services Section (Card Layout)**
-           - Move beyond bullet lists
-           - 3 service cards with:
-             * Catchy name
-             * One-sentence summary
-             * 3 key benefits
-           - Card hover effects:
-             * Lift slightly (box-shadow + transform)
-             * "Learn More" link becomes prominent
-           - Reusable Modal component for service details
-
-        4. **CSS Architecture**
-           - Consistent color palette usage
-           - Modern practices (Flexbox/Grid)
-           - Well-commented code
-           - Interactive hover states
-           - Smooth transitions
-
-      - **Agentic Workflow:**
-        - **Gemini**: Strategy, layout design, content brainstorming
-        - **Claude**: HTML/CSS components, detailed copy
-        - **opencode**: Optimized JS functions, animations, modal logic
-
-      - **Implementation Steps:**
-        1. Define visual identity (Gemini + Claude)
-        2. Build hero section (Gemini layout → Claude HTML/CSS → opencode animation)
-        3. Create services section (Gemini content → Claude cards → opencode modal)
-        4. Integrate and refine all components
-        5. Visual regression testing
-
-      - **Testing Checklist:**
-        - [ ] Hero animation works on page load
-        - [ ] Service cards hover effects smooth
-        - [ ] Modal open/close functionality works
-        - [ ] Color palette applied consistently
-        - [ ] Mobile responsiveness verified
-        - [ ] All fonts load correctly
-
+- [ ] **Create Google Business Profile for XELORA** 🎯
+      - **Goal:** Establish Google Business Profile so XELORA appears correctly in Google Search
+      - **Action Items:**
+        1. Create Google Business Profile at business.google.com
+        2. Set business name: "XELORA"
+        3. Set category: "Software company"
+        4. Set website: https://getxelora.com
+        5. Set phone: 918-816-8832
+        6. Set email: support@3kpro.services
+        7. Set business type: Online only - NO physical address
+        8. Verify profile appears in Google Search
+      - **Context:** Currently searching "xelora" returns a different company (Xelora Ltd at xelora.io in Dallas). Rebranded from xelora.app to getxelora.com. No getxelora.com email domain exists - use support@3kpro.services.
       - **Priority:** HIGH
-      - **Branch:** `feature/3kpro-visual-rebrand`
-      - **Assigned:** Gemini + Claude
-
-For contact form setup, I setup an account on resend to send to james.lawson@gmail.com
-API Key:
-re_TSxJqPmQ_MA7N2TAiS5dKv6UrYk95wmMg
+      - **Assigned:** Gemini
+      - **Status:** Queued (after 3kpro.services profile)
 
 ## BACKLOG (Company-Level Tasks)
 
@@ -121,8 +78,8 @@ re_TSxJqPmQ_MA7N2TAiS5dKv6UrYk95wmMg
             - Google Business Profile (Content Cascade AI → 3kpro)
             - Clearbit profile
             - LinkedIn company page
-      - **Agent Status:** ✅ Verified public profiles are outdated. ✅ Created guide at `landing-page/docs/Marketing/EXTERNAL_UPDATE_GUIDE.md`. ✅ Cleaned `landing-page` codebase.
-      - **Next Step:** User must log in and perform updates using the guide.
+      - **Agent Status:** ✅ Verified public profiles are outdated. ✅ Created guide at `landing-page/docs/Marketing/EXTERNAL_UPDATE_GUIDE.md`. ✅ Cleaned `landing-page` codebase. ✅ **Updated `app/layout.tsx` schema & metadata (2026-02-06).**
+      - **Next Step:** User must log in and perform updates using the guide. Website is now ready for verification.
       - Reference: `landing-page/docs/Marketing/BRAND_CLEANUP_CHECKLIST.md`
 
  [x] **Brand Cleanup Across Web** 🔄
@@ -137,6 +94,15 @@ re_TSxJqPmQ_MA7N2TAiS5dKv6UrYk95wmMg
 ---
 
 ## COMPLETED
+
+- [x] **3kpro.services Full Visual Rebrand** ✅
+      - **Completion Date:** 2026-02-06
+      - **Details:**
+        - Implemented "The Velocity Standard" hero section with structural vector aesthetics.
+        - Created interactive "Core Capabilities" services grid with detailed modal views.
+        - Unified design system with `Space Grotesk` fonts and precision grid layouts.
+        - Verified all animations, hover effects, and responsive design.
+      - **Result:** Complete visual overhaul and comprehensive rebrand.
 
 - [x] **Fix Build Error localdev:3001** ✅
       - **Completion Date:** 2026-01-26

@@ -8,34 +8,31 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: '3KPRO - Professional Websites for Local Businesses | One-Time Fee, FREE Hosting',
-  description: 'Custom websites for local businesses with great reputations but no online presence. $1,500-$2,000 one-time fee includes design, development, and FREE lifetime hosting on Vercel. No monthly costs. Serving businesses nationwide.',
+  title: '3K Pro Services - Enterprise IT & AI-Native Solutions',
+  description: 'Professional IT services and AI solutions provider in Tulsa, OK. Specializing in cloud architecture, custom development, and AI-native SaaS products like XELORA.',
   keywords: [
-    'local business websites',
-    'small business web design',
-    'affordable website development',
-    'one-time website fee',
-    'free website hosting',
-    'local business web development',
-    'professional website design',
-    'custom business websites',
-    'Vercel hosting',
-    'mobile-first websites',
-    'SEO optimized websites',
-    'local SEO'
+    'IT services Tulsa',
+    'AI solutions',
+    'SaaS development',
+    'cloud architecture',
+    'enterprise software',
+    'XELORA',
+    'custom web development',
+    '3kpro',
+    'Tulsa software company'
   ],
-  authors: [{ name: '3KPRO', url: 'https://3kpro.services' }],
-  creator: '3KPRO',
-  publisher: '3KPRO',
+  authors: [{ name: '3K Pro Services', url: 'https://3kpro.services' }],
+  creator: '3K Pro Services',
+  publisher: '3K Pro Services',
   metadataBase: new URL('https://3kpro.services'),
   alternates: {
     canonical: 'https://3kpro.services',
   },
   openGraph: {
-    title: '3KPRO - Professional Websites for Local Businesses',
-    description: 'Custom websites for local businesses. $1,500-$2,000 one-time fee includes everything + FREE lifetime hosting. No monthly costs.',
+    title: '3K Pro Services - Enterprise IT & AI-Native Solutions',
+    description: 'Bridging the gap between professional IT services and AI innovation. Makers of XELORA. Serving Tulsa, OK and nationwide.',
     url: 'https://3kpro.services',
-    siteName: '3KPRO',
+    siteName: '3K Pro Services',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -43,14 +40,14 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: '3KPRO - Professional Local Business Websites',
+        alt: '3K Pro Services',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '3KPRO - Professional Websites for Local Businesses',
-    description: 'Custom websites for local businesses. One-time fee + FREE lifetime hosting.',
+    title: '3K Pro Services - Enterprise IT & AI-Native Solutions',
+    description: 'Professional IT services and AI solutions. cloud architecture, and AI-native SaaS products.',
     creator: '@3kpro',
     images: ['/og-image.png'],
   },
@@ -78,11 +75,12 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: '3KPRO.SERVICES',
-    description: 'Professional IT solutions, SaaS development, and web services.',
+    name: '3K Pro Services',
+    description: 'Professional IT services and AI solutions provider in Tulsa, OK. Specializing in website development, cloud architecture, and AI-native SaaS products like XELORA.',
     url: 'https://3kpro.services',
     logo: 'https://3kpro.services/og-image.png',
     email: 'james@3kpro.services',
+    telephone: '+1-918-816-8832',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Tulsa',
@@ -93,11 +91,14 @@ export default function RootLayout({
       '@type': 'Country',
       name: 'United States',
     },
-    priceRange: '$899-$2500',
+    priceRange: '$$',
     contactPoint: {
       '@type': 'ContactPoint',
+      telephone: '+1-918-816-8832',
       email: 'james@3kpro.services',
       contactType: 'sales',
+      areaServed: 'US',
+      availableLanguage: 'English'
     },
     sameAs: [
       'https://twitter.com/3KPRO_SAAS',
@@ -116,44 +117,30 @@ export default function RootLayout({
       '@type': 'Offer',
       itemOffered: {
         '@type': 'Service',
-        name: 'Local Business Website Development',
-        description: 'Custom responsive website with FREE lifetime hosting on Vercel',
+        name: 'Professional IT Services',
+        description: 'Cloud architecture, custom development, and SaaS consulting.',
       },
-      price: '899-2500',
       priceCurrency: 'USD',
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        price: '899-2500',
-        priceCurrency: 'USD',
-        billingDuration: 'One-time payment',
-      },
+      price: 'Custom'
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Web Development Services',
+      name: 'Services & Products',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Local Business Websites',
-            description: 'Professional websites for local businesses with FREE hosting',
+            name: 'Enterprise SaaS Development',
+            description: 'Scalable AI-native applications',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Cloud Solutions',
-            description: 'Scalable cloud infrastructure and migration services',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Custom Development',
-            description: 'Tailored software solutions built with cutting-edge technologies',
+            name: 'Local Business Solutions',
+            description: 'Professional web presence and digital transformation',
           },
         },
       ],

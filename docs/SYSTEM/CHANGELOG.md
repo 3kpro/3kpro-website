@@ -6,6 +6,35 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-02-06] - Marketplace Portfolio Expansion
+
+### Changed
+- **Marketplace:** Exposed the full 21-product portfolio at `/marketplace` by removing the "FairMerge only" filter.
+- **Product Cards:** Enabled visibility for all Tiers (SaaS, Micro-SaaS, Content, Specialized) with status indicators.
+
+### Context
+- Completed "Marketplace Landing Page" task from Dev infrastructure backlog.
+- Showcases the full breadth of the "Product Factory" vision.
+
+## [2026-02-06] - Error Monitoring Integration
+
+### Added
+- **Slack Alerting:** Implemented `sendToSlack` in `lib/monitoring.ts` to dispatch critical errors to `SLACK_WEBHOOK_URL`.
+- **Alert Logic:** Added rich block-kit formatting for alerts including Product, Environment, and Error Context.
+- **SEO/Schema:** Updated `app/layout.tsx` with `LocalBusiness` JSON-LD to match Google Business Profile (Name: 3K Pro Services, Phone: +1-918...).
+
+## [2026-02-06] - Visual Rebrand Completion
+
+### Changed
+- **Visual Overhaul:** Complete redesign of the 3kpro.services website using "The Velocity Standard" design philosophy.
+- **Hero Section:** Implemented structural vector aesthetics with animated entry.
+- **Services Section:** Replaced list with interactive "Core Capabilities" grid and detailed modal views.
+- **Global Styles:** Unified design system using `Space Grotesk`, `Inter` fonts, and consistent HSL color variables (`globals.css`).
+
+### Context
+- Completed the "3kpro.services Full Visual Rebrand" task.
+- Validated implementation of all sub-tasks in `page.tsx` and `globals.css`.
+
 ## [2026-01-26] - Fix Tailwind v4 Build Error
 
 ### Fixed
