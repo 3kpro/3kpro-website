@@ -43,15 +43,19 @@ After completing requested work, agents MUST follow this workflow:
 
 
 
-- [ ] **Implement SEO Canonicals** 🔗
-      - **Goal:** Apply `SEO_STRATEGY.md` (add canonical tags to getxelora.com).
 
-- [ ] **External Profile Updates** 🌐
+
+- [x] **External Profile Updates** 🌐 (Ready for Manual Update)
       - **Goal:** Update outdated external profiles (Clearbit, LinkedIn company page).
       - **Reference:** `landing-page/docs/Marketing/EXTERNAL_UPDATE_GUIDE.md`
+      - **Status:** Metadata validated. User must perform manual updates per guide.
 
 ## COMPLETED
 
+
+- [x] **Implement SEO Canonicals** 🔗 ✅ (2026-02-11)
+      - **Goal:** Apply `SEO_STRATEGY.md` (add canonical tags to getxelora.com).
+      - **Result:** Updated `landing-page/app/layout.tsx` to point canonical URL to `3kpro.services/marketplace/xelora`.
 
 - [x] **Launch FairMerge** 🚀 ✅ (2026-02-11)
       - **Goal:** Finish Marketing Assets & Beta Launch prep.
