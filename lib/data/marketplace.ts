@@ -10,6 +10,7 @@ export type MarketplaceItem = {
   image?: string
   category: 'SaaS' | 'Micro-SaaS' | 'Middleware' | 'Workflow' | 'AI Tool' | 'Template' | 'Cloud Tool' | 'DevOps' | 'Security'
   stripePaymentLink?: string
+  priceId?: string
   demoUrl?: string
   status: 'Available' | 'Coming Soon' | 'Beta' | 'In Development'
   pricingTiers?: {
@@ -327,6 +328,7 @@ export const marketplaceItems: MarketplaceItem[] = [
     currency: 'USD',
     category: 'SaaS',
     status: 'Beta',
+    priceId: 'price_FAKE_FAIRMERGE_149', // Placeholder - needs replacement with real Stripe Price ID
     stripePaymentLink: '/api/checkout?slug=fairmerge',
     pricingTiers: [
       { name: 'Team', price: 149, features: ['Up to 20 contributors', 'Velocity analytics', 'Slack integration'] },

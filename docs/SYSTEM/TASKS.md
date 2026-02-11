@@ -1,5 +1,5 @@
 # TASKS.md - 3kpro.services Company Site
-Last Updated: 2026-01-09
+Last Updated: 2026-02-06
 
 ---
 
@@ -38,39 +38,43 @@ After completing requested work, agents MUST follow this workflow:
 **Why:** This keeps human in control of production deployments while reducing friction. Build verification prevents broken code from reaching production. Agent handles git mechanics after receiving explicit approval.
 
 ---
-## NOW (One at a time only)
 
-- [ ] **Fix Google Business Profile for 3kpro.services** 🏢
-      - **Goal:** Create and configure Google Business Profile listing so customers can find contact info
-      - **Action Items:**
-        1. Create Google Business Profile at business.google.com
-        2. Set business name: "3K Pro Services"
-        3. Set category: "Software company"
-        4. Set website: https://3kpro.services
-        5. Set phone: 918-816-8832
-        6. Set email: james@3kpro.services
-        7. Set business type: Service area (Tulsa, Oklahoma) - NO physical address
-        8. Verify profile appears in Google Search
-      - **Context:** Currently no profile exists. User getting customer complaints about unreachable contact info.
-      - **Priority:** HIGH (customer feedback issue)
-      - **Assigned:** Gemini
-      - **Status:** Ready to start
+## NOW
 
-- [ ] **Create Google Business Profile for XELORA** 🎯
-      - **Goal:** Establish Google Business Profile so XELORA appears correctly in Google Search
-      - **Action Items:**
-        1. Create Google Business Profile at business.google.com
-        2. Set business name: "XELORA"
-        3. Set category: "Software company"
-        4. Set website: https://getxelora.com
-        5. Set phone: 918-816-8832
-        6. Set email: support@3kpro.services
-        7. Set business type: Online only - NO physical address
-        8. Verify profile appears in Google Search
-      - **Context:** Currently searching "xelora" returns a different company (Xelora Ltd at xelora.io in Dallas). Rebranded from xelora.app to getxelora.com. No getxelora.com email domain exists - use support@3kpro.services.
-      - **Priority:** HIGH
-      - **Assigned:** Gemini
-      - **Status:** Queued (after 3kpro.services profile)
+- [ ] **Launch FairMerge** 🚀
+      - **Goal:** Finish Marketing Assets & Beta Launch prep.
+      - **Context:** "Focus on fairmerge" after SEO tasks.
+
+- [ ] **Implement SEO Canonicals** 🔗
+      - **Goal:** Apply `SEO_STRATEGY.md` (add canonical tags to getxelora.com).
+
+- [ ] **External Profile Updates** 🌐
+      - **Goal:** Update outdated external profiles (Clearbit, LinkedIn company page).
+      - **Reference:** `landing-page/docs/Marketing/EXTERNAL_UPDATE_GUIDE.md`
+
+## COMPLETED
+
+- [x] **SEO: Domain Consolidation Strategy** 🔗 ✅ (2026-02-06)
+      - **Goal:** Set up redirects or canonical strategy.
+      - **Result:** Created `docs/SYSTEM/SEO_STRATEGY.md`. Selected "Canonical Tag" approach for Phase 1.
+
+- [x] **Marketplace Operations Playbook** 📘 ✅ (2026-02-06)
+      - **Goal:** Document how we handle support, billing, and refunds.
+      - **Result:** Created `docs/SYSTEM/MARKETPLACE_OPS.md`. Defined centralized support `support@3kpro.services` and unified Stripe account strategy.
+
+- [x] **Marketplace Branding Decision** (Unified vs House of Brands) 🧠 ✅ (2026-02-06)
+      - **Goal:** Decide if we consolidate everything under 3kpro or keep products separate.
+      - **Decision:** **Option 1 (Unified).** All products launch under `3kpro.services` to leverage shared domain authority and simplify operations.
+      - **Outcome:** XELORA and FairMerge will be "Products by 3K Pro".
+
+- [x] **Fix Google Business Profile for 3kpro.services** 🏢 ✅ (2026-02-06)
+      - **Goal:** Create and configure Google Business Profile listing.
+      - **Status:** Agent preparation complete. Guide created at `docs/Marketing/EXTERNAL_UPDATE_GUIDE.md`. User is performing video verification.
+      - **Result:** Schema and Metadata updated in `layout.tsx`.
+
+- [x] **Create Google Business Profile for XELORA** 🎯 ❌ (Cancelled 2026-02-06)
+      - **Reason:** Online-only SaaS businesses are **not eligible** for Google Business Profiles.
+      - **Alternative:** Relying on `SoftwareApplication` schema (implemented) and 3K Pro Services parent profile.
 
 ## BACKLOG (Company-Level Tasks)
 
@@ -78,92 +82,55 @@ After completing requested work, agents MUST follow this workflow:
             - Google Business Profile (Content Cascade AI → 3kpro)
             - Clearbit profile
             - LinkedIn company page
-      - **Agent Status:** ✅ Verified public profiles are outdated. ✅ Created guide at `landing-page/docs/Marketing/EXTERNAL_UPDATE_GUIDE.md`. ✅ Cleaned `landing-page` codebase. ✅ **Updated `app/layout.tsx` schema & metadata (2026-02-06).**
+      - **Agent Status:** ✅ Verified public profiles are outdated. ✅ Created guide at `landing-page/docs/Marketing/EXTERNAL_UPDATE_GUIDE.md`. ✅ Cleaned `landing-page` codebase. ✅ **Updated `app/layout.tsx` schema & metadata (2026-02-06).** ✅ **Deployed to Vercel Production.**
       - **Next Step:** User must log in and perform updates using the guide. Website is now ready for verification.
       - Reference: `landing-page/docs/Marketing/BRAND_CLEANUP_CHECKLIST.md`
 
  [x] **Brand Cleanup Across Web** 🔄
       - [x] **Internal Codebase:** Audit complete. `TrendPulse` removed from `layout.tsx`.
       - [x] **Copy Preparation:** Created `landing-page/docs/Marketing/3KPRO_BRAND_COPY.md` for external profiles.
-      - [ ] **External Updates:** (User Action Required)
-            - Google Business Profile (Content Cascade AI → 3kpro)
-            - Clearbit profile
-            - LinkedIn company page
       - Reference: `landing-page/docs/Marketing/BRAND_CLEANUP_CHECKLIST.md`
 
 ---
 
-## COMPLETED
+## COMPLETED (Archive)
 
 - [x] **3kpro.services Full Visual Rebrand** ✅
       - **Completion Date:** 2026-02-06
-      - **Details:**
-        - Implemented "The Velocity Standard" hero section with structural vector aesthetics.
-        - Created interactive "Core Capabilities" services grid with detailed modal views.
-        - Unified design system with `Space Grotesk` fonts and precision grid layouts.
-        - Verified all animations, hover effects, and responsive design.
       - **Result:** Complete visual overhaul and comprehensive rebrand.
 
 - [x] **Fix Build Error localdev:3001** ✅
-      - **Completion Date:** 2026-01-26
-      - **Details:** Fixed Tailwind v4 `CssSyntaxError` by migrating theme to `@theme` block in `globals.css`.
       - **Result:** Production build passing.
 
 - [x] **Configure Contact Form with Resend** ✅
-      - **Completion Date:** 2026-01-18
-      - **Details:** Switched email provider from Web3Forms to Resend.
       - **Result:** Emails are now sent securely via Resend server-side SDK to james.lawson@gmail.com.
 
 - [x] **Code Review Handoff Implementation** ✅
-      - **Completion Date:** 2026-01-18
-      - **Details:** Implemented Server Action for contact form, added CI/CD pipeline, locked dependency versions, and verified metadata.
       - **Result:** Architecture is more robust.
 
 - [x] **Fix Xelora Loop on Campaign Create** ✅
-      - **Completion Date:** 2026-01-15
-      - **Details:** Fixed race condition in "Save & Dashboard" button in Xelora codebase (`landing-page`). Button now explicitly waits for save success before navigating.
       - **Result:** Navigation works reliably.
 
 - [x] **Google Analytics 4 Setup** ✅
-      - **Completion Date:** 2026-01-14
-      - **Details:** Installed `@next/third-parties`, added `<GoogleAnalytics>` to `layout.tsx`, and configured env var placeholder.
       - **Result:** Site is ready for tracking. **Action Required:** Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel.
 
 - [x] **Marketplace Optimization** ✅
-      - **Completion Date:** 2026-01-14
-      - **Details:** Added OAuth Token Manager, Category Badges, and Stripe Payment Links for available products.
       - **Result:** Marketplace is populated with Dev/ products and ready for sales.
 
 - [x] **Stripe Webhook Configuration** ✅
-      - **Completion Date:** 2026-01-13
-      - **Details:** Created webhook handler at `api/webhook/stripe`. Configured `STRIPE_WEBHOOK_SECRET` on Vercel.
       - **Result:** Stripe webhook is live and ready to receive events.
 
 - [x] **Setup Google Search Console + Google Ads for 3kpro.services** ✅
-      - **Completion Date:** 2026-01-09
-      - **Search Console:** ✅ Fixed `sitemap.xml` and `robots.txt` (corrected wrong domain). Ready for manual verification.
-      - **Google Ads:** ⚠️ Deferred due to promo credit issues.
       - **Result:** Site is technically ready for Google indexing. Ads account setup paused.
 
 - [x] **Fix Color Contrast Issues (PageSpeed Insights)** ✅
-      - **Completion Date:** 2026-01-09
-      - **Details:** Replaced `bg-primary-500` with `bg-primary-700` for buttons and badges. Updated footer text to `text-dark-300`.
       - **Result:** Meets WCAG contrast requirements for accessibility.
 
 - [x] **Add Main Landmark (Accessibility)** ✅
-      - **Completion Date:** 2026-01-09
-      - **Details:** Wrapped page content in `<main>` tag in `app/page.tsx` to provide a clear main landmark for screen readers.
       - **Result:** Accessibility audit should now find a main landmark.
 
 - [x] **Accelerate Google Search Console Indexing** ✅
-      - **Completion Date:** 2026-01-10
-      - **Details:**
-        - **Sitemap Optimized:** Consolidated to `app/sitemap.ts` (dynamic), removed stale `public/sitemap.xml`.
-        - **Pages Added:** Added `/marketplace`, `/cloud-ledger`, and `/thank-you` to sitemap.
-        - **Submission:** Google Sitemap Ping endpoint is deprecated (404). Reliance is now on `robots.txt` and GSC.
-        - **Action Required:** User must log in to GSC and manually request indexing for homepage if urgent.
       - **Result:** Technical SEO foundation is perfect. `robots.txt` and `sitemap.xml` are aligned.
-
 
 
 ---

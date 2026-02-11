@@ -32,6 +32,7 @@ export function PurchaseAction({ product }: PurchaseActionProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           slug: product.slug,
+          priceId: product.priceId,
           // We can add more metadata here if needed
         }),
       });
