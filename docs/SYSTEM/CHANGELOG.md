@@ -6,6 +6,13 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-02-11] - FairMerge Beta Launch
+
+### Added
+- **FairMerge Product Data:** Added full product details, features, and pricing tiers to `lib/data/marketplace.ts`.
+- **Checkout Configuration:** Configured `PurchaseAction` to pass `priceId` to the checkout API for the $149 Team plan.
+- **Visuals:** Verified `FairMergeVisuals` component integration on the product page.
+
 ## [2026-02-06] - Marketplace Portfolio Expansion
 
 ### Changed

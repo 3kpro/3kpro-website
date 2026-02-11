@@ -41,9 +41,7 @@ After completing requested work, agents MUST follow this workflow:
 
 ## NOW
 
-- [ ] **Launch FairMerge** 🚀
-      - **Goal:** Finish Marketing Assets & Beta Launch prep.
-      - **Context:** "Focus on fairmerge" after SEO tasks.
+
 
 - [ ] **Implement SEO Canonicals** 🔗
       - **Goal:** Apply `SEO_STRATEGY.md` (add canonical tags to getxelora.com).
@@ -53,6 +51,11 @@ After completing requested work, agents MUST follow this workflow:
       - **Reference:** `landing-page/docs/Marketing/EXTERNAL_UPDATE_GUIDE.md`
 
 ## COMPLETED
+
+
+- [x] **Launch FairMerge** 🚀 ✅ (2026-02-11)
+      - **Goal:** Finish Marketing Assets & Beta Launch prep.
+      - **Result:** Updated `marketplace.ts` with full product data and checking `FairMergeVisuals`. Configured `PurchaseAction` with placeholder `priceId`. Verified locally. This also closes "Focus on fairmerge" request.
 
 - [x] **SEO: Domain Consolidation Strategy** 🔗 ✅ (2026-02-06)
       - **Goal:** Set up redirects or canonical strategy.

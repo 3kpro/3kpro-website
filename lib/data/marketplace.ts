@@ -328,7 +328,7 @@ export const marketplaceItems: MarketplaceItem[] = [
     currency: 'USD',
     category: 'SaaS',
     status: 'Beta',
-    priceId: 'price_FAKE_FAIRMERGE_149', // Placeholder - needs replacement with real Stripe Price ID
+    priceId: 'price_1SzhsDRqaU7f53FzaoUfnAHw',
     stripePaymentLink: '/api/checkout?slug=fairmerge',
     pricingTiers: [
       { name: 'Team', price: 149, features: ['Up to 20 contributors', 'Velocity analytics', 'Slack integration'] },
