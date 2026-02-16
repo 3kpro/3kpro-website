@@ -48,7 +48,7 @@ export default function ProductCard({ item }: { item: MarketplaceItem }) {
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 mb-1">Provisioning Cost</div>
             <div className="text-2xl font-bold">
-              {item.price === 0 ? 'FIXED: NULL' : item.price > 0 ? `FIXED: $${item.price}` : 'QUOTATION REQ'}
+              {item.price === 0 ? 'FREE' : item.price > 0 ? `FIXED: $${item.price}` : 'QUOTATION REQ'}
             </div>
           </div>
           

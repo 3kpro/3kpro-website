@@ -6,12 +6,18 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-02-14] - Xelora Provisioning Cost Fix
+
+### Fixed
+- **Marketplace UI:** Fixed "Provisioning Cost" displaying as "FIXED: NULL" for free products (Xelora). Now displays "FREE".
+
 ## [2026-02-11] - FairMerge Beta Launch
 
 ### Added
 - **FairMerge Product Data:** Added full product details, features, and pricing tiers to `lib/data/marketplace.ts`.
-- **Checkout Configuration:** Configured `PurchaseAction` to pass `priceId` to the checkout API for the $149 Team plan.
+- **Checkout Configuration:** Configured `PurchaseAction` to pass `priceId` to the checkout API for the $149 Team plan. (Updated with real Stripe Price ID: `price_1SzhsDRqaU7f53FzaoUfnAHw`)
 - **Visuals:** Verified `FairMergeVisuals` component integration on the product page.
+- **SEO:** Updated `landing-page/app/layout.tsx` (XELORA) to point canonical URL to `3kpro.services/marketplace/xelora`.
 
 ## [2026-02-06] - Marketplace Portfolio Expansion
 

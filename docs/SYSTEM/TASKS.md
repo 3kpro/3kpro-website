@@ -1,6 +1,15 @@
 # TASKS.md - 3kpro.services Company Site
 Last Updated: 2026-02-06
 
+
+## NOW
+Pricing for Xelora is stating FIXED: NULL instead of actual prpcing
+URL:https://3kpro.services/marketplace
+pls fix.
+localhost:3001 is showing proper price: "Free"
+may need to just push to production from localhost:3001
+
+
 ---
 
 ## DEVELOPMENT WORKFLOW
@@ -51,6 +60,10 @@ After completing requested work, agents MUST follow this workflow:
       - **Status:** Metadata validated. User must perform manual updates per guide.
 
 ## COMPLETED
+
+- [x] **Fix Xelora Provisioning Cost Display** 🐛 ✅ (2026-02-14)
+      - **Goal:** Fix "FIXED: NULL" display for Xelora in Marketplace.
+      - **Result:** Updated `ProductCard.tsx` to display "FREE" instead of "FIXED: NULL" when price is 0. Verified with build.
 
 
 - [x] **Implement SEO Canonicals** 🔗 ✅ (2026-02-11)
