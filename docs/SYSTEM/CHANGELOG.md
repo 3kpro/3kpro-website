@@ -6,6 +6,11 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-02-16] - Xelora Pricing Display Fix
+
+### Fixed
+- **Marketplace UI:** Fixed "Provisioning Cost" displaying as "FIXED: NULL" for zero-priced products (e.g., Xelora) in `ProductCard.tsx`. It now correctly displays "FREE".
+
 ## [2026-02-14] - Xelora Provisioning Cost Fix
 
 ### Fixed
