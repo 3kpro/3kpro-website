@@ -4,21 +4,19 @@ import { createServerClient } from "@supabase/ssr";
 import { checkRateLimit } from "@/lib/ratelimit";
 
 /**
- * Global Edge Middleware
- * 
+ * Global Edge Proxy (formerly middleware)
+ *
  * 1. Auth: Syncs Supabase session at the Edge.
  * 2. Rate Limiting: Protects API routes using Upstash Redis.
  */
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const res = NextResponse.next();
   const url = req.nextUrl;
 
   // --- 1. RATE LIMITING (API Routes Only) ---
   if (url.pathname.startsWith("/api")) {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
-    // We use IP for anonymous/public rate limiting
-    // For authenticated routes, we could use userId from session (handled below)
     const { success, remaining, reset } = await checkRateLimit(ip, "public");
 
     if (!success) {
@@ -67,7 +65,6 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
-     * Feel free to modify this pattern to include more paths.
      */
     "/((?!_next/static|_next/image|favicon.ico).*)",
   ],

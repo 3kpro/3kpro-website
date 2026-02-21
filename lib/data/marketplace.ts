@@ -396,18 +396,19 @@ export const marketplaceItems: MarketplaceItem[] = [
     slug: 'cloud-ledger',
     name: 'Cloud Ledger',
     tagline: 'Azure Waste Audit',
-    description: 'Professional Azure audit tool to detect waste instantly. Read-only, secure, agent-free.',
+    description: 'Self-service Azure audit tool for SMBs. Identify idle VMs, unattached disks, and unused IPs. Save 20-40% on your Azure bill instantly — no agents, no consultants.',
     features: [
-      'Full Resource Inventory',
-      'Waste Detection (Idle VMs, Disks)',
-      'Security Posture Overview',
-      'Exportable Reports'
+      'Secure Read-Only Azure Connection',
+      'Waste Detection (Idle VMs, Unattached Disks, Unused IPs)',
+      'Rightsizing Recommendations',
+      'PDF/HTML Report Generation'
     ],
     price: 49,
     currency: 'USD',
     category: 'Cloud Tool',
     status: 'Available',
-    stripePaymentLink: '/api/checkout?slug=cloud-ledger'
+    demoUrl: '/cloud-ledger',
+    stripePaymentLink: '/api/cloud-ledger/checkout'
   },
 
   // TIER 4: SPECIALIZED (Niche)

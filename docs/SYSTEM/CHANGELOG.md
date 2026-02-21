@@ -6,6 +6,21 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-02-21] - Cloud Ledger Marketplace Launch + Middleware → Proxy Migration
+
+### Added
+- **Marketplace:** Cloud Ledger now appears as the third product card alongside Xelora and FairMerge on `/marketplace`
+- **`lib/data/marketplace.ts`:** Updated Cloud Ledger entry with improved description, TRUTH.md-aligned features, and correct `demoUrl`/`stripePaymentLink`
+- **`proxy.ts`:** Created new Edge Proxy file replacing deprecated `middleware.ts` (Next.js 16 convention)
+
+### Changed
+- **`app/marketplace/page.tsx`:** Filter updated to include `cloud-ledger` slug
+- **`app/marketplace/azure-optimizer/page.tsx`:** Redirect corrected to `/marketplace/cloud-ledger`
+
+### Removed
+- **`middleware.ts`:** Deleted — logic migrated to `proxy.ts` to resolve Next.js 16 deprecation warning
+- **`app/marketplace/cloud-ledger/page.tsx`:** Deleted redirect file that was blocking the dynamic `[slug]` route from rendering the product page
+
 ## [2026-02-16] - Xelora Pricing Display Fix
 
 ### Fixed
