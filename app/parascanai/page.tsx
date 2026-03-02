@@ -61,7 +61,10 @@ export default function ParascanPage() {
       {/* Beta Banner */}
       <div className="fixed top-20 w-full z-40 bg-black text-white text-center py-2">
         <p className="text-[10px] font-bold uppercase tracking-[0.3em]">
-          ⚖ Beta Access — Invite Only &nbsp;•&nbsp; Select Attorneys
+          ⚖ Open Beta — Free During Beta Period &nbsp;•&nbsp; Limited Time &nbsp;•&nbsp;
+          <a href="mailto:feedback@3kpro.services?subject=Parascan Beta Feedback" className="underline underline-offset-2 hover:opacity-70 transition-opacity ml-1">
+            Share Feedback
+          </a>
         </p>
       </div>
 
@@ -219,13 +222,22 @@ export default function ParascanPage() {
       <section className="py-32 border-t border-black bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="inline-flex items-center px-3 py-1 border border-black mb-12 text-[10px] uppercase tracking-[0.3em] font-bold">
-            ⚖ Beta Access — Attorneys Only
+            ⚖ Open Beta — Free For a Limited Time
           </div>
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter uppercase mb-10">
             READ IT.<br/><span className="opacity-30">KNOW IT.</span>
           </h2>
-          <p className="text-black/60 text-xs font-bold uppercase tracking-[0.3em] max-w-xl mx-auto mb-16 leading-loose">
-            You have been granted beta access to Parascan. No account. No payment. Upload your document and interrogate it.
+          <p className="text-black/60 text-xs font-bold uppercase tracking-[0.3em] max-w-xl mx-auto mb-6 leading-loose">
+            Parascan is in open beta and free to use during this period. No account. No payment. Upload your document and interrogate it.
+          </p>
+          <p className="text-black/40 text-[10px] font-bold uppercase tracking-[0.25em] max-w-xl mx-auto mb-16 leading-loose">
+            Pricing will be introduced when beta ends. Help shape the product —{" "}
+            <a
+              href="mailto:feedback@3kpro.services?subject=Parascan Beta Feedback"
+              className="underline underline-offset-2 hover:text-black transition-colors"
+            >
+              send us your feedback
+            </a>.
           </p>
           <a
             href={appUrl}
@@ -233,7 +245,7 @@ export default function ParascanPage() {
             rel="noopener noreferrer"
             className="inline-block px-16 py-8 bg-black text-white hover:bg-white hover:text-black border border-black font-bold uppercase tracking-[0.3em] text-sm transition-all"
           >
-            Launch Parascan
+            Launch Parascan — It&apos;s Free
           </a>
         </div>
       </section>
