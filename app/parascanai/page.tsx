@@ -127,6 +127,15 @@ export default function ParascanPage() {
               <span className="flex items-center gap-2"><Check className="w-3 h-3" /> PDF Upload</span>
             </div>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30 max-w-lg mx-auto leading-loose mt-4"
+          >
+            Beta notice &mdash; This environment is not end-to-end encrypted. We recommend redacting sensitive client information, using sample documents, or substituting mock data during the beta period.
+          </motion.p>
         </div>
       </section>
 
