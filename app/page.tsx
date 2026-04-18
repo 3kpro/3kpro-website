@@ -222,8 +222,8 @@ export default function Home() {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold text-black mb-8 leading-[0.95] tracking-tight">
-                ENGINEERING.<br />
-                <span className="opacity-40">VELOCITY.</span>
+                AI-Native IT Services<br />
+                <span className="opacity-40">for Tulsa Businesses</span>
               </h1>
 
               <div className="w-20 h-1 bg-black mb-8"></div>

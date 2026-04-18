@@ -8,8 +8,9 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: '3K Pro Services - Enterprise IT & AI-Native Solutions',
-  description: 'Professional IT services and AI solutions provider in Tulsa, OK. Specializing in cloud architecture, custom development, and AI-native SaaS products like XELORA.',
+  title: '3K Pro Services - AI-Native IT & Automation in Tulsa & Broken Arrow',
+  description: '3K Pro Services helps Tulsa & Broken Arrow businesses deploy AI-native IT, cloud architecture, and micro-SaaS workflows. Book a strategy session today.',
+  icons: { icon: '/favicon.ico' },
   keywords: [
     'IT services Tulsa',
     'AI solutions',
@@ -29,8 +30,8 @@ export const metadata: Metadata = {
     canonical: 'https://3kpro.services',
   },
   openGraph: {
-    title: '3K Pro Services - Enterprise IT & AI-Native Solutions',
-    description: 'Bridging the gap between professional IT services and AI innovation. Makers of XELORA. Serving Tulsa, OK and nationwide.',
+    title: '3K Pro Services - AI-Native IT & Automation in Tulsa & Broken Arrow',
+    description: '3K Pro Services helps Tulsa & Broken Arrow businesses deploy AI-native IT, cloud architecture, and micro-SaaS workflows. Book a strategy session today.',
     url: 'https://3kpro.services',
     siteName: '3K Pro Services',
     locale: 'en_US',
@@ -46,8 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '3K Pro Services - Enterprise IT & AI-Native Solutions',
-    description: 'Professional IT services and AI solutions. cloud architecture, and AI-native SaaS products.',
+    title: '3K Pro Services - AI-Native IT & Automation in Tulsa & Broken Arrow',
+    description: '3K Pro Services helps Tulsa & Broken Arrow businesses deploy AI-native IT, cloud architecture, and micro-SaaS workflows. Book a strategy session today.',
     creator: '@3kpro',
     images: ['/og-image.png'],
   },
@@ -83,14 +84,18 @@ export default function RootLayout({
     telephone: '+1-918-816-8832',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Tulsa',
+      addressLocality: 'Broken Arrow',
       addressRegion: 'OK',
+      postalCode: '74014',
       addressCountry: 'US',
     },
-    areaServed: {
-      '@type': 'Country',
-      name: 'United States',
-    },
+    areaServed: [
+      'Tulsa, OK',
+      'Broken Arrow, OK',
+      'Owasso, OK',
+      'Bixby, OK',
+      'Jenks, OK'
+    ],
     priceRange: '$$',
     contactPoint: {
       '@type': 'ContactPoint',
