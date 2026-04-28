@@ -701,7 +701,11 @@ export default function Home() {
                <div className="space-y-6">
                   <div className="text-xs font-bold uppercase tracking-widest">
                     <span className="opacity-40 block mb-2">Location</span>
-                    Tulsa, Oklahoma, USA
+                    Tulsa & Broken Arrow, OK 74014
+                  </div>
+                  <div className="text-xs font-bold uppercase tracking-widest">
+                    <span className="opacity-40 block mb-2">Direct Phone</span>
+                    +1-918-816-8832
                   </div>
                   <div className="text-xs font-bold uppercase tracking-widest">
                     <span className="opacity-40 block mb-2">Direct Channel</span>

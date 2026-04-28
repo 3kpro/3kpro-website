@@ -1,5 +1,7 @@
 # Branding Strategy Decision: Unified House vs. House of Brands
 
+**Status:** Decided — Option C (Hybrid/Unified)
+
 **Date:** 2026-02-06
 **Decision Needed:** How should we structure the brand hierarchy for 3K Pro Services and its products (XELORA, FairMerge, etc.)?
 
