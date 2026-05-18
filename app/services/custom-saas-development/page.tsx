@@ -5,6 +5,14 @@ import ContactForm from '@/components/ContactForm'
 export const metadata: Metadata = {
   title: 'Custom SaaS Development for Tulsa & Broken Arrow | 3K Pro Services',
   description: 'Design and deploy custom micro-SaaS and internal tools specifically built for your Tulsa or Broken Arrow business. Stop forcing generic software to fit your unique needs.',
+  alternates: {
+    canonical: 'https://3kpro.services/services/custom-saas-development',
+  },
+  openGraph: {
+    title: 'Custom SaaS Development for Tulsa & Broken Arrow | 3K Pro Services',
+    description: 'Design and deploy custom micro-SaaS and internal tools specifically built for your Tulsa or Broken Arrow business. Stop forcing generic software to fit your unique needs.',
+    url: 'https://3kpro.services/services/custom-saas-development',
+  },
 }
 
 export default function CustomSaaSDevelopment() {

@@ -6,6 +6,32 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-05-17] — Portfolio Alignment & Vision Refresh
+
+### Added
+- Created project-level `TASKS.md` to track Website-specific management and SEO work.
+- Synced `lib/data/marketplace.ts` with the full 27-product factory inventory, adding Ideas 22–28 (medChron, ParaScan.AI, Clipper, etc.) as "In Development" or "Beta".
+
+### Changed
+- Updated `VISION.md` to reflect May 2026 (Q2) reality, marking Q1 milestones as completed and establishing new growth targets for Q3/Q4 ($10k-$25k MRR).
+- **SEO Phase 2:** Implemented hard 301 redirects in `_XELORA/vercel.json` for marketing pages (`/`, `/pricing`, `/about`, `/try`, `/demo`, `/trend-gen`) pointing to `3kpro.services/marketplace/xelora`.
+- Updated canonical tags across `_XELORA` layouts (`layout.tsx`, `pricing/layout.tsx`, `demo/layout.tsx`, `trend-gen/layout.tsx`) to point to the 3KPRO marketplace.
+
+### Fixed
+- Verified and validated Local SEO Phase 1 implementation (schema.org ProfessionalService and service page metadata) for Tulsa/Broken Arrow targeting.
+
+---
+
+## [2026-05-11] — Local SEO Phase 1 schema and metadata alignment
+
+### Changed
+- Updated `app/layout.tsx` structured data with a stronger `ProfessionalService`/LocalBusiness profile for the Tulsa/Broken Arrow service-area business, including `@id`, image, geo, opening hours, service areas, and synchronized social links.
+- Replaced the placeholder Google Search Console verification meta value with an environment-driven `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` value.
+- Added canonical URLs and Open Graph metadata to the three local service pages.
+- Aligned the IT Strategy & Cloud Architecture title with the Tulsa/Broken Arrow positioning used across the rest of the service pages.
+- Cleaned `app/sitemap.ts` by removing fragment URLs, adding the three service landing pages, and including key product/company routes with sane priorities.
+- Added crawlable homepage links to the three local service pages for stronger internal linking.
+
 ## [2026-04-17] — Docs consolidation (portfolio-level cleanup)
 
 ### Changed

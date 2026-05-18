@@ -5,6 +5,14 @@ import ContactForm from '@/components/ContactForm'
 export const metadata: Metadata = {
   title: 'AI Automation Consulting for Tulsa & Broken Arrow Businesses | 3K Pro Services',
   description: 'Partner with 3K Pro Services in Tulsa & Broken Arrow to turn your SOPs into AI-native workflows, agents, and automations that cut manual work across your business.',
+  alternates: {
+    canonical: 'https://3kpro.services/services/ai-automation-consulting',
+  },
+  openGraph: {
+    title: 'AI Automation Consulting for Tulsa & Broken Arrow Businesses | 3K Pro Services',
+    description: 'Partner with 3K Pro Services in Tulsa & Broken Arrow to turn your SOPs into AI-native workflows, agents, and automations that cut manual work across your business.',
+    url: 'https://3kpro.services/services/ai-automation-consulting',
+  },
 }
 
 export default function AIAutomationConsulting() {

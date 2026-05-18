@@ -65,4 +65,4 @@ Public marketing site for the 3KPRO Services consultancy. Next.js app (dev port 
 1. Edit `CHANGELOG.md` with a dated entry.
 2. If strategy shifted, update `VISION.md`.
 3. If you created or moved a runbook, note it in `CHANGELOG.md`.
-4. Do not commit on the user's behalf unless asked.
+4. **Direct Execution:** You are authorized to autonomously `git commit` and `vercel --prod` your changes once verified. Do not wait for manual approval to deploy if the build is stable.

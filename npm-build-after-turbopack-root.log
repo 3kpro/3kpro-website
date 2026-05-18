@@ -1,0 +1,55 @@
+
+> 3kpro-website@1.0.0 build
+> next build
+
+▲ Next.js 16.2.4 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 6.7s
+  Running TypeScript ...
+  Finished TypeScript in 8.8s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/44) ...
+  Generating static pages using 7 workers (11/44) 
+  Generating static pages using 7 workers (22/44) 
+  Generating static pages using 7 workers (33/44) 
+✓ Generating static pages using 7 workers (44/44) in 831ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /admin/analytics
+├ ○ /admin/health
+├ ƒ /api/checkout
+├ ƒ /api/cloud-ledger/checkout
+├ ƒ /api/health
+├ ƒ /api/incubator/generate
+├ ƒ /api/webhook/stripe
+├ ○ /cloud-ledger
+├ ○ /factory
+├ ○ /factory/incubator
+├ ○ /lp
+├ ○ /lp/new
+├ ○ /marketplace
+├ ● /marketplace/[slug]
+│ ├ /marketplace/xelora
+│ ├ /marketplace/trial-revive
+│ ├ /marketplace/compliance-ghost
+│ └ [+18 more paths]
+├ ○ /marketplace/azure-optimizer
+├ ○ /parascanai
+├ ○ /services/ai-automation-consulting
+├ ○ /services/custom-saas-development
+├ ○ /services/it-strategy-cloud-architecture
+├ ○ /sitemap.xml
+└ ○ /thank-you
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

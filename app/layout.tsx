@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -63,9 +65,13 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'google-site-verification-code', // Add your Google Search Console verification code
-  },
+  ...(googleSiteVerification
+    ? {
+        verification: {
+          google: googleSiteVerification,
+        },
+      }
+    : {}),
 }
 
 export default function RootLayout({
@@ -76,10 +82,12 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
+    '@id': 'https://3kpro.services/#localbusiness',
     name: '3K Pro Services',
-    description: 'Professional IT services and AI solutions provider in Tulsa, OK. Specializing in website development, cloud architecture, and AI-native SaaS products like XELORA.',
+    description: 'AI-native IT services, automation consulting, custom micro-SaaS development, and cloud architecture for Tulsa and Broken Arrow businesses.',
     url: 'https://3kpro.services',
     logo: 'https://3kpro.services/og-image.png',
+    image: 'https://3kpro.services/og-image.png',
     email: 'james@3kpro.services',
     telephone: '+1-918-816-8832',
     address: {
@@ -89,12 +97,72 @@ export default function RootLayout({
       postalCode: '74014',
       addressCountry: 'US',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 36.06095,
+      longitude: -95.79745,
+    },
     areaServed: [
       'Tulsa, OK',
       'Broken Arrow, OK',
       'Owasso, OK',
       'Bixby, OK',
       'Jenks, OK'
+    ],
+    serviceArea: [
+      {
+        '@type': 'City',
+        name: 'Tulsa',
+        address: {
+          '@type': 'PostalAddress',
+          addressRegion: 'OK',
+          addressCountry: 'US',
+        },
+      },
+      {
+        '@type': 'City',
+        name: 'Broken Arrow',
+        address: {
+          '@type': 'PostalAddress',
+          addressRegion: 'OK',
+          addressCountry: 'US',
+        },
+      },
+      {
+        '@type': 'City',
+        name: 'Bixby',
+        address: {
+          '@type': 'PostalAddress',
+          addressRegion: 'OK',
+          addressCountry: 'US',
+        },
+      },
+      {
+        '@type': 'City',
+        name: 'Jenks',
+        address: {
+          '@type': 'PostalAddress',
+          addressRegion: 'OK',
+          addressCountry: 'US',
+        },
+      },
+      {
+        '@type': 'City',
+        name: 'Owasso',
+        address: {
+          '@type': 'PostalAddress',
+          addressRegion: 'OK',
+          addressCountry: 'US',
+        },
+      },
+    ],
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '17:00',
+      },
     ],
     priceRange: '$$',
     contactPoint: {
@@ -106,8 +174,10 @@ export default function RootLayout({
       availableLanguage: 'English'
     },
     sameAs: [
+      'https://www.linkedin.com/company/3kpro-services',
+      'https://www.tiktok.com/@3kpro.services',
+      'https://www.youtube.com/@3KPRO.SERVICES',
       'https://twitter.com/3KPRO_SAAS',
-      'https://linkedin.com/company/3k-pro-services',
     ],
     owns: [
       {

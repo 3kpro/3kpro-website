@@ -3,8 +3,16 @@ import Link from 'next/link'
 import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'IT Strategy & Cloud Architecture in Tulsa | 3K Pro Services',
+  title: 'IT Strategy & Cloud Architecture in Tulsa & Broken Arrow | 3K Pro Services',
   description: 'Future-proof your business with scalable IT strategy and modern cloud architecture designed for Tulsa and Broken Arrow companies. Stop paying for bloated infrastructure.',
+  alternates: {
+    canonical: 'https://3kpro.services/services/it-strategy-cloud-architecture',
+  },
+  openGraph: {
+    title: 'IT Strategy & Cloud Architecture in Tulsa & Broken Arrow | 3K Pro Services',
+    description: 'Future-proof your business with scalable IT strategy and modern cloud architecture designed for Tulsa and Broken Arrow companies. Stop paying for bloated infrastructure.',
+    url: 'https://3kpro.services/services/it-strategy-cloud-architecture',
+  },
 }
 
 export default function ITStrategyCloudArchitecture() {

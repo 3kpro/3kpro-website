@@ -445,6 +445,128 @@ export const marketplaceItems: MarketplaceItem[] = [
     currency: 'USD',
     category: 'SaaS',
     status: 'Coming Soon'
+  },
+
+  // TIER 5: AI NATIVE (Vertex AI / Gemini)
+  {
+    id: 'medchron',
+    slug: 'medchron',
+    name: 'medChron',
+    tagline: 'Medical Timeline AI',
+    description: 'Zero-shot extraction of defensible clinical timelines from massive medical records using Gemini 1.5 Pro.',
+    features: [
+      'Long-context PDF analysis',
+      'Clinical event extraction',
+      'Legal source citations',
+      'Verbatim evidence links'
+    ],
+    price: 299,
+    currency: 'USD',
+    category: 'AI Tool',
+    status: 'In Development'
+  },
+  {
+    id: 'parascanai',
+    slug: 'parascanai',
+    name: 'ParaScan.AI',
+    tagline: 'Legal Document Insight',
+    description: 'Deep analysis of complex legal documents using multi-model reasoning (Claude, GPT, Gemini).',
+    features: [
+      'Multi-party agreement analysis',
+      'Regulatory compliance checks',
+      'Precedent identification',
+      'Risk assessment scoring'
+    ],
+    price: 49,
+    currency: 'USD',
+    category: 'AI Tool',
+    status: 'Beta',
+    demoUrl: '/parascanai'
+  },
+  {
+    id: 'clipper',
+    slug: 'clipper',
+    name: 'Clipper',
+    tagline: 'Short-Form Clip Factory',
+    description: 'Automated short-form video factory. Transform long videos into viral 9:16 clips with burned-in subtitles.',
+    features: [
+      'AI segment scoring',
+      'Automated hook generation',
+      'Burned-in word-timed subtitles',
+      '9:16 vertical re-framing'
+    ],
+    price: 49,
+    currency: 'USD',
+    category: 'AI Tool',
+    status: 'In Development'
+  },
+  {
+    id: 'parlant',
+    slug: 'parlant',
+    name: 'Parlant',
+    tagline: 'Conversational Agent Platform',
+    description: 'Advanced conversational AI agents with long-term memory and tool integration.',
+    features: [
+      'Persistent persona memory',
+      'External tool orchestration',
+      'Voice & text interfaces',
+      'Autonomous task execution'
+    ],
+    price: 199,
+    currency: 'USD',
+    category: 'AI Tool',
+    status: 'In Development'
+  },
+  {
+    id: 'yt-trends',
+    slug: 'yt-trends',
+    name: 'YT Trend Analysis',
+    tagline: 'Video Performance Intel',
+    description: 'Deep analysis of YouTube trends and competitor video performance using AI.',
+    features: [
+      'Competitor channel auditing',
+      'Topic saturation analysis',
+      'Thumbnail OCR & analysis',
+      'Script pattern detection'
+    ],
+    price: 79,
+    currency: 'USD',
+    category: 'AI Tool',
+    status: 'In Development'
+  },
+  {
+    id: 'firecrawl-agent',
+    slug: 'firecrawl-agent',
+    name: 'Firecrawl Agent',
+    tagline: 'Web-to-LLM Ingestion',
+    description: 'High-fidelity web crawling and data extraction optimized for LLM ingestion.',
+    features: [
+      'Dynamic site rendering',
+      'Markdown-native output',
+      'Automatic schema detection',
+      'Bulk page processing'
+    ],
+    price: 29,
+    currency: 'USD',
+    category: 'DevOps',
+    status: 'In Development'
+  },
+  {
+    id: 'video-rag',
+    slug: 'video-rag',
+    name: 'Video RAG',
+    tagline: 'Search Inside Video',
+    description: 'Retrieve-and-generate from your private video libraries using Gemini multimodal indexing.',
+    features: [
+      'Multimodal video search',
+      'Visual event retrieval',
+      'Dialogue-based indexing',
+      'Private library RAG'
+    ],
+    price: 149,
+    currency: 'USD',
+    category: 'AI Tool',
+    status: 'In Development'
   }
 ]
 

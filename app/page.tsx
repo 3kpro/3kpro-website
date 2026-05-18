@@ -363,6 +363,21 @@ export default function Home() {
                     </motion.button>
                   ))}
                 </div>
+
+                <div className="mt-12 grid gap-4 md:grid-cols-3" aria-label="Local service pages">
+                  <Link href="/services/ai-automation-consulting" className="border border-black/10 p-6 hover:border-black transition-colors">
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 mb-3">Local Service Page</span>
+                    <span className="font-bold uppercase tracking-tight">AI Automation Consulting in Tulsa & Broken Arrow →</span>
+                  </Link>
+                  <Link href="/services/custom-saas-development" className="border border-black/10 p-6 hover:border-black transition-colors">
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 mb-3">Local Service Page</span>
+                    <span className="font-bold uppercase tracking-tight">Custom SaaS Development in Tulsa & Broken Arrow →</span>
+                  </Link>
+                  <Link href="/services/it-strategy-cloud-architecture" className="border border-black/10 p-6 hover:border-black transition-colors">
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 mb-3">Local Service Page</span>
+                    <span className="font-bold uppercase tracking-tight">IT Strategy & Cloud Architecture in Tulsa & Broken Arrow →</span>
+                  </Link>
+                </div>
               </motion.div>
             ) : (
               // Service Detail - Technical Deep Dive
