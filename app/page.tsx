@@ -218,33 +218,40 @@ export default function Home() {
               variants={fadeInUp}
             >
               <div className="inline-flex items-center px-3 py-1 border border-black mb-8">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">The Velocity Standard</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Serving Tulsa &amp; Broken Arrow Since 2010</span>
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold text-black mb-8 leading-[0.95] tracking-tight">
-                AI-Native IT Services<br />
-                <span className="opacity-40">for Tulsa Businesses</span>
+                Websites. Automation. AI.<br />
+                <span className="opacity-40">Built for Local Business.</span>
               </h1>
 
               <div className="w-20 h-1 bg-black mb-8"></div>
 
               <p className="text-lg text-black/70 max-w-lg mb-12 leading-relaxed">
-                Stop bike-shedding. Ship 20% faster. Precision-engineered tools to eliminate bottlenecks.
+                We help Tulsa and Broken Arrow businesses get online, automate operations, and grow — without the enterprise price tag.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6">
-                <Link
-                  href="/marketplace/fairmerge"
+                <a
+                  href="#contact"
                   className="px-10 py-5 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-widest text-xs flex items-center justify-center"
                 >
-                  Initialize FairMerge
-                </Link>
-                <Link
-                  href="/marketplace"
+                  Book a Free Strategy Call
+                </a>
+                <a
+                  href="#pricing"
                   className="px-10 py-5 bg-transparent text-black border border-black/20 hover:border-black transition-all font-bold uppercase tracking-widest text-xs flex items-center justify-center"
                 >
-                  View all Systems
-                </Link>
+                  See Pricing →
+                </a>
+              </div>
+
+              <div className="mt-8 flex items-center gap-2 text-black/50 text-sm font-medium">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                <a href="tel:+19188168832" className="hover:text-black transition-colors">918-816-8832</a>
+                <span className="opacity-30">·</span>
+                <span>Broken Arrow, OK</span>
               </div>
             </motion.div>
 
