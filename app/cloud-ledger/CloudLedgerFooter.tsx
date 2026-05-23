@@ -1,4 +1,4 @@
-import { Cloud, Twitter, Linkedin, Mail } from "lucide-react";
+import { Twitter, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 export const CloudLedgerFooter: React.FC = () => {
@@ -22,7 +22,7 @@ export const CloudLedgerFooter: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-12 text-[10px] font-bold uppercase tracking-widest opacity-40">
              <Link href="/privacy" className="hover:opacity-100 transition-opacity">Privacy Matrix</Link>
              <Link href="/terms" className="hover:opacity-100 transition-opacity">Terms of Engagement</Link>
-             <a href="mailto:info@3kpro.services" className="hover:opacity-100 transition-opacity">Direct Channel</a>
+             <Link href="/#contact" className="hover:opacity-100 transition-opacity">Direct Channel</Link>
           </div>
 
           {/* Socials */}

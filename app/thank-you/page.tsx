@@ -112,9 +112,9 @@ export default function ThankYouPage() {
             transition={{ delay: 0.7 }}
             className="mt-8 text-sm text-white/60"
           >
-            Need immediate assistance? Email us at{' '}
-            <a href="mailto:contact@3kpro.services" className="text-white/80 hover:text-white underline">
-              contact@3kpro.services
+            Need immediate assistance? Call{' '}
+            <a href="tel:+19188168832" className="text-white/80 hover:text-white underline">
+              918-816-8832
             </a>
           </motion.p>
         </motion.div>

@@ -10,6 +10,7 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ### Changed
 - Removed public `james@3kpro.services`/`sys@3kpro.services` email exposure from the homepage contact path and fallback contact text.
+- Removed public `@3kpro.services` email links and text from service pages, Cloud Ledger footer, Parascan beta feedback copy, and thank-you page.
 - Removed the public email field from homepage business JSON-LD while preserving the phone contact point.
 
 ### Verified

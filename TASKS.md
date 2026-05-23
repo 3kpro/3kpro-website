@@ -3,13 +3,12 @@
 ## NOW
 - [ ] **Business Profile Sync** 🏢
       - **Goal:** Ensure site metadata matches the updated Google Business Profile.
-- [ ] **Service page contact cleanup** 📞
-      - **Goal:** Remove temporary public email exposure from the three `/services/*` contact panels if the no-email posture should apply beyond the homepage.
 
 ## BACKLOG
 
 ## COMPLETED
 - [x] ✅ **Homepage contact posture and delivery verification** (2026-05-23)
+- [x] ✅ **Global no-email contact posture** (2026-05-23)
 - [x] ✅ **SEO Phase 2: Hard Redirects** 🔗 (2026-05-17)
 - [x] ✅ **Audit Marketplace Sync** 🛒 (2026-05-17)
 - [x] ✅ **Update Company Vision** 🔮 (2026-05-17)
