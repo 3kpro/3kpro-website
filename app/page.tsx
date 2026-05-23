@@ -707,7 +707,7 @@ export default function Home() {
               Initiate Consultation
             </a>
             <div className="flex items-center justify-center gap-4 text-white/40 font-mono text-xs">
-              sys@3kpro.services
+              918-816-8832
             </div>
           </div>
         </div>
@@ -727,11 +727,7 @@ export default function Home() {
                   </div>
                   <div className="text-xs font-bold uppercase tracking-widest">
                     <span className="opacity-40 block mb-2">Direct Phone</span>
-                    +1-918-816-8832
-                  </div>
-                  <div className="text-xs font-bold uppercase tracking-widest">
-                    <span className="opacity-40 block mb-2">Direct Channel</span>
-                    james@3kpro.services
+                    <a href="tel:+19188168832" className="hover:underline">918-816-8832</a>
                   </div>
                </div>
             </div>

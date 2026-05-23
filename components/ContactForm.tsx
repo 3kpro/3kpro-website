@@ -134,13 +134,13 @@ export default function ContactForm() {
 
       {submitStatus === 'error' && (
         <div className="mt-8 p-6 border border-red-500 bg-red-500/5">
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-500">Transmission Interrupted. Please re-validate your parameters or contact james@3kpro.services directly.</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-500">Transmission Interrupted. Please re-validate your parameters or call 918-816-8832 directly.</p>
         </div>
       )}
 
       <div className="mt-12 pt-8 border-t border-black/10 text-center">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40">
-          Direct Data Channel: <a href="mailto:james@3kpro.services" className="text-black hover:underline">james@3kpro.services</a>
+          Direct Phone: <a href="tel:+19188168832" className="text-black hover:underline">918-816-8832</a>
         </p>
       </div>
     </div>

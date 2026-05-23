@@ -88,7 +88,6 @@ export default function RootLayout({
     url: 'https://3kpro.services',
     logo: 'https://3kpro.services/og-image.png',
     image: 'https://3kpro.services/og-image.png',
-    email: 'james@3kpro.services',
     telephone: '+1-918-816-8832',
     address: {
       '@type': 'PostalAddress',
@@ -168,7 +167,6 @@ export default function RootLayout({
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+1-918-816-8832',
-      email: 'james@3kpro.services',
       contactType: 'sales',
       areaServed: 'US',
       availableLanguage: 'English'

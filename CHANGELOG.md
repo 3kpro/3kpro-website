@@ -6,6 +6,17 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-05-23] — Contact posture and form delivery check
+
+### Changed
+- Removed public `james@3kpro.services`/`sys@3kpro.services` email exposure from the homepage contact path and fallback contact text.
+- Removed the public email field from homepage business JSON-LD while preserving the phone contact point.
+
+### Verified
+- Confirmed the contact server action delivers to `james.lawson@gmail.com` via Resend.
+- Sent a Resend verification email to `james.lawson@gmail.com` and received provider message id `52e90491-33e4-4325-aaaf-621b28ff7cc6`.
+- Ran `npm run build` successfully after refreshing local dev dependencies with `npm install --include=dev`.
+
 ## [2026-05-17] — Portfolio Alignment & Vision Refresh
 
 ### Added
