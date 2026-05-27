@@ -6,6 +6,21 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-05-27] — Git hygiene, CRLF fix, deploy workflow baked in
+### Fixed
+- Diagnosed 76-file dirty working tree: 75 files were pure CRLF→LF line-ending noise from Linux agents touching a Windows-committed repo. Only `package-lock.json` had real content changes.
+- Root cause: no `.gitattributes` file. Added `.gitattributes` with `* text=auto eol=lf` to permanently normalize line endings across Windows/Linux environments.
+### Added
+- `.gitattributes` — all text files normalized to LF in git. Prevents CRLF noise on all future cross-platform agent sessions.
+- `.gitignore` additions: `npm-audit-*.json`, `npm-build-*.log`, `npm-scripts.json`, `*.backup`, `.learnings/`, `test.tmp` — build artifacts that were previously tracked.
+- `deploy` and `deploy:preview` scripts to `package.json` — agents now run `npm run deploy` (which calls `vercel --prod`) to ship to production.
+- `git-cleanup.ps1` — one-shot script to clear the current dirty state, untrack junk files, install Vercel CLI if missing, and commit the cleanup.
+### Changed
+- `AGENTS.md` — added explicit step-by-step deploy workflow: `npm run build` → `git commit` → `git push origin main` → `npm run deploy`. No more ambiguity for agents.
+### Notes
+- Vercel CLI was not installed globally — `git-cleanup.ps1` installs it automatically.
+- Project is already linked (`.vercel/project.json` present) — no `vercel link` needed after install.
+
 ## [2026-05-23] — Contact posture and form delivery check
 
 ### Changed

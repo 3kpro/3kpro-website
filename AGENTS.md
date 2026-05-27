@@ -60,9 +60,38 @@ Public marketing site for the 3KPRO Services consultancy. Next.js app (dev port 
   - Marketplace product portfolio → `Dev/`
   - Cross-project notes → `MainBrain/`
 
+## Deploy Workflow (mandatory — every task)
+
+This is the full ship sequence. Execute it in order. Do not skip steps.
+
+```
+# 1. Verify the build passes locally
+npm run build
+
+# 2. Commit (AFTER build passes — never before)
+git add -A
+git commit -m "[3KPRO Website] YYYY-MM-DD: what changed"
+
+# 3. Push to GitHub (keeps history, triggers Vercel webhook as backup)
+git push origin main
+
+# 4. Deploy directly to production via Vercel CLI
+npm run deploy
+# which runs: vercel --prod
+```
+
+**Vercel CLI must be installed globally:** `npm install -g vercel`
+The project is already linked (`.vercel/project.json` is present) — no `vercel link` needed.
+
+**Rules:**
+- Never run `npm run deploy` without a passing `npm run build` first.
+- Never commit with `git add .` blindly — always `git diff --stat` first.
+- Never skip the push — GitHub must stay in sync with production.
+- If build fails: fix it, do not deploy.
+
 ## Before declaring a task done
 
 1. Edit `CHANGELOG.md` with a dated entry.
 2. If strategy shifted, update `VISION.md`.
 3. If you created or moved a runbook, note it in `CHANGELOG.md`.
-4. **Direct Execution:** You are authorized to autonomously `git commit` and `vercel --prod` your changes once verified. Do not wait for manual approval to deploy if the build is stable.
+4. Run the full deploy workflow above.

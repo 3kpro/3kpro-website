@@ -1,0 +1,21 @@
+# 3K Pro — git line-ending normalization
+# Prevents CRLF/LF noise when the repo is touched by both Windows and Linux agents.
+# All text files stored as LF in git; Windows checkouts get CRLF via autocrlf if set.
+
+* text=auto eol=lf
+
+# Explicitly binary — never normalize
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.svg  binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+*.eot  binary
+*.pdf  binary
+*.zip  binary
+*.tar  binary
+*.gz   binary
