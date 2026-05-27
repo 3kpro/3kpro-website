@@ -729,6 +729,10 @@ export default function Home() {
                     <span className="opacity-40 block mb-2">Direct Phone</span>
                     <a href="tel:+19188168832" className="hover:underline">918-816-8832</a>
                   </div>
+                  <div className="text-xs font-bold uppercase tracking-widest">
+                    <span className="opacity-40 block mb-2">Direct Email</span>
+                    <a href="mailto:james@3kpro.services" className="hover:underline">james@3kpro.services</a>
+                  </div>
                </div>
             </div>
             <div className="border border-black p-10 bg-white shadow-[10px_10px_0px_0px_rgba(0,0,0,0.05)]">
