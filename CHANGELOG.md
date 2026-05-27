@@ -6,6 +6,19 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-05-27b] — Restore james@3kpro.services across all contact surfaces
+### Added
+- `app/page.tsx` contact section left pane: added "Direct Email / james@3kpro.services" below "Direct Phone" with matching styling
+- `app/page.tsx` JSON-LD: added `email: 'james@3kpro.services'` to contactPoint schema
+- `components/ContactForm.tsx`: added Direct Email line to left-pane info block and error state fallback
+- `app/thank-you/page.tsx`: added email alongside phone in "Need immediate assistance?" note
+- `app/cloud-ledger/CloudLedgerFooter.tsx`: added `james@3kpro.services` mailto link in footer nav
+- `app/parascanai/page.tsx`: changed both beta feedback links from `/#contact` to `mailto:james@3kpro.services`
+### Notes
+- Email was restored after user re-established james@3kpro.services on new provider
+- Build passed (Next.js 16.2.6, 51 static pages, 0 errors). Committed 40ffd9a, pushed to main.
+- Vercel auto-deploys from GitHub main branch via GitHub integration
+
 ## [2026-05-27] — Git hygiene, CRLF fix, deploy workflow baked in
 ### Fixed
 - Diagnosed 76-file dirty working tree: 75 files were pure CRLF→LF line-ending noise from Linux agents touching a Windows-committed repo. Only `package-lock.json` had real content changes.
