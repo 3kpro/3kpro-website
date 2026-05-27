@@ -32,8 +32,8 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     const resend = new Resend(process.env.RESEND_API_KEY)
     
     const { data, error } = await resend.emails.send({
-      from: 'Contact Form <onboarding@resend.dev>',
-      to: 'james.lawson@gmail.com',
+      from: '3KPRO Contact <system@3kpro.services>',
+      to: 'james@3kpro.services',
       subject: `New Contact Form Submission from ${name}`,
       replyTo: email,
       text: `
