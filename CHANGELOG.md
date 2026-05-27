@@ -6,6 +6,16 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-05-27c] — Fix contact form delivery + new Resend API key
+### Changed
+- `app/actions.ts`: updated `from` to `3KPRO Contact <system@3kpro.services>` (was Resend sandbox domain)
+- `app/actions.ts`: updated `to` to `james@3kpro.services` (was james.lawson@gmail.com)
+- `RESEND_API_KEY` patched in Vercel env vars (production + preview) via API — new key active
+### Notes
+- Platform: Resend (email API). API key rotated because emails were not delivering on old key.
+- Redeploy triggered via empty commit `acca8f2` so new env var takes effect immediately.
+- `lib/notifications.ts` already used `system@3kpro.services` as from address confirming domain is verified in Resend.
+
 ## [2026-05-27b] — Restore james@3kpro.services across all contact surfaces
 ### Added
 - `app/page.tsx` contact section left pane: added "Direct Email / james@3kpro.services" below "Direct Phone" with matching styling
