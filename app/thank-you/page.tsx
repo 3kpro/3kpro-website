@@ -116,6 +116,10 @@ export default function ThankYouPage() {
             <a href="tel:+19188168832" className="text-white/80 hover:text-white underline">
               918-816-8832
             </a>
+            {' '}or email{' '}
+            <a href="mailto:james@3kpro.services" className="text-white/80 hover:text-white underline">
+              james@3kpro.services
+            </a>
           </motion.p>
         </motion.div>
       </div>

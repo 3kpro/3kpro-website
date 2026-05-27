@@ -23,6 +23,7 @@ export const CloudLedgerFooter: React.FC = () => {
              <Link href="/privacy" className="hover:opacity-100 transition-opacity">Privacy Matrix</Link>
              <Link href="/terms" className="hover:opacity-100 transition-opacity">Terms of Engagement</Link>
              <Link href="/#contact" className="hover:opacity-100 transition-opacity">Direct Channel</Link>
+             <a href="mailto:james@3kpro.services" className="hover:opacity-100 transition-opacity">james@3kpro.services</a>
           </div>
 
           {/* Socials */}

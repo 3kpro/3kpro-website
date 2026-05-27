@@ -62,7 +62,7 @@ export default function ParascanPage() {
       <div className="fixed top-20 w-full z-40 bg-black text-white text-center py-2">
         <p className="text-[10px] font-bold uppercase tracking-[0.3em]">
           ⚖ Open Beta — Free During Beta Period &nbsp;•&nbsp; Limited Time &nbsp;•&nbsp;
-          <a href="/#contact" className="underline underline-offset-2 hover:opacity-70 transition-opacity ml-1">
+          <a href="mailto:james@3kpro.services" className="underline underline-offset-2 hover:opacity-70 transition-opacity ml-1">
             Share Feedback
           </a>
         </p>
@@ -241,7 +241,7 @@ export default function ParascanPage() {
           </p>
           <p className="text-black/40 text-[10px] font-bold uppercase tracking-[0.25em] max-w-xl mx-auto mb-16 leading-loose">
             Pricing will be introduced when beta ends. Help shape the product —{" "}
-            <a href="/#contact" className="underline underline-offset-2 hover:text-black transition-colors">send us your feedback</a>.
+            <a href="mailto:james@3kpro.services" className="underline underline-offset-2 hover:text-black transition-colors">send us your feedback</a>.
           </p>
           <a
             href={appUrl}

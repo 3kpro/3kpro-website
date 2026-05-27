@@ -167,6 +167,7 @@ export default function RootLayout({
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+1-918-816-8832',
+      email: 'james@3kpro.services',
       contactType: 'sales',
       areaServed: 'US',
       availableLanguage: 'English'
