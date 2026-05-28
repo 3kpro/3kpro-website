@@ -137,15 +137,6 @@ export default function ContactForm() {
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-500">Transmission Interrupted. Please re-validate your parameters or reach us at <a href="tel:+19188168832" className="underline">918-816-8832</a> or <a href="mailto:james@3kpro.services" className="underline">james@3kpro.services</a>.</p>
         </div>
       )}
-
-      <div className="mt-12 pt-8 border-t border-black/10 text-center space-y-2">
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40">
-          Direct Phone: <a href="tel:+19188168832" className="text-black hover:underline">918-816-8832</a>
-        </p>
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40">
-          Direct Email: <a href="mailto:james@3kpro.services" className="text-black hover:underline">james@3kpro.services</a>
-        </p>
-      </div>
     </div>
   )
 }
