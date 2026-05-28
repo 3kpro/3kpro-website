@@ -757,9 +757,14 @@ export default function Home() {
                 Precision-engineered digital infrastructure and professional services. Operational since 2010.
               </p>
               <div className="flex space-x-6">
-                {['Twitter', 'GitHub', 'LinkedIn'].map((p) => (
-                  <a key={p} href={`https://${p.toLowerCase()}.com/3kpro`} target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold uppercase tracking-widest hover:underline">
-                    {p}
+                {[
+                  { label: 'X', href: 'https://x.com/3KPRO_SAAS' },
+                  { label: 'TikTok', href: 'https://www.tiktok.com/@3kpro.services' },
+                  { label: 'YouTube', href: 'https://www.youtube.com/@3KPRO.SERVICES' },
+                  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/3kpro-services' },
+                ].map((p) => (
+                  <a key={p.label} href={p.href} target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold uppercase tracking-widest hover:underline">
+                    {p.label}
                   </a>
                 ))}
               </div>

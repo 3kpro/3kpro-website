@@ -12,6 +12,13 @@ export const metadata: Metadata = {
     title: 'AI Automation Consulting for Tulsa & Broken Arrow Businesses | 3K Pro Services',
     description: 'Partner with 3K Pro Services in Tulsa & Broken Arrow to turn your SOPs into AI-native workflows, agents, and automations that cut manual work across your business.',
     url: 'https://3kpro.services/services/ai-automation-consulting',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: '3K Pro Services — AI Automation Consulting' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Automation Consulting for Tulsa & Broken Arrow | 3K Pro Services',
+    description: 'Partner with 3K Pro Services in Tulsa & Broken Arrow to turn your SOPs into AI-native workflows, agents, and automations that cut manual work across your business.',
+    images: ['/og-image.png'],
   },
 }
 

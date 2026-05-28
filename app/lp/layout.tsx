@@ -4,6 +4,7 @@ import LaunchpadGuard from "./launchpad-guard";
 export const metadata: Metadata = {
   title: "Launchpad | Xelora",
   description: "Marketing Automation Command Center",
+  robots: { index: false, follow: false },
 };
 
 export default function LaunchpadLayout({

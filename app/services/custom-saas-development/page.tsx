@@ -12,6 +12,13 @@ export const metadata: Metadata = {
     title: 'Custom SaaS Development for Tulsa & Broken Arrow | 3K Pro Services',
     description: 'Design and deploy custom micro-SaaS and internal tools specifically built for your Tulsa or Broken Arrow business. Stop forcing generic software to fit your unique needs.',
     url: 'https://3kpro.services/services/custom-saas-development',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: '3K Pro Services — Custom SaaS Development' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Custom SaaS Development for Tulsa & Broken Arrow | 3K Pro Services',
+    description: 'Design and deploy custom micro-SaaS and internal tools specifically built for your Tulsa or Broken Arrow business. Stop forcing generic software to fit your unique needs.',
+    images: ['/og-image.png'],
   },
 }
 

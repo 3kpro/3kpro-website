@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /(portal)/
+Disallow: /admin/
+Disallow: /portal/
 
 Sitemap: https://3kpro.services/sitemap.xml

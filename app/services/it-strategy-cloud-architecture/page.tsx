@@ -12,6 +12,13 @@ export const metadata: Metadata = {
     title: 'IT Strategy & Cloud Architecture in Tulsa & Broken Arrow | 3K Pro Services',
     description: 'Future-proof your business with scalable IT strategy and modern cloud architecture designed for Tulsa and Broken Arrow companies. Stop paying for bloated infrastructure.',
     url: 'https://3kpro.services/services/it-strategy-cloud-architecture',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: '3K Pro Services — IT Strategy & Cloud Architecture' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IT Strategy & Cloud Architecture in Tulsa & Broken Arrow | 3K Pro Services',
+    description: 'Future-proof your business with scalable IT strategy and modern cloud architecture designed for Tulsa and Broken Arrow companies. Stop paying for bloated infrastructure.',
+    images: ['/og-image.png'],
   },
 }
 

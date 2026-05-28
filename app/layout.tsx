@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: '3K Pro Services - AI-Native IT & Automation in Tulsa & Broken Arrow',
+  title: '3K Pro Services | AI & Automation Consulting — Tulsa, OK',
   description: '3K Pro Services helps Tulsa & Broken Arrow businesses deploy AI-native IT, cloud architecture, and micro-SaaS workflows. Book a strategy session today.',
   icons: { icon: '/favicon.ico' },
   keywords: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     canonical: 'https://3kpro.services',
   },
   openGraph: {
-    title: '3K Pro Services - AI-Native IT & Automation in Tulsa & Broken Arrow',
+    title: '3K Pro Services | AI & Automation Consulting — Tulsa, OK',
     description: '3K Pro Services helps Tulsa & Broken Arrow businesses deploy AI-native IT, cloud architecture, and micro-SaaS workflows. Book a strategy session today.',
     url: 'https://3kpro.services',
     siteName: '3K Pro Services',
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '3K Pro Services - AI-Native IT & Automation in Tulsa & Broken Arrow',
+    title: '3K Pro Services | AI & Automation Consulting — Tulsa, OK',
     description: '3K Pro Services helps Tulsa & Broken Arrow businesses deploy AI-native IT, cloud architecture, and micro-SaaS workflows. Book a strategy session today.',
-    creator: '@3kpro',
+    creator: '@3KPRO_SAAS',
     images: ['/og-image.png'],
   },
   robots: {
@@ -176,7 +176,7 @@ export default function RootLayout({
       'https://www.linkedin.com/company/3kpro-services',
       'https://www.tiktok.com/@3kpro.services',
       'https://www.youtube.com/@3KPRO.SERVICES',
-      'https://twitter.com/3KPRO_SAAS',
+      'https://x.com/3KPRO_SAAS',
     ],
     owns: [
       {

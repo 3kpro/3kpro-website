@@ -54,12 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
-    {
-      url: `${baseUrl}/thank-you`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.2,
-    },
+    // thank-you is noindexed — excluded from sitemap intentionally
   ]
 
   const productRoutes: MetadataRoute.Sitemap = marketplaceItems.map((item) => ({
