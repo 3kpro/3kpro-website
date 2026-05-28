@@ -6,6 +6,14 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-05-27d] — Remove redundant contact info below form; LAN HMR fix
+### Removed
+- `components/ContactForm.tsx`: removed redundant "Direct Phone" + "Direct Email" block that appeared below the submit button — duplicated info already present in the left pane of the contact section
+### Fixed
+- `next.config.js`: added `allowedDevOrigins` for dev machines `192.168.254.2/.3/.7` — stops Next.js 16 cross-origin HMR warnings when browsing from other LAN machines
+### Commit
+- `f55e352`
+
 ## [2026-05-27c] — Fix contact form delivery + new Resend API key
 ### Changed
 - `app/actions.ts`: updated `from` to `3KPRO Contact <system@3kpro.services>` (was Resend sandbox domain)
