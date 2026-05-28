@@ -5,6 +5,11 @@
       - **Goal:** Ensure site metadata matches the updated Google Business Profile.
 
 ## BACKLOG
+- [ ] **SEO Phase 3 — Homepage client→server refactor** — Extract static sections (hero, services grid, stats, pricing) into server components; keep `'use client'` only for modal state. Delegate to OC + DeepSeek.
+- [ ] **SEO — FAQ + BreadcrumbList JSON-LD** — Add structured data to all three service pages
+- [ ] **SEO — Blog content** — First 3 posts targeting Tulsa-area keywords
+- [ ] **Stripe go-live** — Currently test mode only. Swap both keys + recreate Cloud Ledger price IDs in live mode when ready
+- [ ] **GetXelora.com SEO audit** — Next site in queue after 3kpro.services
 
 ## COMPLETED
 - [x] ✅ **Homepage contact posture and delivery verification** (2026-05-23)

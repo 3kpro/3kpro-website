@@ -6,6 +6,23 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-05-28a] — SEO fixes: noindex, title length, social URLs, OG images, robots.txt
+### Added
+- `app/admin/layout.tsx`: new server layout applying `robots: { index: false, follow: false }` to all admin routes
+- `app/thank-you/layout.tsx`: new server layout applying noindex to thank-you confirmation page
+### Changed
+- `app/layout.tsx`: shortened title tag to 56 chars (was 69); updated Twitter handle to `@3KPRO_SAAS`; updated sameAs URL to `x.com/3KPRO_SAAS`
+- `app/lp/layout.tsx`: added `robots: { index: false, follow: false }` (Launchpad was indexable)
+- `app/page.tsx`: replaced generic placeholder social links with verified URLs (X, TikTok, YouTube, LinkedIn)
+- `app/sitemap.ts`: removed thank-you entry (now noindexed); added comment explaining exclusion
+- `public/robots.txt`: fixed `/(portal)/` route group syntax → `/admin/` + `/portal/` standard paths
+- `app/services/ai-automation-consulting/page.tsx`: added OG image + Twitter Card to metadata
+- `app/services/custom-saas-development/page.tsx`: added OG image + Twitter Card to metadata
+- `app/services/it-strategy-cloud-architecture/page.tsx`: added OG image + Twitter Card to metadata
+- `package.json`: restored missing closing brace (pre-existing corruption causing JSONParseError)
+### Commit
+- `d4ba52e`
+
 ## [2026-05-27d] — Remove redundant contact info below form; LAN HMR fix
 ### Removed
 - `components/ContactForm.tsx`: removed redundant "Direct Phone" + "Direct Email" block that appeared below the submit button — duplicated info already present in the left pane of the contact section
