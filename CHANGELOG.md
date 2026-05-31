@@ -6,6 +6,13 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-05-31] — Local consulting launch posture and quick-pay page
+### Added
+- `app/pay/page.tsx`: dedicated quick-pay page for local consulting deposits, invoice balances, and on-the-fly service payments. Buttons are driven by `NEXT_PUBLIC_STRIPE_*_PAY_URL` values and the page includes a QR code to `https://3kpro.services/pay`.
+- `app/sitemap.ts`: added `/pay` to the sitemap.
+### Notes
+- Live Stripe Payment Links still need to be supplied through environment variables before this should be used as the primary customer payment path.
+
 ## [2026-05-28a] — SEO fixes: noindex, title length, social URLs, OG images, robots.txt
 ### Added
 - `app/admin/layout.tsx`: new server layout applying `robots: { index: false, follow: false }` to all admin routes

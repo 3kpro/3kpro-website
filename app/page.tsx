@@ -198,6 +198,7 @@ export default function Home() {
             <div className="hidden md:flex items-center space-x-10">
               <a href="#services" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">Services</a>
               <Link href="/marketplace" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">Marketplace</Link>
+              <Link href="/pay" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">Quick Pay</Link>
               <a href="#about" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">About</a>
               <a href="#contact" className="px-6 py-2 border border-black text-black text-sm font-bold hover:bg-black hover:text-white transition-all uppercase tracking-widest">
                 Initiate Project
@@ -780,14 +781,16 @@ export default function Home() {
             <div>
               <h3 className="text-xs font-bold uppercase tracking-[0.3em] mb-8 opacity-40">Hierarchy</h3>
               <div className="space-y-4">
-                {['About', 'Marketplace', 'Services', 'Contact'].map((s) => (
-                   <a key={s} href={`#${s.toLowerCase()}`} className="block text-xs font-bold uppercase tracking-tight hover:opacity-60 transition-opacity">{s}</a>
-                ))}
+                <a href="#about" className="block text-xs font-bold uppercase tracking-tight hover:opacity-60 transition-opacity">About</a>
+                <Link href="/marketplace" className="block text-xs font-bold uppercase tracking-tight hover:opacity-60 transition-opacity">Marketplace</Link>
+                <a href="#services" className="block text-xs font-bold uppercase tracking-tight hover:opacity-60 transition-opacity">Services</a>
+                <Link href="/pay" className="block text-xs font-bold uppercase tracking-tight hover:opacity-60 transition-opacity">Quick Pay</Link>
+                <a href="#contact" className="block text-xs font-bold uppercase tracking-tight hover:opacity-60 transition-opacity">Contact</a>
               </div>
             </div>
           </div>
           <div className="border-t border-black pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-[10px] font-bold uppercase tracking-widest opacity-40">© {new Date().getFullYear()} 3KPRO.SYSTEMS. ALL RIGHTS RESERVED.</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest opacity-40">© {new Date().getFullYear()} 3KPRO.SERVICES. ALL RIGHTS RESERVED.</p>
             <div className="text-[10px] font-bold uppercase tracking-widest opacity-40">Tulsa // OK // USA</div>
           </div>
         </div>

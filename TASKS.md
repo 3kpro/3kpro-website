@@ -3,8 +3,11 @@
 ## NOW
 - [ ] **Business Profile Sync** 🏢
       - **Goal:** Ensure site metadata matches the updated Google Business Profile.
+- [ ] **Local AI Consulting Launch Posture**
+      - **Goal:** Confirm indexing, tune Google Business Profile services, publish quick-pay links, and align homepage/service pages with website builds, AI automation, and custom micro-SaaS offers.
 
 ## BACKLOG
+- [ ] **Quick Pay Go-Live** — Create live Stripe Payment Links for deposit, invoice balance, and custom service payments; set Vercel env vars for `/pay`
 - [ ] **SEO Phase 3 — Homepage client→server refactor** — Extract static sections (hero, services grid, stats, pricing) into server components; keep `'use client'` only for modal state. Delegate to OC + DeepSeek.
 - [ ] **SEO — FAQ + BreadcrumbList JSON-LD** — Add structured data to all three service pages
 - [ ] **SEO — Blog content** — First 3 posts targeting Tulsa-area keywords
