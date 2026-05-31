@@ -1,11 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 
-const payUrl = process.env.NEXT_PUBLIC_STRIPE_QUICK_PAY_URL || ''
-const depositUrl = process.env.NEXT_PUBLIC_STRIPE_DEPOSIT_PAY_URL || payUrl
-const invoiceUrl = process.env.NEXT_PUBLIC_STRIPE_INVOICE_PAY_URL || payUrl
-const customUrl = process.env.NEXT_PUBLIC_STRIPE_CUSTOM_PAY_URL || payUrl
-
 const pageUrl = 'https://3kpro.services/pay'
 const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=14&data=${encodeURIComponent(pageUrl)}`
 
@@ -33,23 +28,31 @@ const paymentOptions = [
   {
     label: 'Project Deposit',
     detail: 'Use after a scope, timeline, and price are confirmed.',
-    href: depositUrl,
+    type: 'deposit',
+    amountLabel: '$500 fixed',
+    button: 'Pay Deposit',
   },
   {
     label: 'Invoice Balance',
     detail: 'Use when paying the remaining balance on approved work.',
-    href: invoiceUrl,
+    type: 'invoice',
+    amountLabel: 'Enter invoice amount',
+    button: 'Pay Invoice',
+    min: 100,
+    defaultAmount: 500,
   },
   {
     label: 'Custom Service Payment',
     detail: 'Use for quick one-off work, audits, fixes, and small upgrades.',
-    href: customUrl,
+    type: 'custom',
+    amountLabel: 'Enter agreed amount',
+    button: 'Pay Custom Amount',
+    min: 50,
+    defaultAmount: 250,
   },
 ]
 
 export default function PayPage() {
-  const hasPaymentLink = Boolean(payUrl || depositUrl || invoiceUrl || customUrl)
-
   return (
     <div className="min-h-screen bg-white bg-grid text-black">
       <nav className="bg-white/80 backdrop-blur-md border-b border-black sticky top-0 z-50">
@@ -87,39 +90,49 @@ export default function PayPage() {
             </p>
 
             <div className="grid gap-px overflow-hidden border border-black bg-black md:grid-cols-3">
-              {paymentOptions.map((option) => {
-                const enabled = Boolean(option.href)
-                return (
-                  <div key={option.label} className="flex min-h-[260px] flex-col bg-white p-8">
-                    <div className="mb-8">
-                      <h2 className="mb-4 text-2xl font-bold uppercase tracking-tight">{option.label}</h2>
-                      <p className="text-sm font-medium leading-relaxed text-black/60">{option.detail}</p>
-                    </div>
-                    <div className="mt-auto">
-                      {enabled ? (
-                        <a
-                          href={option.href}
-                          className="block w-full border border-black bg-black px-5 py-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-black/90"
-                          rel="noopener noreferrer"
-                        >
-                          Open Stripe
-                        </a>
-                      ) : (
-                        <div className="border border-black/15 px-5 py-4 text-center text-xs font-bold uppercase tracking-widest text-black/35">
-                          Link Pending
-                        </div>
-                      )}
-                    </div>
+              {paymentOptions.map((option) => (
+                <form key={option.label} action="/api/quick-pay/checkout" method="post" className="flex min-h-[300px] flex-col bg-white p-8">
+                  <input type="hidden" name="type" value={option.type} />
+                  <div className="mb-8">
+                    <h2 className="mb-4 text-2xl font-bold uppercase tracking-tight">{option.label}</h2>
+                    <p className="text-sm font-medium leading-relaxed text-black/60">{option.detail}</p>
                   </div>
-                )
-              })}
+                  <div className="mt-auto space-y-4">
+                    <label className="block">
+                      <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.18em] text-black/40">
+                        {option.amountLabel}
+                      </span>
+                      {option.defaultAmount ? (
+                        <div className="flex items-center border border-black">
+                          <span className="border-r border-black px-4 py-3 text-sm font-bold">$</span>
+                          <input
+                            name="amount"
+                            type="number"
+                            min={option.min}
+                            step="25"
+                            defaultValue={option.defaultAmount}
+                            className="min-w-0 flex-1 px-4 py-3 text-sm font-bold outline-none"
+                            aria-label={`${option.label} amount`}
+                          />
+                        </div>
+                      ) : (
+                        <div className="border border-black/15 px-4 py-3 text-sm font-bold text-black/60">$500.00</div>
+                      )}
+                    </label>
+                    <button
+                      type="submit"
+                      className="block w-full border border-black bg-black px-5 py-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-black/90"
+                    >
+                      {option.button}
+                    </button>
+                  </div>
+                </form>
+              ))}
             </div>
 
-            {!hasPaymentLink && (
-              <div className="mt-8 border border-black/10 bg-black/[0.02] p-6 text-sm font-medium leading-relaxed text-black/60">
-                Payment buttons are waiting on live Stripe Payment Links. Set `NEXT_PUBLIC_STRIPE_QUICK_PAY_URL`, or separate deposit, invoice, and custom payment URLs, in Vercel before sending this page to customers.
-              </div>
-            )}
+            <div className="mt-8 border border-black/10 bg-black/[0.02] p-6 text-sm font-medium leading-relaxed text-black/60">
+              Stripe Checkout opens after choosing a payment path. For invoice and custom payments, enter the agreed amount before opening checkout.
+            </div>
           </section>
 
           <aside className="border border-black bg-white p-8 shadow-[10px_10px_0px_0px_rgba(0,0,0,0.05)]">

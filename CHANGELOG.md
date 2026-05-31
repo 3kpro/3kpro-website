@@ -8,10 +8,11 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [2026-05-31] — Local consulting launch posture and quick-pay page
 ### Added
-- `app/pay/page.tsx`: dedicated quick-pay page for local consulting deposits, invoice balances, and on-the-fly service payments. Buttons are driven by `NEXT_PUBLIC_STRIPE_*_PAY_URL` values and the page includes a QR code to `https://3kpro.services/pay`.
+- `app/pay/page.tsx`: dedicated quick-pay page for local consulting deposits, invoice balances, and on-the-fly service payments. The page includes a QR code to `https://3kpro.services/pay`.
+- `app/api/quick-pay/checkout/route.ts`: Stripe Checkout Session endpoint for fixed deposits plus invoice/custom amount payments.
 - `app/sitemap.ts`: added `/pay` to the sitemap.
 ### Notes
-- Live Stripe Payment Links still need to be supplied through environment variables before this should be used as the primary customer payment path.
+- Quick Pay uses `STRIPE_SECRET_KEY` server-side instead of public Payment Links. Local `.env.local` is currently test mode; Vercel production must have a live-mode Stripe key before this should be used with customers.
 
 ## [2026-05-28a] — SEO fixes: noindex, title length, social URLs, OG images, robots.txt
 ### Added

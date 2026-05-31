@@ -7,7 +7,7 @@
       - **Goal:** Confirm indexing, tune Google Business Profile services, publish quick-pay links, and align homepage/service pages with website builds, AI automation, and custom micro-SaaS offers.
 
 ## BACKLOG
-- [ ] **Quick Pay Go-Live** — Create live Stripe Payment Links for deposit, invoice balance, and custom service payments; set Vercel env vars for `/pay`
+- [ ] **Quick Pay Go-Live** — Verify Vercel production uses live-mode `STRIPE_SECRET_KEY`, then deploy `/pay` + `/api/quick-pay/checkout`
 - [ ] **SEO Phase 3 — Homepage client→server refactor** — Extract static sections (hero, services grid, stats, pricing) into server components; keep `'use client'` only for modal state. Delegate to OC + DeepSeek.
 - [ ] **SEO — FAQ + BreadcrumbList JSON-LD** — Add structured data to all three service pages
 - [ ] **SEO — Blog content** — First 3 posts targeting Tulsa-area keywords
@@ -15,6 +15,7 @@
 - [ ] **GetXelora.com SEO audit** — Next site in queue after 3kpro.services
 
 ## COMPLETED
+- [x] ✅ **Quick Pay Checkout integration** — `/pay` now creates Stripe Checkout Sessions for deposits, invoice balances, and custom payments (2026-05-31)
 - [x] ✅ **Homepage contact posture and delivery verification** (2026-05-23)
 - [x] ✅ **Global no-email contact posture** (2026-05-23)
 - [x] ✅ **SEO Phase 2: Hard Redirects** 🔗 (2026-05-17)
