@@ -7,6 +7,7 @@
       - **Goal:** Confirm indexing, tune Google Business Profile services, publish quick-pay links, and align homepage/service pages with website builds, AI automation, and custom micro-SaaS offers.
 
 ## BACKLOG
+- [ ] **Admin Sales Cockpit v2** — Add lead capture, demo data reset, and Stripe checkout creation tools to the new protected `/admin` backend
 - [ ] **Quick Pay Go-Live** — Verify Vercel production uses live-mode `STRIPE_SECRET_KEY`, then deploy `/pay` + `/api/quick-pay/checkout`
 - [ ] **SEO Phase 3 — Homepage client→server refactor** — Extract static sections (hero, services grid, stats, pricing) into server components; keep `'use client'` only for modal state. Delegate to OC + DeepSeek.
 - [ ] **SEO — FAQ + BreadcrumbList JSON-LD** — Add structured data to all three service pages
@@ -15,6 +16,7 @@
 - [ ] **GetXelora.com SEO audit** — Next site in queue after 3kpro.services
 
 ## COMPLETED
+- [x] ✅ **Admin seller login foundation** — Added protected `/admin/login`, `/admin/logout`, and `/admin` seller control room gated by Supabase Auth + email allowlist (2026-06-01)
 - [x] ✅ **FairMerge marketplace facelift** — Added 3KPRO context, richer product copy, and review-signal graphics to `/marketplace/fairmerge` (2026-06-01)
 - [x] ✅ **Cloud Ledger marketplace checkout 405 fix** — Marketplace "Acquire License" now POSTs to `/api/cloud-ledger/checkout`; direct GETs redirect to Cloud Ledger pricing (2026-06-01)
 - [x] ✅ **Quick Pay Checkout integration** — `/pay` now creates Stripe Checkout Sessions for deposits, invoice balances, and custom payments (2026-05-31)

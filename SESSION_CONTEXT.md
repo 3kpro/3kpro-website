@@ -1,21 +1,24 @@
 # SESSION_CONTEXT — 3KPRO Website
 
-**Last updated:** 2026-06-01 | **Agent:** Joshua (OpenClaw/Codex) | **Session type:** FairMerge page facelift
+**Last updated:** 2026-06-01 | **Agent:** Joshua (OpenClaw/Codex) | **Session type:** Admin seller login foundation
 
 ## Current State
-3kpro.services is live. Cloud Ledger checkout fix and the FairMerge marketplace facelift are both deployed to production. GitHub sync from this container remains blocked.
+3kpro.services is live. Cloud Ledger checkout fix and the FairMerge marketplace facelift are both deployed to production. A protected admin/seller login foundation is complete locally and `npm run build` passes. GitHub sync from this container remains blocked.
 
 ## What Was Done (Last Session)
-- Added FairMerge-specific hero copy for review friction, nitpick churn, reviewer load, and shipping velocity.
-- Reworked FairMerge visuals into review-signal, reviewer-load, and bike-shed detector graphics.
-- Added a 3KPRO context section, review workflow, and stronger “where it pays off” copy to `/marketplace/fairmerge`.
+- Added `/admin/login` using Supabase email/password auth.
+- Added `/admin/logout` for server-side sign-out.
+- Added `/admin` seller control room linking to analytics, platform health, Cloud Ledger, FairMerge, and Quick Pay.
+- Added `proxy.ts` protection for `/admin/*` with email allowlist enforcement.
+- Added `docs/operations/ADMIN_SELLER_ACCESS.md`.
+- Set Vercel production `ADMIN_ALLOWED_EMAILS` to `james@3kpro.services,jlawson808@gmail.com`.
 - `npm run build` passed.
-- Deployed to Vercel production as `dpl_AEVGGRefsKrMa8N4PSSQQt5bD2aM`.
-- Verified `https://3kpro.services/marketplace/fairmerge` returns `200` and contains the new FairMerge sections.
 
 ## What's Next
-1. Reconcile GitHub sync from dev02/OpenCode using `HANDOFF_GITHUB_SYNC.md` so local commits are pushed to `origin main`.
-2. Continue visual QA/content tuning if James spots anything on the live page.
+1. Create or confirm the Supabase Auth user for `james@3kpro.services` and set a strong password.
+2. Deploy admin login foundation to production after James approves the ship.
+3. Reconcile GitHub sync from dev02/OpenCode using `HANDOFF_GITHUB_SYNC.md` so local commits are pushed to `origin main`.
+4. Build Admin Sales Cockpit v2: lead capture, demo data reset, and Stripe checkout creation tools.
 
 ## Blockers (needs James)
 - GitHub push from this container is still blocked by missing credential/SSH plumbing; dev02 host handoff exists.

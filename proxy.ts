@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { checkRateLimit } from "@/lib/ratelimit";
+import { isAllowedAdminEmail } from "@/lib/admin/access";
 
 /**
  * Global Edge Proxy (formerly middleware)
@@ -53,7 +54,28 @@ export async function proxy(req: NextRequest) {
   );
 
   // Refresh session if expired - mandatory for Server Components to see the correct session
-  await supabase.auth.getSession();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (url.pathname.startsWith("/admin")) {
+    const isAuthRoute =
+      url.pathname === "/admin/login" || url.pathname === "/admin/logout";
+
+    if (!isAuthRoute && !isAllowedAdminEmail(user?.email)) {
+      const loginUrl = req.nextUrl.clone();
+      loginUrl.pathname = "/admin/login";
+      loginUrl.searchParams.set("next", url.pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    if (url.pathname === "/admin/login" && isAllowedAdminEmail(user?.email)) {
+      const adminUrl = req.nextUrl.clone();
+      adminUrl.pathname = "/admin";
+      adminUrl.search = "";
+      return NextResponse.redirect(adminUrl);
+    }
+  }
 
   return res;
 }

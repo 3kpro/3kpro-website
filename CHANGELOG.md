@@ -6,6 +6,20 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-06-01] — Admin seller login foundation
+### Added
+- `app/admin/login/*`: protected admin/seller sign-in flow using Supabase email/password auth.
+- `app/admin/logout/route.ts`: server-side logout route for admin sessions.
+- `app/admin/page.tsx`: seller control room linking to analytics, health, product demos, and Quick Pay.
+- `lib/admin/access.ts`: admin allowlist helper for owner/seller email checks.
+- `docs/operations/ADMIN_SELLER_ACCESS.md`: admin access runbook and account creation notes.
+### Changed
+- `proxy.ts`: now redirects non-admin `/admin/*` requests to `/admin/login` and blocks users not on the allowlist.
+### Verified
+- `npm run build` passed with Next.js 16.2.6.
+### Ops
+- Vercel production env var `ADMIN_ALLOWED_EMAILS` set to `james@3kpro.services,jlawson808@gmail.com`.
+
 ## [2026-06-01] — FairMerge marketplace page facelift
 ### Changed
 - `app/marketplace/[slug]/page.tsx`: added a FairMerge-specific hero treatment, operator console graphic, 3KPRO context section, review-signal workflow, and richer product narrative.
