@@ -15,6 +15,7 @@
 - [ ] **GetXelora.com SEO audit** — Next site in queue after 3kpro.services
 
 ## COMPLETED
+- [x] ✅ **Cloud Ledger marketplace checkout 405 fix** — Marketplace "Acquire License" now POSTs to `/api/cloud-ledger/checkout`; direct GETs redirect to Cloud Ledger pricing (2026-06-01)
 - [x] ✅ **Quick Pay Checkout integration** — `/pay` now creates Stripe Checkout Sessions for deposits, invoice balances, and custom payments (2026-05-31)
 - [x] ✅ **Homepage contact posture and delivery verification** (2026-05-23)
 - [x] ✅ **Global no-email contact posture** (2026-05-23)

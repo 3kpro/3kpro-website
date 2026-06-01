@@ -6,6 +6,13 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-06-01] — Cloud Ledger marketplace checkout method fix
+### Fixed
+- `components/marketplace/PurchaseAction.tsx`: internal `/api/*` checkout links now submit with `POST` instead of navigating with browser `GET`, fixing the Cloud Ledger marketplace "Acquire License" 405.
+- `app/api/cloud-ledger/checkout/route.ts`: accidental `GET` requests now redirect to `/cloud-ledger#pricing` instead of exposing a raw 405 page.
+### Verified
+- `npm run build` passed with Next.js 16.2.6.
+
 ## [2026-05-31] — Local consulting launch posture and quick-pay page
 ### Added
 - `app/pay/page.tsx`: dedicated quick-pay page for local consulting deposits, invoice balances, and on-the-fly service payments. The page includes a QR code to `https://3kpro.services/pay`.

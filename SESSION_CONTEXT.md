@@ -1,19 +1,19 @@
 # SESSION_CONTEXT — 3KPRO Website
 
-**Last updated:** 2026-05-30 | **Agent:** OpenClaw (build) + Claude (Stripe key) | **Session type:** Feature ship
+**Last updated:** 2026-06-01 | **Agent:** Joshua (OpenClaw/Codex) | **Session type:** Checkout bug fix
 
 ## Current State
-3kpro.services is live. Payment page shipped today. Contact form working. HTTP 200 confirmed.
+3kpro.services is live. Cloud Ledger marketplace checkout bug fixed locally and `npm run build` passes. Production deploy still needs explicit approval under the website deploy skill.
 
 ## What Was Done (Last Session)
-- OpenClaw built and shipped a payment page — `npm run build` passed, Vercel deployed to production
-- Claude set `STRIPE_SECRET_KEY` in Vercel production (was empty/invalid — same live key as Xelora, single Stripe account)
-- Pre-existing uncommitted files committed (`package-lock.json`, `public/logo-icon.svg`, `public/logo-monogram.svg`)
-- Repo is a git submodule inside the monorepo, on `main` branch (not `master`)
+- Fixed marketplace `PurchaseAction` so internal `/api/*` checkout endpoints are called via `POST`.
+- Cloud Ledger marketplace acquisition now posts `{ planType: "one-time" }` to `/api/cloud-ledger/checkout`.
+- Added a `GET` redirect on `/api/cloud-ledger/checkout` to `/cloud-ledger#pricing` so accidental direct navigation does not show 405.
+- `npm run build` passed.
 
 ## What's Next
-1. Verify payment flow end-to-end with a test transaction if not already done by OpenClaw
-2. No other known open items
+1. Commit, push, and deploy the Cloud Ledger checkout fix after James approves production ship.
+2. Verify `https://3kpro.services/marketplace/cloud-ledger` "Acquire License" opens Stripe Checkout.
 
 ## Blockers (needs James)
 - None currently

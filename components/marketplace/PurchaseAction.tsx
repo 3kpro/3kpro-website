@@ -18,8 +18,8 @@ export function PurchaseAction({ product }: PurchaseActionProps) {
       return;
     }
 
-    // If it's a relative link that isn't our API, go there
-    if (product.stripePaymentLink && !product.stripePaymentLink.includes("/api/checkout")) {
+    // If it's a relative link that isn't an API endpoint, go there
+    if (product.stripePaymentLink && !product.stripePaymentLink.startsWith("/api/")) {
         window.location.href = product.stripePaymentLink;
         return;
     }
@@ -27,14 +27,18 @@ export function PurchaseAction({ product }: PurchaseActionProps) {
     // Otherwise use our internal checkout API
     setLoading(true);
     try {
-      const response = await fetch("/api/checkout", {
+      const checkoutEndpoint = product.stripePaymentLink || "/api/checkout";
+      const checkoutBody = checkoutEndpoint === "/api/cloud-ledger/checkout"
+        ? { planType: "one-time" }
+        : {
+            slug: product.slug,
+            priceId: product.priceId,
+          };
+
+      const response = await fetch(checkoutEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          slug: product.slug,
-          priceId: product.priceId,
-          // We can add more metadata here if needed
-        }),
+        body: JSON.stringify(checkoutBody),
       });
 
       const data = await response.json();

@@ -9,6 +9,10 @@ const checkoutSchema = z.object({
   }),
 });
 
+export async function GET(request: Request) {
+  return NextResponse.redirect(new URL("/cloud-ledger#pricing", request.url), 303);
+}
+
 export async function POST(request: Request) {
   try {
     console.log("Cloud Ledger Checkout API called");
