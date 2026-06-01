@@ -3,20 +3,21 @@
 **Last updated:** 2026-06-01 | **Agent:** Joshua (OpenClaw/Codex) | **Session type:** FairMerge page facelift
 
 ## Current State
-3kpro.services is live. Cloud Ledger checkout fix is already deployed to production, but GitHub sync from this container remains blocked. FairMerge marketplace page facelift is complete locally and `npm run build` passes.
+3kpro.services is live. Cloud Ledger checkout fix and the FairMerge marketplace facelift are both deployed to production. GitHub sync from this container remains blocked.
 
 ## What Was Done (Last Session)
 - Added FairMerge-specific hero copy for review friction, nitpick churn, reviewer load, and shipping velocity.
 - Reworked FairMerge visuals into review-signal, reviewer-load, and bike-shed detector graphics.
 - Added a 3KPRO context section, review workflow, and stronger “where it pays off” copy to `/marketplace/fairmerge`.
 - `npm run build` passed.
+- Deployed to Vercel production as `dpl_AEVGGRefsKrMa8N4PSSQQt5bD2aM`.
+- Verified `https://3kpro.services/marketplace/fairmerge` returns `200` and contains the new FairMerge sections.
 
 ## What's Next
-1. Deploy the FairMerge facelift to production after James approves the ship.
-2. Reconcile GitHub sync from dev02/OpenCode using `HANDOFF_GITHUB_SYNC.md` so local commits are pushed to `origin main`.
+1. Reconcile GitHub sync from dev02/OpenCode using `HANDOFF_GITHUB_SYNC.md` so local commits are pushed to `origin main`.
+2. Continue visual QA/content tuning if James spots anything on the live page.
 
 ## Blockers (needs James)
-- Production deploy still requires explicit approval under the 3KPRO website deploy workflow.
 - GitHub push from this container is still blocked by missing credential/SSH plumbing; dev02 host handoff exists.
 
 ## Key Facts (don't re-discover these)

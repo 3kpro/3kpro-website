@@ -14,6 +14,7 @@ All notable changes to the 3kpro.services company website and marketplace.
 ### Verified
 - `npm run build` passed with Next.js 16.2.6.
 - Local render of `/marketplace/fairmerge` returned HTTP `200`.
+- Deployed to Vercel production as `dpl_AEVGGRefsKrMa8N4PSSQQt5bD2aM`; live `/marketplace/fairmerge` returns HTTP `200`.
 
 ## [2026-06-01] — Cloud Ledger marketplace checkout method fix
 ### Fixed
