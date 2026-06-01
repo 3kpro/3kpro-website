@@ -317,7 +317,7 @@ export const marketplaceItems: MarketplaceItem[] = [
     slug: 'fairmerge',
     name: 'FairMerge',
     tagline: 'Engineering Velocity Engine',
-    description: 'Stop bike-shedding and ship 20% faster. Analyze PR patterns to identify bottlenecks, reduce nitpicks, and improve team velocity.',
+    description: 'A 3KPRO-built review intelligence layer for teams that are tired of pull requests dying by a thousand nitpicks. FairMerge turns PR comments, reviewer load, stale branches, and bias patterns into a clean operating picture for faster, calmer shipping.',
     features: [
       'Nitpick Ratio Analysis',
       'Review Load Balancing',

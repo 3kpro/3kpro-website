@@ -6,6 +6,15 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-06-01] — FairMerge marketplace page facelift
+### Changed
+- `app/marketplace/[slug]/page.tsx`: added a FairMerge-specific hero treatment, operator console graphic, 3KPRO context section, review-signal workflow, and richer product narrative.
+- `components/marketplace/FairMergeVisuals.tsx`: replaced the sparse two-card metrics block with review signal, reviewer load, and bike-shed detector graphics that match the site scheme.
+- `lib/data/marketplace.ts`: expanded FairMerge marketplace description for stronger metadata and card context.
+### Verified
+- `npm run build` passed with Next.js 16.2.6.
+- Local render of `/marketplace/fairmerge` returned HTTP `200`.
+
 ## [2026-06-01] — Cloud Ledger marketplace checkout method fix
 ### Fixed
 - `components/marketplace/PurchaseAction.tsx`: internal `/api/*` checkout links now submit with `POST` instead of navigating with browser `GET`, fixing the Cloud Ledger marketplace "Acquire License" 405.
