@@ -6,6 +6,12 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-06-05] — Contact form Resend sender hardening
+### Fixed
+- `app/actions.ts`: changed the contact form default sender to `3KPRO Contact <james@3kpro.services>`, matching the Resend sender already verified for live outreach.
+- `app/actions.ts`: added explicit missing-`RESEND_API_KEY` handling and clearer Resend error logging for future production failures.
+- `app/actions.ts`: trims submitted name, email, company, and message values before validation.
+
 ## [2026-06-01] — Admin seller login foundation
 ### Added
 - `app/admin/login/*`: protected admin/seller sign-in flow using Supabase email/password auth.

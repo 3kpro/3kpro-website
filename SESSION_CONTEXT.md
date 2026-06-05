@@ -1,27 +1,25 @@
 # SESSION_CONTEXT — 3KPRO Website
 
-**Last updated:** 2026-06-01 | **Agent:** Joshua (OpenClaw/Codex) | **Session type:** Admin seller login foundation
+**Last updated:** 2026-06-05 | **Agent:** Joshua (OpenClaw/Codex) | **Session type:** Contact form maintenance
 
 ## Current State
-3kpro.services is live. Cloud Ledger checkout fix and the FairMerge marketplace facelift are both deployed to production. A protected admin/seller login foundation is complete locally and `npm run build` passes. GitHub sync from this container remains blocked.
+3kpro.services is live. The contact form maintenance fix is complete locally and `npm run build` passes. Branch `main` is ahead of `origin/main` by 5 commits, so deploying the contact fix will also ship the prior local website commits unless they are reviewed/cherry-picked first.
 
 ## What Was Done (Last Session)
-- Added `/admin/login` using Supabase email/password auth.
-- Added `/admin/logout` for server-side sign-out.
-- Added `/admin` seller control room linking to analytics, platform health, Cloud Ledger, FairMerge, and Quick Pay.
-- Added `proxy.ts` protection for `/admin/*` with email allowlist enforcement.
-- Added `docs/operations/ADMIN_SELLER_ACCESS.md`.
-- Set Vercel production `ADMIN_ALLOWED_EMAILS` to `james@3kpro.services,jlawson808@gmail.com`.
+- Updated `app/actions.ts` contact form sender default to `3KPRO Contact <james@3kpro.services>`.
+- Added explicit missing-`RESEND_API_KEY` handling and clearer Resend error logging.
+- Trimmed contact form values before server-side validation.
+- Verified Resend accepts the new sender with smoke-test message id `a6458b44-9775-4dcf-a973-f8793236d587`.
 - `npm run build` passed.
 
 ## What's Next
-1. Create or confirm the Supabase Auth user for `james@3kpro.services` and set a strong password.
-2. Deploy admin login foundation to production after James approves the ship.
-3. Reconcile GitHub sync from dev02/OpenCode using `HANDOFF_GITHUB_SYNC.md` so local commits are pushed to `origin main`.
-4. Build Admin Sales Cockpit v2: lead capture, demo data reset, and Stripe checkout creation tools.
+1. Get James's production deploy approval for the 5 local commits ahead of `origin/main`.
+2. Push `main` to GitHub and deploy `3kpro-website` to Vercel production.
+3. After deploy, submit a live 3kpro.services contact form test and confirm inbox delivery.
+4. Continue Admin Sales Cockpit v2: lead capture, demo data reset, and Stripe checkout creation tools.
 
 ## Blockers (needs James)
-- GitHub push from this container is still blocked by missing credential/SSH plumbing; dev02 host handoff exists.
+- Production deploy approval is needed before pushing/deploying the local website commits.
 
 ## Key Facts (don't re-discover these)
 - Repo: `github.com/3kpro/3kpro-website` — submodule inside `C:\DEV`, branch = `main` (not master)
