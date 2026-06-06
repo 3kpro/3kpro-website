@@ -6,6 +6,15 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-06-06] — Production contact form delivery restored
+### Fixed
+- Replaced the stale Vercel production `RESEND_API_KEY` with the working Resend credential.
+- Redeployed the existing contact form hardening commit to Vercel production.
+### Verified
+- `npm run build` passed with Next.js 16.2.6.
+- Production deployment `dpl_8JoJutUrBK5WFB58Ne7asrizXsJc` reached `READY` and is aliased to `https://3kpro.services`.
+- A live production contact-form server-action submission returned HTTP `200` with `success: true`.
+
 ## [2026-06-05] — Contact form Resend sender hardening
 ### Fixed
 - `app/actions.ts`: changed the contact form default sender to `3KPRO Contact <james@3kpro.services>`, matching the Resend sender already verified for live outreach.

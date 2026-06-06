@@ -16,7 +16,7 @@
 - [ ] **GetXelora.com SEO audit** — Next site in queue after 3kpro.services
 
 ## COMPLETED
-- [x] ✅ **Contact form Resend sender hardening** — Switched default contact sender to `james@3kpro.services`, added env guard/error logging, smoke-tested Resend delivery, and verified `npm run build` (2026-06-05)
+- [x] ✅ **Contact form production delivery restored** — Hardened sender/error handling, replaced the stale Vercel production Resend key, redeployed, and verified a live submission returned success (2026-06-06)
 - [x] ✅ **Admin seller login foundation** — Added protected `/admin/login`, `/admin/logout`, and `/admin` seller control room gated by Supabase Auth + email allowlist (2026-06-01)
 - [x] ✅ **FairMerge marketplace facelift** — Added 3KPRO context, richer product copy, and review-signal graphics to `/marketplace/fairmerge` (2026-06-01)
 - [x] ✅ **Cloud Ledger marketplace checkout 405 fix** — Marketplace "Acquire License" now POSTs to `/api/cloud-ledger/checkout`; direct GETs redirect to Cloud Ledger pricing (2026-06-01)
