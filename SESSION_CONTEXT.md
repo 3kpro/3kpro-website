@@ -1,23 +1,24 @@
 # SESSION_CONTEXT — 3KPRO Website
 
-**Last updated:** 2026-06-06 | **Agent:** Joshua (OpenClaw/Codex) | **Session type:** Contact form production repair
+**Last updated:** 2026-06-06 | **Agent:** Joshua (OpenClaw/Codex) | **Session type:** Social posture audit
 
 ## Current State
-3kpro.services is live and the contact form is working in production. Production source is `9786c0f`; this session's documentation-only commit is retained locally for the next substantive push to avoid triggering another production deployment.
+3kpro.services is live and the contact form is working in production. Social-profile cleanup is now the priority: several website-linked profiles are incomplete or questionable, while Instagram and Facebook do not yet have valid public business pages. Local documentation commits are being retained for the next substantive website push to avoid triggering unnecessary production deployments.
 
 ## What Was Done (Last Session)
-- Diagnosed the live failure as a stale Vercel production `RESEND_API_KEY`; the current source code and sender configuration were already correct.
-- Replaced the production key with the working Resend credential and verified it matches the locally tested credential without exposing its value.
-- Ran `npm run build` successfully and deployed production deployment `dpl_8JoJutUrBK5WFB58Ne7asrizXsJc`.
-- Verified `https://3kpro.services` returns HTTP `200`.
-- Submitted the live production server action; it returned HTTP `200` with `{ success: true }`.
+- Audited X, YouTube, Instagram, Facebook, TikTok, LinkedIn, and all social URLs currently exposed by the website.
+- Confirmed Instagram and Facebook target handles do not resolve to public business profiles.
+- Found X has blank profile fields, TikTok has a visible bio typo, YouTube has stale/off-brand catalog content, and LinkedIn needs URL verification.
+- Created `docs/operations/SOCIAL_POSTURE_AUDIT_2026-06-06.md` with ready-to-paste copy, a posture gate, and execution order.
 
 ## What's Next
-1. Confirm the production verification email arrived at `james@3kpro.services`.
-2. Continue Admin Sales Cockpit v2: lead capture, demo data reset, and Stripe checkout creation tools.
+1. Fix X and TikTok profile fields.
+2. Clean YouTube’s visible catalog and feature a clear business-intro video.
+3. Verify/remove LinkedIn, then create and seed Instagram and Facebook.
+4. Centralize social URLs in the website before adding new links.
 
 ## Blockers (needs James)
-- None for the contact form repair.
+- Profile edits, new account/page creation, and public posts require James's authenticated social sessions and approval.
 
 ## Key Facts (don't re-discover these)
 - Repo: `github.com/3kpro/3kpro-website` — submodule inside `C:\DEV`, branch = `main` (not master)

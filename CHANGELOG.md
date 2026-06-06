@@ -6,6 +6,13 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-06-06] — Social posture audit
+### Added
+- `docs/operations/SOCIAL_POSTURE_AUDIT_2026-06-06.md`: audited all website-linked social profiles plus planned Instagram/Facebook profiles, defined a minimum credible posture gate, and prepared platform-specific profile copy and execution order.
+### Found
+- Instagram and Facebook target handles do not currently resolve to public business profiles.
+- X has blank public profile fields, TikTok has a visible bio typo, YouTube mixes current business content with stale experiments, and the LinkedIn URL needs verification.
+
 ## [2026-06-06] — Production contact form delivery restored
 ### Fixed
 - Replaced the stale Vercel production `RESEND_API_KEY` with the working Resend credential.

@@ -1,6 +1,7 @@
 # TASKS - 3kpro.services Company Site
 
 ## NOW
+- [ ] **Social posture cleanup** — Align X, YouTube, and TikTok; verify/remove LinkedIn; create and seed Instagram/Facebook before exposing them on the website. See `docs/operations/SOCIAL_POSTURE_AUDIT_2026-06-06.md`.
 - [ ] **Business Profile Sync** 🏢
       - **Goal:** Ensure site metadata matches the updated Google Business Profile.
 - [ ] **Local AI Consulting Launch Posture**
