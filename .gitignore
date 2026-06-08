@@ -119,3 +119,8 @@ test.tmp
 # Dev scripts (setup/one-time ops)
 setup-qmd.ps1
 git-cleanup.ps1
+
+# Mount/FUSE artifacts + design source bundle (never commit)
+.fuse_hidden*
+*.fuse_hidden*
+3KPRO Design System.zip

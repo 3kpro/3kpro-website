@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import ContactForm from '@/components/ContactForm'
+import SiteNav from '@/components/SiteNav'
+import SiteFooter from '@/components/SiteFooter'
 
 export const metadata: Metadata = {
   title: 'AI Automation Consulting for Tulsa & Broken Arrow Businesses | 3K Pro Services',
@@ -26,32 +28,11 @@ export default function AIAutomationConsulting() {
   return (
     <div className="min-h-screen bg-white bg-grid">
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-black sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <Link href="/" className="flex items-center group">
-              <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 flex items-center justify-center border border-black group-hover:bg-black group-hover:text-white transition-all">
-                  <span className="font-bold text-xl tracking-tighter">3K</span>
-                </div>
-                <span className="text-xl font-bold text-black tracking-tight uppercase">3kpro.services</span>
-              </div>
-            </Link>
-            <div className="hidden md:flex items-center space-x-10">
-              <Link href="/#services" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">Services</Link>
-              <Link href="/marketplace" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">Marketplace</Link>
-              <Link href="/#about" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">About</Link>
-              <Link href="#contact" className="px-6 py-2 border border-black text-black text-sm font-bold hover:bg-black hover:text-white transition-all uppercase tracking-widest">
-                Initiate Project
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="mb-8">
-          <Link href="/#services" className="text-[10px] font-bold uppercase tracking-widest hover:text-black/60 transition-colors">
+          <Link href="/#services" className="text-[10px] font-bold uppercase tracking-widest hover:text-[#2563eb] transition-colors">
             ← Back to Services
           </Link>
         </div>
@@ -60,6 +41,7 @@ export default function AIAutomationConsulting() {
           AI Automation Consulting<br />
           <span className="opacity-40">in Tulsa & Broken Arrow</span>
         </h1>
+        <div className="w-12 h-[3px] bg-[#2563eb] mb-8" />
 
         <div className="prose prose-lg prose-black max-w-none">
           <section className="mb-12">
@@ -80,15 +62,15 @@ export default function AIAutomationConsulting() {
             <h2 className="text-2xl font-bold uppercase tracking-tight mb-4">Example Workflows & Agent Systems We Implement</h2>
             <ul className="space-y-4 my-6">
               <li className="flex items-start">
-                <div className="w-2 h-2 bg-black mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-[#2563eb] rotate-45 mt-2 mr-4 flex-shrink-0"></div>
                 <span><strong>Intelligent Lead Triage:</strong> Automated systems that ingest web inquiries, score the leads based on your criteria using AI, and route the most valuable prospects directly to your sales team's phones or CRMs.</span>
               </li>
               <li className="flex items-start">
-                <div className="w-2 h-2 bg-black mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-[#2563eb] rotate-45 mt-2 mr-4 flex-shrink-0"></div>
                 <span><strong>Automated Client Onboarding:</strong> Replacing heavy manual paperwork with smart intake forms that automatically provision client portals, draft initial service agreements, and set up project folders.</span>
               </li>
               <li className="flex items-start">
-                <div className="w-2 h-2 bg-black mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-[#2563eb] rotate-45 mt-2 mr-4 flex-shrink-0"></div>
                 <span><strong>Back-office Orchestration:</strong> Linking your accounting software, email inboxes, and project management tools so that invoices, updates, and deliverables trigger each other seamlessly without human intervention.</span>
               </li>
             </ul>
@@ -129,11 +111,7 @@ export default function AIAutomationConsulting() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-black py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[10px] font-bold uppercase tracking-widest opacity-40">© {new Date().getFullYear()} 3KPRO.SERVICES. ALL RIGHTS RESERVED. | TULSA & BROKEN ARROW, OK</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

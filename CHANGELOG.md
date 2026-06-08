@@ -6,6 +6,20 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-06-07] — Premium UI redesign (homepage + marketplace + service pages)
+### Added
+- `components/SiteNav.tsx` and `components/SiteFooter.tsx`: shared 72px nav + footer in the new navy/electric-blue direction, used across marketplace and service pages.
+- `app/globals.css`: `.bg-grid-dark` utility and navy/blue brand CSS vars (`--navy-900 #080d1a`, `--blue-600 #2563eb`, etc.). Existing tokens untouched.
+### Changed
+- `app/page.tsx`: full homepage rewrite to the 3KPRO Design System look (navy hero w/ blue glow + hexagon mark, blue-accent stat, services grid with preserved interactive detail, dark-navy 3-product section w/ Available/Beta badges, blue-accent about/pricing, black CTA w/ blue glow). Real ContactForm and all routes preserved. Still 'use client'.
+- `app/marketplace/page.tsx`: restyled hero + grid to new look; kept real `marketplaceItems` data and `ProductCard`; now uses SiteNav/SiteFooter.
+- `app/services/{ai-automation-consulting,custom-saas-development,it-strategy-cloud-architecture}/page.tsx`: swapped in SiteNav/SiteFooter, blue accent line under H1, electric-blue rotated bullets, blue hover states. SEO copy, metadata, and canonicals unchanged.
+### Verified
+- `npx tsc --noEmit` -> exit 0. Per-file `esbuild` transforms pass for all changed files.
+### Known issue / not yet done
+- `npm run build` fails locally on `lightningcss` (`Cannot find module '../lightningcss.win32-x64-msvc.node'`) — missing Windows native binary for Tailwind v4, unrelated to these changes. Fix: `npm install lightningcss-win32-x64-msvc --save-optional` (or clean reinstall), then build.
+- Changes are on disk on `main` but uncommitted/undeployed (git was locked by a running `next dev`).
+
 ## [2026-06-06] — Social posture audit
 ### Added
 - `docs/operations/SOCIAL_POSTURE_AUDIT_2026-06-06.md`: audited all website-linked social profiles plus planned Instagram/Facebook profiles, defined a minimum credible posture gate, and prepared platform-specific profile copy and execution order.

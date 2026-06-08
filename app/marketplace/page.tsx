@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { marketplaceItems } from '@/lib/data/marketplace'
 import ProductCard from '@/components/marketplace/ProductCard'
-import Link from 'next/link'
+import SiteNav from '@/components/SiteNav'
+import SiteFooter from '@/components/SiteFooter'
 
 export const metadata: Metadata = {
   title: 'Marketplace | 3KPRO',
@@ -10,61 +11,63 @@ export const metadata: Metadata = {
 
 export default function MarketplacePage() {
   return (
-    <div className="min-h-screen bg-white bg-grid">
-      {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-black sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <Link href="/" className="flex items-center group">
-              <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 flex items-center justify-center border border-black group-hover:bg-black group-hover:text-white transition-all">
-                  <span className="font-bold text-xl tracking-tighter">3K</span>
-                </div>
-                <span className="text-xl font-bold text-black tracking-tight uppercase">3kpro.services</span>
-              </div>
-            </Link>
-            <div className="hidden md:flex items-center space-x-10">
-              <Link href="/#services" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">Services</Link>
-              <Link href="/marketplace" className="text-sm font-bold text-black transition-colors uppercase tracking-widest">Marketplace</Link>
-              <Link href="/#about" className="text-sm font-medium text-black/60 hover:text-black transition-colors uppercase tracking-widest">About</Link>
-              <Link href="/#contact" className="px-6 py-2 border border-black text-black text-sm font-bold hover:bg-black hover:text-white transition-all uppercase tracking-widest">
-                Initiate Project
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-white">
+      <SiteNav active="marketplace" />
 
       <main>
-        {/* Marketplace Hero */}
-        <section className="relative pt-32 pb-20 border-b border-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+        {/* Marketplace Hero — structural grid + electric-blue eyebrow */}
+        <section className="relative bg-white bg-grid pt-20 pb-16 md:pt-28 md:pb-20 border-b border-black">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
               <div className="max-w-2xl">
-                <div className="inline-flex items-center px-3 py-1 border border-black mb-8">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Deployment Repository</span>
+                <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#2563eb] mb-3">
+                  Deployment Repository
                 </div>
-                <h1 className="text-5xl md:text-7xl font-bold text-black mb-8 leading-[0.95] tracking-tight">
-                  PREMIUM<br />
-                  <span className="opacity-40 text-4xl md:text-6xl uppercase">Software & Tools.</span>
+                <h1 className="text-5xl md:text-7xl font-bold text-black mb-6 leading-[1.05] tracking-[-0.03em]">
+                  PREMIUM
+                  <br />
+                  <span className="opacity-30 text-4xl md:text-6xl uppercase">Software &amp; Tools.</span>
                 </h1>
-                <p className="text-lg text-black/70 max-w-lg leading-relaxed font-medium">
-                  Direct acquisition of structural digital assets. A curated collection of micro-SaaS, AI frameworks, and architectural workflows.
+                <div className="w-12 h-[3px] bg-[#2563eb] mb-7" />
+                <p className="text-lg text-black/60 max-w-lg leading-relaxed font-medium">
+                  Direct acquisition of structural digital assets. A curated collection of
+                  micro-SaaS, AI frameworks, and architectural workflows.
                 </p>
               </div>
-              <div className="hidden md:block w-32 h-px bg-black/20"></div>
+              <div className="text-right">
+                <div className="text-[5rem] leading-none font-bold text-black tracking-[-0.05em]">
+                  24<span className="text-[#2563eb]">+</span>
+                </div>
+                <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 mt-2">
+                  Products in Deployment
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Product Grid */}
-        <section className="py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap justify-center">
+        <section className="py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#2563eb] mb-3">
+              Direct Acquisition
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-black mb-12 tracking-[-0.03em] uppercase">
+              Available Products
+            </h2>
+            <div className="flex flex-wrap border-l border-t border-black">
               {marketplaceItems
-                .filter((item) => item.slug === 'xelora' || item.slug === 'fairmerge' || item.slug === 'cloud-ledger')
+                .filter(
+                  (item) =>
+                    item.slug === 'xelora' ||
+                    item.slug === 'fairmerge' ||
+                    item.slug === 'cloud-ledger'
+                )
                 .map((item) => (
-                  <div key={item.id} className="w-full md:w-1/2 lg:w-1/3 border border-black -ml-px -mt-px">
+                  <div
+                    key={item.id}
+                    className="w-full md:w-1/2 lg:w-1/3 border-r border-b border-black"
+                  >
                     <ProductCard item={item} />
                   </div>
                 ))}
@@ -73,21 +76,7 @@ export default function MarketplacePage() {
         </section>
       </main>
 
-      {/* Footer - Index Style */}
-      <footer className="bg-white border-t border-black py-20 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 border border-black flex items-center justify-center font-bold text-xs">3K</div>
-              <span className="text-xl font-bold uppercase tracking-tighter">3KPRO.SERVICES</span>
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-8">
-               <p className="text-[10px] font-bold uppercase tracking-widest opacity-40">© {new Date().getFullYear()} 3KPRO.SYSTEMS. ALL RIGHTS RESERVED.</p>
-               <div className="text-[10px] font-bold uppercase tracking-widest opacity-40">Tulsa // OK // USA</div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

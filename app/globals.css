@@ -145,6 +145,26 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 32px 32px;
 }
 
+/* Dark structural grid — for navy/black sections regardless of theme.
+   Used by the redesigned homepage hero, products, and CTA sections. */
+.bg-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Brand palette helpers (3KPRO premium IT direction):
+   navy dark surfaces + electric-blue accent, sharp geometry. */
+:root {
+  --navy-950: #04070f;
+  --navy-900: #080d1a;
+  --navy-800: #0f1628;
+  --blue-700: #1d4ed8;
+  --blue-600: #2563eb;
+  --blue-500: #3b82f6;
+}
+
 /* Smooth transitions */
 a, button {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
