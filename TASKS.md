@@ -1,7 +1,12 @@
 # TASKS - 3kpro.services Company Site
 
 ## NOW
-- [ ] **Ship the 2026-06-07 UI redesign** — (1) Fix lightningcss native binary: `npm install lightningcss-win32-x64-msvc --save-optional` (or clean reinstall node_modules); (2) `npm run build` to confirm green; (3) stop `next dev` (port 3001), then commit + push `main` + update parent ref + deploy. Code is type-clean (tsc exit 0) but uncommitted. See SESSION_CONTEXT.md.
+- [ ] **Deploy AI Workspace Implementation offer** — New page and outreach
+      sheet are built and verified locally. Push `main` and deploy only after
+      James explicitly approves production publication.
+- [ ] **Ship the 2026-06-07 UI redesign** — `npm run build` now passes on
+      Windows. Remaining step is production approval, then push `main`, update
+      parent ref in `C:\DEV`, and deploy.
 - [ ] **Social posture cleanup** — Align X, YouTube, and TikTok; verify/remove LinkedIn; create and seed Instagram/Facebook before exposing them on the website. See `docs/operations/SOCIAL_POSTURE_AUDIT_2026-06-06.md`.
 - [ ] **Business Profile Sync** 🏢
       - **Goal:** Ensure site metadata matches the updated Google Business Profile.
@@ -18,6 +23,9 @@
 - [ ] **GetXelora.com SEO audit** — Next site in queue after 3kpro.services
 
 ## COMPLETED
+- [x] ✅ **AI Workspace Implementation revenue page** — Added a productized
+      consulting page, sitemap route, and manual outreach sheet; `npm run
+      build` passes locally. Not deployed yet (2026-06-16)
 - [x] ✅ **Premium UI redesign — homepage, marketplace, 3 service pages** — Applied 3KPRO Design System navy/electric-blue look; added shared `SiteNav`/`SiteFooter`; `.bg-grid-dark` + brand vars in globals.css. tsc clean. On disk, pending build-fix + commit (2026-06-07)
 - [x] ✅ **Contact form production delivery restored** — Hardened sender/error handling, replaced the stale Vercel production Resend key, redeployed, and verified a live submission returned success (2026-06-06)
 - [x] ✅ **Admin seller login foundation** — Added protected `/admin/login`, `/admin/logout`, and `/admin` seller control room gated by Supabase Auth + email allowlist (2026-06-01)

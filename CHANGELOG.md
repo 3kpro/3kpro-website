@@ -6,6 +6,20 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-06-16] — AI Workspace Implementation revenue page
+### Added
+- `app/services/ai-workspace-implementation/page.tsx`: new productized
+  consulting service page for AI workspace setup, with blueprint deposit CTA
+  routed to `/pay`.
+- `docs/operations/AI_WORKSPACE_IMPLEMENTATION_OUTREACH.md`: manual outreach
+  copy, follow-up copy, qualification questions, and closing script.
+### Changed
+- `app/sitemap.ts`: added `/services/ai-workspace-implementation`.
+### Verified
+- `npm run build` passed with Next.js 16.2.6.
+### Not yet done
+- Not pushed or deployed. Production still needs explicit approval.
+
 ## [2026-06-07] — Premium UI redesign (homepage + marketplace + service pages)
 ### Added
 - `components/SiteNav.tsx` and `components/SiteFooter.tsx`: shared 72px nav + footer in the new navy/electric-blue direction, used across marketplace and service pages.

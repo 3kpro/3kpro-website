@@ -1,11 +1,24 @@
 # SESSION_CONTEXT — 3KPRO Website
 
-**Last updated:** 2026-06-07 | **Agent:** Claude (Cowork) | **Session type:** Premium UI redesign (homepage + marketplace + service pages)
+**Last updated:** 2026-06-16 | **Agent:** Codex | **Session type:** Revenue-page preparation
 
 ## Current State
-3kpro.services is live. This session applied the new "premium IT consulting" visual direction (dark navy + electric-blue, sharp/zero-radius geometry) from the **3KPRO Design System** (`3KPRO Design System.zip` at repo root; mockups in its `ui_kits/website/`) to production routes. All changes are written to disk on `main` but **NOT yet committed or deployed** — a git lock and a local build blocker (below) prevented finishing those steps.
+3kpro.services is live. The local Website repo is buildable on Windows again:
+`npm run build` passed on 2026-06-16. A new productized consulting page for
+AI Workspace Implementation is implemented locally and ready for review, but it
+has not been pushed or deployed.
 
 ## What Was Done (This Session)
+- Added `app/services/ai-workspace-implementation/page.tsx` as a direct
+  revenue page for AI workspace setup engagements.
+- Added the page to `app/sitemap.ts`.
+- Added `docs/operations/AI_WORKSPACE_IMPLEMENTATION_OUTREACH.md` with manual
+  outreach copy, follow-up copy, qualification questions, and a closing script.
+- Verified `npm run build` passes with Next.js 16.2.6.
+- Confirmed production `https://3kpro.services/pay` returns HTTP 200 and can
+  support $500 deposits, $100+ invoice payments, and $50+ custom payments.
+
+## What Was Done (Prior Session)
 - **`app/page.tsx`** — full homepage rewrite to the navy/electric-blue look: navy hero w/ structural grid + blue glow + hexagon 3K mark, stats bar (blue accent stat), services grid (interactive "Analyze Specifications" detail preserved), dark-navy products section (XELORA / FairMerge / Cloud Ledger w/ Available/Beta badges), about (blue accent bars), gray pricing, black CTA w/ blue glow, contact (real ContactForm preserved), footer. Still a `'use client'` component (framer-motion + service-detail modal state) — SEO Phase 3 server refactor still open.
 - **`app/globals.css`** — added `.bg-grid-dark` utility + navy/blue brand CSS vars (`--navy-900 #080d1a`, `--blue-600 #2563eb`, etc.). Existing tokens untouched.
 - **`components/SiteNav.tsx` + `components/SiteFooter.tsx`** — NEW shared server components (72px nav, blue accents) matching the homepage. Used by marketplace + all service pages. (Homepage still has its own inline copy — could be refactored to use these.)
@@ -14,15 +27,21 @@
 - Verified: `npx tsc --noEmit` -> exit 0; per-file `esbuild` transforms pass for all changed files.
 
 ## Blockers (do these before deploy)
-1. **Local `npm run build` fails** in `lightningcss` (`Cannot find module '../lightningcss.win32-x64-msvc.node'`) — **unrelated to the code**. ROOT CAUSE (diagnosed 2026-06-07): `node_modules` was populated in a LINUX env — it contains `lightningcss-linux-x64-gnu`/`-musl` but NOT `lightningcss-win32-x64-msvc` (lightningcss is 1.32.0). A targeted `--save-optional` install does NOT stick while the Linux variants + stale lockfile remain. FIX on Windows, in order: `taskkill /F /IM node.exe` (stop dev server holding the files) -> `rmdir /s /q node_modules` -> `del package-lock.json` -> `npm install` -> `npm run build`.
-1b. **DO NOT run `npm audit fix --force`** — on 2026-06-07 it downgraded `next` 16.2.6->9.3.3 and bumped `ai`/`@ai-sdk/google` to majors, breaking the app. `package.json` + `package-lock.json` were restored from git HEAD. The advisories are transitive/dev-only; ignore or bump in a targeted way, never `--force`. After restoring, do a clean reinstall (`taskkill /F /IM node.exe` -> `rmdir /s /q node_modules` -> `npm install`; KEEP the restored lockfile — it has the win32 lightningcss binary).
-2. **Git was locked** by a running `next dev` (port 3001) holding `.next/` and `.git/index.lock`. Changes are on disk but **unstaged/uncommitted**. Stop dev server, then stage/commit/push.
+1. **Production publication requires James approval.** Do not push/deploy the
+   new AI Workspace page until approved.
+2. **DO NOT run `npm audit fix --force`** — on 2026-06-07 it downgraded `next`
+   16.2.6->9.3.3 and bumped `ai`/`@ai-sdk/google` to majors, breaking the app.
+   The advisories are transitive/dev-only; ignore or bump in a targeted way,
+   never `--force`.
 
 ## What's Next
-1. Fix lightningcss, run `npm run build` to confirm green.
-2. Commit redesign on `main`, push `origin main`, update parent ref in `C:\DEV`, deploy to Vercel.
-3. Optional: refactor homepage to use shared `SiteNav`/`SiteFooter`; do SEO Phase 3 client->server homepage refactor (keep `'use client'` only for the service-detail modal).
-4. Resume prior social-posture cleanup (`docs/operations/SOCIAL_POSTURE_AUDIT_2026-06-06.md`).
+1. Review the AI Workspace page and outreach copy.
+2. If James approves, push `origin main`, update the parent submodule ref in
+   `C:\DEV`, and deploy to Vercel.
+3. Send the manual outreach copy to warm contacts; do not automate sending
+   without explicit approval.
+4. Optional: refactor homepage to use shared `SiteNav`/`SiteFooter`; do SEO
+   Phase 3 client->server homepage refactor.
 
 ## Key Facts (don't re-discover these)
 - Repo: `github.com/3kpro/3kpro-website` — submodule inside `C:\DEV`, branch = `main` (not master)
