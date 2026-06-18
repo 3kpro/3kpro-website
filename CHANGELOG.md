@@ -6,6 +6,13 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 
+## [2026-06-18] — Silo governance docs added
+### Added
+- `SILO_CHARTER.md`: clarified Website ownership, mission, scope, and approval boundaries.
+- `SCORECARD.md`: captured current revenue-facing status, blockers, and deployment approval gate.
+### Notes
+- No production deployment, push, or env var change was made.
+
 ## [2026-06-16] — AI Workspace Implementation revenue page
 ### Added
 - `app/services/ai-workspace-implementation/page.tsx`: new productized
