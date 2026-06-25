@@ -1,1046 +1,574 @@
 'use client'
 
 import ContactForm from '@/components/ContactForm'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type Service = {
-  id: string
-  name: string
-  description: string
-  fullDescription: string
-  features: string[]
-  pricing?: string
-  icon: React.ReactElement
+  eyebrow: string
+  title: string
+  copy: string
+  points: string[]
+  href: string
 }
 
 type Product = {
   mono: string
   name: string
-  tagline: string
-  badge: { label: string; tone: 'available' | 'beta' }
-  description: string
-  features: string[]
-  priceNote: string
-  cta: string
+  copy: string
   href: string
+  label: string
   external?: boolean
 }
 
-export default function Home() {
-  const [selectedService, setSelectedService] = useState<Service | null>(null)
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  }
+const services: Service[] = [
+  {
+    eyebrow: '01 / Web',
+    title: 'Website systems',
+    copy: 'Premium business sites, landing pages, local SEO foundations, conversion paths, and handoff docs.',
+    points: ['Positioning', 'Responsive build', 'Launch handoff'],
+    href: '/services/custom-saas-development',
+  },
+  {
+    eyebrow: '02 / Automation',
+    title: 'Workflow systems',
+    copy: 'Automation, internal tools, reporting paths, and cleanup for teams losing time to repeatable work.',
+    points: ['Process map', 'Integration build', 'Owner-ready docs'],
+    href: '/services/ai-automation-consulting',
+  },
+  {
+    eyebrow: '03 / Advisory',
+    title: 'Operating systems',
+    copy: 'Technical strategy, AI workspace setup, cloud architecture, and software planning for practical operators.',
+    points: ['Systems audit', 'Architecture plan', 'Build roadmap'],
+    href: '/services/it-strategy-cloud-architecture',
+  },
+]
 
-  const services: Service[] = [
-    {
-      id: 'local-websites',
-      name: 'Website Development',
-      description:
-        'Affordable websites for small businesses. One-time fee includes design, development, and FREE hosting.',
-      fullDescription:
-        'Simple, professional websites for businesses that need an online presence. Fast delivery with no monthly fees.',
-      features: [
-        'Custom responsive design (mobile-first)',
-        'FREE lifetime hosting on Vercel',
-        'Domain registration via Namecheap',
-        'Contact forms with email notifications',
-        'Google Maps integration',
-        'Fast loading times (optimized for SEO)',
-        'Full code ownership',
-        'Local business schema markup for better Google visibility',
-      ],
-      pricing: 'One-time fee starting at $899 (no monthly costs)',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-          />
-        </svg>
-      ),
-    },
-    {
-      id: 'cloud',
-      name: 'Cloud Solutions',
-      description:
-        'Scalable cloud infrastructure and migration services. AWS, Azure, and Google Cloud expertise.',
-      fullDescription:
-        'Move your business to the cloud with confidence. We handle everything from architecture design to migration and ongoing management.',
-      features: [
-        'Cloud architecture design and planning',
-        'AWS, Azure, and Google Cloud expertise',
-        'Migration from on-premise to cloud',
-        'Cost optimization and monitoring',
-        'Auto-scaling and load balancing',
-        'Disaster recovery and backup solutions',
-      ],
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-          />
-        </svg>
-      ),
-    },
-    {
-      id: 'custom-dev',
-      name: 'Custom Development',
-      description:
-        'Tailored software solutions. React, Next.js, Node.js, Python. Full-stack with API integration.',
-      fullDescription:
-        'Build software that perfectly fits your business processes. From concept to deployment, we create custom applications with modern technologies.',
-      features: [
-        'Full-stack web applications',
-        'React, Next.js, Node.js, Python',
-        'Database design and optimization',
-        'API development and integration',
-        'Real-time features (WebSockets)',
-        'Testing and quality assurance',
-      ],
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
-    },
-    {
-      id: 'data',
-      name: 'Data Management',
-      description:
-        'Database architecture, PostgreSQL, MongoDB. ETL pipelines, analytics dashboards, data security.',
-      fullDescription:
-        'Transform your data into actionable insights. Expert database design, optimization, and analytics solutions.',
-      features: [
-        'Database design and architecture',
-        'PostgreSQL, MySQL, MongoDB expertise',
-        'Performance optimization and indexing',
-        'Data migration and ETL pipelines',
-        'Analytics and reporting dashboards',
-        'Data security and backup strategies',
-      ],
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
-          />
-        </svg>
-      ),
-    },
-    {
-      id: 'security',
-      name: 'Cybersecurity',
-      description:
-        'Security audits, SSL/TLS, authentication. GDPR, HIPAA, SOC 2 compliance. Incident response.',
-      fullDescription:
-        'Protect your business from cyber threats with enterprise-grade security solutions and best practices.',
-      features: [
-        'Security audits and penetration testing',
-        'SSL/TLS certificate management',
-        'Authentication and authorization systems',
-        'Data encryption and secure storage',
-        'Compliance (GDPR, HIPAA, SOC 2)',
-        'Incident response planning',
-      ],
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-          />
-        </svg>
-      ),
-    },
-    {
-      id: 'automation',
-      name: 'Process Automation',
-      description:
-        'Business workflow automation and n8n integrations. Save 10–50 hours per workflow deployed.',
-      fullDescription:
-        'Save time and reduce errors with intelligent automation. We build custom workflows that handle repetitive tasks automatically.',
-      features: [
-        'Business process automation',
-        'n8n workflow design and implementation',
-        'Integration with existing systems',
-        'Email and notification automation',
-        'Data processing pipelines',
-        'Reporting and analytics automation',
-      ],
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-    },
-  ]
+const products: Product[] = [
+  {
+    mono: 'X',
+    name: 'Xelora',
+    copy: 'Predictive content intelligence for creators and operators who need stronger launch momentum.',
+    href: 'https://getxelora.com',
+    label: 'Live platform',
+    external: true,
+  },
+  {
+    mono: 'C',
+    name: 'Cloud Ledger',
+    copy: 'Self-service Azure waste audit for finding idle resources, cost leaks, and practical savings.',
+    href: '/cloud-ledger',
+    label: 'Available',
+  },
+  {
+    mono: 'M',
+    name: 'Marketplace',
+    copy: 'A growing catalog of software assets, audits, and operating tools from the 3KPRO ecosystem.',
+    href: '/marketplace',
+    label: 'Explore',
+  },
+]
 
-  const stats = [
-    { value: '10+', label: 'Industries Served', accent: false },
-    { value: '$2M+', label: 'Revenue Generated for Clients', accent: false },
-    { value: '95%', label: 'Project Success Rate', accent: false },
-    { value: '15+', label: 'Years Experience', accent: true },
-  ]
+const proof = [
+  { value: '2010', label: 'Operating since' },
+  { value: '3', label: 'Core build lanes' },
+  { value: '24h', label: 'Response target' },
+]
 
-  const products: Product[] = [
-    {
-      mono: 'X',
-      name: 'XELORA',
-      tagline: 'getxelora.com · Viral DNA Decoder',
-      badge: { label: 'Available', tone: 'available' },
-      description:
-        'AI-powered predictive intelligence for content creators. Predict momentum. Engineer virality.',
-      features: [
-        'Viral Score™ Prediction — 87% Accuracy',
-        'Multi-Platform Content Generation',
-        'Real-time Trend Analysis',
-      ],
-      priceNote: 'Free → $29 → $79/mo',
-      cta: 'Access Platform',
-      href: 'https://getxelora.com',
-      external: true,
-    },
-    {
-      mono: 'F',
-      name: 'FAIRMERGE',
-      tagline: 'Engineering Velocity Engine',
-      badge: { label: 'Beta', tone: 'beta' },
-      description:
-        'Stop bike-shedding. Ship 20% faster. Analyze PR patterns to identify bottlenecks, reduce nitpicks, and improve team velocity.',
-      features: ['Nitpick Ratio Analysis', 'Review Load Balancing', 'Staleness Detection'],
-      priceNote: 'From $149/mo',
-      cta: 'Initialize FairMerge',
-      href: '/marketplace/fairmerge',
-    },
-    {
-      mono: 'C',
-      name: 'CLOUD LEDGER',
-      tagline: 'Azure Waste Audit',
-      badge: { label: 'Available', tone: 'available' },
-      description:
-        'Self-service Azure audit for SMBs. Identify idle VMs, unattached disks, unused IPs. Save 20–40% on your Azure bill instantly.',
-      features: [
-        'Secure Read-Only Azure Connection',
-        'Waste Detection & Rightsizing',
-        'PDF/HTML Report Generation',
-      ],
-      priceNote: 'One-time $49',
-      cta: 'Acquire Audit',
-      href: '/cloud-ledger',
-    },
-  ]
-
-  const aboutFeatures = [
-    'Industry-leading expertise and certifications',
-    'Agile development methodology',
-    '24/7 dedicated support team',
-    'Scalable and future-proof solutions',
-    'Transparent pricing and communication',
-  ]
-
-  const aboutMetrics = [
-    { label: 'Client Retention', value: '95%', width: '95%' },
-    { label: 'On-Time Delivery', value: '98%', width: '98%' },
-    { label: 'Structural Assets', value: '85+', width: '85%' },
-  ]
-
-  const pricingTiers = [
-    {
-      name: 'Starter',
-      price: '$899',
-      desc: 'Reputational Anchor',
-      sub: 'Single Allocation',
-      popular: false,
-      features: [
-        '3-page core site',
-        'Structural hosting',
-        'Mobile precision',
-        'Secure handshake (SSL)',
-        '1–2 week build',
-      ],
-    },
-    {
-      name: 'Professional',
-      price: '$1,499',
-      desc: 'Operational Base',
-      sub: 'Single Allocation · Most Selected',
-      popular: true,
-      features: [
-        '7-page system',
-        'Premium design',
-        'Advanced SEO logic',
-        'Google Business integration',
-        'Portfolio array',
-      ],
-    },
-    {
-      name: 'Premium',
-      price: 'Custom',
-      desc: 'Enterprise Node',
-      sub: 'Quotation Required',
-      popular: false,
-      features: [
-        'Unlimited architecture',
-        'E-commerce logic',
-        'Customer portal',
-        'Priority sync',
-        'High-density support',
-      ],
-    },
-  ]
-
-  const socials = [
-    { label: 'X', href: 'https://x.com/3KPRO_SAAS' },
-    { label: 'TikTok', href: 'https://www.tiktok.com/@3kpro.services' },
-    { label: 'YouTube', href: 'https://www.youtube.com/@3KPRO.SERVICES' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/3kpro-services' },
-  ]
+function OrbitSeal({ compact = false }: { compact?: boolean }) {
+  const ticks = Array.from({ length: 24 }, (_, index) => index * 15)
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="bg-white/92 backdrop-blur-md border-b border-black sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-[72px]">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-[42px] h-[42px] border border-black flex items-center justify-center font-bold text-[17px] tracking-tighter group-hover:bg-black group-hover:text-white transition-all">
-                3K
-              </div>
-              <span className="hidden sm:block text-lg font-bold tracking-tight uppercase">
-                3kpro.services
-              </span>
+    <div
+      className={`relative grid shrink-0 place-items-center rounded-full border border-white/18 bg-white/[0.035] text-white shadow-[0_0_34px_rgba(255,255,255,0.055)] backdrop-blur-md ${
+        compact ? 'h-20 w-20' : 'h-32 w-32 md:h-40 md:w-40'
+      }`}
+      aria-label="Strategy, build, systems circular seal"
+    >
+      <svg viewBox="0 0 160 160" className="absolute inset-0 h-full w-full" aria-hidden="true">
+        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeOpacity="0.16" strokeWidth="1" />
+        <circle cx="80" cy="80" r="52" fill="none" stroke="currentColor" strokeOpacity="0.11" strokeWidth="1" strokeDasharray="5 7" />
+        <circle cx="80" cy="80" r="28" fill="none" stroke="currentColor" strokeOpacity="0.18" strokeWidth="1" />
+        <path d="M80 10V150M10 80H150" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
+        <path d="M31 31L129 129M129 31L31 129" stroke="currentColor" strokeOpacity="0.055" strokeWidth="1" />
+        {ticks.map((angle) => (
+          <line
+            key={angle}
+            x1="80"
+            y1="14"
+            x2="80"
+            y2={angle % 45 === 0 ? '22' : '18'}
+            stroke="currentColor"
+            strokeOpacity={angle % 45 === 0 ? '0.34' : '0.16'}
+            strokeWidth={angle % 45 === 0 ? '1.2' : '1'}
+            transform={`rotate(${angle} 80 80)`}
+          />
+        ))}
+      </svg>
+      <motion.svg
+        viewBox="0 0 160 160"
+        className="absolute inset-0 h-full w-full"
+        animate={{ rotate: 360 }}
+        transition={{ duration: compact ? 22 : 28, repeat: Infinity, ease: 'linear' }}
+      >
+        <defs>
+          <path id={compact ? 'orbitTextCompact' : 'orbitText'} d="M80,80 m-57,0 a57,57 0 1,1 114,0 a57,57 0 1,1 -114,0" />
+        </defs>
+        <text fill="currentColor" fontSize={compact ? '11' : '9'} fontWeight="700" letterSpacing="1.2">
+          <textPath href={`#${compact ? 'orbitTextCompact' : 'orbitText'}`} startOffset="0">
+            STRATEGY / BUILD / SYSTEMS / 3KPRO
+          </textPath>
+        </text>
+      </motion.svg>
+      <div
+        className={`${compact ? 'h-8 w-8 text-[10px]' : 'h-10 w-10 text-xs'} relative grid place-items-center rounded-full border border-white/50 bg-[#08080a]/92 font-bold text-white shadow-[inset_0_0_18px_rgba(255,255,255,0.08),0_0_22px_rgba(255,255,255,0.08)]`}
+      >
+        <span className="pointer-events-none absolute inset-1 rounded-full border border-white/12" />
+        3K
+      </div>
+    </div>
+  )
+}
+
+function ProjectDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const ease = [0.22, 1, 0.36, 1] as const
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <>
+          <motion.button
+            aria-label="Close project drawer"
+            className="fixed inset-0 z-[70] cursor-default bg-black/62 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.34, ease }}
+            onClick={onClose}
+          />
+          <motion.aside
+            className="fixed right-0 top-0 z-[80] h-screen w-full max-w-[620px] overflow-y-auto border-l border-white/10 bg-[#101012] px-6 py-8 text-white shadow-[0_0_120px_rgba(0,0,0,0.62)] sm:px-10"
+            initial={{ x: '104%', opacity: 0.7 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: '104%', opacity: 0.7 }}
+            transition={{ duration: 0.68, ease }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Start a project"
+          >
+            <button
+              type="button"
+              onClick={onClose}
+              className="ml-auto grid h-10 w-10 place-items-center rounded-full border border-white/12 text-xl leading-none text-white/70 transition hover:border-white/30 hover:text-white"
+              aria-label="Close"
+            >
+              x
+            </button>
+            <div className="mt-8 text-xs font-semibold uppercase text-white/45">Project intake</div>
+            <h2 className="mt-7 text-5xl font-semibold leading-[0.96] md:text-6xl" style={{ letterSpacing: 0 }}>
+              Start a
+              <span className="block text-white/52">Project</span>
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-6 text-white/58">
+              Use the form below for real requests. The drawer is the visual interaction; the form still sends through the existing site action.
+            </p>
+            <div className="mt-9 bg-white p-5 text-black sm:p-7">
+              <ContactForm />
+            </div>
+          </motion.aside>
+        </>
+      )}
+    </AnimatePresence>
+  )
+}
+
+export default function Home() {
+  const reduceMotion = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [activeService, setActiveService] = useState(0)
+  const shouldReduceMotion = !mounted || Boolean(reduceMotion)
+  const ease = [0.22, 1, 0.36, 1] as const
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  return (
+    <div className="min-h-screen overflow-x-hidden bg-[#08080a] text-white" style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: 0 }}>
+      <style>{`
+        .home-grid {
+          background-image:
+            linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+            radial-gradient(circle at 50% 24%, rgba(89,72,150,0.34), transparent 34%),
+            radial-gradient(circle at 50% 42%, rgba(255,255,255,0.075), transparent 30%);
+          background-size: 64px 64px, 64px 64px, 100% 100%, 100% 100%;
+        }
+
+        .home-name-glow {
+          animation: homePulse 4.8s ease-in-out infinite;
+        }
+
+        .home-title-frame {
+          animation: homeFramePulse 5.8s ease-in-out infinite;
+        }
+
+        .home-title-frame::before,
+        .home-title-frame::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          width: min(420px, 74%);
+          height: 1px;
+          transform: translateX(-50%);
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+        }
+
+        .home-title-frame::before { top: -18px; }
+        .home-title-frame::after { bottom: -18px; }
+
+        @keyframes homePulse {
+          0%, 100% { opacity: .34; transform: translate(-50%, -50%) scale(.98); filter: blur(34px); }
+          50% { opacity: .58; transform: translate(-50%, -50%) scale(1.08); filter: blur(46px); }
+        }
+
+        @keyframes homeFramePulse {
+          0%, 100% { opacity: .36; filter: blur(0px); }
+          50% { opacity: .72; filter: blur(.35px); }
+        }
+
+        @media (max-width: 720px) {
+          .home-hero-title {
+            width: min(100%, calc(100vw - 40px));
+            max-width: calc(100vw - 40px);
+            min-width: 0;
+            font-size: clamp(3.25rem, 14.5vw, 4rem) !important;
+            overflow-wrap: break-word;
+          }
+
+          .home-title-frame {
+            inset: -16px -12px !important;
+          }
+
+          .home-hero-copy {
+            width: min(100%, calc(100vw - 48px));
+            max-width: calc(100vw - 48px);
+          }
+
+          .home-hero-copy p {
+            width: min(100%, 320px);
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            line-height: 1.75;
+          }
+        }
+      `}</style>
+
+      <ProjectDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+
+      <div className="home-grid relative min-h-screen">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,10,0.18),#08080a_92%)]" />
+
+        <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#08080a]/82 backdrop-blur-xl">
+          <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+            <Link href="/" className="text-lg font-black uppercase text-white">
+              3KPRO.SERVICES
             </Link>
-            <div className="flex items-center gap-4 md:gap-10">
+            <nav className="hidden items-center gap-8 text-xs font-semibold uppercase text-white/72 md:flex">
+              <a href="#services" className="transition hover:text-white">Services</a>
+              <a href="#products" className="transition hover:text-white">Products</a>
+              <a href="#pricing" className="transition hover:text-white">Pricing</a>
+              <button type="button" onClick={() => setDrawerOpen(true)} className="transition hover:text-white">
+                Contact
+              </button>
+            </nav>
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              className="inline-flex min-h-10 items-center rounded-full bg-white px-4 text-xs font-semibold text-black transition hover:bg-white/88 md:hidden"
+            >
+              Start
+            </button>
+          </div>
+        </header>
+
+        <main className="relative z-10">
+          <section className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-7xl flex-col items-center justify-center px-5 pb-20 pt-12 text-center sm:px-6 lg:px-8">
+            <motion.div
+              className="mb-10 inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/[0.055] px-5 py-3 text-xs font-semibold uppercase text-white/68 backdrop-blur-xl"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease }}
+            >
+              <span className="h-2 w-2 rounded-full bg-[#19e06f] shadow-[0_0_18px_rgba(25,224,111,0.7)]" />
+              Available for new projects
+            </motion.div>
+
+            <motion.div
+              className="pointer-events-none absolute right-[8%] top-[22%] hidden md:block"
+              initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.82, filter: 'blur(10px)' }}
+              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+              transition={{ duration: 0.9, delay: 0.35, ease }}
+            >
+              <OrbitSeal />
+            </motion.div>
+
+            <motion.h1
+              className="home-hero-title relative isolate max-w-5xl text-[clamp(5.6rem,13vw,11rem)] font-semibold leading-[0.86] text-white"
+              style={{ letterSpacing: 0 }}
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 24, filter: 'blur(14px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 0.9, delay: 0.22, ease }}
+            >
+              <span aria-hidden="true" className="home-name-glow pointer-events-none absolute left-1/2 top-1/2 -z-20 h-[440px] w-[440px] rounded-full bg-[#6658d9]/38" />
+              <span aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.06]" />
+              <span aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/[0.04]" />
+              <span aria-hidden="true" className="home-title-frame pointer-events-none absolute -inset-x-12 -inset-y-8 z-20">
+                <span className="absolute left-0 top-0 h-10 w-10 border-l border-t border-white/40" />
+                <span className="absolute right-0 top-0 h-10 w-10 border-r border-t border-white/40" />
+                <span className="absolute bottom-0 left-0 h-10 w-10 border-b border-l border-white/40" />
+                <span className="absolute bottom-0 right-0 h-10 w-10 border-b border-r border-white/40" />
+                <span className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 -translate-y-4 bg-white/36" />
+                <span className="absolute bottom-0 left-1/2 h-3 w-px -translate-x-1/2 translate-y-4 bg-white/36" />
+              </span>
+              <span className="relative z-10 block">3KPRO</span>
+              <span className="relative z-10 block text-white/64">Systems</span>
+            </motion.h1>
+
+            <motion.div
+              className="home-hero-copy mt-14 grid w-full max-w-4xl gap-8 text-center text-base leading-7 text-white/58 md:grid-cols-[1fr_auto_1fr] md:text-lg"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.48, ease }}
+            >
+              <p>Business websites, automation, and software systems with precision and restraint.</p>
+              <div className="mx-auto hidden h-full w-px bg-white/12 md:block" />
+              <p>Tulsa based, remote capable, built for owners who want fewer moving parts.</p>
+            </motion.div>
+
+            <motion.div
+              className="mt-12 flex flex-col items-center gap-4 sm:flex-row"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6, ease }}
+            >
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(true)}
+                className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-8 text-sm font-semibold text-black transition hover:bg-white/88"
+              >
+                Start a Project
+              </button>
               <a
                 href="#services"
-                className="hidden md:block text-[11px] font-bold text-black/55 hover:text-black transition-colors uppercase tracking-[0.18em]"
+                className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/14 px-8 text-sm font-semibold text-white/82 transition hover:border-white/34 hover:text-white"
               >
-                Services
+                View Services
               </a>
-              <Link
-                href="/marketplace"
-                className="hidden md:block text-[11px] font-bold text-black/55 hover:text-black transition-colors uppercase tracking-[0.18em]"
-              >
-                Marketplace
-              </Link>
-              <Link
-                href="/pay"
-                className="hidden md:block text-[11px] font-bold text-black/55 hover:text-black transition-colors uppercase tracking-[0.18em]"
-              >
-                Quick Pay
-              </Link>
-              <a
-                href="#about"
-                className="hidden md:block text-[11px] font-bold text-black/55 hover:text-black transition-colors uppercase tracking-[0.18em]"
-              >
-                About
-              </a>
-              <a
-                href="#contact"
-                className="px-4 md:px-[22px] py-[9px] border border-black text-[10px] md:text-[11px] font-bold hover:bg-black hover:text-white transition-all uppercase tracking-[0.18em]"
-              >
-                Initiate Project
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
+            </motion.div>
+          </section>
 
-      <main>
-        {/* Hero — Dark Navy */}
-        <section className="relative bg-[#080d1a] pt-[72px] pb-14 md:pt-[120px] md:pb-24 overflow-hidden">
-          <div className="absolute inset-0 bg-grid-dark pointer-events-none" />
-          <div
-            className="absolute -top-24 right-[10%] w-[500px] h-[500px] pointer-events-none"
-            style={{
-              background: 'radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)',
-            }}
-          />
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-center">
-              <motion.div initial="initial" animate="animate" variants={fadeInUp}>
-                <div className="inline-flex items-center px-3 py-1 border border-white/[0.18] mb-7">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/60">
-                    Serving Tulsa &amp; Broken Arrow Since 2010
-                  </span>
-                </div>
-
-                <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.05] tracking-[-0.03em]">
-                  Websites.
-                  <br />
-                  Automation.
-                  <br />
-                  <span className="opacity-[0.35]">
-                    AI. Built for
-                    <br />
-                    Local Business.
-                  </span>
-                </h1>
-
-                <div className="w-12 h-[3px] bg-[#2563eb] my-7" />
-
-                <p className="text-[17px] text-white/60 max-w-[480px] mb-10 leading-relaxed font-medium">
-                  We help Tulsa and Broken Arrow businesses get online, automate operations, and
-                  grow — without the enterprise price tag.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                  <a
-                    href="#contact"
-                    className="px-9 py-4 bg-[#2563eb] text-white border border-[#2563eb] hover:bg-[#1d4ed8] hover:border-[#1d4ed8] hover:shadow-[6px_6px_0_0_rgba(37,99,235,0.25)] transition-all font-bold uppercase tracking-[0.2em] text-[11px] text-center"
-                  >
-                    Book a Free Strategy Call
-                  </a>
-                  <a
-                    href="#pricing"
-                    className="px-9 py-4 bg-transparent text-white/70 border border-white/20 hover:border-white/60 hover:text-white transition-all font-bold uppercase tracking-[0.2em] text-[11px] text-center"
-                  >
-                    See Pricing →
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-2 text-[12px] text-white/40 font-medium font-mono">
-                  <svg
-                    width="14"
-                    height="14"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"
-                    />
-                  </svg>
-                  <a href="tel:+19188168832" className="text-white/55 hover:text-white transition-colors">
-                    918-816-8832
-                  </a>
-                  <span className="opacity-30">·</span>
-                  <span>Broken Arrow, OK</span>
-                </div>
-              </motion.div>
-
-              {/* Hero Visual — structural hexagon mark */}
+          <section className="mx-auto grid max-w-7xl gap-4 px-5 py-10 sm:px-6 md:grid-cols-3 lg:px-8">
+            {proof.map((item, index) => (
               <motion.div
-                className="relative hidden lg:flex border border-white/[0.08] bg-white/[0.03] p-10 aspect-square items-center justify-center"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                key={item.label}
+                className="rounded-[28px] border border-white/10 bg-white/[0.035] p-6"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.5, delay: index * 0.08, ease }}
               >
-                <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto opacity-90">
-                  <path d="M200 40L360 130V270L200 360L40 270V130Z" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-                  <path d="M200 80L320 150V250L200 320L80 250V150Z" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-                  <path d="M200 40V360M40 130L360 270M40 270L360 130" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5" />
-                  <path
-                    d="M140 155 H230 Q255 155 255 180 Q255 200 200 200 Q255 200 255 225 Q255 250 230 250 H140"
-                    stroke="rgba(255,255,255,0.9)"
-                    strokeWidth="5"
-                    strokeLinecap="square"
-                    fill="none"
-                  />
-                  <line x1="275" y1="155" x2="275" y2="250" stroke="rgba(255,255,255,0.9)" strokeWidth="5" strokeLinecap="square" />
-                  <line x1="275" y1="200" x2="340" y2="155" stroke="rgba(255,255,255,0.9)" strokeWidth="5" strokeLinecap="square" />
-                  <line x1="275" y1="200" x2="340" y2="250" stroke="rgba(255,255,255,0.9)" strokeWidth="5" strokeLinecap="square" />
-                  <circle cx="200" cy="40" r="3" fill="#2563eb" />
-                  <circle cx="360" cy="130" r="3" fill="#2563eb" />
-                  <circle cx="360" cy="270" r="3" fill="#2563eb" />
-                  <circle cx="200" cy="360" r="3" fill="#2563eb" />
-                  <circle cx="40" cy="270" r="3" fill="#2563eb" />
-                  <circle cx="40" cy="130" r="3" fill="#2563eb" />
-                </svg>
+                <div className="text-4xl font-semibold">{item.value}</div>
+                <div className="mt-2 text-xs font-semibold uppercase text-white/44">{item.label}</div>
               </motion.div>
-            </div>
-          </div>
-        </section>
+            ))}
+          </section>
 
-        {/* Stats */}
-        <section className="border-y border-black">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className={`py-8 px-6 text-center border-black ${
-                    index < 3 ? 'md:border-r' : ''
-                  } ${index % 2 === 0 ? 'border-r md:border-r' : ''} ${
-                    index >= 2 ? 'border-t md:border-t-0' : ''
-                  }`}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <div
-                    className={`text-4xl md:text-5xl font-bold mb-2 tracking-[-0.04em] ${
-                      stat.accent ? 'text-[#2563eb]' : 'text-black'
-                    }`}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="text-black/50 text-[10px] font-bold uppercase tracking-[0.2em]">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services */}
-        <section id="services" className="py-14 md:py-24 bg-white bg-grid">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <AnimatePresence mode="wait">
-              {!selectedService ? (
-                <motion.div key="grid" initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                  <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-                    <div>
-                      <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#2563eb] mb-3">
-                        Core Capabilities
-                      </div>
-                      <h2 className="text-4xl md:text-5xl font-bold text-black tracking-[-0.03em]">SERVICES.</h2>
-                    </div>
-                    <p className="text-sm text-black/50 font-medium max-w-[320px] leading-relaxed">
-                      Tailored technological intervention across the entire digital stack.
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap border border-black">
-                    {services.map((service, index) => (
-                      <motion.button
-                        key={service.id}
-                        onClick={() => setSelectedService(service)}
-                        className="group w-full md:w-1/2 lg:w-1/3 min-h-[240px] p-8 bg-white hover:bg-black hover:text-white transition-all duration-300 text-left cursor-pointer relative overflow-hidden flex flex-col border-b border-r border-black [&:nth-child(3n)]:lg:border-r-0 [&:nth-child(2n)]:md:border-r-0 lg:[&:nth-child(2n)]:border-r"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.08 }}
-                      >
-                        <div className="w-11 h-11 border border-current flex items-center justify-center mb-6 transition-transform duration-300 group-hover:rotate-[8deg] group-hover:scale-110">
-                          {React.cloneElement(
-                            service.icon as React.ReactElement<{ className?: string }>,
-                            { className: 'w-5 h-5' }
-                          )}
-                        </div>
-                        <h3 className="text-[17px] font-bold mb-2.5 uppercase tracking-[-0.02em]">{service.name}</h3>
-                        <p className="text-[13px] opacity-55 mb-6 font-medium leading-relaxed flex-1">
-                          {service.description}
-                        </p>
-                        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em]">
-                          Analyze Specifications
-                          <span className="group-hover:translate-x-1.5 transition-transform">→</span>
-                        </div>
-                        <span className="absolute bottom-7 right-7 text-[5rem] leading-none font-bold opacity-[0.03] group-hover:opacity-[0.08] transition-opacity pointer-events-none">
-                          0{index + 1}
-                        </span>
-                      </motion.button>
-                    ))}
-                  </div>
-
-                  {/* Local SEO service pages (preserved for organic search) */}
-                  <div className="mt-10 grid gap-4 md:grid-cols-3" aria-label="Local service pages">
-                    <Link
-                      href="/services/ai-automation-consulting"
-                      className="border border-black/10 p-6 hover:border-[#2563eb] transition-colors group"
-                    >
-                      <span className="block text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 mb-3">
-                        Local Service Page
-                      </span>
-                      <span className="font-bold uppercase tracking-tight text-sm group-hover:text-[#2563eb] transition-colors">
-                        AI Automation Consulting in Tulsa &amp; Broken Arrow →
-                      </span>
-                    </Link>
-                    <Link
-                      href="/services/custom-saas-development"
-                      className="border border-black/10 p-6 hover:border-[#2563eb] transition-colors group"
-                    >
-                      <span className="block text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 mb-3">
-                        Local Service Page
-                      </span>
-                      <span className="font-bold uppercase tracking-tight text-sm group-hover:text-[#2563eb] transition-colors">
-                        Custom SaaS Development in Tulsa &amp; Broken Arrow →
-                      </span>
-                    </Link>
-                    <Link
-                      href="/services/it-strategy-cloud-architecture"
-                      className="border border-black/10 p-6 hover:border-[#2563eb] transition-colors group"
-                    >
-                      <span className="block text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 mb-3">
-                        Local Service Page
-                      </span>
-                      <span className="font-bold uppercase tracking-tight text-sm group-hover:text-[#2563eb] transition-colors">
-                        IT Strategy &amp; Cloud Architecture in Tulsa &amp; Broken Arrow →
-                      </span>
-                    </Link>
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="detail"
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.3 }}
-                  className="max-w-5xl mx-auto"
-                >
-                  <button
-                    onClick={() => setSelectedService(null)}
-                    className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] hover:text-[#2563eb] transition-colors mb-12 group"
-                  >
-                    <span className="mr-3 group-hover:-translate-x-1 transition-transform">←</span>
-                    Back to Index
-                  </button>
-
-                  <div className="border border-black p-8 md:p-16 bg-white relative">
-                    <div className="absolute top-0 right-0 p-8 text-[10px] font-mono opacity-20">
-                      REF: {selectedService.id.toUpperCase()}_v1.0
-                    </div>
-                    <div className="flex flex-col md:flex-row items-start gap-10 mb-16">
-                      <div className="w-20 h-20 border border-black flex items-center justify-center flex-shrink-0">
-                        {React.cloneElement(
-                          selectedService.icon as React.ReactElement<{ className?: string }>,
-                          { className: 'w-10 h-10' }
-                        )}
-                      </div>
-                      <div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight">
-                          {selectedService.name}
-                        </h2>
-                        <p className="text-xl text-black/60 font-medium leading-relaxed">
-                          {selectedService.fullDescription}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-                      <div>
-                        <h3 className="text-xs font-bold uppercase tracking-[0.3em] mb-8 opacity-40">
-                          Modular Components
-                        </h3>
-                        <div className="grid gap-3">
-                          {selectedService.features.map((feature, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-center p-4 border border-black/5 hover:border-[#2563eb]/40 transition-colors bg-black/[0.02]"
-                            >
-                              <div className="w-1.5 h-1.5 bg-[#2563eb] mr-4 rotate-45" />
-                              <span className="text-sm font-medium text-black/80">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="space-y-10">
-                        {selectedService.pricing && (
-                          <div>
-                            <h3 className="text-xs font-bold uppercase tracking-[0.3em] mb-6 opacity-40">
-                              Cost Structure
-                            </h3>
-                            <div className="p-8 border border-black bg-[#080d1a] text-white">
-                              <div className="text-3xl font-bold mb-2">
-                                {selectedService.pricing.split('(')[0]}
-                              </div>
-                              <div className="text-[10px] uppercase tracking-[0.2em] opacity-60">
-                                Fixed-Price Allocation
-                              </div>
-                            </div>
-                          </div>
-                        )}
-
-                        <div>
-                          <h3 className="text-xs font-bold uppercase tracking-[0.3em] mb-6 opacity-40">Engagement</h3>
-                          <div className="flex flex-col gap-4">
-                            <a
-                              href="#contact"
-                              onClick={() => setSelectedService(null)}
-                              className="w-full py-4 bg-[#2563eb] text-white hover:bg-[#1d4ed8] transition-all font-bold uppercase tracking-[0.2em] text-[11px] text-center"
-                            >
-                              Initiate Selection
-                            </a>
-                            <button
-                              onClick={() => setSelectedService(null)}
-                              className="w-full py-4 border border-black text-black hover:bg-black hover:text-white transition-all font-bold uppercase tracking-[0.2em] text-[11px]"
-                            >
-                              Configuration Index
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </section>
-
-        {/* Products — Dark Navy */}
-        <section id="products" className="py-14 md:py-24 bg-[#080d1a] bg-grid-dark border-t border-black">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <section id="services" className="relative mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+            <div className="mb-14 grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-end">
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/40 mb-3">
-                  Direct Acquisition
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.05]">
-                  SAAS
-                  <br />
-                  DEPLOYMENTS.
+                <div className="text-xs font-semibold uppercase text-white/45">01 / Services</div>
+                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
+                  Digital
+                  <span className="block text-white/52">Solutions</span>
                 </h2>
               </div>
-              <p className="text-[15px] text-white/45 font-medium max-w-[300px] leading-relaxed">
-                Standardized software products engineered for immediate operational utility.
+              <p className="max-w-2xl border-l border-white/18 pl-8 text-lg leading-8 text-white/72">
+                The site now sells 3KPRO as one calm operating surface: web, automation, technical strategy, and product systems.
               </p>
             </div>
 
-            <div className="flex flex-col max-w-[760px]">
-              {products.map((product, index) => {
-                const inner = (
-                  <>
-                    <div className="flex items-start gap-4 md:gap-6 mb-7">
-                      <div className="w-14 h-14 border border-white/25 flex-shrink-0 flex items-center justify-center font-bold text-[22px] tracking-[-0.03em] text-white transition-transform duration-300 group-hover:rotate-12">
-                        {product.mono}
-                      </div>
-                      <div>
-                        <div className="text-2xl md:text-[2rem] font-bold uppercase tracking-[-0.03em] text-white leading-none mb-1">
-                          {product.name}
-                        </div>
-                        <div className="font-mono text-[11px] text-white/35 tracking-[0.12em] uppercase">
-                          {product.tagline}
-                        </div>
-                      </div>
-                      <span
-                        className={`ml-auto px-2.5 py-[3px] border text-[9px] font-bold uppercase tracking-[0.2em] flex-shrink-0 ${
-                          product.badge.tone === 'available'
-                            ? 'border-green-500/40 text-green-400 bg-green-600/10'
-                            : 'border-amber-400/40 text-amber-400 bg-amber-500/[0.08]'
-                        }`}
-                      >
-                        {product.badge.label}
-                      </span>
-                    </div>
-                    <p className="text-[15px] text-white/50 font-medium leading-relaxed mb-6">
-                      {product.description}
-                    </p>
-                    <div className="flex flex-wrap gap-x-6 gap-y-2 mb-7">
-                      {product.features.map((feat, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.1em] text-white/50"
-                        >
-                          <div className="w-1 h-1 bg-[#2563eb] rounded-full flex-shrink-0" />
-                          {feat}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex justify-between items-center pt-6 border-t border-white/[0.08]">
-                      <div className="text-white/50 text-[10px] font-bold uppercase tracking-[0.2em]">
-                        {product.priceNote}
-                      </div>
-                      <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/50 group-hover:text-white group-hover:translate-x-1.5 transition-all inline-flex items-center gap-2">
-                        {product.cta} →
-                      </div>
-                    </div>
-                  </>
-                )
-
-                const cls =
-                  'group block border border-white/10 -mt-px p-7 md:p-10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/[0.22] transition-all'
-
-                return product.external ? (
-                  <a key={product.name} href={product.href} target="_blank" rel="noopener noreferrer" className={cls}>
-                    {inner}
-                  </a>
-                ) : (
-                  <Link key={product.name} href={product.href} className={cls}>
-                    {inner}
-                  </Link>
-                )
-              })}
+            <div className="grid gap-5 md:grid-cols-3">
+              {services.map((service, index) => (
+                <motion.button
+                  key={service.title}
+                  type="button"
+                  onMouseEnter={() => setActiveService(index)}
+                  onFocus={() => setActiveService(index)}
+                  onClick={() => setActiveService(index)}
+                  className={`min-h-20 rounded-full border px-6 text-left transition ${
+                    activeService === index
+                      ? 'border-white/36 bg-white text-black'
+                      : 'border-white/12 bg-white/[0.035] text-white/76 hover:border-white/28'
+                  }`}
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.52, delay: index * 0.08, ease }}
+                >
+                  <span className="block text-xs font-semibold uppercase opacity-60">{service.eyebrow}</span>
+                  <span className="mt-1 block text-lg font-semibold">{service.title}</span>
+                </motion.button>
+              ))}
             </div>
 
-            <div className="mt-10">
-              <Link
-                href="/marketplace"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 border border-[#2563eb]/35 text-[#3b82f6] font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-[#2563eb] hover:text-white hover:border-[#2563eb] hover:shadow-[6px_6px_0_0_rgba(37,99,235,0.2)] transition-all"
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeService}
+                className="mt-10 grid gap-5 md:grid-cols-[.9fr_1.1fr]"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 24, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={shouldReduceMotion ? undefined : { opacity: 0, y: -12, filter: 'blur(8px)' }}
+                transition={{ duration: 0.52, ease }}
               >
-                Explore Full Marketplace <span>→</span>
+                <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl">
+                  <div className="text-xs font-semibold uppercase text-white/40">{services[activeService].eyebrow}</div>
+                  <h3 className="mt-7 text-4xl font-semibold leading-none md:text-5xl" style={{ letterSpacing: 0 }}>
+                    {services[activeService].title}
+                  </h3>
+                  <p className="mt-7 max-w-lg text-base leading-7 text-white/62">{services[activeService].copy}</p>
+                  <Link
+                    href={services[activeService].href}
+                    className="mt-8 inline-flex min-h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-black transition hover:bg-white/88"
+                  >
+                    View details
+                  </Link>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-3">
+                  {services[activeService].points.map((point, index) => (
+                    <motion.div
+                      key={point}
+                      className="min-h-36 rounded-[28px] border border-white/10 bg-[#151515] p-6"
+                      initial={shouldReduceMotion ? false : { opacity: 0, x: 24 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.44, delay: index * 0.06, ease }}
+                    >
+                      <div className="mb-8 flex items-center justify-between">
+                        <span className="text-xs text-white/40">0{index + 1}</span>
+                        <span className="h-2 w-2 rounded-full bg-white/52" />
+                      </div>
+                      <div className="text-xl font-semibold">{point}</div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </section>
+
+          <section id="products" className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+            <div className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+              <div>
+                <div className="text-xs font-semibold uppercase text-white/45">02 / Product ecosystem</div>
+                <h2 className="mt-8 max-w-3xl text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
+                  Useful tools,
+                  <span className="block text-white/52">not shelfware.</span>
+                </h2>
+              </div>
+              <Link href="/marketplace" className="inline-flex min-h-12 w-fit items-center rounded-full border border-white/14 px-6 text-sm font-semibold text-white/82 transition hover:border-white/34 hover:text-white">
+                Explore marketplace
               </Link>
             </div>
-          </div>
-        </section>
-
-        {/* About */}
-        <section id="about" className="py-14 md:py-24 bg-white border-t border-black">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div>
-                <span className="block w-9 h-[3px] bg-[#2563eb] mb-7" />
-                <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight tracking-[-0.03em]">
-                  FOUNDATIONAL
-                  <br />
-                  <span className="opacity-30 text-3xl md:text-4xl block">INTEGRITY &amp; MASTERY.</span>
-                </h2>
-                <p className="text-base text-black/60 mb-10 font-medium leading-[1.7]">
-                  Since 2010, 3KPRO has maintained a rigorous standard of excellence in software
-                  engineering and IT consulting. Our approach is rooted in structural stability and
-                  architectural foresight.
-                </p>
-                <div className="flex flex-col gap-4">
-                  {aboutFeatures.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-4 group">
-                      <div className="w-5 h-5 border border-black flex items-center justify-center flex-shrink-0 group-hover:bg-[#2563eb] group-hover:border-[#2563eb] transition-colors">
-                        <div className="w-1.5 h-1.5 bg-[#2563eb] rounded-full group-hover:bg-white" />
-                      </div>
-                      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-black/75">
-                        {feature}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="border border-black p-10 md:p-12 bg-white bg-grid relative overflow-hidden">
-                <div className="text-center mb-10 relative z-10">
-                  <div className="text-[5.5rem] leading-none font-bold text-black tracking-[-0.05em] mb-1.5">3K+</div>
-                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40">
-                    Systemic Successes
-                  </div>
-                </div>
-                <div className="space-y-6 relative z-10">
-                  {aboutMetrics.map((item, i) => (
-                    <div key={i}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-black/50">
-                          {item.label}
-                        </span>
-                        <span className="text-[13px] font-bold">{item.value}</span>
-                      </div>
-                      <div className="w-full h-[2px] bg-black/[0.08]">
-                        <div className="h-[2px] bg-[#2563eb]" style={{ width: item.width }} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing */}
-        <section id="pricing" className="py-14 md:py-24 bg-[#f8fafc] border-t border-black">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div className="mb-14">
-              <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#2563eb] mb-3">
-                Web Architecture
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-black leading-[1.05] tracking-[-0.03em]">
-                STANDARDIZED
-                <br />
-                PACKAGES.
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 border border-black">
-              {pricingTiers.map((tier, idx) => (
-                <div
-                  key={idx}
-                  className={`p-10 bg-white flex flex-col relative border-black ${
-                    idx < 2 ? 'md:border-r' : ''
-                  } ${idx < 2 ? 'border-b md:border-b-0' : ''}`}
+            <div className="grid gap-5 md:grid-cols-3">
+              {products.map((product, index) => (
+                <motion.article
+                  key={product.name}
+                  className="rounded-[28px] border border-white/10 bg-white/[0.035] p-7"
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.52, delay: index * 0.08, ease }}
                 >
-                  {tier.popular && <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#2563eb]" />}
-                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/50 mb-2">
-                    {tier.desc}
+                  <div className="mb-8 flex items-center justify-between">
+                    <span className="grid h-11 w-11 place-items-center rounded-full border border-white/16 text-sm font-bold">{product.mono}</span>
+                    <span className="rounded-full border border-white/12 px-3 py-1 text-xs text-white/52">{product.label}</span>
                   </div>
-                  <h3 className="text-2xl font-bold uppercase tracking-[-0.02em] mb-4">{tier.name}</h3>
-                  <div className="text-5xl font-bold mb-1 tracking-[-0.04em]">{tier.price}</div>
-                  <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-black/40 mb-8">
-                    {tier.sub}
-                  </div>
-                  <div className="flex flex-col gap-3 mb-8 flex-1">
-                    {tier.features.map((f, i) => (
-                      <div key={i} className="flex items-center gap-2.5 text-[12px] font-semibold">
-                        <div className="w-1 h-1 bg-[#2563eb] flex-shrink-0" />
-                        {f}
-                      </div>
-                    ))}
-                  </div>
-                  <a
-                    href="#contact"
-                    className={`w-full py-3.5 text-center text-[11px] font-bold uppercase tracking-[0.2em] border border-black transition-all ${
-                      tier.popular
-                        ? 'bg-[#2563eb] text-white border-[#2563eb] hover:bg-[#1d4ed8] hover:border-[#1d4ed8]'
-                        : 'bg-white text-black hover:bg-black hover:text-white'
-                    }`}
+                  <h3 className="text-2xl font-semibold">{product.name}</h3>
+                  <p className="mt-4 min-h-24 text-sm leading-7 text-white/58">{product.copy}</p>
+                  <Link
+                    href={product.href}
+                    target={product.external ? '_blank' : undefined}
+                    rel={product.external ? 'noreferrer' : undefined}
+                    className="mt-7 inline-flex min-h-11 items-center rounded-full bg-white px-5 text-sm font-semibold text-black transition hover:bg-white/88"
                   >
-                    Configure {tier.name}
-                  </a>
-                </div>
+                    Open
+                  </Link>
+                </motion.article>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* CTA Banner */}
-        <section className="relative py-16 md:py-24 bg-black border-y border-black overflow-hidden bg-grid-dark">
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse, rgba(37,99,235,0.10) 0%, transparent 70%)' }}
-          />
-          <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 leading-tight tracking-[-0.03em]">
-              INNOVATION REQUIRES
-              <br />
-              STRUCTURAL STABILITY.
-            </h2>
-            <p className="text-white/50 text-base mb-10 max-w-[560px] mx-auto font-medium leading-relaxed">
-              Join the collective of forward-thinking enterprises operating on the 3KPRO standard.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a
-                href="#contact"
-                className="px-11 py-[18px] bg-[#2563eb] text-white font-bold uppercase tracking-[0.2em] text-[12px] hover:bg-[#1d4ed8] hover:shadow-[6px_6px_0_0_rgba(37,99,235,0.25)] transition-all"
-              >
-                Initiate Consultation
-              </a>
-              <span className="font-mono text-[13px] text-white/35 tracking-[0.08em]">918-816-8832</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact */}
-        <section id="contact" className="py-14 md:py-24 bg-white">
-          <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <section id="pricing" className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+            <div className="grid gap-8 rounded-[34px] border border-white/10 bg-white/[0.035] p-7 md:grid-cols-[1fr_1.2fr] md:p-10">
               <div>
-                <h2 className="text-4xl font-bold text-black mb-4 uppercase tracking-[-0.03em] leading-tight">
-                  Engagement
-                  <br />
-                  Interface.
+                <div className="text-xs font-semibold uppercase text-white/45">03 / Entry points</div>
+                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
+                  Clear ways
+                  <span className="block text-white/52">to start.</span>
                 </h2>
-                <p className="text-[15px] text-black/50 font-medium mb-10 leading-relaxed">
-                  Submit your project parameters for technical evaluation. Response within 24 hours.
-                </p>
-                <div className="space-y-5">
-                  <div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 mb-1.5">
-                      Location
-                    </div>
-                    <div className="text-[13px] font-bold uppercase tracking-[0.1em]">
-                      Tulsa &amp; Broken Arrow, OK 74014
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 mb-1.5">
-                      Direct Phone
-                    </div>
-                    <div className="text-[13px] font-bold uppercase tracking-[0.1em]">
-                      <a href="tel:+19188168832" className="hover:text-[#2563eb] transition-colors">
-                        918-816-8832
-                      </a>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 mb-1.5">
-                      Direct Email
-                    </div>
-                    <div className="text-[13px] font-bold uppercase tracking-[0.1em]">
-                      <a href="mailto:james@3kpro.services" className="hover:text-[#2563eb] transition-colors">
-                        james@3kpro.services
-                      </a>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <div className="border border-black p-7 md:p-10 bg-white shadow-[10px_10px_0px_0px_rgba(0,0,0,0.06)]">
-                <ContactForm />
+              <div className="grid gap-4 sm:grid-cols-3">
+                {[
+                  ['Website rebuild', '$899+', 'A focused business site with launch basics.'],
+                  ['Automation sprint', 'Scoped', 'One workflow mapped, built, and handed over.'],
+                  ['AI workspace', 'Blueprint', 'Private knowledge and assistant setup for teams.'],
+                ].map(([name, price, copy]) => (
+                  <div key={name} className="rounded-[24px] border border-white/10 bg-[#111113] p-5">
+                    <div className="text-sm font-semibold">{name}</div>
+                    <div className="mt-5 text-3xl font-semibold">{price}</div>
+                    <p className="mt-5 text-sm leading-6 text-white/56">{copy}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-black py-16 relative z-10">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-[2fr_1fr_1fr] gap-12 mb-12">
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-8 border border-black flex items-center justify-center font-bold text-xs">3K</div>
-                <span className="text-[17px] font-bold uppercase tracking-[-0.02em]">3KPRO.SERVICES</span>
+          <section id="contact" className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+            <div className="grid gap-12 border-t border-white/10 pt-16 md:grid-cols-[1fr_1fr_auto] md:items-center">
+              <div>
+                <h2 className="text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
+                  Let's
+                  <span className="block text-white/52">Talk</span>
+                </h2>
               </div>
-              <p className="text-[13px] text-black/50 font-medium max-w-[320px] leading-relaxed mb-6">
-                Precision-engineered digital infrastructure and professional services. Operational
-                since 2010.
-              </p>
-              <div className="flex gap-5">
-                {socials.map((p) => (
-                  <a
-                    key={p.label}
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[10px] font-bold uppercase tracking-[0.18em] text-black/40 hover:text-black transition-colors"
-                  >
-                    {p.label}
-                  </a>
-                ))}
-              </div>
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(true)}
+                className="inline-flex min-h-16 w-fit items-center gap-5 rounded-full bg-white py-2 pl-2 pr-8 text-xl font-semibold text-black transition hover:bg-white/88"
+              >
+                <span className="grid h-12 w-12 place-items-center rounded-full bg-black text-white">3K</span>
+                Start a Project
+              </button>
+              <OrbitSeal compact />
             </div>
-            <div>
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.22em] text-black/40 mb-5">Inventory</h3>
-              <div className="flex flex-col gap-3">
-                {['Cloud Solutions', 'Custom Dev', 'Data Systems', 'Security'].map((s) => (
-                  <a
-                    key={s}
-                    href="#services"
-                    className="text-[12px] font-bold uppercase tracking-[0.12em] hover:text-[#2563eb] transition-colors"
-                  >
-                    {s}
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.22em] text-black/40 mb-5">Hierarchy</h3>
-              <div className="flex flex-col gap-3">
-                <a href="#about" className="text-[12px] font-bold uppercase tracking-[0.12em] hover:text-[#2563eb] transition-colors">
-                  About
-                </a>
-                <Link href="/marketplace" className="text-[12px] font-bold uppercase tracking-[0.12em] hover:text-[#2563eb] transition-colors">
-                  Marketplace
-                </Link>
-                <a href="#services" className="text-[12px] font-bold uppercase tracking-[0.12em] hover:text-[#2563eb] transition-colors">
-                  Services
-                </a>
-                <Link href="/pay" className="text-[12px] font-bold uppercase tracking-[0.12em] hover:text-[#2563eb] transition-colors">
-                  Quick Pay
-                </Link>
-                <a href="#contact" className="text-[12px] font-bold uppercase tracking-[0.12em] hover:text-[#2563eb] transition-colors">
-                  Contact
-                </a>
-              </div>
+          </section>
+        </main>
+
+        <footer className="relative z-10 border-t border-white/10">
+          <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 text-xs text-white/38 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+            <div>3KPRO Systems / Tulsa, Oklahoma / Remote capable</div>
+            <div className="flex flex-wrap gap-4">
+              <a href="tel:+19188168832" className="transition hover:text-white">918-816-8832</a>
+              <a href="mailto:james@3kpro.services" className="transition hover:text-white">james@3kpro.services</a>
+              <Link href="/marketplace" className="transition hover:text-white">Marketplace</Link>
+              <Link href="/pay" className="transition hover:text-white">Quick Pay</Link>
             </div>
           </div>
-          <div className="border-t border-black/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-black/40">
-              © {new Date().getFullYear()} 3KPRO.SERVICES. ALL RIGHTS RESERVED.
-            </p>
-            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-black/40">Tulsa // OK // USA</div>
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   )
 }

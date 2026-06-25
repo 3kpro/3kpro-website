@@ -5,6 +5,23 @@ All notable changes to the 3kpro.services company website and marketplace.
 ---
 
 ## [Unreleased]
+### Added
+- `app/page.tsx`: promoted the approved V5 Pure Systems direction into the production homepage with the blueprint hero, monochrome spinning seal, service/product sections, pricing entry points, and a real Start a Project drawer using the existing contact form.
+- `app/preview/*`: replaced duplicated, broken preview experiments with a shared Figma-backed facelift gallery and three maintainable concept routes: Precision Consulting, Momentum Studio, and Operations Console.
+- `app/preview/v4`, `app/preview/v5`, `app/preview/v6`: added three Figma Make-inspired preview routes: Studio Authority, Casefile Portfolio, and Conversion Drawer.
+- `app/preview/v4`: rebuilt Studio Authority with a dedicated premium layout, removed the floating scan-line animation, added layered page depth, and corrected the intro motion to avoid hydration mismatch.
+- `app/preview/v5`: rebuilt Pure Systems as a dedicated immersive concept with a pulsing company-name glow behind the headline, smooth grid field, in-place spinning circular seal, reveal-on-interaction sections, and a right-side Start a Project drawer.
+- `app/preview/v5`: refined the circular seal toward a monochrome blueprint style with white construction lines, radial ticks, and a translucent center instead of a large white fill.
+- `app/preview/v5`: replaced the loose hero calibration sweep with a tighter blueprint lock-frame around the main wordmark.
+### Verified
+- `npm run build` passed with Next.js 16.2.6.
+- Production homepage `/` returned HTTP 200 locally on port 3001 after the V5 promotion.
+- Local preview routes `/preview`, `/preview/v1`, `/preview/v2`, `/preview/v3`, `/preview/v4`, `/preview/v5`, and `/preview/v6` returned HTTP 200 on port 3001.
+- Desktop and mobile Chrome screenshots were captured for the rebuilt `/preview/v4` route.
+- Desktop and mobile Chrome screenshots were captured for the rebuilt `/preview/v5` route.
+### Notes
+- Figma file created for the three editable concepts: `https://www.figma.com/design/gtNlDm53ZLSpRZTChE79XY`.
+- Figma file extended with editable V4-V6 concept frames based on the recovered Figma Make design direction.
 
 ## [2026-06-18] — Silo governance docs added
 ### Added
