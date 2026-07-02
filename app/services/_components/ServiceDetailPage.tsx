@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import ContactForm from '@/components/ContactForm'
-import SiteNav from '@/components/SiteNav'
-import SiteFooter from '@/components/SiteFooter'
 
 type ServiceDetailPageProps = {
   eyebrow: string
@@ -91,7 +89,7 @@ export default function ServiceDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-white bg-grid">
+    <div className="min-h-screen overflow-x-hidden bg-[#08080a] text-white" style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: 0 }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -104,162 +102,206 @@ export default function ServiceDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <SiteNav active="services" />
 
-      <main className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-20">
-        <div className="mb-8">
-          <Link href="/#services" className="text-[10px] font-bold uppercase tracking-widest hover:text-[#2563eb] transition-colors">
-            Back to Services
-          </Link>
-        </div>
+      <div className="relative min-h-screen bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:64px_64px]">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,10,0.12),#08080a_94%)]" />
 
-        <section className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-          <div>
-            <div className="mb-6 inline-flex border border-black px-3 py-1">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
-                {eyebrow}
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-black mb-8 leading-[0.95] tracking-tight">
-              {title}<br />
-              <span className="opacity-40">{mutedTitle}</span>
-            </h1>
-            <div className="w-12 h-[3px] bg-[#2563eb] mb-8" />
-            <p className="max-w-3xl text-lg md:text-xl font-medium leading-relaxed text-black/65">
-              {summary}
-            </p>
-          </div>
-
-          <div className="border border-black bg-white p-8 shadow-[10px_10px_0px_0px_rgba(0,0,0,0.05)]">
-            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 mb-4">
-              Project start
-            </div>
-            <h2 className="text-2xl font-bold uppercase tracking-tight mb-4">
-              Blueprint first
-            </h2>
-            <p className="text-sm font-medium leading-relaxed text-black/60 mb-6">
-              Send the current mess. We map the first practical build, decide
-              what matters now, and avoid building a beautiful system nobody
-              actually uses.
-            </p>
+        <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#08080a]/82 backdrop-blur-xl">
+          <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+            <Link href="/" className="text-lg font-black uppercase text-white">
+              3KPRO.SERVICES
+            </Link>
+            <nav className="hidden items-center gap-8 text-xs font-semibold uppercase text-white/72 md:flex">
+              <Link href="/#services" className="transition hover:text-white">Services</Link>
+              <Link href="/#products" className="transition hover:text-white">Products</Link>
+              <Link href="/#pricing" className="transition hover:text-white">Pricing</Link>
+              <Link href="/#contact" className="transition hover:text-white">Contact</Link>
+            </nav>
             <Link
-              href="#contact"
-              className="block w-full border border-black bg-black px-5 py-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-black/90"
+              href="/#contact"
+              className="inline-flex min-h-10 items-center rounded-full bg-white px-4 text-xs font-semibold text-black transition hover:bg-white/88"
             >
-              {primaryCta}
+              Start
             </Link>
           </div>
-        </section>
+        </header>
 
-        <section className="mt-20 grid gap-px border border-black bg-black lg:grid-cols-3">
-          {proof.map((item) => (
-            <article key={item.label} className="bg-white p-8">
-              <div className="mb-4 text-4xl font-bold tracking-tight text-black">
-                {item.value}
-              </div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/45">
-                {item.label}
-              </div>
-            </article>
-          ))}
-        </section>
-
-        <section className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-5">
-              What this fixes
-            </h2>
-            <p className="text-sm font-medium leading-relaxed text-black/60">
-              The offer is practical implementation. No mystery transformation
-              deck, no tool-of-the-week theater, no rebuild just because a new
-              trend appeared on your feed.
-            </p>
-          </div>
-          <div className="space-y-6">
-            {sections.map((section) => (
-              <article key={section.title} className="border border-black/10 bg-white p-6">
-                <h2 className="text-xl font-bold uppercase tracking-tight text-black">
-                  {section.title}
-                </h2>
-                <p className="mt-4 text-sm font-medium leading-relaxed text-black/60">
-                  {section.body}
-                </p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-5">
-              Deliverables
-            </h2>
-            <p className="text-sm font-medium leading-relaxed text-black/60">
-              These are the outputs that make the work usable after launch.
-            </p>
-          </div>
-          <div className="space-y-4">
-            {deliverables.map((item) => (
-              <div key={item} className="flex items-start border border-black/10 bg-white p-5">
-                <div className="w-2 h-2 bg-[#2563eb] rotate-45 mt-2 mr-4 flex-shrink-0" />
-                <p className="text-sm font-medium leading-relaxed text-black/70">{item}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-20 border-t border-black pt-16">
-          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+        <main className="relative z-10">
+          <section className="mx-auto grid min-h-[calc(100vh-72px)] max-w-7xl gap-12 px-5 pb-20 pt-16 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-8">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-5">
-                Common questions
+              <Link href="/#services" className="mb-10 inline-flex items-center rounded-full border border-white/12 bg-white/[0.045] px-5 py-3 text-xs font-semibold uppercase text-white/64 backdrop-blur-xl transition hover:border-white/28 hover:text-white">
+                Back to services
+              </Link>
+
+              <div className="mb-8 text-xs font-semibold uppercase text-white/45">{eyebrow}</div>
+              <h1 className="relative max-w-4xl text-6xl font-semibold leading-[0.9] text-white md:text-8xl" style={{ letterSpacing: 0 }}>
+                <span aria-hidden="true" className="pointer-events-none absolute -inset-x-8 -inset-y-6 z-0">
+                  <span className="absolute left-0 top-0 h-10 w-10 border-l border-t border-white/36" />
+                  <span className="absolute right-0 top-0 h-10 w-10 border-r border-t border-white/36" />
+                  <span className="absolute bottom-0 left-0 h-10 w-10 border-b border-l border-white/36" />
+                  <span className="absolute bottom-0 right-0 h-10 w-10 border-b border-r border-white/36" />
+                </span>
+                <span className="relative z-10 block">{title}</span>
+                <span className="relative z-10 block text-white/52">{mutedTitle}</span>
+              </h1>
+              <p className="mt-12 max-w-2xl text-lg leading-8 text-white/68">
+                {summary}
+              </p>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <Link
+                  href="#contact"
+                  className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-8 text-sm font-semibold text-black transition hover:bg-white/88"
+                >
+                  {primaryCta}
+                </Link>
+                <Link
+                  href="/#services"
+                  className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/14 px-8 text-sm font-semibold text-white/82 transition hover:border-white/34 hover:text-white"
+                >
+                  View all services
+                </Link>
+              </div>
+            </div>
+
+            <aside className="rounded-[34px] border border-white/10 bg-white/[0.035] p-7 backdrop-blur-xl">
+              <div className="text-xs font-semibold uppercase text-white/45">Project start</div>
+              <h2 className="mt-8 text-4xl font-semibold leading-none text-white">
+                Blueprint
+                <span className="block text-white/52">first.</span>
               </h2>
-              <p className="text-sm font-medium leading-relaxed text-black/60">
+              <p className="mt-7 text-sm leading-7 text-white/58">
+                Send the current mess. We map the first practical build, decide
+                what matters now, and avoid building a beautiful system nobody
+                actually uses.
+              </p>
+              <div className="mt-8 grid gap-3">
+                {proof.map((item) => (
+                  <div key={item.label} className="rounded-[22px] border border-white/10 bg-[#111113] p-5">
+                    <div className="text-3xl font-semibold text-white">{item.value}</div>
+                    <div className="mt-3 text-xs font-semibold uppercase text-white/42">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          </section>
+
+          <section className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+            <div className="mb-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+              <div>
+                <div className="text-xs font-semibold uppercase text-white/45">01 / Fix the drag</div>
+                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
+                  What this
+                  <span className="block text-white/52">fixes.</span>
+                </h2>
+              </div>
+              <p className="max-w-2xl border-l border-white/18 pl-8 text-lg leading-8 text-white/70">
+                Practical implementation. No mystery transformation deck, no
+                tool-of-the-week theater, no rebuild just because a new trend
+                appeared on your feed.
+              </p>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-3">
+              {sections.map((section, index) => (
+                <article key={section.title} className="rounded-[28px] border border-white/10 bg-white/[0.035] p-7">
+                  <div className="mb-8 flex items-center justify-between">
+                    <span className="text-xs text-white/40">0{index + 1}</span>
+                    <span className="h-2 w-2 rounded-full bg-white/52" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white">{section.title}</h3>
+                  <p className="mt-5 text-sm leading-7 text-white/58">{section.body}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+            <div className="grid gap-8 rounded-[34px] border border-white/10 bg-white/[0.035] p-7 md:grid-cols-[0.85fr_1.15fr] md:p-10">
+              <div>
+                <div className="text-xs font-semibold uppercase text-white/45">02 / Deliverables</div>
+                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
+                  Built to
+                  <span className="block text-white/52">handoff.</span>
+                </h2>
+                <p className="mt-8 max-w-md text-sm leading-7 text-white/58">
+                  These are the outputs that make the work usable after launch.
+                </p>
+              </div>
+              <div className="grid gap-4">
+                {deliverables.map((item, index) => (
+                  <div key={item} className="rounded-[24px] border border-white/10 bg-[#111113] p-5">
+                    <div className="mb-5 flex items-center justify-between">
+                      <span className="text-xs text-white/38">0{index + 1}</span>
+                      <span className="h-2 w-2 rounded-full bg-[#19e06f]" />
+                    </div>
+                    <p className="text-sm leading-7 text-white/68">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+            <div className="mb-14 grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+              <div>
+                <div className="text-xs font-semibold uppercase text-white/45">03 / Questions</div>
+                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
+                  Common
+                  <span className="block text-white/52">questions.</span>
+                </h2>
+              </div>
+              <p className="max-w-2xl border-l border-white/18 pl-8 text-lg leading-8 text-white/70">
                 The short version: if it creates leads, saves time, reduces
                 confusion, or gives the business owner better control, it is on
                 the table.
               </p>
             </div>
-            <div className="space-y-4">
+            <div className="grid gap-5 md:grid-cols-3">
               {faqs.map((faq) => (
-                <article key={faq.question} className="border border-black/10 bg-white p-6">
-                  <h3 className="text-lg font-bold uppercase tracking-tight text-black">{faq.question}</h3>
-                  <p className="mt-3 text-sm font-medium leading-relaxed text-black/60">{faq.answer}</p>
+                <article key={faq.question} className="rounded-[28px] border border-white/10 bg-white/[0.035] p-7">
+                  <h3 className="text-xl font-semibold text-white">{faq.question}</h3>
+                  <p className="mt-5 text-sm leading-7 text-white/58">{faq.answer}</p>
                 </article>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="contact" className="mt-20 border-t border-black pt-16">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <h2 className="text-3xl font-bold text-black mb-6 uppercase tracking-tighter">
-                Start the blueprint
-              </h2>
-              <p className="text-black/60 font-medium mb-8">
-                Tell us what is broken, slow, unclear, or costing you leads. We
-                will map the first useful version and show you what to build.
-              </p>
-              <div className="space-y-5 text-xs font-bold uppercase tracking-widest">
-                <div>
-                  <span className="opacity-40 block mb-2">Service area</span>
-                  Tulsa, Broken Arrow, and remote SMB teams
-                </div>
-                <div>
-                  <span className="opacity-40 block mb-2">Direct phone</span>
-                  <a href="tel:+19188168832" className="hover:underline">918-816-8832</a>
+          <section id="contact" className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+            <div className="grid gap-12 border-t border-white/10 pt-16 lg:grid-cols-[0.9fr_1.1fr]">
+              <div>
+                <div className="text-xs font-semibold uppercase text-white/45">04 / Contact</div>
+                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
+                  Start the
+                  <span className="block text-white/52">blueprint.</span>
+                </h2>
+                <p className="mt-8 max-w-md text-base leading-7 text-white/62">
+                  Tell us what is broken, slow, unclear, or costing you leads. We
+                  will map the first useful version and show you what to build.
+                </p>
+                <div className="mt-10 flex flex-wrap gap-4 text-xs text-white/42">
+                  <span>Tulsa and Broken Arrow</span>
+                  <a href="tel:+19188168832" className="transition hover:text-white">918-816-8832</a>
+                  <a href="mailto:james@3kpro.services" className="transition hover:text-white">james@3kpro.services</a>
                 </div>
               </div>
+              <div className="rounded-[28px] bg-white p-5 text-black sm:p-7">
+                <ContactForm />
+              </div>
             </div>
-            <div className="border border-black p-8 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)]">
-              <ContactForm />
+          </section>
+        </main>
+
+        <footer className="relative z-10 border-t border-white/10">
+          <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 text-xs text-white/38 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+            <div>3KPRO Systems / Tulsa, Oklahoma / Remote capable</div>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/#services" className="transition hover:text-white">Services</Link>
+              <Link href="/marketplace" className="transition hover:text-white">Marketplace</Link>
+              <Link href="/pay" className="transition hover:text-white">Quick Pay</Link>
             </div>
           </div>
-        </section>
-      </main>
-
-      <SiteFooter />
+        </footer>
+      </div>
     </div>
   )
 }
