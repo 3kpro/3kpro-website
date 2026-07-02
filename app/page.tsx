@@ -28,14 +28,14 @@ const services: Service[] = [
     title: 'Website systems',
     copy: 'Premium business sites, landing pages, local SEO foundations, conversion paths, and handoff docs.',
     points: ['Positioning', 'Responsive build', 'Launch handoff'],
-    href: '/services/custom-saas-development',
+    href: '/services/website-systems',
   },
   {
     eyebrow: '02 / Automation',
     title: 'Workflow systems',
     copy: 'Automation, internal tools, reporting paths, and cleanup for teams losing time to repeatable work.',
     points: ['Process map', 'Integration build', 'Owner-ready docs'],
-    href: '/services/ai-automation-consulting',
+    href: '/services/workflow-systems',
   },
   {
     eyebrow: '03 / AI Workspace',
@@ -49,7 +49,7 @@ const services: Service[] = [
     title: 'Operating systems',
     copy: 'Technical strategy, cloud architecture, and software planning for practical operators.',
     points: ['Systems audit', 'Architecture plan', 'Build roadmap'],
-    href: '/services/it-strategy-cloud-architecture',
+    href: '/services/operating-systems',
   },
 ]
 

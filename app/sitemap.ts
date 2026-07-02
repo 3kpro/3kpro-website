@@ -13,7 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/services/ai-automation-consulting`,
+      url: `${baseUrl}/services/website-systems`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services/workflow-systems`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.9,
@@ -25,13 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/services/custom-saas-development`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/services/it-strategy-cloud-architecture`,
+      url: `${baseUrl}/services/operating-systems`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.9,

@@ -205,16 +205,18 @@ export default function RootLayout({
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Enterprise SaaS Development',
-            description: 'Scalable AI-native applications',
+            name: 'Website Systems',
+            description: 'Premium business websites, landing pages, local SEO foundations, and conversion paths.',
+            url: 'https://3kpro.services/services/website-systems',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Local Business Solutions',
-            description: 'Professional web presence and digital transformation',
+            name: 'Workflow Systems',
+            description: 'Automation, internal tools, reporting paths, and cleanup for repeatable business work.',
+            url: 'https://3kpro.services/services/workflow-systems',
           },
         },
         {
@@ -224,6 +226,15 @@ export default function RootLayout({
             name: 'AI Workspace Implementation',
             description: 'Configured AI workspaces for sales, operations, marketing, and admin workflows.',
             url: 'https://3kpro.services/services/ai-workspace-implementation',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Operating Systems',
+            description: 'Technical strategy, cloud architecture, and software planning for practical operators.',
+            url: 'https://3kpro.services/services/operating-systems',
           },
         },
       ],
