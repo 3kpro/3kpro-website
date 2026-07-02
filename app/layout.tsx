@@ -217,6 +217,15 @@ export default function RootLayout({
             description: 'Professional web presence and digital transformation',
           },
         },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI Workspace Implementation',
+            description: 'Configured AI workspaces for sales, operations, marketing, and admin workflows.',
+            url: 'https://3kpro.services/services/ai-workspace-implementation',
+          },
+        },
       ],
     },
   }

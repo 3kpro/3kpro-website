@@ -55,9 +55,73 @@ const deliverables = [
   'Optional monthly support retainer for updates, new workflows, and staff onboarding.',
 ]
 
+const faqs = [
+  {
+    question: 'What is an AI workspace implementation?',
+    answer:
+      'It is a configured operating workspace that gives AI the right business context, reusable workflows, and guardrails for daily sales, operations, marketing, and admin work.',
+  },
+  {
+    question: 'Who is this for?',
+    answer:
+      'The best fit is a small business owner, local service company, agency, sales team, or operator with repeatable work trapped in inboxes, spreadsheets, SOPs, notes, or disconnected tools.',
+  },
+  {
+    question: 'How does the blueprint deposit work?',
+    answer:
+      'The $500 deposit reserves a scoped blueprint session. That session maps the first workflows, confirms fit, and turns the implementation into a clear build quote.',
+  },
+]
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://3kpro.services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: 'https://3kpro.services/#services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'AI Workspace Implementation',
+      item: pageUrl,
+    },
+  ],
+}
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+}
+
 export default function AIWorkspaceImplementation() {
   return (
     <div className="min-h-screen bg-white bg-grid">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <SiteNav active="services" />
 
       <main className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-20">
@@ -142,6 +206,29 @@ export default function AIWorkspaceImplementation() {
                 <p className="text-sm font-medium leading-relaxed text-black/70">{item}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="mt-20 border-t border-black pt-16">
+          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-5">
+                Common questions
+              </h2>
+              <p className="text-sm font-medium leading-relaxed text-black/60">
+                The goal is not to buy AI theater. The goal is to turn the work
+                your team already repeats into a controlled, reusable operating
+                layer.
+              </p>
+            </div>
+            <div className="space-y-4">
+              {faqs.map((faq) => (
+                <article key={faq.question} className="border border-black/10 bg-white p-6">
+                  <h3 className="text-lg font-bold uppercase tracking-tight text-black">{faq.question}</h3>
+                  <p className="mt-3 text-sm font-medium leading-relaxed text-black/60">{faq.answer}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 

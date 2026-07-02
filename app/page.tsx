@@ -38,9 +38,16 @@ const services: Service[] = [
     href: '/services/ai-automation-consulting',
   },
   {
-    eyebrow: '03 / Advisory',
+    eyebrow: '03 / AI Workspace',
+    title: 'AI workspace systems',
+    copy: 'Configured AI workspaces for owners, sales teams, operators, and staff who need repeatable work handled with context.',
+    points: ['Role setup', 'Workflow library', 'Team handoff'],
+    href: '/services/ai-workspace-implementation',
+  },
+  {
+    eyebrow: '04 / Advisory',
     title: 'Operating systems',
-    copy: 'Technical strategy, AI workspace setup, cloud architecture, and software planning for practical operators.',
+    copy: 'Technical strategy, cloud architecture, and software planning for practical operators.',
     points: ['Systems audit', 'Architecture plan', 'Build roadmap'],
     href: '/services/it-strategy-cloud-architecture',
   },
@@ -402,7 +409,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
               {services.map((service, index) => (
                 <motion.button
                   key={service.title}
