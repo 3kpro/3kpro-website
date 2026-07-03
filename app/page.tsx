@@ -84,6 +84,21 @@ const proof = [
   { value: '24h', label: 'Response target' },
 ]
 
+const credibility = [
+  {
+    title: 'Tulsa operator, not a faceless agency',
+    copy: '3KPRO is built for local owners who need clear systems, direct communication, and practical execution without a bloated handoff maze.',
+  },
+  {
+    title: 'Enterprise-shaped judgment',
+    copy: 'The work is informed by two decades around serious Tulsa-area operating environments, including ONEOK, PSO, and Enerflex.',
+  },
+  {
+    title: 'Small first, useful fast',
+    copy: 'Projects start with a narrow blueprint, a working first version, and documentation the owner can actually use after launch.',
+  },
+]
+
 function OrbitSeal({ compact = false }: { compact?: boolean }) {
   const ticks = Array.from({ length: 24 }, (_, index) => index * 15)
 
@@ -393,6 +408,37 @@ export default function Home() {
                 <div className="mt-2 text-xs font-semibold uppercase text-white/44">{item.label}</div>
               </motion.div>
             ))}
+          </section>
+
+          <section id="about" className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+            <div className="grid gap-10 border-t border-white/10 pt-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+              <div>
+                <div className="text-xs font-semibold uppercase text-white/45">00 / Credibility</div>
+                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
+                  Local trust,
+                  <span className="block text-white/52">real systems.</span>
+                </h2>
+              </div>
+              <div className="grid gap-4">
+                {credibility.map((item, index) => (
+                  <motion.article
+                    key={item.title}
+                    className="rounded-[28px] border border-white/10 bg-white/[0.035] p-7"
+                    initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-100px' }}
+                    transition={{ duration: 0.5, delay: index * 0.08, ease }}
+                  >
+                    <div className="mb-6 flex items-center justify-between">
+                      <span className="text-xs text-white/40">0{index + 1}</span>
+                      <span className="h-2 w-2 rounded-full bg-[#19e06f]" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-white">{item.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-white/58">{item.copy}</p>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
           </section>
 
           <section id="services" className="relative mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
