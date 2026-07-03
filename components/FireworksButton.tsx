@@ -13,6 +13,16 @@ type Particle = {
   color: string
 }
 
+type Rocket = {
+  startX: number
+  startY: number
+  targetX: number
+  targetY: number
+  progress: number
+  speed: number
+  color: string
+}
+
 const colors = ['#ff334e', '#ffffff', '#3772ff', '#ffd166', '#19e06f']
 
 function randomBetween(min: number, max: number) {
@@ -21,9 +31,9 @@ function randomBetween(min: number, max: number) {
 
 export default function FireworksButton() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const rocketsRef = useRef<Rocket[]>([])
   const particlesRef = useRef<Particle[]>([])
   const frameRef = useRef<number | null>(null)
-  const timeoutRef = useRef<number[]>([])
 
   const stopAnimation = useCallback(() => {
     if (frameRef.current !== null) {
@@ -48,12 +58,52 @@ export default function FireworksButton() {
     }
   }, [])
 
+  const launchBurst = useCallback((x: number, y: number, count: number) => {
+    const burst: Particle[] = Array.from({ length: count }, (_, index) => {
+      const angle = (Math.PI * 2 * index) / count + randomBetween(-0.12, 0.12)
+      const speed = randomBetween(2.2, 7.2)
+
+      return {
+        x,
+        y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: randomBetween(46, 78),
+        maxLife: 78,
+        size: randomBetween(1.4, 3.2),
+        color: colors[Math.floor(Math.random() * colors.length)],
+      }
+    })
+
+    particlesRef.current.push(...burst)
+  }, [])
+
   const animate = useCallback(() => {
     const canvas = canvasRef.current
     const context = canvas?.getContext('2d')
     if (!canvas || !context) return
 
     context.clearRect(0, 0, window.innerWidth, window.innerHeight)
+
+    const arrivedRockets: Rocket[] = []
+
+    rocketsRef.current = rocketsRef.current
+      .map((rocket) => ({
+        ...rocket,
+        progress: Math.min(rocket.progress + rocket.speed, 1),
+      }))
+      .filter((rocket) => {
+        if (rocket.progress >= 1) {
+          arrivedRockets.push(rocket)
+          return false
+        }
+
+        return true
+      })
+
+    for (const rocket of arrivedRockets) {
+      launchBurst(rocket.targetX, rocket.targetY, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 34 : 76)
+    }
 
     particlesRef.current = particlesRef.current
       .map((particle) => ({
@@ -77,35 +127,39 @@ export default function FireworksButton() {
       context.fill()
     }
 
+    for (const rocket of rocketsRef.current) {
+      const eased = 1 - Math.pow(1 - rocket.progress, 3)
+      const x = rocket.startX + (rocket.targetX - rocket.startX) * eased
+      const y = rocket.startY + (rocket.targetY - rocket.startY) * eased
+      const trailX = rocket.startX + (rocket.targetX - rocket.startX) * Math.max(eased - 0.08, 0)
+      const trailY = rocket.startY + (rocket.targetY - rocket.startY) * Math.max(eased - 0.08, 0)
+
+      context.globalAlpha = 0.9
+      context.strokeStyle = rocket.color
+      context.lineWidth = 2
+      context.shadowBlur = 18
+      context.shadowColor = rocket.color
+      context.beginPath()
+      context.moveTo(trailX, trailY)
+      context.lineTo(x, y)
+      context.stroke()
+
+      context.globalAlpha = 1
+      context.fillStyle = '#ffffff'
+      context.beginPath()
+      context.arc(x, y, 3.2, 0, Math.PI * 2)
+      context.fill()
+    }
+
     context.globalAlpha = 1
     context.shadowBlur = 0
 
-    if (particlesRef.current.length > 0) {
+    if (particlesRef.current.length > 0 || rocketsRef.current.length > 0) {
       frameRef.current = requestAnimationFrame(animate)
     } else {
       stopAnimation()
     }
-  }, [stopAnimation])
-
-  const launchBurst = useCallback((x: number, y: number, count: number) => {
-    const burst: Particle[] = Array.from({ length: count }, (_, index) => {
-      const angle = (Math.PI * 2 * index) / count + randomBetween(-0.12, 0.12)
-      const speed = randomBetween(2.2, 7.2)
-
-      return {
-        x,
-        y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        life: randomBetween(46, 78),
-        maxLife: 78,
-        size: randomBetween(1.4, 3.2),
-        color: colors[Math.floor(Math.random() * colors.length)],
-      }
-    })
-
-    particlesRef.current.push(...burst)
-  }, [])
+  }, [launchBurst, stopAnimation])
 
   const startAnimation = useCallback(() => {
     if (frameRef.current === null) {
@@ -117,25 +171,21 @@ export default function FireworksButton() {
     sizeCanvas()
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const burstCount = reduceMotion ? 1 : 3
-    const particleCount = reduceMotion ? 34 : 68
-    const spread = reduceMotion ? 0 : 46
+    const startX = x + randomBetween(-140, 140)
+    const startY = window.innerHeight + 24
 
-    for (let index = 0; index < burstCount; index += 1) {
-      const timeout = window.setTimeout(() => {
-        launchBurst(
-          x + randomBetween(-spread, spread),
-          y + randomBetween(-spread, spread),
-          particleCount,
-        )
-        startAnimation()
-      }, index * 90)
-
-      timeoutRef.current.push(timeout)
-    }
+    rocketsRef.current.push({
+      startX,
+      startY,
+      targetX: x,
+      targetY: y,
+      progress: 0,
+      speed: reduceMotion ? 0.05 : 0.032,
+      color: colors[Math.floor(Math.random() * colors.length)],
+    })
 
     startAnimation()
-  }, [launchBurst, sizeCanvas, startAnimation])
+  }, [sizeCanvas, startAnimation])
 
   const handlePointerDown = useCallback((event: PointerEvent) => {
     if (event.button !== 0) return
@@ -150,10 +200,8 @@ export default function FireworksButton() {
     return () => {
       window.removeEventListener('resize', sizeCanvas)
       window.removeEventListener('pointerdown', handlePointerDown)
-      for (const timeout of timeoutRef.current) {
-        window.clearTimeout(timeout)
-      }
-      timeoutRef.current = []
+      rocketsRef.current = []
+      particlesRef.current = []
       stopAnimation()
     }
   }, [handlePointerDown, sizeCanvas, stopAnimation])
