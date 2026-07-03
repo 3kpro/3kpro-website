@@ -5,6 +5,7 @@
 ## Primary URLs
 
 - Homepage: https://3kpro.services/
+- Website Preview Request: https://3kpro.services/sitepreview
 - Website Systems: https://3kpro.services/services/website-systems
 - Workflow Systems: https://3kpro.services/services/workflow-systems
 - AI Workspace Implementation: https://3kpro.services/services/ai-workspace-implementation

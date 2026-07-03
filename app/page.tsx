@@ -586,6 +586,14 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+              <div className="md:col-start-2">
+                <Link
+                  href="/sitepreview"
+                  className="inline-flex min-h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-black transition hover:bg-white/88"
+                >
+                  Request website preview
+                </Link>
+              </div>
             </div>
           </section>
 
