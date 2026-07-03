@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 type Particle = {
   x: number
@@ -23,7 +23,7 @@ export default function FireworksButton() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const particlesRef = useRef<Particle[]>([])
   const frameRef = useRef<number | null>(null)
-  const [armed, setArmed] = useState(false)
+  const timeoutRef = useRef<number[]>([])
 
   const stopAnimation = useCallback(() => {
     if (frameRef.current !== null) {
@@ -84,7 +84,6 @@ export default function FireworksButton() {
       frameRef.current = requestAnimationFrame(animate)
     } else {
       stopAnimation()
-      setArmed(false)
     }
   }, [stopAnimation])
 
@@ -108,51 +107,62 @@ export default function FireworksButton() {
     particlesRef.current.push(...burst)
   }, [])
 
-  const launchFireworks = useCallback(() => {
-    sizeCanvas()
-    setArmed(true)
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const burstCount = reduceMotion ? 2 : 5
-    const particleCount = reduceMotion ? 34 : 76
-
-    for (let index = 0; index < burstCount; index += 1) {
-      const x = randomBetween(window.innerWidth * 0.18, window.innerWidth * 0.82)
-      const y = randomBetween(window.innerHeight * 0.18, window.innerHeight * 0.54)
-      window.setTimeout(() => launchBurst(x, y, particleCount), index * 150)
-    }
-
+  const startAnimation = useCallback(() => {
     if (frameRef.current === null) {
       frameRef.current = requestAnimationFrame(animate)
     }
-  }, [animate, launchBurst, sizeCanvas])
+  }, [animate])
+
+  const launchAtPoint = useCallback((x: number, y: number) => {
+    sizeCanvas()
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const burstCount = reduceMotion ? 1 : 3
+    const particleCount = reduceMotion ? 34 : 68
+    const spread = reduceMotion ? 0 : 46
+
+    for (let index = 0; index < burstCount; index += 1) {
+      const timeout = window.setTimeout(() => {
+        launchBurst(
+          x + randomBetween(-spread, spread),
+          y + randomBetween(-spread, spread),
+          particleCount,
+        )
+        startAnimation()
+      }, index * 90)
+
+      timeoutRef.current.push(timeout)
+    }
+
+    startAnimation()
+  }, [launchBurst, sizeCanvas, startAnimation])
+
+  const handlePointerDown = useCallback((event: PointerEvent) => {
+    if (event.button !== 0) return
+    launchAtPoint(event.clientX, event.clientY)
+  }, [launchAtPoint])
 
   useEffect(() => {
     sizeCanvas()
     window.addEventListener('resize', sizeCanvas)
+    window.addEventListener('pointerdown', handlePointerDown, { passive: true })
 
     return () => {
       window.removeEventListener('resize', sizeCanvas)
+      window.removeEventListener('pointerdown', handlePointerDown)
+      for (const timeout of timeoutRef.current) {
+        window.clearTimeout(timeout)
+      }
+      timeoutRef.current = []
       stopAnimation()
     }
-  }, [sizeCanvas, stopAnimation])
+  }, [handlePointerDown, sizeCanvas, stopAnimation])
 
   return (
-    <>
-      <canvas
-        ref={canvasRef}
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-[9998]"
-      />
-      <button
-        type="button"
-        onClick={launchFireworks}
-        className="fixed bottom-5 right-5 z-[9999] inline-flex min-h-12 items-center gap-3 rounded-full border border-white/18 bg-[#08080a]/88 px-5 text-sm font-semibold text-white shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur-xl transition hover:border-white/36 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white/60"
-        aria-label="Launch fireworks"
-      >
-        <span className={`h-2.5 w-2.5 rounded-full ${armed ? 'bg-[#19e06f]' : 'bg-[#ff334e]'} shadow-[0_0_18px_currentColor]`} />
-        Launch fireworks
-      </button>
-    </>
+    <canvas
+      ref={canvasRef}
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[9998]"
+    />
   )
 }
