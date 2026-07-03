@@ -4,6 +4,8 @@ Purpose: move a website lead from inquiry to payout without relying on memory, s
 
 Public entrypoint: `https://3kpro.services/sitepreview`
 
+Prospect preview example: `https://3kpro.services/sitepreview/horizon-lawn`
+
 Payment entrypoint: `https://3kpro.services/pay`
 
 ## Tool Stack
@@ -12,6 +14,7 @@ Payment entrypoint: `https://3kpro.services/pay`
 - Lead follow-up: James direct email, phone, and Jeremy Telegram drafting workflow.
 - CRM: HubSpot for contact, company, deal stage, follow-up date, preview URL, deposit status, and final balance.
 - Payments: Stripe Quick Pay through `/pay` for deposit, invoice balance, or custom service payment.
+- Prospect preview pages: reusable `/sitepreview/[slug]` route backed by `lib/sitePreviews.ts`; keep prospect pages `noindex`.
 - Preview/build: local Next.js repo, Vercel preview deployments, production deploy only after explicit approval.
 - Handoff: launch notes, owner instructions, credentials checklist, and follow-up task list.
 
@@ -22,7 +25,7 @@ Payment entrypoint: `https://3kpro.services/pay`
 | 1. Inquiry | James / Jeremy | Lead, website, service area, pain angle | CRM record and first response | Contact info captured |
 | 2. Fit check | James / Jeremy | Current site, listings, offer, visible gaps | Fit / fix / build recommendation | Clear business angle |
 | 3. Preview request | Client / James | `/sitepreview` form or pasted equivalent | Preview brief | Enough context to scope |
-| 4. Preview creation | James | Preview brief | Concept, structure, quote path | No production promise yet |
+| 4. Preview creation | James | Preview brief or researched prospect | Prospect preview URL, concept, structure, quote path | No production promise yet |
 | 5. Review call | James / Client | Preview and recommendation | Approved scope or closed lead | Client confirms direction |
 | 6. Deposit | Client | `/pay` deposit link | Paid milestone | No build without deposit |
 | 7. Build | James / 3KPRO | Approved scope | Working site, revisions, docs | Reviewable preview URL |
@@ -59,6 +62,16 @@ Payment entrypoint: `https://3kpro.services/pay`
 - Competitors or style references if available.
 - Timeline and urgency.
 - Known constraints: domain ownership, hosting, logo, photos, access, budget.
+
+## Prospect Preview Page Rules
+
+- Use a clean slug, for example `/sitepreview/horizon-lawn`.
+- Do not claim affiliation with the prospect.
+- Add a visible note when the page is a 3KPRO concept preview.
+- Use only public facts unless the prospect provides private material.
+- Keep the page `noindex` so it is a sales asset, not an indexed impersonation risk.
+- Prefer business-safe language: "observed opportunity" instead of public shaming.
+- Include the exact sales angle James will use: broken website, unclear quote path, inconsistent listings, weak service positioning, or missing trust proof.
 
 ## Payment Rules
 
