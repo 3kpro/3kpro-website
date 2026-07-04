@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { Droplets, Landmark, MapPin, Sprout } from 'lucide-react'
+import { Droplets, Landmark, Sprout, Tractor } from 'lucide-react'
 
 export type SitePreview = {
   slug: string
@@ -80,12 +80,12 @@ export const sitePreviews: SitePreview[] = [
         imageAlt: 'Sprinklers watering a green lawn in warm light',
       },
       {
-        title: 'Drainage and problem areas',
-        copy: 'A photo-upload quote flow for runoff, erosion, and yard trouble spots.',
-        icon: MapPin,
+        title: 'Commercial mowing',
+        copy: 'A zero-turn-ready path for larger lawns, weekly routes, and commercial properties.',
+        icon: Tractor,
         image:
-          'https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&fm=jpg&q=70&w=1200',
-        imageAlt: 'Person working in planted rows outdoors',
+          'https://images.unsplash.com/photo-1750987776992-19c2abd847ee?auto=format&fit=crop&fm=jpg&q=72&w=1200',
+        imageAlt: 'Person mowing grass with a zero-turn lawn mower',
       },
     ],
     gallery: [
