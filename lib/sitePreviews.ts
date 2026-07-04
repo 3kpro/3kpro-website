@@ -16,6 +16,16 @@ export type SitePreview = {
     title: string
     copy: string
     icon: LucideIcon
+    image: string
+    imageAlt: string
+  }>
+  heroImage: string
+  heroImageAlt: string
+  gallery: Array<{
+    title: string
+    copy: string
+    image: string
+    imageAlt: string
   }>
   trustPoints: string[]
   conversionFlow: string[]
@@ -41,26 +51,57 @@ export const sitePreviews: SitePreview[] = [
       'Public listings point to horizonlawn.com, but the domain timed out during a live check. That means a motivated customer can find the business and still hit a dead end before requesting service.',
     primaryCta: 'Request an estimate',
     secondaryCta: 'Review service areas',
+    heroImage:
+      'https://images.unsplash.com/photo-1734303023491-db8037a21f09?auto=format&fit=crop&fm=jpg&q=72&w=2200',
+    heroImageAlt: 'Lawn care crew mowing and trimming a residential yard',
     services: [
       {
         title: 'Lawn maintenance',
         copy: 'A simple maintenance path for recurring residential and commercial work.',
         icon: Sprout,
+        image:
+          'https://images.unsplash.com/photo-1590820292118-e256c3ac2676?auto=format&fit=crop&fm=jpg&q=70&w=1200',
+        imageAlt: 'Push lawn mower on a green lawn',
       },
       {
         title: 'Landscape design and install',
         copy: 'Before-and-after project sections for homeowners comparing options.',
         icon: Landmark,
+        image:
+          'https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&fm=jpg&q=72&w=1200',
+        imageAlt: 'Fresh green lawn outside a landscaped property',
       },
       {
         title: 'Irrigation service',
         copy: 'A direct repair and inspection CTA for sprinkler and system issues.',
         icon: Droplets,
+        image:
+          'https://images.unsplash.com/photo-1770664945615-52203ab54c88?auto=format&fit=crop&fm=jpg&q=72&w=1200',
+        imageAlt: 'Sprinklers watering a green lawn in warm light',
       },
       {
         title: 'Drainage and problem areas',
         copy: 'A photo-upload quote flow for runoff, erosion, and yard trouble spots.',
         icon: MapPin,
+        image:
+          'https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&fm=jpg&q=70&w=1200',
+        imageAlt: 'Person working in planted rows outdoors',
+      },
+    ],
+    gallery: [
+      {
+        title: 'Use real project photos here',
+        copy: 'Replace this stock lawn-care image with Horizon crew, trucks, and finished-yard photos as soon as they are available.',
+        image:
+          'https://images.unsplash.com/photo-1734303023491-db8037a21f09?auto=format&fit=crop&fm=jpg&q=72&w=1400',
+        imageAlt: 'Residential mowing and trimming crew sample image',
+      },
+      {
+        title: 'Show irrigation clearly',
+        copy: 'Sprinkler repair, inspections, and system tuning need a dedicated visual lane because they are high-intent service calls.',
+        image:
+          'https://images.unsplash.com/photo-1703243056931-265dbc9be205?auto=format&fit=crop&fm=jpg&q=72&w=1400',
+        imageAlt: 'Multiple sprinklers watering a lawn sample image',
       },
     ],
     trustPoints: [
