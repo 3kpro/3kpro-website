@@ -25,7 +25,7 @@ type Rocket = {
 
 const colors = ['#ff334e', '#ffffff', '#3772ff', '#ffd166', '#19e06f']
 const letterColors = ['#ffffff', '#3772ff', '#ff334e', '#ffd166']
-const textBurstInterval = 4
+const holidayMessages = ['Happy Fourth', 'From 3K']
 
 function randomBetween(min: number, max: number) {
   return min + Math.random() * (max - min)
@@ -37,6 +37,7 @@ export default function FireworksButton() {
   const particlesRef = useRef<Particle[]>([])
   const frameRef = useRef<number | null>(null)
   const explosionCountRef = useRef(0)
+  const holidayMessageIndexRef = useRef(0)
 
   const stopAnimation = useCallback(() => {
     if (frameRef.current !== null) {
@@ -81,7 +82,7 @@ export default function FireworksButton() {
     particlesRef.current.push(...burst)
   }, [])
 
-  const launchTextBurst = useCallback((x: number, y: number) => {
+  const launchTextBurst = useCallback((x: number, y: number, message: string) => {
     const horizontalMargin = Math.min(180, window.innerWidth * 0.24)
     const verticalMargin = Math.min(150, window.innerHeight * 0.24)
     const safeX = Math.min(Math.max(x, horizontalMargin), window.innerWidth - horizontalMargin)
@@ -104,7 +105,7 @@ export default function FireworksButton() {
     textContext.textAlign = 'center'
     textContext.textBaseline = 'middle'
 
-    const lines = ['Happy 4th......', 'From 3KPRO']
+    const lines = [message]
     let fontSize = Math.min(Math.max(window.innerWidth * 0.052, 30), 62)
     const maxLineWidth = textCanvas.width * 0.92
 
@@ -179,8 +180,10 @@ export default function FireworksButton() {
     for (const rocket of arrivedRockets) {
       explosionCountRef.current += 1
 
-      if (explosionCountRef.current % textBurstInterval === 0) {
-        launchTextBurst(rocket.targetX, rocket.targetY)
+      if (explosionCountRef.current % 2 === 1) {
+        const message = holidayMessages[holidayMessageIndexRef.current % holidayMessages.length]
+        holidayMessageIndexRef.current += 1
+        launchTextBurst(rocket.targetX, rocket.targetY, message)
       } else {
         launchBurst(rocket.targetX, rocket.targetY, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 34 : 76)
       }
