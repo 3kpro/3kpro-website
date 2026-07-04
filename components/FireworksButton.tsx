@@ -23,7 +23,17 @@ type Rocket = {
   color: string
 }
 
+type TextBurst = {
+  x: number
+  y: number
+  life: number
+  maxLife: number
+  scale: number
+  lines: string[]
+}
+
 const colors = ['#ff334e', '#ffffff', '#3772ff', '#ffd166', '#19e06f']
+const textBurstInterval = 4
 
 function randomBetween(min: number, max: number) {
   return min + Math.random() * (max - min)
@@ -33,7 +43,9 @@ export default function FireworksButton() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const rocketsRef = useRef<Rocket[]>([])
   const particlesRef = useRef<Particle[]>([])
+  const textBurstsRef = useRef<TextBurst[]>([])
   const frameRef = useRef<number | null>(null)
+  const explosionCountRef = useRef(0)
 
   const stopAnimation = useCallback(() => {
     if (frameRef.current !== null) {
@@ -78,6 +90,24 @@ export default function FireworksButton() {
     particlesRef.current.push(...burst)
   }, [])
 
+  const launchTextBurst = useCallback((x: number, y: number) => {
+    const horizontalMargin = Math.min(180, window.innerWidth * 0.24)
+    const verticalMargin = Math.min(150, window.innerHeight * 0.24)
+    const safeX = Math.min(Math.max(x, horizontalMargin), window.innerWidth - horizontalMargin)
+    const safeY = Math.min(Math.max(y, verticalMargin), window.innerHeight - verticalMargin)
+
+    textBurstsRef.current.push({
+      x: safeX,
+      y: safeY,
+      life: 118,
+      maxLife: 118,
+      scale: randomBetween(0.94, 1.08),
+      lines: ['Happy 4th......', 'From 3KPRO'],
+    })
+
+    launchBurst(safeX, safeY, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 18 : 38)
+  }, [launchBurst])
+
   const animate = useCallback(() => {
     const canvas = canvasRef.current
     const context = canvas?.getContext('2d')
@@ -102,7 +132,13 @@ export default function FireworksButton() {
       })
 
     for (const rocket of arrivedRockets) {
-      launchBurst(rocket.targetX, rocket.targetY, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 34 : 76)
+      explosionCountRef.current += 1
+
+      if (explosionCountRef.current % textBurstInterval === 0) {
+        launchTextBurst(rocket.targetX, rocket.targetY)
+      } else {
+        launchBurst(rocket.targetX, rocket.targetY, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 34 : 76)
+      }
     }
 
     particlesRef.current = particlesRef.current
@@ -116,6 +152,14 @@ export default function FireworksButton() {
       }))
       .filter((particle) => particle.life > 0)
 
+    textBurstsRef.current = textBurstsRef.current
+      .map((textBurst) => ({
+        ...textBurst,
+        y: textBurst.y - 0.22,
+        life: textBurst.life - 1,
+      }))
+      .filter((textBurst) => textBurst.life > 0)
+
     for (const particle of particlesRef.current) {
       const alpha = Math.max(particle.life / particle.maxLife, 0)
       context.globalAlpha = alpha
@@ -125,6 +169,33 @@ export default function FireworksButton() {
       context.beginPath()
       context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
       context.fill()
+    }
+
+    for (const textBurst of textBurstsRef.current) {
+      const progress = 1 - textBurst.life / textBurst.maxLife
+      const fadeIn = Math.min(progress / 0.16, 1)
+      const fadeOut = Math.min(textBurst.life / 26, 1)
+      const alpha = Math.max(Math.min(fadeIn, fadeOut), 0)
+      const fontSize = Math.min(Math.max(window.innerWidth * 0.052, 30), 62) * textBurst.scale
+      const lineHeight = fontSize * 1.08
+
+      context.save()
+      context.globalAlpha = alpha
+      context.textAlign = 'center'
+      context.textBaseline = 'middle'
+      context.font = `800 ${fontSize}px Inter, system-ui, sans-serif`
+      context.shadowBlur = 28
+      context.shadowColor = '#3772ff'
+      context.lineWidth = Math.max(4, fontSize * 0.08)
+      context.strokeStyle = 'rgba(8, 8, 10, 0.8)'
+      context.fillStyle = '#ffffff'
+
+      textBurst.lines.forEach((line, index) => {
+        const y = textBurst.y + (index - (textBurst.lines.length - 1) / 2) * lineHeight
+        context.strokeText(line, textBurst.x, y)
+        context.fillText(line, textBurst.x, y)
+      })
+      context.restore()
     }
 
     for (const rocket of rocketsRef.current) {
@@ -154,12 +225,12 @@ export default function FireworksButton() {
     context.globalAlpha = 1
     context.shadowBlur = 0
 
-    if (particlesRef.current.length > 0 || rocketsRef.current.length > 0) {
+    if (particlesRef.current.length > 0 || rocketsRef.current.length > 0 || textBurstsRef.current.length > 0) {
       frameRef.current = requestAnimationFrame(animate)
     } else {
       stopAnimation()
     }
-  }, [launchBurst, stopAnimation])
+  }, [launchBurst, launchTextBurst, stopAnimation])
 
   const startAnimation = useCallback(() => {
     if (frameRef.current === null) {
@@ -202,6 +273,7 @@ export default function FireworksButton() {
       window.removeEventListener('pointerdown', handlePointerDown)
       rocketsRef.current = []
       particlesRef.current = []
+      textBurstsRef.current = []
       stopAnimation()
     }
   }, [handlePointerDown, sizeCanvas, stopAnimation])
