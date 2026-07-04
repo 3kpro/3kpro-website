@@ -23,9 +23,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const pageUrl = `https://3kpro.services/sitepreview/${preview.slug}`
+  const title = `${preview.shortName} Website Preview`
+  const description = preview.conceptSubtitle
+  const image = {
+    url: preview.heroImage,
+    width: 1200,
+    height: 630,
+    alt: `${preview.shortName} website preview`,
+  }
 
   return {
-    title: `${preview.shortName} Website Preview | 3K Pro Services`,
+    title: `${title} | 3K Pro Services`,
     description: `A 3KPRO concept preview for ${preview.businessName}: website recovery, quote flow, listings cleanup, and local service positioning.`,
     alternates: {
       canonical: pageUrl,
@@ -39,10 +47,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       },
     },
     openGraph: {
-      title: `${preview.shortName} Website Preview`,
-      description: preview.conceptSubtitle,
+      title,
+      description,
       url: pageUrl,
-      images: [{ url: preview.heroImage, width: 1200, height: 630, alt: `${preview.shortName} website preview` }],
+      siteName: '3K Pro Services',
+      type: 'website',
+      images: [image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      creator: '@3KPRO_SAAS',
+      images: [image],
     },
   }
 }
