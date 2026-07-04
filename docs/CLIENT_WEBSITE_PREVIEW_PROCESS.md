@@ -15,6 +15,7 @@ Payment entrypoint: `https://3kpro.services/pay`
 - CRM: HubSpot for contact, company, deal stage, follow-up date, preview URL, deposit status, and final balance.
 - Payments: Stripe Quick Pay through `/pay` for deposit, invoice balance, or custom service payment.
 - Prospect preview pages: reusable `/sitepreview/[slug]` route backed by `lib/sitePreviews.ts`; keep prospect pages `noindex`.
+- MainBrain preview registry: mirror completed preview URLs in `C:\DEV\_3KPRO-GENERAL\MainBrain\PLAYBOOKS\Prospect_Preview_Registry.md` so Jeremy can find them through MainBrain memory search.
 - Preview/build: local Next.js repo, Vercel preview deployments, production deploy only after explicit approval.
 - Handoff: launch notes, owner instructions, credentials checklist, and follow-up task list.
 
@@ -154,6 +155,7 @@ James / 3KPRO
 - Pain angle is written in plain language.
 - Read-the-room visual gate passes: category, service, and CTA are obvious in the first viewport, and no off-industry imagery remains.
 - Preview or recommendation is sent.
+- Preview URL is mirrored to the MainBrain prospect preview registry.
 - Next action is either deposit, follow-up, or closed-lost.
 - Payment status is recorded.
 - Launch and handoff are not treated as complete until docs and CRM notes are updated.
