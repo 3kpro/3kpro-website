@@ -63,6 +63,17 @@ Payment entrypoint: `https://3kpro.services/pay`
 - Timeline and urgency.
 - Known constraints: domain ownership, hosting, logo, photos, access, budget.
 
+## Read-The-Room Design Rule
+
+The first viewport must communicate the prospect's business category before anyone reads the paragraphs.
+
+- Match the visual system to the client, not to 3KPRO. Lawn care should feel like mowing, yards, sprinklers, crews, and estimate requests. A mobile mechanic should feel like roadside or driveway repair, tools, trucks, urgency, and booking.
+- Do not reuse a tech-grid or dashboard aesthetic for local trade previews unless that is actually the client's brand.
+- Use stock images only as honest placeholders when the client has no owned photos. Do not imply placeholder photos are the client's real work.
+- Reject off-industry images. If the image looks like agriculture, corporate SaaS, construction, or generic lifestyle when the client is residential lawn care, it fails.
+- Pair the hero and CTA with how the business makes money: request estimate, call now, book service, upload photos, schedule consultation, or pay deposit.
+- The sales angle still matters, but it is secondary to immediate category clarity.
+
 ## Prospect Preview Page Rules
 
 - Use a clean slug, for example `/sitepreview/horizon-lawn`.
@@ -72,6 +83,8 @@ Payment entrypoint: `https://3kpro.services/pay`
 - Keep the page `noindex` so it is a sales asset, not an indexed impersonation risk.
 - Prefer business-safe language: "observed opportunity" instead of public shaming.
 - Include the exact sales angle James will use: broken website, unclear quote path, inconsistent listings, weak service positioning, or missing trust proof.
+- Pass the read-the-room gate: a stranger should know the business category in three seconds without reading body copy.
+- Use industry-correct visuals and CTAs; replace generic placeholders before client delivery whenever better assets are available.
 
 ## Payment Rules
 
@@ -139,6 +152,7 @@ James / 3KPRO
 - Lead exists in HubSpot.
 - Preview request or equivalent brief is captured.
 - Pain angle is written in plain language.
+- Read-the-room visual gate passes: category, service, and CTA are obvious in the first viewport, and no off-industry imagery remains.
 - Preview or recommendation is sent.
 - Next action is either deposit, follow-up, or closed-lost.
 - Payment status is recorded.
