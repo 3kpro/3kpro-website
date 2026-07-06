@@ -1,12 +1,43 @@
 # SESSION_CONTEXT — 3KPRO Website
 
-**Last updated:** 2026-06-16 | **Agent:** Codex | **Session type:** Revenue-page preparation
+**Last updated:** 2026-07-06 | **Agent:** Claude (Cowork) | **Session type:** Homepage redesign + production deploy
 
 ## Current State
-3kpro.services is live. The local Website repo is buildable on Windows again:
-`npm run build` passed on 2026-06-16. A new productized consulting page for
-AI Workspace Implementation is implemented locally and ready for review, but it
-has not been pushed or deployed.
+3kpro.services is live on the **OPERATOR homepage** (deployed 2026-07-06,
+commit `05f791a`, Vercel deployment `FW4mrfqQuCr91u4rrz884CpLg8bH`, aliased to
+production). James chose OPERATOR (V3) from three prototype directions archived
+in `docs/redesign-2026-07/` (V1 SIGNAL particle-cinematic, V2 BLUEPRINT
+drafting-paper editorial, V3 OPERATOR terminal boot). The previous homepage is
+backed up at `docs/redesign-2026-07/page.tsx.pre-operator.bak`.
+
+## What Was Done (This Session — 2026-07-06)
+- Built three self-contained HTML homepage prototypes with animated intros;
+  James approved V3 OPERATOR.
+- Rewrote `app/page.tsx` as the OPERATOR deck: typed BIOS boot intro (once per
+  session via `sessionStorage['3k-boot-seen']`, skip button, reduced-motion
+  bypass, 12s hard cap, CRT power-flash exit), live Tulsa clock (Intl,
+  America/Chicago), variable-width Archivo + JetBrains Mono, amber
+  mission-control styling, status rack w/ IntersectionObserver counters,
+  dossier credibility, clip-cornered service modules, product cards, pricing
+  w/ recommended-entry flag, operator drawer wired to existing `ContactForm`.
+- Layout metadata/JSON-LD untouched; all real routes/links/pricing preserved.
+- Full ship sequence run: local `npm run build` passed (TS clean, 70 routes) →
+  commit → push origin main → `vercel --prod` (token read from User env
+  `VERCEL_TOKEN`; note: `C:\DEV\.env` does NOT contain it — Vercel_Ops.md is
+  stale on that point) → production verified serving OPERATOR.
+
+## Unresolved / Notes for Next Agent
+- Homepage remains a `'use client'` component — SEO Phase 3 server refactor
+  still open (unchanged from before).
+- Consider updating `layout.tsx` title/description copy to match the OPERATOR
+  voice (current SEO metadata intentionally left as-is).
+- Bare `/` may serve stale CDN cache for a short window post-deploy;
+  origin confirmed correct via cache-busted fetch.
+
+## Previous Session Context (2026-06-16, Codex)
+3kpro.services was live; `npm run build` passed on 2026-06-16. A productized
+AI Workspace Implementation consulting page was implemented locally and ready
+for review, but not yet pushed or deployed.
 
 ## What Was Done (This Session)
 - Added `app/services/ai-workspace-implementation/page.tsx` as a direct
