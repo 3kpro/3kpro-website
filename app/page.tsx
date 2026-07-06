@@ -3,63 +3,67 @@
 import ContactForm from '@/components/ContactForm'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
-type Service = {
-  eyebrow: string
-  title: string
-  copy: string
-  points: string[]
-  href: string
-}
+/* ============================================================
+   3KPRO — OPERATOR homepage (approved V3, 2026-07-06)
+   Terminal boot intro → amber mission-control deck.
+   ============================================================ */
 
-type Product = {
-  mono: string
-  name: string
-  copy: string
-  href: string
-  label: string
-  external?: boolean
-}
+type BootLine = { cls: string; text: string }
 
-const services: Service[] = [
+const BOOT: ReadonlyArray<readonly [string, string]> = [
+  ['dim', '3KPRO SYSTEMS BIOS v2026.7 — TULSA CONTROL'],
+  ['', 'initializing operator console .....'],
+  ['ok', '[ OK ]  web systems ............... online'],
+  ['ok', '[ OK ]  workflow automation ....... online'],
+  ['ok', '[ OK ]  ai workspace layer ........ online'],
+  ['ok', '[ OK ]  cloud architecture ........ online'],
+  ['amb', '[ !! ]  duct-tape processes ....... deprecated'],
+  ['ok', '[ OK ]  documentation ............. owner-readable'],
+  ['', 'response target: 24h — operator: direct'],
+  ['amb', 'launching 3KPRO·OS ▸▸▸'],
+]
+
+const services = [
   {
-    eyebrow: '01 / Web',
-    title: 'Website systems',
+    num: 'SYS-01 / WEB',
+    title: 'Website Systems',
     copy: 'Premium business sites, landing pages, local SEO foundations, conversion paths, and handoff docs.',
     points: ['Positioning', 'Responsive build', 'Launch handoff'],
     href: '/services/website-systems',
   },
   {
-    eyebrow: '02 / Automation',
-    title: 'Workflow systems',
+    num: 'SYS-02 / AUTO',
+    title: 'Workflow Systems',
     copy: 'Automation, internal tools, reporting paths, and cleanup for teams losing time to repeatable work.',
     points: ['Process map', 'Integration build', 'Owner-ready docs'],
     href: '/services/workflow-systems',
   },
   {
-    eyebrow: '03 / AI Workspace',
-    title: 'AI workspace systems',
+    num: 'SYS-03 / AI',
+    title: 'AI Workspace Systems',
     copy: 'Configured AI workspaces for owners, sales teams, operators, and staff who need repeatable work handled with context.',
     points: ['Role setup', 'Workflow library', 'Team handoff'],
     href: '/services/ai-workspace-implementation',
   },
   {
-    eyebrow: '04 / Advisory',
-    title: 'Operating systems',
+    num: 'SYS-04 / ADVISORY',
+    title: 'Operating Systems',
     copy: 'Technical strategy, cloud architecture, and software planning for practical operators.',
     points: ['Systems audit', 'Architecture plan', 'Build roadmap'],
     href: '/services/operating-systems',
   },
 ]
 
-const products: Product[] = [
+const products = [
   {
     mono: 'X',
     name: 'Xelora',
     copy: 'Predictive content intelligence for creators and operators who need stronger launch momentum.',
     href: 'https://getxelora.com',
     label: 'Live platform',
+    go: 'Open Xelora ↗',
     external: true,
   },
   {
@@ -68,6 +72,8 @@ const products: Product[] = [
     copy: 'Self-service Azure waste audit for finding idle resources, cost leaks, and practical savings.',
     href: '/cloud-ledger',
     label: 'Available',
+    go: 'Run an audit ↗',
+    external: false,
   },
   {
     mono: 'M',
@@ -75,128 +81,132 @@ const products: Product[] = [
     copy: 'A growing catalog of software assets, audits, and operating tools from the 3KPRO ecosystem.',
     href: '/marketplace',
     label: 'Explore',
+    go: 'Browse catalog ↗',
+    external: false,
   },
-]
-
-const proof = [
-  { value: '2010', label: 'Operating since' },
-  { value: '3', label: 'Core build lanes' },
-  { value: '24h', label: 'Response target' },
 ]
 
 const credibility = [
   {
+    id: 'REC-01',
     title: 'Tulsa operator, not a faceless agency',
-    copy: '3KPRO is built for local owners who need clear systems, direct communication, and practical execution without a bloated handoff maze.',
+    copy: 'Built for local owners who need clear systems, direct communication, and practical execution without a bloated handoff maze.',
   },
   {
+    id: 'REC-02',
     title: 'Enterprise-shaped judgment',
-    copy: 'The work is informed by two decades around serious Tulsa-area operating environments, including ONEOK, PSO, and Enerflex.',
+    copy: 'Two decades around serious Tulsa-area operating environments, including ONEOK, PSO, and Enerflex.',
   },
   {
+    id: 'REC-03',
     title: 'Small first, useful fast',
     copy: 'Projects start with a narrow blueprint, a working first version, and documentation the owner can actually use after launch.',
   },
 ]
 
-function OrbitSeal({ compact = false }: { compact?: boolean }) {
-  const ticks = Array.from({ length: 24 }, (_, index) => index * 15)
+const marqueeItems = [
+  'WEBSITE SYSTEMS',
+  'WORKFLOW AUTOMATION',
+  'AI WORKSPACES',
+  'CLOUD ARCHITECTURE',
+  'EST. 2010',
+  '24H RESPONSE',
+  'TULSA · REMOTE',
+]
 
+function sleep(ms: number) {
+  return new Promise<void>((res) => setTimeout(res, ms))
+}
+
+/* ---------- boot intro ---------- */
+function BootIntro({ stage, onSkip, lines }: { stage: string; onSkip: () => void; lines: BootLine[] }) {
+  if (stage === 'gone') return null
   return (
-    <div
-      className={`relative grid shrink-0 place-items-center rounded-full border border-white/18 bg-white/[0.035] text-white shadow-[0_0_34px_rgba(255,255,255,0.055)] backdrop-blur-md ${
-        compact ? 'h-20 w-20' : 'h-32 w-32 md:h-40 md:w-40'
-      }`}
-      aria-label="Strategy, build, systems circular seal"
-    >
-      <svg viewBox="0 0 160 160" className="absolute inset-0 h-full w-full" aria-hidden="true">
-        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeOpacity="0.16" strokeWidth="1" />
-        <circle cx="80" cy="80" r="52" fill="none" stroke="currentColor" strokeOpacity="0.11" strokeWidth="1" strokeDasharray="5 7" />
-        <circle cx="80" cy="80" r="28" fill="none" stroke="currentColor" strokeOpacity="0.18" strokeWidth="1" />
-        <path d="M80 10V150M10 80H150" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
-        <path d="M31 31L129 129M129 31L31 129" stroke="currentColor" strokeOpacity="0.055" strokeWidth="1" />
-        {ticks.map((angle) => (
-          <line
-            key={angle}
-            x1="80"
-            y1="14"
-            x2="80"
-            y2={angle % 45 === 0 ? '22' : '18'}
-            stroke="currentColor"
-            strokeOpacity={angle % 45 === 0 ? '0.34' : '0.16'}
-            strokeWidth={angle % 45 === 0 ? '1.2' : '1'}
-            transform={`rotate(${angle} 80 80)`}
-          />
-        ))}
-      </svg>
-      <motion.svg
-        viewBox="0 0 160 160"
-        className="absolute inset-0 h-full w-full"
-        animate={{ rotate: 360 }}
-        transition={{ duration: compact ? 22 : 28, repeat: Infinity, ease: 'linear' }}
-      >
-        <defs>
-          <path id={compact ? 'orbitTextCompact' : 'orbitText'} d="M80,80 m-57,0 a57,57 0 1,1 114,0 a57,57 0 1,1 -114,0" />
-        </defs>
-        <text fill="currentColor" fontSize={compact ? '11' : '9'} fontWeight="700" letterSpacing="1.2">
-          <textPath href={`#${compact ? 'orbitTextCompact' : 'orbitText'}`} startOffset="0">
-            STRATEGY / BUILD / SYSTEMS / 3KPRO
-          </textPath>
-        </text>
-      </motion.svg>
-      <div
-        className={`${compact ? 'h-8 w-8 text-[10px]' : 'h-10 w-10 text-xs'} relative grid place-items-center rounded-full border border-white/50 bg-[#08080a]/92 font-bold text-white shadow-[inset_0_0_18px_rgba(255,255,255,0.08),0_0_22px_rgba(255,255,255,0.08)]`}
-      >
-        <span className="pointer-events-none absolute inset-1 rounded-full border border-white/12" />
-        3K
+    <div className={`op-intro${stage === 'flash' ? ' flash' : ''}`} role="presentation" aria-hidden="true">
+      <div className="term">
+        <div className="term-bar">
+          <span>3KPRO / SYSTEM CONSOLE</span>
+          <span className="dots"><i /><i /><i /></span>
+        </div>
+        <div className="term-body">
+          {lines.map((l, i) => (
+            <div key={i} className={l.cls || undefined}>{l.text}</div>
+          ))}
+          <span className="cursor" />
+        </div>
       </div>
+      <button type="button" className="skip" onClick={onSkip}>Skip boot ▸</button>
     </div>
   )
 }
 
+/* ---------- animated counter ---------- */
+function Count({ end, className }: { end: number; className?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          io.unobserve(entry.target)
+          const dur = 1300
+          const t0 = performance.now()
+          const tick = (t: number) => {
+            const k = Math.min(1, (t - t0) / dur)
+            const eased = 1 - Math.pow(1 - k, 3)
+            el.textContent = String(Math.round(end * eased))
+            if (k < 1) requestAnimationFrame(tick)
+          }
+          requestAnimationFrame(tick)
+        })
+      },
+      { threshold: 0.5 }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [end])
+  return <span ref={ref} className={className}>0</span>
+}
+
+/* ---------- project drawer (real contact form) ---------- */
 function ProjectDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const ease = [0.22, 1, 0.36, 1] as const
-
   return (
     <AnimatePresence>
       {open && (
         <>
           <motion.button
             aria-label="Close project drawer"
-            className="fixed inset-0 z-[70] cursor-default bg-black/62 backdrop-blur-sm"
+            className="fixed inset-0 z-[70] cursor-default bg-black/70 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.34, ease }}
+            transition={{ duration: 0.3, ease }}
             onClick={onClose}
           />
           <motion.aside
-            className="fixed right-0 top-0 z-[80] h-screen w-full max-w-[620px] overflow-y-auto border-l border-white/10 bg-[#101012] px-6 py-8 text-white shadow-[0_0_120px_rgba(0,0,0,0.62)] sm:px-10"
+            className="op-drawer fixed right-0 top-0 z-[80] h-screen w-full max-w-[620px] overflow-y-auto"
             initial={{ x: '104%', opacity: 0.7 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '104%', opacity: 0.7 }}
-            transition={{ duration: 0.68, ease }}
+            transition={{ duration: 0.6, ease }}
             role="dialog"
             aria-modal="true"
             aria-label="Start a project"
           >
-            <button
-              type="button"
-              onClick={onClose}
-              className="ml-auto grid h-10 w-10 place-items-center rounded-full border border-white/12 text-xl leading-none text-white/70 transition hover:border-white/30 hover:text-white"
-              aria-label="Close"
-            >
-              x
+            <button type="button" onClick={onClose} className="op-drawer-close" aria-label="Close">
+              ×
             </button>
-            <div className="mt-8 text-xs font-semibold uppercase text-white/45">Project intake</div>
-            <h2 className="mt-7 text-5xl font-semibold leading-[0.96] md:text-6xl" style={{ letterSpacing: 0 }}>
-              Start a
-              <span className="block text-white/52">Project</span>
+            <div className="op-drawer-kicker">PROJECT INTAKE / TULSA CONTROL</div>
+            <h2 className="op-drawer-title">
+              Initiate<span> a Project</span>
             </h2>
-            <p className="mt-5 max-w-md text-sm leading-6 text-white/58">
-              Use the form below for real requests. The drawer is the visual interaction; the form still sends through the existing site action.
+            <p className="op-drawer-copy">
+              Describe the system you need. Response target: 24 hours, direct from the operator.
             </p>
-            <div className="mt-9 bg-white p-5 text-black sm:p-7">
+            <div className="op-drawer-form">
               <ContactForm />
             </div>
           </motion.aside>
@@ -208,428 +218,455 @@ function ProjectDrawer({ open, onClose }: { open: boolean; onClose: () => void }
 
 export default function Home() {
   const reduceMotion = useReducedMotion()
-  const [mounted, setMounted] = useState(false)
+  const [introStage, setIntroStage] = useState<'pending' | 'boot' | 'flash' | 'gone'>('pending')
+  const [bootLines, setBootLines] = useState<BootLine[]>([])
+  const [ready, setReady] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const [activeService, setActiveService] = useState(0)
-  const shouldReduceMotion = !mounted || Boolean(reduceMotion)
-  const ease = [0.22, 1, 0.36, 1] as const
+  const [clock, setClock] = useState('--:--:--')
+  const doneRef = useRef(false)
+  const rootRef = useRef<HTMLDivElement>(null)
 
+  const finishIntro = useCallback(() => {
+    if (doneRef.current) return
+    doneRef.current = true
+    try { sessionStorage.setItem('3k-boot-seen', '1') } catch { /* private mode */ }
+    setIntroStage('flash')
+    setReady(true)
+    setTimeout(() => setIntroStage('gone'), 650)
+  }, [])
+
+  /* decide whether to boot */
   useEffect(() => {
-    setMounted(true)
+    let seen = false
+    try { seen = sessionStorage.getItem('3k-boot-seen') === '1' } catch { /* private mode */ }
+    if (seen || reduceMotion) {
+      doneRef.current = true
+      setIntroStage('gone')
+      setReady(true)
+    } else {
+      setIntroStage('boot')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  /* boot typing sequence */
+  useEffect(() => {
+    if (introStage !== 'boot') return
+    let cancelled = false
+    const shown: BootLine[] = []
+    const run = async () => {
+      for (const [cls, text] of BOOT) {
+        if (cancelled || doneRef.current) return
+        shown.push({ cls, text: '' })
+        const speed = text.startsWith('[') ? 6 : 16
+        for (let i = 1; i <= text.length; i++) {
+          if (cancelled || doneRef.current) return
+          shown[shown.length - 1] = { cls, text: text.slice(0, i) }
+          setBootLines([...shown])
+          await sleep(speed)
+        }
+        await sleep(text.startsWith('[') ? 120 : 300)
+      }
+      await sleep(650)
+      if (!cancelled) finishIntro()
+    }
+    run()
+    const cap = setTimeout(finishIntro, 12000)
+    return () => { cancelled = true; clearTimeout(cap) }
+  }, [introStage, finishIntro])
+
+  /* Tulsa clock */
+  useEffect(() => {
+    const tick = () => {
+      try {
+        setClock(new Intl.DateTimeFormat('en-US', {
+          hour: '2-digit', minute: '2-digit', second: '2-digit',
+          hour12: false, timeZone: 'America/Chicago',
+        }).format(new Date()))
+      } catch {
+        setClock(new Date().toLocaleTimeString())
+      }
+    }
+    tick()
+    const id = setInterval(tick, 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  /* scroll reveals */
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root) return
+    const els = root.querySelectorAll('.rev')
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in')
+          io.unobserve(entry.target)
+        }
+      }),
+      { threshold: 0.12 }
+    )
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
   }, [])
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#08080a] text-white" style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: 0 }}>
+    <div ref={rootRef} className={`op${ready ? ' ready' : ''}`}>
       <style>{`
-        .home-grid {
-          background-image:
-            linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
-            radial-gradient(circle at 50% 24%, rgba(89,72,150,0.34), transparent 34%),
-            radial-gradient(circle at 50% 42%, rgba(255,255,255,0.075), transparent 30%);
-          background-size: 64px 64px, 64px 64px, 100% 100%, 100% 100%;
+        @import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,400..900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+        .op{
+          --bg:#0c0b09; --panel:#12110e; --panel2:#171512; --ink:#f3efe6; --dim:rgba(243,239,230,.56);
+          --faint:rgba(243,239,230,.3); --line:rgba(243,239,230,.1); --line2:rgba(243,239,230,.06);
+          --amber:#ffab2e; --amber-hot:#ff7a1a; --amber-dim:rgba(255,171,46,.12); --ok:#57d97c;
+          --disp:'Archivo',system-ui,sans-serif; --sans:'Archivo',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+          background:var(--bg); color:var(--ink); font-family:var(--sans);
+          min-height:100vh; overflow-x:hidden; -webkit-font-smoothing:antialiased;
         }
+        .op ::selection{background:var(--amber);color:#0c0b09}
+        .op .scan{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.05;
+          background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.9) 2px 3px)}
+        .op .disp{font-family:var(--disp);font-stretch:118%}
 
-        .home-name-glow {
-          animation: homePulse 4.8s ease-in-out infinite;
-        }
+        /* ---- intro ---- */
+        .op-intro{position:fixed;inset:0;z-index:100;background:#070604;display:flex;align-items:center;justify-content:center;padding:24px}
+        .op-intro.flash{animation:opCrt .55s steps(2) forwards}
+        @keyframes opCrt{0%{opacity:1;filter:brightness(1)}30%{filter:brightness(3.4) saturate(0)}60%{transform:scaleY(.004);filter:brightness(6)}100%{opacity:0;transform:scaleY(.002);visibility:hidden}}
+        .op-intro .term{width:min(720px,94vw);border:1px solid rgba(255,171,46,.24);background:rgba(12,11,9,.9);box-shadow:0 0 90px rgba(255,171,46,.09),inset 0 0 60px rgba(0,0,0,.6)}
+        .op-intro .term-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid rgba(255,171,46,.18);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#ffab2e}
+        .op-intro .dots{display:flex;gap:7px}
+        .op-intro .dots i{width:9px;height:9px;border-radius:99px;border:1px solid rgba(255,171,46,.45)}
+        .op-intro .term-body{padding:22px 22px 26px;font-family:'JetBrains Mono',monospace;font-size:clamp(11px,1.5vw,13.5px);line-height:2.05;color:rgba(243,239,230,.82);min-height:320px}
+        .op-intro .ok{color:#57d97c}
+        .op-intro .amb{color:#ffab2e}
+        .op-intro .dim{color:rgba(243,239,230,.3)}
+        .op-intro .cursor{display:inline-block;width:.6em;height:1.1em;background:#ffab2e;vertical-align:text-bottom;animation:opBlink .85s steps(1) infinite}
+        @keyframes opBlink{50%{opacity:0}}
+        .op-intro .skip{position:absolute;bottom:30px;right:34px;background:none;border:1px solid rgba(255,171,46,.3);color:#ffab2e;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:11px 20px;cursor:pointer;transition:.3s}
+        .op-intro .skip:hover{background:#ffab2e;color:#0c0b09}
 
-        .home-title-frame {
-          animation: homeFramePulse 5.8s ease-in-out infinite;
-        }
+        /* ---- nav ---- */
+        .op .topnav{position:fixed;top:0;left:0;right:0;z-index:60;display:grid;grid-template-columns:auto 1fr auto auto;gap:26px;align-items:center;padding:0 clamp(18px,3.5vw,40px);height:66px;background:rgba(12,11,9,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);opacity:0;transform:translateY(-10px);transition:.6s .15s}
+        .op.ready .topnav{opacity:1;transform:none}
+        .op .logo{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:16px;letter-spacing:.08em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:12px}
+        .op .logo .sq{width:12px;height:12px;background:var(--amber);box-shadow:0 0 16px rgba(255,171,46,.7);animation:opBlinkSq 2.4s ease-in-out infinite}
+        @keyframes opBlinkSq{0%,100%{opacity:1}50%{opacity:.45}}
+        .op .nav-links{display:flex;gap:30px;justify-content:center}
+        .op .nav-links a{color:var(--dim);text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;transition:.25s}
+        .op .nav-links a:hover{color:var(--amber)}
+        .op .nav-clock{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--faint);white-space:nowrap}
+        .op .nav-clock b{color:var(--amber);font-weight:500}
+        .op .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--amber);color:#0c0b09;font-family:var(--mono);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:14px 26px;text-decoration:none;border:1px solid var(--amber);cursor:pointer;transition:.3s;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+        .op .btn:hover{background:var(--amber-hot);border-color:var(--amber-hot);box-shadow:0 0 34px rgba(255,122,26,.4)}
+        .op .btn.ghost{background:transparent;color:var(--ink);border-color:rgba(243,239,230,.24)}
+        .op .btn.ghost:hover{border-color:var(--amber);color:var(--amber);box-shadow:0 0 24px rgba(255,171,46,.15);background:transparent}
+        .op .nav-cta{padding:10px 18px;font-size:10.5px}
+        @media(max-width:960px){.op .nav-links,.op .nav-clock{display:none}.op .topnav{grid-template-columns:1fr auto}}
 
-        .home-title-frame::before,
-        .home-title-frame::after {
-          content: "";
-          position: absolute;
-          left: 50%;
-          width: min(420px, 74%);
-          height: 1px;
-          transform: translateX(-50%);
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
-        }
+        /* ---- hero ---- */
+        .op .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px clamp(18px,4.5vw,56px) 40px;max-width:1360px;margin:0 auto}
+        .op .hero-status{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);padding:10px 18px;background:var(--panel);width:fit-content}
+        .op .hero-status .led{width:8px;height:8px;background:var(--ok);border-radius:99px;box-shadow:0 0 12px var(--ok);animation:opBlinkSq 1.8s infinite}
+        .op .h1{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(2.7rem,8.4vw,7.6rem);line-height:.95;letter-spacing:-.01em;text-transform:uppercase;margin:34px 0 0}
+        .op .h1 .out{color:transparent;-webkit-text-stroke:1.5px rgba(243,239,230,.85)}
+        .op .h1 .amb{color:var(--amber);text-shadow:0 0 60px rgba(255,171,46,.35)}
+        .op .hero-sub{display:grid;grid-template-columns:auto 1fr;gap:22px;margin-top:38px;max-width:720px;align-items:start}
+        .op .hero-sub .tick{font-family:var(--mono);color:var(--amber);font-size:13px;padding-top:4px}
+        .op .hero-sub p{color:var(--dim);font-size:clamp(14.5px,1.5vw,17px);line-height:1.8}
+        .op .hero-ctas{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap}
+        .op .stagger{opacity:0;transform:translateY(24px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+        .op.ready .stagger{opacity:1;transform:none}
+        .op.ready .d1{transition-delay:.2s}.op.ready .d2{transition-delay:.38s}.op.ready .d3{transition-delay:.56s}.op.ready .d4{transition-delay:.74s}
 
-        .home-title-frame::before { top: -18px; }
-        .home-title-frame::after { bottom: -18px; }
+        .op .rack{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:70px}
+        .op .rack .mod{background:var(--panel);padding:22px 24px;position:relative;overflow:hidden}
+        .op .rack .mod::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--amber),transparent);opacity:0;transition:.35s}
+        .op .rack .mod:hover::before{opacity:1}
+        .op .rack .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
+        .op .rack .v{font-family:var(--disp);font-stretch:118%;font-weight:700;font-size:clamp(1.4rem,2.6vw,2rem);margin-top:10px;letter-spacing:.01em}
+        .op .rack .v .u{color:var(--amber)}
+        .op .rack .s{font-family:var(--mono);font-size:9.5px;color:var(--ok);margin-top:8px;letter-spacing:.1em}
+        @media(max-width:860px){.op .rack{grid-template-columns:repeat(2,1fr)}}
 
-        @keyframes homePulse {
-          0%, 100% { opacity: .34; transform: translate(-50%, -50%) scale(.98); filter: blur(34px); }
-          50% { opacity: .58; transform: translate(-50%, -50%) scale(1.08); filter: blur(46px); }
-        }
+        /* ---- sections ---- */
+        .op .wrap{max-width:1360px;margin:0 auto;padding:clamp(76px,10vh,130px) clamp(18px,4.5vw,56px)}
+        .op .sec-head{display:flex;align-items:center;gap:22px;margin-bottom:56px;flex-wrap:wrap}
+        .op .tagchip{font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#0c0b09;background:var(--amber);padding:7px 14px;font-weight:700}
+        .op .h2{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(1.9rem,4.6vw,3.6rem);letter-spacing:-.005em;text-transform:uppercase;line-height:1.02;margin:0}
+        .op .h2 .out{color:transparent;-webkit-text-stroke:1.2px rgba(243,239,230,.7)}
+        .op .h2 .amb{color:var(--amber)}
+        .op .rev{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+        .op .rev.in{opacity:1;transform:none}
 
-        @keyframes homeFramePulse {
-          0%, 100% { opacity: .36; filter: blur(0px); }
-          50% { opacity: .72; filter: blur(.35px); }
-        }
+        .op .marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:15px 0;background:var(--panel)}
+        .op .marq-track{display:inline-flex;gap:52px;animation:opTick 26s linear infinite;font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
+        .op .marq-track b{color:var(--amber);font-weight:500;margin-left:52px}
+        @keyframes opTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-        @media (max-width: 720px) {
-          .home-hero-title {
-            width: min(100%, calc(100vw - 40px));
-            max-width: calc(100vw - 40px);
-            min-width: 0;
-            font-size: clamp(3.25rem, 14.5vw, 4rem) !important;
-            overflow-wrap: break-word;
-          }
+        .op .dossier{border:1px solid var(--line)}
+        .op .dossier .row{display:grid;grid-template-columns:120px 1fr 1.3fr;gap:30px;padding:38px clamp(20px,3vw,40px);border-bottom:1px solid var(--line);transition:.3s;background:var(--panel)}
+        .op .dossier .row:last-child{border-bottom:none}
+        .op .dossier .row:hover{background:var(--panel2)}
+        .op .dossier .id{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.16em}
+        .op .dossier h3{font-family:var(--sans);font-weight:700;font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:.01em;margin:0}
+        .op .dossier p{color:var(--dim);font-size:14px;line-height:1.75;margin:0}
+        @media(max-width:820px){.op .dossier .row{grid-template-columns:1fr;gap:12px}}
 
-          .home-title-frame {
-            inset: -16px -12px !important;
-          }
+        .op .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+        .op .svc{border:1px solid var(--line);background:var(--bg);padding:38px 34px;text-decoration:none;color:inherit;position:relative;transition:.35s;overflow:hidden;display:block;clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,22px 100%,0 calc(100% - 22px))}
+        .op .svc::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,var(--amber-dim),transparent 55%);opacity:0;transition:.4s}
+        .op .svc:hover::after{opacity:1}
+        .op .svc:hover{border-color:rgba(255,171,46,.4)}
+        .op .svc .top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+        .op .svc .num{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
+        .op .svc .st{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--ok);display:flex;align-items:center;gap:8px}
+        .op .svc .st::before{content:"";width:6px;height:6px;background:var(--ok);border-radius:99px;box-shadow:0 0 8px var(--ok)}
+        .op .svc h3{font-family:var(--disp);font-stretch:118%;font-weight:700;font-size:clamp(1.3rem,2.4vw,1.8rem);margin:24px 0 14px;text-transform:uppercase;letter-spacing:.01em;position:relative;z-index:1}
+        .op .svc p{color:var(--dim);font-size:14.5px;line-height:1.75;position:relative;z-index:1;margin:0}
+        .op .svc .pts{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap;position:relative;z-index:1}
+        .op .svc .pts i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);padding:6px 12px;background:rgba(0,0,0,.25)}
+        .op .svc .go{margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);position:relative;z-index:1}
+        .op .svc .go::after{content:"↗";color:var(--amber);transition:.3s}
+        .op .svc:hover .go::after{transform:translate(4px,-4px)}
+        @media(max-width:860px){.op .svc-grid{grid-template-columns:1fr}}
 
-          .home-hero-copy {
-            width: min(100%, calc(100vw - 48px));
-            max-width: calc(100vw - 48px);
-          }
+        .op .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .op .prod{border:1px solid var(--line);background:var(--panel);text-decoration:none;color:inherit;transition:.35s;position:relative;display:flex;flex-direction:column;overflow:hidden}
+        .op .prod .scr{height:120px;border-bottom:1px solid var(--line);position:relative;background:
+          radial-gradient(circle at 30% 60%,rgba(255,171,46,.16),transparent 55%),
+          repeating-linear-gradient(90deg,transparent 0 19px,var(--line2) 19px 20px),
+          repeating-linear-gradient(0deg,transparent 0 19px,var(--line2) 19px 20px)}
+        .op .prod .scr b{position:absolute;left:22px;bottom:16px;font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:34px;color:var(--amber);text-shadow:0 0 30px rgba(255,171,46,.5)}
+        .op .prod .badge{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(255,171,46,.35);padding:5px 10px;background:rgba(12,11,9,.7)}
+        .op .prod .body{padding:26px 26px 30px;flex:1;display:flex;flex-direction:column}
+        .op .prod h3{font-family:var(--sans);font-weight:700;font-size:1.3rem;margin:0}
+        .op .prod p{color:var(--dim);font-size:13.5px;line-height:1.75;margin:12px 0 0;flex:1}
+        .op .prod .go{margin-top:22px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+        .op .prod:hover{transform:translateY(-5px);border-color:rgba(255,171,46,.4);box-shadow:0 24px 50px -24px rgba(0,0,0,.8)}
+        @media(max-width:860px){.op .prod-grid{grid-template-columns:1fr}}
 
-          .home-hero-copy p {
-            width: min(100%, 320px);
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 14px;
-            line-height: 1.75;
-          }
+        .op .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .op .price{border:1px solid var(--line);background:var(--bg);padding:40px 34px;position:relative;transition:.35s;display:flex;flex-direction:column}
+        .op .price:hover{border-color:rgba(243,239,230,.3);transform:translateY(-4px)}
+        .op .price.feat{border-color:rgba(255,171,46,.5);background:linear-gradient(170deg,rgba(255,171,46,.07),var(--bg) 55%)}
+        .op .price.feat::before{content:"RECOMMENDED ENTRY";position:absolute;top:-1px;right:-1px;font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;background:var(--amber);color:#0c0b09;padding:6px 12px;font-weight:700}
+        .op .price .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
+        .op .price .amt{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(1.9rem,3.2vw,2.7rem);margin:18px 0 10px}
+        .op .price .amt small{font-size:.45em;color:var(--dim);font-weight:600}
+        .op .price p{color:var(--dim);font-size:13.5px;line-height:1.7;flex:1;margin:0}
+        .op .price .btn{margin-top:28px;width:100%}
+        @media(max-width:860px){.op .price-grid{grid-template-columns:1fr}}
+
+        .op .cta{border-top:1px solid var(--line);position:relative;overflow:hidden}
+        .op .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(600px circle at 50% 110%,rgba(255,171,46,.14),transparent 60%);pointer-events:none}
+        .op .cta .wrap{text-align:center}
+        .op .cta .h2{max-width:900px;margin:26px auto 0}
+        .op .cta .lead{color:var(--dim);font-size:15.5px;line-height:1.8;max-width:520px;margin:22px auto 0}
+        .op .cta .hero-ctas{justify-content:center;margin-top:42px}
+        .op .cta .contact-line{margin-top:44px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+        .op .cta .contact-line a{color:var(--dim);text-decoration:none;transition:.25s}
+        .op .cta .contact-line a:hover{color:var(--amber)}
+
+        .op .foot{border-top:1px solid var(--line);padding:28px clamp(18px,3.5vw,40px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+        .op .foot a{color:var(--faint);text-decoration:none;transition:.25s}
+        .op .foot a:hover{color:var(--amber)}
+        .op .foot .links{display:flex;gap:24px;flex-wrap:wrap}
+
+        /* ---- drawer ---- */
+        .op-drawer{border-left:1px solid rgba(255,171,46,.3);background:#12110e;padding:32px clamp(24px,4vw,44px) 44px;color:#f3efe6;box-shadow:0 0 120px rgba(0,0,0,.7)}
+        .op-drawer-close{margin-left:auto;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(243,239,230,.18);background:none;color:rgba(243,239,230,.7);font-size:22px;line-height:1;cursor:pointer;transition:.3s}
+        .op-drawer-close:hover{border-color:#ffab2e;color:#ffab2e}
+        .op-drawer-kicker{margin-top:28px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#ffab2e}
+        .op-drawer-title{font-family:'Archivo',system-ui,sans-serif;font-stretch:118%;font-weight:800;font-size:clamp(2.4rem,5vw,3.6rem);text-transform:uppercase;line-height:.98;margin:22px 0 0}
+        .op-drawer-title span{display:block;color:transparent;-webkit-text-stroke:1.2px rgba(243,239,230,.7)}
+        .op-drawer-copy{margin-top:18px;max-width:420px;font-size:14px;line-height:1.75;color:rgba(243,239,230,.56)}
+        .op-drawer-form{margin-top:32px;background:#fff;color:#000;padding:24px}
+
+        @media (prefers-reduced-motion: reduce){
+          .op *,.op *::before,.op *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
         }
       `}</style>
 
+      <div className="scan" aria-hidden="true" />
+
+      <BootIntro stage={introStage} onSkip={finishIntro} lines={bootLines} />
       <ProjectDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
 
-      <div className="home-grid relative min-h-screen">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,10,0.18),#08080a_92%)]" />
+      {/* ===== NAV ===== */}
+      <nav className="topnav">
+        <Link href="/" className="logo"><span className="sq" />3KPRO<span style={{ color: 'var(--faint)', fontWeight: 600 }}>·OS</span></Link>
+        <div className="nav-links">
+          <a href="#services">Services</a>
+          <a href="#products">Products</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div className="nav-clock">TULSA <b suppressHydrationWarning>{clock}</b> CST</div>
+        <button type="button" className="btn nav-cta" onClick={() => setDrawerOpen(true)}>Initiate</button>
+      </nav>
 
-        <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#08080a]/82 backdrop-blur-xl">
-          <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
-            <Link href="/" className="text-lg font-black uppercase text-white">
-              3KPRO.SERVICES
-            </Link>
-            <nav className="hidden items-center gap-8 text-xs font-semibold uppercase text-white/72 md:flex">
-              <a href="#services" className="transition hover:text-white">Services</a>
-              <a href="#products" className="transition hover:text-white">Products</a>
-              <a href="#pricing" className="transition hover:text-white">Pricing</a>
-              <button type="button" onClick={() => setDrawerOpen(true)} className="transition hover:text-white">
-                Contact
-              </button>
-            </nav>
-            <button
-              type="button"
-              onClick={() => setDrawerOpen(true)}
-              className="inline-flex min-h-10 items-center rounded-full bg-white px-4 text-xs font-semibold text-black transition hover:bg-white/88 md:hidden"
-            >
-              Start
-            </button>
-          </div>
-        </header>
+      {/* ===== HERO ===== */}
+      <header className="hero" id="top">
+        <div className="hero-status stagger"><span className="led" />All systems operational — accepting new projects</div>
+        <h1 className="h1 stagger d1">
+          Your business.<br />
+          <span className="out">Running like</span><br />
+          <span className="amb">an operating system.</span>
+        </h1>
+        <div className="hero-sub stagger d2">
+          <span className="tick">&gt;_</span>
+          <p>Websites, automation, and AI workspaces engineered in Tulsa with precision and restraint. Fewer moving parts. Clear documentation. A system your business actually runs on.</p>
+        </div>
+        <div className="hero-ctas stagger d3">
+          <button type="button" className="btn" onClick={() => setDrawerOpen(true)}>Start a Project</button>
+          <a className="btn ghost" href="#services">View Systems</a>
+        </div>
+        <div className="rack stagger d4">
+          <div className="mod"><div className="k">Operating since</div><div className="v"><Count end={2010} /></div><div className="s">● STABLE</div></div>
+          <div className="mod"><div className="k">Build lanes</div><div className="v"><Count end={4} /><span className="u"> ACTIVE</span></div><div className="s">● ONLINE</div></div>
+          <div className="mod"><div className="k">Response target</div><div className="v"><Count end={24} /><span className="u">H</span></div><div className="s">● MONITORED</div></div>
+          <div className="mod"><div className="k">Coverage</div><div className="v">TULSA<span className="u">+</span></div><div className="s">● REMOTE CAPABLE</div></div>
+        </div>
+      </header>
 
-        <main className="relative z-10">
-          <section className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-7xl flex-col items-center justify-center px-5 pb-20 pt-12 text-center sm:px-6 lg:px-8">
-            <motion.div
-              className="mb-10 inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/[0.055] px-5 py-3 text-xs font-semibold uppercase text-white/68 backdrop-blur-xl"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease }}
-            >
-              <span className="h-2 w-2 rounded-full bg-[#19e06f] shadow-[0_0_18px_rgba(25,224,111,0.7)]" />
-              Available for new projects
-            </motion.div>
-
-            <motion.div
-              className="pointer-events-none absolute right-[8%] top-[22%] hidden md:block"
-              initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.82, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-              transition={{ duration: 0.9, delay: 0.35, ease }}
-            >
-              <OrbitSeal />
-            </motion.div>
-
-            <motion.h1
-              className="home-hero-title relative isolate max-w-5xl text-[clamp(5.6rem,13vw,11rem)] font-semibold leading-[0.86] text-white"
-              style={{ letterSpacing: 0 }}
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 24, filter: 'blur(14px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.9, delay: 0.22, ease }}
-            >
-              <span aria-hidden="true" className="home-name-glow pointer-events-none absolute left-1/2 top-1/2 -z-20 h-[440px] w-[440px] rounded-full bg-[#6658d9]/38" />
-              <span aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.06]" />
-              <span aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/[0.04]" />
-              <span aria-hidden="true" className="home-title-frame pointer-events-none absolute -inset-x-12 -inset-y-8 z-20">
-                <span className="absolute left-0 top-0 h-10 w-10 border-l border-t border-white/40" />
-                <span className="absolute right-0 top-0 h-10 w-10 border-r border-t border-white/40" />
-                <span className="absolute bottom-0 left-0 h-10 w-10 border-b border-l border-white/40" />
-                <span className="absolute bottom-0 right-0 h-10 w-10 border-b border-r border-white/40" />
-                <span className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 -translate-y-4 bg-white/36" />
-                <span className="absolute bottom-0 left-1/2 h-3 w-px -translate-x-1/2 translate-y-4 bg-white/36" />
-              </span>
-              <span className="relative z-10 block">3KPRO</span>
-              <span className="relative z-10 block text-white/64">Systems</span>
-            </motion.h1>
-
-            <motion.div
-              className="home-hero-copy mt-14 grid w-full max-w-4xl gap-8 text-center text-base leading-7 text-white/58 md:grid-cols-[1fr_auto_1fr] md:text-lg"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.48, ease }}
-            >
-              <p>Business websites, automation, and software systems with precision and restraint.</p>
-              <div className="mx-auto hidden h-full w-px bg-white/12 md:block" />
-              <p>Tulsa based, remote capable, built for owners who want fewer moving parts.</p>
-            </motion.div>
-
-            <motion.div
-              className="mt-12 flex flex-col items-center gap-4 sm:flex-row"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6, ease }}
-            >
-              <button
-                type="button"
-                onClick={() => setDrawerOpen(true)}
-                className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-8 text-sm font-semibold text-black transition hover:bg-white/88"
-              >
-                Start a Project
-              </button>
-              <a
-                href="#services"
-                className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/14 px-8 text-sm font-semibold text-white/82 transition hover:border-white/34 hover:text-white"
-              >
-                View Services
-              </a>
-            </motion.div>
-          </section>
-
-          <section className="mx-auto grid max-w-7xl gap-4 px-5 py-10 sm:px-6 md:grid-cols-3 lg:px-8">
-            {proof.map((item, index) => (
-              <motion.div
-                key={item.label}
-                className="rounded-[28px] border border-white/10 bg-white/[0.035] p-6"
-                initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.5, delay: index * 0.08, ease }}
-              >
-                <div className="text-4xl font-semibold">{item.value}</div>
-                <div className="mt-2 text-xs font-semibold uppercase text-white/44">{item.label}</div>
-              </motion.div>
-            ))}
-          </section>
-
-          <section id="about" className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
-            <div className="grid gap-10 border-t border-white/10 pt-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-              <div>
-                <div className="text-xs font-semibold uppercase text-white/45">00 / Credibility</div>
-                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
-                  Local trust,
-                  <span className="block text-white/52">real systems.</span>
-                </h2>
-              </div>
-              <div className="grid gap-4">
-                {credibility.map((item, index) => (
-                  <motion.article
-                    key={item.title}
-                    className="rounded-[28px] border border-white/10 bg-white/[0.035] p-7"
-                    initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-100px' }}
-                    transition={{ duration: 0.5, delay: index * 0.08, ease }}
-                  >
-                    <div className="mb-6 flex items-center justify-between">
-                      <span className="text-xs text-white/40">0{index + 1}</span>
-                      <span className="h-2 w-2 rounded-full bg-[#19e06f]" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-white">{item.title}</h3>
-                    <p className="mt-4 text-sm leading-7 text-white/58">{item.copy}</p>
-                  </motion.article>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section id="services" className="relative mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
-            <div className="mb-14 grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-end">
-              <div>
-                <div className="text-xs font-semibold uppercase text-white/45">01 / Services</div>
-                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
-                  Digital
-                  <span className="block text-white/52">Solutions</span>
-                </h2>
-              </div>
-              <p className="max-w-2xl border-l border-white/18 pl-8 text-lg leading-8 text-white/72">
-                The site now sells 3KPRO as one calm operating surface: web, automation, technical strategy, and product systems.
-              </p>
-            </div>
-
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {services.map((service, index) => (
-                <motion.button
-                  key={service.title}
-                  type="button"
-                  onMouseEnter={() => setActiveService(index)}
-                  onFocus={() => setActiveService(index)}
-                  onClick={() => setActiveService(index)}
-                  className={`min-h-20 rounded-full border px-6 text-left transition ${
-                    activeService === index
-                      ? 'border-white/36 bg-white text-black'
-                      : 'border-white/12 bg-white/[0.035] text-white/76 hover:border-white/28'
-                  }`}
-                  initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.52, delay: index * 0.08, ease }}
-                >
-                  <span className="block text-xs font-semibold uppercase opacity-60">{service.eyebrow}</span>
-                  <span className="mt-1 block text-lg font-semibold">{service.title}</span>
-                </motion.button>
+      {/* ===== MARQUEE ===== */}
+      <div className="marq" aria-hidden="true">
+        <div className="marq-track">
+          {[0, 1].map((dup) => (
+            <span key={dup}>
+              {marqueeItems.map((item) => (
+                <span key={item}>{item}<b>{' // '}</b></span>
               ))}
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeService}
-                className="mt-10 grid gap-5 md:grid-cols-[.9fr_1.1fr]"
-                initial={shouldReduceMotion ? false : { opacity: 0, y: 24, filter: 'blur(8px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                exit={shouldReduceMotion ? undefined : { opacity: 0, y: -12, filter: 'blur(8px)' }}
-                transition={{ duration: 0.52, ease }}
-              >
-                <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl">
-                  <div className="text-xs font-semibold uppercase text-white/40">{services[activeService].eyebrow}</div>
-                  <h3 className="mt-7 text-4xl font-semibold leading-none md:text-5xl" style={{ letterSpacing: 0 }}>
-                    {services[activeService].title}
-                  </h3>
-                  <p className="mt-7 max-w-lg text-base leading-7 text-white/62">{services[activeService].copy}</p>
-                  <Link
-                    href={services[activeService].href}
-                    className="mt-8 inline-flex min-h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-black transition hover:bg-white/88"
-                  >
-                    View details
-                  </Link>
-                </div>
-                <div className="grid gap-4 sm:grid-cols-3">
-                  {services[activeService].points.map((point, index) => (
-                    <motion.div
-                      key={point}
-                      className="min-h-36 rounded-[28px] border border-white/10 bg-[#151515] p-6"
-                      initial={shouldReduceMotion ? false : { opacity: 0, x: 24 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.44, delay: index * 0.06, ease }}
-                    >
-                      <div className="mb-8 flex items-center justify-between">
-                        <span className="text-xs text-white/40">0{index + 1}</span>
-                        <span className="h-2 w-2 rounded-full bg-white/52" />
-                      </div>
-                      <div className="text-xl font-semibold">{point}</div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </section>
-
-          <section id="products" className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
-            <div className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
-              <div>
-                <div className="text-xs font-semibold uppercase text-white/45">02 / Product ecosystem</div>
-                <h2 className="mt-8 max-w-3xl text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
-                  Useful tools,
-                  <span className="block text-white/52">not shelfware.</span>
-                </h2>
-              </div>
-              <Link href="/marketplace" className="inline-flex min-h-12 w-fit items-center rounded-full border border-white/14 px-6 text-sm font-semibold text-white/82 transition hover:border-white/34 hover:text-white">
-                Explore marketplace
-              </Link>
-            </div>
-            <div className="grid gap-5 md:grid-cols-3">
-              {products.map((product, index) => (
-                <motion.article
-                  key={product.name}
-                  className="rounded-[28px] border border-white/10 bg-white/[0.035] p-7"
-                  initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.52, delay: index * 0.08, ease }}
-                >
-                  <div className="mb-8 flex items-center justify-between">
-                    <span className="grid h-11 w-11 place-items-center rounded-full border border-white/16 text-sm font-bold">{product.mono}</span>
-                    <span className="rounded-full border border-white/12 px-3 py-1 text-xs text-white/52">{product.label}</span>
-                  </div>
-                  <h3 className="text-2xl font-semibold">{product.name}</h3>
-                  <p className="mt-4 min-h-24 text-sm leading-7 text-white/58">{product.copy}</p>
-                  <Link
-                    href={product.href}
-                    target={product.external ? '_blank' : undefined}
-                    rel={product.external ? 'noreferrer' : undefined}
-                    className="mt-7 inline-flex min-h-11 items-center rounded-full bg-white px-5 text-sm font-semibold text-black transition hover:bg-white/88"
-                  >
-                    Open
-                  </Link>
-                </motion.article>
-              ))}
-            </div>
-          </section>
-
-          <section id="pricing" className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
-            <div className="grid gap-8 rounded-[34px] border border-white/10 bg-white/[0.035] p-7 md:grid-cols-[1fr_1.2fr] md:p-10">
-              <div>
-                <div className="text-xs font-semibold uppercase text-white/45">03 / Entry points</div>
-                <h2 className="mt-8 text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
-                  Clear ways
-                  <span className="block text-white/52">to start.</span>
-                </h2>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-3">
-                {[
-                  ['Website rebuild', '$899+', 'A focused business site with launch basics.'],
-                  ['Automation sprint', 'Scoped', 'One workflow mapped, built, and handed over.'],
-                  ['AI workspace', 'Blueprint', 'Private knowledge and assistant setup for teams.'],
-                ].map(([name, price, copy]) => (
-                  <div key={name} className="rounded-[24px] border border-white/10 bg-[#111113] p-5">
-                    <div className="text-sm font-semibold">{name}</div>
-                    <div className="mt-5 text-3xl font-semibold">{price}</div>
-                    <p className="mt-5 text-sm leading-6 text-white/56">{copy}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="md:col-start-2">
-                <Link
-                  href="/sitepreview"
-                  className="inline-flex min-h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-black transition hover:bg-white/88"
-                >
-                  Request website preview
-                </Link>
-              </div>
-            </div>
-          </section>
-
-          <section id="contact" className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
-            <div className="grid gap-12 border-t border-white/10 pt-16 md:grid-cols-[1fr_1fr_auto] md:items-center">
-              <div>
-                <h2 className="text-5xl font-semibold leading-[0.94] md:text-7xl" style={{ letterSpacing: 0 }}>
-                  Let's
-                  <span className="block text-white/52">Talk</span>
-                </h2>
-              </div>
-              <button
-                type="button"
-                onClick={() => setDrawerOpen(true)}
-                className="inline-flex min-h-16 w-fit items-center gap-5 rounded-full bg-white py-2 pl-2 pr-8 text-xl font-semibold text-black transition hover:bg-white/88"
-              >
-                <span className="grid h-12 w-12 place-items-center rounded-full bg-black text-white">3K</span>
-                Start a Project
-              </button>
-              <OrbitSeal compact />
-            </div>
-          </section>
-        </main>
-
-        <footer className="relative z-10 border-t border-white/10">
-          <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 text-xs text-white/38 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-            <div>3KPRO Systems / Tulsa, Oklahoma / Remote capable</div>
-            <div className="flex flex-wrap gap-4">
-              <a href="tel:+19188168832" className="transition hover:text-white">918-816-8832</a>
-              <a href="mailto:james@3kpro.services" className="transition hover:text-white">james@3kpro.services</a>
-              <Link href="/marketplace" className="transition hover:text-white">Marketplace</Link>
-              <Link href="/pay" className="transition hover:text-white">Quick Pay</Link>
-            </div>
-          </div>
-        </footer>
+            </span>
+          ))}
+        </div>
       </div>
+
+      {/* ===== CREDIBILITY ===== */}
+      <section>
+        <div className="wrap">
+          <div className="sec-head rev">
+            <span className="tagchip">00 / Credibility</span>
+            <h2 className="h2">Local trust. <span className="out">Real systems.</span></h2>
+          </div>
+          <div className="dossier rev">
+            {credibility.map((item) => (
+              <div className="row" key={item.id}>
+                <span className="id">{item.id}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SERVICES ===== */}
+      <section id="services" style={{ background: 'var(--panel)' }}>
+        <div className="wrap">
+          <div className="sec-head rev">
+            <span className="tagchip">01 / Services</span>
+            <h2 className="h2">Four systems. <span className="out">One console.</span></h2>
+          </div>
+          <div className="svc-grid rev">
+            {services.map((s) => (
+              <Link className="svc" href={s.href} key={s.num}>
+                <div className="top"><span className="num">{s.num}</span><span className="st">ONLINE</span></div>
+                <h3>{s.title}</h3>
+                <p>{s.copy}</p>
+                <div className="pts">{s.points.map((p) => <i key={p}>{p}</i>)}</div>
+                <span className="go">Open module</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PRODUCTS ===== */}
+      <section id="products">
+        <div className="wrap">
+          <div className="sec-head rev">
+            <span className="tagchip">02 / Product ecosystem</span>
+            <h2 className="h2">Useful tools. <span className="out">Not shelfware.</span></h2>
+          </div>
+          <div className="prod-grid rev">
+            {products.map((p) => (
+              <Link
+                className="prod"
+                href={p.href}
+                key={p.name}
+                target={p.external ? '_blank' : undefined}
+                rel={p.external ? 'noreferrer' : undefined}
+              >
+                <div className="scr"><b>{p.mono}</b><span className="badge">{p.label}</span></div>
+                <div className="body">
+                  <h3>{p.name}</h3>
+                  <p>{p.copy}</p>
+                  <span className="go">{p.go}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PRICING ===== */}
+      <section id="pricing" style={{ background: 'var(--panel)' }}>
+        <div className="wrap">
+          <div className="sec-head rev">
+            <span className="tagchip">03 / Entry points</span>
+            <h2 className="h2">Clear ways <span className="out">to start.</span></h2>
+          </div>
+          <div className="price-grid rev">
+            <div className="price feat">
+              <div className="lbl">Website rebuild</div>
+              <div className="amt">$899<small>+</small></div>
+              <p>A focused business site with launch basics — positioning, build, and handoff.</p>
+              <Link className="btn" href="/sitepreview">Request free preview</Link>
+            </div>
+            <div className="price">
+              <div className="lbl">Automation sprint</div>
+              <div className="amt">SCOPED</div>
+              <p>One workflow mapped, built, and handed over — documented so it survives you.</p>
+              <button type="button" className="btn ghost" onClick={() => setDrawerOpen(true)}>Scope my workflow</button>
+            </div>
+            <div className="price">
+              <div className="lbl">AI workspace</div>
+              <div className="amt">BLUEPRINT</div>
+              <p>Private knowledge and assistant setup for teams that want AI doing real work.</p>
+              <button type="button" className="btn ghost" onClick={() => setDrawerOpen(true)}>Get the blueprint</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CTA ===== */}
+      <section className="cta" id="contact">
+        <div className="wrap rev">
+          <span className="tagchip">04 / Contact</span>
+          <h2 className="h2">Ready to put your business <span className="amb">on rails?</span></h2>
+          <p className="lead">One conversation. A narrow blueprint. A working first version — fast.</p>
+          <div className="hero-ctas">
+            <button type="button" className="btn" onClick={() => setDrawerOpen(true)}>Start a Project</button>
+            <a className="btn ghost" href="tel:+19188168832">Call 918-816-8832</a>
+          </div>
+          <div className="contact-line">
+            <a href="mailto:james@3kpro.services">james@3kpro.services</a>
+            <a href="tel:+19188168832">918-816-8832</a>
+            <span style={{ color: 'var(--faint)' }}>Tulsa, Oklahoma / Remote capable</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== FOOTER ===== */}
+      <footer className="foot">
+        <span>© 2026 3KPRO SYSTEMS {'//'} TULSA CONTROL</span>
+        <div className="links">
+          <Link href="/marketplace">Marketplace</Link>
+          <Link href="/pay">Quick Pay</Link>
+          <a href="#top">Return to top ↑</a>
+        </div>
+      </footer>
     </div>
   )
 }

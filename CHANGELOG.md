@@ -6,6 +6,11 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 ### Added
+- `app/page.tsx`: 2026-07-06 — promoted the approved OPERATOR direction (V3 from `docs/redesign-2026-07/`) into the production homepage: terminal boot intro (typed BIOS sequence with CRT power-flash, plays once per session via sessionStorage, skip button, reduced-motion bypass), fixed nav with live Tulsa clock, expanded-Archivo/JetBrains Mono type system, amber mission-control aesthetic, status rack with animated counters, dossier credibility rows, clip-cornered service modules, product cards with grid screens, pricing with recommended-entry flag, and operator-styled Start a Project drawer wired to the existing ContactForm server action. Previous homepage backed up at `docs/redesign-2026-07/page.tsx.pre-operator.bak`.
+### Verified
+- `npm run build` passed with Next.js 16.2.6 (Turbopack); TypeScript clean; all 70 routes generated.
+### Added (earlier)
+- `docs/redesign-2026-07/`: 2026-07-05 — three self-contained homepage redesign prototypes for James to choose from, each with a full animated intro: `3kpro-v1-signal.html` (cinematic particle assembly, mint/violet on near-black), `3kpro-v2-blueprint.html` (light drafting-paper editorial, self-drawing SVG schematic intro), `3kpro-v3-operator.html` (terminal boot sequence → amber mission-control deck). All use real production copy/links; the chosen direction is to be ported into `app/page.tsx` (framer-motion + Tailwind). Verified: JS syntax clean, tags balanced, all contact/pricing/product content present, reduced-motion + skip-intro supported.
 - `app/page.tsx`: promoted the approved V5 Pure Systems direction into the production homepage with the blueprint hero, monochrome spinning seal, service/product sections, pricing entry points, and a real Start a Project drawer using the existing contact form.
 - `app/preview/*`: replaced duplicated, broken preview experiments with a shared Figma-backed facelift gallery and three maintainable concept routes: Precision Consulting, Momentum Studio, and Operations Console.
 - `app/preview/v4`, `app/preview/v5`, `app/preview/v6`: added three Figma Make-inspired preview routes: Studio Authority, Casefile Portfolio, and Conversion Drawer.
