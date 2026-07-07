@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { Droplets, Landmark, Sprout, Tractor } from 'lucide-react'
+import { Camera, ClipboardCheck, Droplets, Gauge, Landmark, Route, Sprout, Tractor } from 'lucide-react'
 
 export type SitePreview = {
   slug: string
@@ -7,11 +7,34 @@ export type SitePreview = {
   shortName: string
   category: string
   location: string
+  categoryEyebrow?: string
   conceptTitle: string
   conceptSubtitle: string
   observedOpportunity: string
   primaryCta: string
   secondaryCta: string
+  headline?: string
+  headlineAccent?: string
+  primaryFix?: string
+  placeholderNote?: string
+  sectionKicker?: string
+  sectionHeadline?: string
+  sectionCopy?: string
+  quoteFlowKicker?: string
+  quoteFlowHeadline?: string
+  quoteFlowCopy?: string
+  trustHeading?: string
+  listingHeading?: string
+  variations?: Array<{
+    title: string
+    subtitle: string
+    bestFor: string
+    visualDirection: string
+    customerAction: string
+    image: string
+    imageAlt: string
+    linkHref?: string
+  }>
   services: Array<{
     title: string
     copy: string
@@ -36,6 +59,56 @@ export type SitePreview = {
   }>
   preparedFor: string
 }
+
+const randallVariantPreviews = {
+  'randall-mobile-mechanic-urgent-diagnostic': {
+    index: 0,
+    headlineAccent: 'urgent diagnostics that come to you',
+    conceptTitle: 'Urgent diagnostic preview built for fast call and booking action.',
+    conceptSubtitle:
+      'This direction is direct and high-contrast for customers with a car problem today: no-starts, warning lights, strange noises, and the need for a mechanic who can come to them.',
+    sectionKicker: 'Variation 1',
+    sectionHeadline: 'Book the diagnostic before the customer calls someone else.',
+    sectionCopy:
+      'The page leads with speed, the $129 diagnostic, and a large call path so urgent customers can move from problem to appointment without reading a full brochure.',
+    quoteFlowHeadline: 'Urgent issue, clear first step.',
+    quoteFlowCopy:
+      'Capture the vehicle, symptom, location, photos, and service window first. The repair scope only gets priced after Randall completes the diagnostic.',
+    primaryCta: 'Call for diagnostic',
+  },
+  'randall-mobile-mechanic-trusted-neighborhood': {
+    index: 1,
+    headlineAccent: 'the driveway mechanic customers can trust',
+    conceptTitle: 'Trusted neighborhood mechanic preview built around confidence and repeat customers.',
+    conceptSubtitle:
+      'This direction feels warmer and more personal, positioning Randall as the local mechanic people can call for home driveway repairs and family vehicles.',
+    sectionKicker: 'Variation 2',
+    sectionHeadline: 'Make Randall feel familiar before the first call.',
+    sectionCopy:
+      'The page gives more space to trust proof, plain-language service explanations, review placeholders, and the diagnostic-first process.',
+    quoteFlowHeadline: 'Explain the problem, then approve the repair.',
+    quoteFlowCopy:
+      'Customers describe what happened, upload photos or codes, and choose a service window. Randall diagnoses first, then sends parts and labor for approval.',
+    primaryCta: 'Request a service window',
+  },
+  'randall-mobile-mechanic-fleet-work-truck': {
+    index: 2,
+    headlineAccent: 'mobile service for work trucks and small fleets',
+    conceptTitle: 'Fleet and work-truck preview built for contractors who cannot afford downtime.',
+    conceptSubtitle:
+      'This direction is more operational, focused on contractors, work trucks, small fleets, recurring maintenance, and keeping vehicles moving.',
+    sectionKicker: 'Variation 3',
+    sectionHeadline: 'Sell uptime, scheduling, and clear repair approval.',
+    sectionCopy:
+      'The page frames Randall as a practical mobile service option for contractors who need diagnostics, repairs, and maintenance without losing a workday.',
+    quoteFlowHeadline: 'Route fleet issues into a clean service queue.',
+    quoteFlowCopy:
+      'Capture vehicle count, issue type, location, urgency, and maintenance needs, then turn diagnostics into an approved parts-and-labor repair path.',
+    primaryCta: 'Request fleet service',
+  },
+} as const
+
+export const sitePreviewExtraSlugs = Object.keys(randallVariantPreviews)
 
 export const sitePreviews: SitePreview[] = [
   {
@@ -143,8 +216,202 @@ export const sitePreviews: SitePreview[] = [
     ],
     preparedFor: 'Prepared as a concept preview by 3KPRO. This is not the official Horizon Lawn website.',
   },
+  {
+    slug: 'randall-mobile-mechanic',
+    businessName: "Randall's Mobile Mechanic",
+    shortName: 'Randall Mobile Mechanic',
+    category: 'Mobile Mechanic',
+    location: 'Tulsa area',
+    categoryEyebrow: 'Tulsa-area mobile mechanic',
+    conceptTitle: 'Three practical website directions for turning calls into booked diagnostics.',
+    conceptSubtitle:
+      'This preview shows three ways Randall could present mobile diagnostics, driveway repair, parts transparency, and direct booking without making customers hunt for the next step.',
+    observedOpportunity:
+      'Mobile mechanic customers are usually in a hurry: the car is not starting, a warning light is on, or they need a trusted mechanic to come to them. A focused site should sell fast diagnosis first, then convert the repair into a clear parts-and-labor plan.',
+    primaryCta: 'Book a diagnostic',
+    secondaryCta: 'See site variations',
+    headline: 'Randall Mobile Mechanic',
+    headlineAccent: 'diagnostics and repair that come to you',
+    primaryFix: '$129 diagnostic',
+    placeholderNote:
+      'Stock images are placeholders for preview only. Replace with Randall, his vehicle, real tools, and before/after repair photos before launch.',
+    sectionKicker: 'Three directions to choose from',
+    sectionHeadline: 'Same offer, different first impression.',
+    sectionCopy:
+      'Each version keeps the core deal intact: a $129 diagnostic first, parts priced separately, labor scoped clearly, easy call/text booking, photo upload, and follow-up reminders.',
+    quoteFlowKicker: 'Recommended booking flow',
+    quoteFlowHeadline: 'Start with the diagnostic, then price the repair clearly.',
+    quoteFlowCopy:
+      'The site should work like a simple service desk: collect the vehicle issue, get photos or codes, schedule the diagnostic, and turn the result into an approved parts-and-labor repair.',
+    trustHeading: 'Trust signals to surface',
+    listingHeading: 'Launch notes',
+    heroImage:
+      'https://images.unsplash.com/photo-1632823471565-1ecdf5c761dc?auto=format&fit=crop&fm=jpg&q=72&w=2200',
+    heroImageAlt: 'Mechanic inspecting a vehicle engine with tools nearby',
+    services: [
+      {
+        title: '$129 diagnostic',
+        copy: 'Make the first step obvious: confirm the problem before anyone commits to parts or repair labor.',
+        icon: Gauge,
+        image:
+          'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&fm=jpg&q=72&w=1200',
+        imageAlt: 'Mechanic diagnostic tools near a vehicle engine',
+      },
+      {
+        title: 'Mobile repair booking',
+        copy: 'Let customers request driveway, home, or worksite service with a phone-first booking path.',
+        icon: Route,
+        image:
+          'https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&fm=jpg&q=72&w=1200',
+        imageAlt: 'Mechanic working on a car outside',
+      },
+      {
+        title: 'Photo and code upload',
+        copy: 'Collect warning lights, VIN, part photos, noises, and issue notes before Randall arrives.',
+        icon: Camera,
+        image:
+          'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&fm=jpg&q=72&w=1200',
+        imageAlt: 'Close view of car engine and mechanic inspection',
+      },
+      {
+        title: 'Parts plus labor approval',
+        copy: 'Separate customer-paid parts from approved labor so every repair feels fair and documented.',
+        icon: ClipboardCheck,
+        image:
+          'https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&fm=jpg&q=72&w=1200',
+        imageAlt: 'Mechanic tools and parts arranged on a workbench',
+      },
+    ],
+    variations: [
+      {
+        title: 'Variation 1: Urgent Diagnostic',
+        subtitle: 'Fast, direct, and call-heavy for drivers who need help today.',
+        bestFor: 'No-starts, warning lights, roadside-style urgency, and quick diagnostic bookings.',
+        visualDirection: 'Bold black, high-contrast yellow, close-up engine imagery, large phone CTA.',
+        customerAction: 'Call or book the $129 diagnostic.',
+        image:
+          'https://images.unsplash.com/photo-1632823471565-1ecdf5c761dc?auto=format&fit=crop&fm=jpg&q=72&w=1400',
+        imageAlt: 'Mechanic checking a vehicle engine',
+        linkHref: '/sitepreview/randall-mobile-mechanic-urgent-diagnostic',
+      },
+      {
+        title: 'Variation 2: Trusted Neighborhood Mechanic',
+        subtitle: 'Warmer and personal, built around Randall as the mechanic customers can trust.',
+        bestFor: 'Home driveway repairs, repeat customers, family vehicles, and review-driven trust.',
+        visualDirection: 'Warm white, steel blue, clean service cards, visible reviews and warranty language.',
+        customerAction: 'Describe the issue and request a service window.',
+        image:
+          'https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&fm=jpg&q=72&w=1400',
+        imageAlt: 'Mechanic tools and car parts on a workbench',
+        linkHref: '/sitepreview/randall-mobile-mechanic-trusted-neighborhood',
+      },
+      {
+        title: 'Variation 3: Fleet and Work Truck Ready',
+        subtitle: 'More operational and professional for contractors who cannot afford downtime.',
+        bestFor: 'Small fleets, work trucks, contractors, mobile equipment, and scheduled maintenance.',
+        visualDirection: 'White, red, charcoal, route map cues, maintenance plans, priority request path.',
+        customerAction: 'Request fleet service or recurring maintenance.',
+        image:
+          'https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&fm=jpg&q=72&w=1400',
+        imageAlt: 'Mechanic repairing a vehicle outdoors',
+        linkHref: '/sitepreview/randall-mobile-mechanic-fleet-work-truck',
+      },
+    ],
+    gallery: [
+      {
+        title: 'Diagnostic-first offer',
+        copy: 'Lead with the $129 diagnostic so customers understand the first paid step before repair scope, parts, or labor are discussed.',
+        image:
+          'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&fm=jpg&q=72&w=1400',
+        imageAlt: 'Diagnostic work near a vehicle engine',
+      },
+      {
+        title: 'Simple repair approval',
+        copy: 'After diagnosis, the customer sees what parts are needed, what Randall handles for labor, and what is approved before work starts.',
+        image:
+          'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&fm=jpg&q=72&w=1400',
+        imageAlt: 'Mechanic working with tools in an auto shop',
+      },
+    ],
+    trustPoints: [
+      'Show the $129 diagnostic clearly before talking about bigger repairs.',
+      'Make call, text, and booking buttons visible on mobile without scrolling too far.',
+      'Use real photos of Randall, vehicle, tools, and completed repairs as soon as available.',
+      'Explain parts are priced separately and labor is approved after diagnosis.',
+      'Surface service area, hours, emergency availability, and review proof.',
+    ],
+    conversionFlow: [
+      'Customer lands from Google, Facebook, referral, or a texted preview link.',
+      'Hero makes mobile mechanic service and $129 diagnostic obvious immediately.',
+      'Customer taps call, text, or book diagnostic.',
+      'Form captures name, phone, vehicle, location, symptoms, photos, codes, urgency, and preferred service window.',
+      'Randall sends diagnostic result with parts list, labor estimate, and approval step before repair starts.',
+    ],
+    listingNotes: [
+      'Confirm exact business name, phone, service area, and whether Randall wants call-only or online booking.',
+      'Add Google Business Profile, Facebook, and review links when available.',
+      'Prepare real photo slots: Randall headshot, service vehicle, tools, engine bay, completed repairs.',
+      'Build the site around diagnostic booking first; full repair quote happens after the diagnosis.',
+    ],
+    sources: [
+      {
+        label: 'Preview brief from James',
+        href: '/sitepreview/randall-mobile-mechanic',
+      },
+      {
+        label: 'Book diagnostic CTA',
+        href: '#quote-flow',
+      },
+      {
+        label: 'Photo upload placeholder',
+        href: 'mailto:james@3kpro.services',
+      },
+      {
+        label: '3KPRO preview process',
+        href: '/sitepreview',
+      },
+    ],
+    preparedFor: "Prepared as a concept preview by 3KPRO. This is not Randall's official website.",
+  },
 ]
 
 export function getSitePreview(slug: string) {
-  return sitePreviews.find((preview) => preview.slug === slug)
+  const directPreview = sitePreviews.find((preview) => preview.slug === slug)
+
+  if (directPreview) {
+    return directPreview
+  }
+
+  const randallVariant = randallVariantPreviews[slug as keyof typeof randallVariantPreviews]
+  const randallBase = sitePreviews.find((preview) => preview.slug === 'randall-mobile-mechanic')
+  const variation = randallBase?.variations?.[randallVariant?.index]
+
+  if (!randallBase || !randallVariant || !variation) {
+    return undefined
+  }
+
+  return {
+    ...randallBase,
+    slug,
+    conceptTitle: randallVariant.conceptTitle,
+    conceptSubtitle: randallVariant.conceptSubtitle,
+    headlineAccent: randallVariant.headlineAccent,
+    primaryCta: randallVariant.primaryCta,
+    secondaryCta: 'Compare all three',
+    sectionKicker: randallVariant.sectionKicker,
+    sectionHeadline: randallVariant.sectionHeadline,
+    sectionCopy: randallVariant.sectionCopy,
+    quoteFlowHeadline: randallVariant.quoteFlowHeadline,
+    quoteFlowCopy: randallVariant.quoteFlowCopy,
+    heroImage: variation.image,
+    heroImageAlt: variation.imageAlt,
+    variations: undefined,
+    sources: [
+      {
+        label: 'Compare all three variations',
+        href: '/sitepreview/randall-mobile-mechanic',
+      },
+      ...randallBase.sources,
+    ],
+  }
 }

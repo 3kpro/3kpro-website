@@ -26,13 +26,15 @@ Payment entrypoint: `https://3kpro.services/pay`
 | 1. Inquiry | James / Jeremy | Lead, website, service area, pain angle | CRM record and first response | Contact info captured |
 | 2. Fit check | James / Jeremy | Current site, listings, offer, visible gaps | Fit / fix / build recommendation | Clear business angle |
 | 3. Preview request | Client / James | `/sitepreview` form or pasted equivalent | Preview brief | Enough context to scope |
-| 4. Preview creation | James | Preview brief or researched prospect | Prospect preview URL, concept, structure, quote path | No production promise yet |
-| 5. Review call | James / Client | Preview and recommendation | Approved scope or closed lead | Client confirms direction |
-| 6. Deposit | Client | `/pay` deposit link | Paid milestone | No build without deposit |
-| 7. Build | James / 3KPRO | Approved scope | Working site, revisions, docs | Reviewable preview URL |
-| 8. Final approval | Client | Vercel preview or staging URL | Launch approval | Explicit approval recorded |
-| 9. Final balance | Client | `/pay` invoice/custom payment | Paid balance | No final handoff before payment unless approved |
-| 10. Launch and payout | James | Domain/DNS/content approvals | Production launch and internal closeout | CRM updated, docs delivered |
+| 4. Preview creation | KITT / Website | Preview brief or researched prospect | Prospect preview URL, concept, structure, quote path | No production promise yet |
+| 5. James preview approval | Jeremy / James | Preview URL, sales angle, CTA, package note | Approved preview or revision request | James explicitly approves before outreach copy |
+| 6. Outreach package | Jeremy | Approved preview URL | First-touch email, follow-up call script, CRM_UPDATE | James approves/sends manually |
+| 7. Review call | James / Client | Preview and recommendation | Approved scope or closed lead | Client confirms direction |
+| 8. Deposit | Client | `/pay` deposit link | Paid milestone | No build without deposit |
+| 9. Build | James / 3KPRO | Approved scope | Working site, revisions, docs | Reviewable preview URL |
+| 10. Final approval | Client | Vercel preview or staging URL | Launch approval | Explicit approval recorded |
+| 11. Final balance | Client | `/pay` invoice/custom payment | Paid balance | No final handoff before payment unless approved |
+| 12. Launch and payout | James | Domain/DNS/content approvals | Production launch and internal closeout | CRM updated, docs delivered |
 
 ## CRM Fields
 
@@ -86,6 +88,15 @@ The first viewport must communicate the prospect's business category before anyo
 - Include the exact sales angle James will use: broken website, unclear quote path, inconsistent listings, weak service positioning, or missing trust proof.
 - Pass the read-the-room gate: a stranger should know the business category in three seconds without reading body copy.
 - Use industry-correct visuals and CTAs; replace generic placeholders before client delivery whenever better assets are available.
+
+## James Preview Approval Gate
+
+- Jeremy must send the preview URL to James through Telegram or email before drafting the client-facing email.
+- The approval request should include the preview URL, the intended sales angle, the primary CTA, and any known weak spots or placeholder assets.
+- James may approve, request changes, or reject the preview.
+- Jeremy drafts the first-touch email only after James explicitly approves the preview.
+- If James requests changes, KITT/Website owns the revision path; NOVA is consulted only if the issue is visual/media quality.
+- HubSpot is updated only after James confirms the email was manually sent.
 
 ## Payment Rules
 
@@ -154,6 +165,7 @@ James / 3KPRO
 - Preview request or equivalent brief is captured.
 - Pain angle is written in plain language.
 - Read-the-room visual gate passes: category, service, and CTA are obvious in the first viewport, and no off-industry imagery remains.
+- James has approved the preview URL before Jeremy drafts the client-facing email.
 - Preview or recommendation is sent.
 - Preview URL is mirrored to the MainBrain prospect preview registry.
 - Next action is either deposit, follow-up, or closed-lost.

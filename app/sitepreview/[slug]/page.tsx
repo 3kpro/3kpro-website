@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowRight, BadgeCheck, ExternalLink, FileText, MapPin, SearchCheck, ShieldCheck } from 'lucide-react'
-import { getSitePreview, sitePreviews } from '@/lib/sitePreviews'
+import { getSitePreview, sitePreviewExtraSlugs, sitePreviews } from '@/lib/sitePreviews'
 
 type PageProps = {
   params: Promise<{
@@ -11,7 +11,7 @@ type PageProps = {
 }
 
 export function generateStaticParams() {
-  return sitePreviews.map((preview) => ({ slug: preview.slug }))
+  return [...sitePreviews.map((preview) => preview.slug), ...sitePreviewExtraSlugs].map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${title} | 3K Pro Services`,
-    description: `A 3KPRO concept preview for ${preview.businessName}: website recovery, quote flow, listings cleanup, and local service positioning.`,
+    description: `A 3KPRO concept preview for ${preview.businessName}: ${preview.conceptTitle}`,
     alternates: {
       canonical: pageUrl,
     },
@@ -72,6 +72,26 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
     notFound()
   }
 
+  const categoryEyebrow = preview.categoryEyebrow ?? preview.category
+  const headline = preview.headline ?? preview.shortName
+  const headlineAccent = preview.headlineAccent ?? 'lawn care website preview'
+  const primaryFix = preview.primaryFix ?? 'Estimate flow'
+  const placeholderNote =
+    preview.placeholderNote ??
+    `Stock images are placeholders for preview only. Replace with ${preview.shortName} trucks, crew, real work, and before/after photos.`
+  const sectionKicker = preview.sectionKicker ?? 'What this page should sell instantly'
+  const sectionHeadline = preview.sectionHeadline ?? 'Green lawns, fixed sprinklers, easy estimates.'
+  const sectionCopy =
+    preview.sectionCopy ??
+    'Visitors should understand the service category, local coverage, and estimate path immediately, then see enough proof to keep moving instead of bouncing back to Google.'
+  const quoteFlowKicker = preview.quoteFlowKicker ?? 'Recommended quote flow'
+  const quoteFlowHeadline = preview.quoteFlowHeadline ?? 'Turn yard problems into clean leads.'
+  const quoteFlowCopy =
+    preview.quoteFlowCopy ??
+    'The site should behave like a front-office intake assistant: route the customer, gather the right detail, and make follow-up easy.'
+  const trustHeading = preview.trustHeading ?? 'Trust signals to surface'
+  const listingHeading = preview.listingHeading ?? 'Listing cleanup notes'
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f5f1e8] text-[#182417]" style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: 0 }}>
       <header className="absolute inset-x-0 top-0 z-20 border-b border-white/20 bg-[#112115]/45 text-white backdrop-blur-md">
@@ -103,11 +123,11 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-3 rounded-full border border-white/24 bg-white/14 px-5 py-3 text-xs font-semibold uppercase text-white shadow-[0_14px_50px_rgba(0,0,0,0.22)] backdrop-blur-md">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9be15d] shadow-[0_0_18px_rgba(155,225,93,0.85)]" />
-                Tulsa lawn, landscape & irrigation
+                {categoryEyebrow}
               </div>
               <h1 className="mt-7 max-w-4xl text-5xl font-black leading-[0.9] md:text-7xl lg:text-8xl" style={{ letterSpacing: 0 }}>
-                {preview.shortName}
-                <span className="block text-[#d8f7b2]">lawn care website preview</span>
+                {headline}
+                <span className="block text-[#d8f7b2]">{headlineAccent}</span>
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/84">{preview.conceptSubtitle}</p>
 
@@ -120,7 +140,7 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                   <ArrowRight size={17} aria-hidden="true" />
                 </a>
                 <a
-                  href="#services"
+                  href={preview.variations ? '#variations' : '#services'}
                   className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/30 bg-white/10 px-7 text-sm font-semibold text-white transition hover:bg-white/18"
                 >
                   {preview.secondaryCta}
@@ -141,11 +161,11 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                 </div>
                 <div className="rounded-2xl bg-white p-4 shadow-[0_12px_34px_rgba(24,36,23,0.09)]">
                   <div className="text-xs font-black uppercase text-[#7a846f]">Primary fix</div>
-                  <div className="mt-2 text-lg font-black">Estimate flow</div>
+                  <div className="mt-2 text-lg font-black">{primaryFix}</div>
                 </div>
               </div>
               <p className="mt-4 rounded-2xl border border-[#d7ccb7] bg-[#fffaf0] p-4 text-xs leading-6 text-[#6b6251]">
-                Stock images are placeholders for preview only. Replace with Horizon trucks, crew, lawns, and before/after photos.
+                {placeholderNote}
               </p>
             </aside>
           </div>
@@ -154,16 +174,61 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
         <section className="bg-[#f5f1e8] px-5 py-14 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
-              <div className="text-xs font-black uppercase text-[#5f7d2f]">What this page should sell instantly</div>
+              <div className="text-xs font-black uppercase text-[#5f7d2f]">{sectionKicker}</div>
               <h2 className="mt-5 max-w-2xl text-4xl font-black leading-tight text-[#15200f] md:text-6xl">
-                Green lawns, fixed sprinklers, easy estimates.
+                {sectionHeadline}
               </h2>
             </div>
             <p className="max-w-2xl text-base leading-8 text-[#56614c]">
-              Visitors should understand the service category, local coverage, and estimate path immediately, then see enough proof to keep moving instead of bouncing back to Google.
+              {sectionCopy}
             </p>
           </div>
         </section>
+
+        {preview.variations ? (
+          <section id="variations" className="bg-[#f5f1e8] px-5 pb-16 sm:px-6 lg:px-8">
+            <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">
+              {preview.variations.map((variation, index) => (
+                <article key={variation.title} className="overflow-hidden rounded-[28px] bg-white shadow-[0_18px_60px_rgba(35,48,27,0.12)]">
+                  <div className="relative aspect-[16/11] overflow-hidden bg-[#182417]">
+                    <img src={variation.image} alt={variation.imageAlt} className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="inline-grid h-10 w-10 place-items-center rounded-full bg-[#f2c14e] text-sm font-black text-[#15200f]">
+                        {index + 1}
+                      </span>
+                      <h3 className="mt-3 text-2xl font-black leading-tight text-white">{variation.title}</h3>
+                    </div>
+                  </div>
+                  <div className="space-y-5 p-6">
+                    <p className="text-sm leading-7 text-[#56614c]">{variation.subtitle}</p>
+                    <div>
+                      <div className="text-xs font-black uppercase text-[#7a846f]">Best for</div>
+                      <p className="mt-2 text-sm leading-6 text-[#172315]">{variation.bestFor}</p>
+                    </div>
+                    <div>
+                      <div className="text-xs font-black uppercase text-[#7a846f]">Visual direction</div>
+                      <p className="mt-2 text-sm leading-6 text-[#172315]">{variation.visualDirection}</p>
+                    </div>
+                    <div className="rounded-2xl bg-[#eef4df] p-4">
+                      <div className="text-xs font-black uppercase text-[#5f7d2f]">Customer action</div>
+                      <p className="mt-2 text-sm font-bold leading-6 text-[#172315]">{variation.customerAction}</p>
+                    </div>
+                    {variation.linkHref ? (
+                      <Link
+                        href={variation.linkHref}
+                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#172315] px-5 text-sm font-black text-white transition hover:bg-[#2a3a21]"
+                      >
+                        Open this preview
+                        <ArrowRight size={16} aria-hidden="true" />
+                      </Link>
+                    ) : null}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section id="services" className="bg-[#f5f1e8] px-5 pb-16 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -192,10 +257,10 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
         <section id="quote-flow" className="bg-[#20351b] px-5 py-16 text-white sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
-              <div className="text-xs font-black uppercase text-[#bde681]">Recommended quote flow</div>
-              <h2 className="mt-5 text-4xl font-black leading-tight md:text-5xl">Turn yard problems into clean leads.</h2>
+              <div className="text-xs font-black uppercase text-[#bde681]">{quoteFlowKicker}</div>
+              <h2 className="mt-5 text-4xl font-black leading-tight md:text-5xl">{quoteFlowHeadline}</h2>
               <p className="mt-6 text-sm leading-7 text-white/72">
-                The site should behave like a front-office intake assistant: route the customer, gather the right detail, and make follow-up easy.
+                {quoteFlowCopy}
               </p>
               <div className="mt-8 overflow-hidden rounded-[24px] border border-white/14 bg-white/8">
                 <img src={preview.gallery[1]?.image} alt={preview.gallery[1]?.imageAlt} className="aspect-[5/3] w-full object-cover" />
@@ -234,7 +299,7 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
             <div className="rounded-[28px] bg-white p-6 shadow-[0_18px_60px_rgba(35,48,27,0.1)]">
               <div className="flex items-center gap-3 text-sm font-black uppercase text-[#386018]">
                 <ShieldCheck size={18} aria-hidden="true" />
-                Trust signals to surface
+                {trustHeading}
               </div>
               <div className="mt-6 space-y-3">
                 {preview.trustPoints.map((point) => (
@@ -249,7 +314,7 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
             <div className="rounded-[28px] bg-white p-6 shadow-[0_18px_60px_rgba(35,48,27,0.1)]">
               <div className="flex items-center gap-3 text-sm font-black uppercase text-[#386018]">
                 <FileText size={18} aria-hidden="true" />
-                Listing cleanup notes
+                {listingHeading}
               </div>
               <div className="mt-6 space-y-3">
                 {preview.listingNotes.map((note) => (
