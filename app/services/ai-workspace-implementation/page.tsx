@@ -113,7 +113,7 @@ const faqJsonLd = {
 
 export default function AIWorkspaceImplementation() {
   return (
-    <div className="min-h-screen bg-white bg-grid">
+    <div className="op">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -124,137 +124,112 @@ export default function AIWorkspaceImplementation() {
       />
       <SiteNav active="services" />
 
-      <main className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-20">
-        <div className="mb-8">
-          <Link href="/#services" className="text-[10px] font-bold uppercase tracking-widest hover:text-[#2563eb] transition-colors">
-            Back to Services
-          </Link>
-        </div>
+      <header className="pghead">
+        <Link href="/#services" className="back">← Back to services</Link>
+        <div className="eyebrow">Productized AI implementation</div>
+        <h1>
+          <span className="amb">AI Workspace</span><br />
+          <span className="out">Implementation</span>
+        </h1>
+        <p>
+          Most businesses do not need another chatbot. They need a configured
+          workspace that knows their roles, workflows, documents, customers,
+          and repetitive decisions. 3K Pro Services builds that layer so the
+          owner and team can get useful work out of AI every day.
+        </p>
+      </header>
 
-        <section className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-          <div>
-            <div className="mb-6 inline-flex border border-black px-3 py-1">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
-                Productized AI implementation
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-black mb-8 leading-[0.95] tracking-tight">
-              AI Workspace<br />
-              <span className="opacity-40">Implementation</span>
-            </h1>
-            <div className="w-12 h-[3px] bg-[#2563eb] mb-8" />
-            <p className="max-w-3xl text-lg md:text-xl font-medium leading-relaxed text-black/65">
-              Most businesses do not need another chatbot. They need a configured
-              workspace that knows their roles, workflows, documents, customers,
-              and repetitive decisions. 3K Pro Services builds that layer so the
-              owner and team can get useful work out of AI every day.
-            </p>
-          </div>
-
-          <div className="border border-black bg-white p-8 shadow-[10px_10px_0px_0px_rgba(0,0,0,0.05)]">
-            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 mb-4">
-              Fast start
-            </div>
-            <h2 className="text-2xl font-bold uppercase tracking-tight mb-4">
-              $500 Blueprint Deposit
-            </h2>
-            <p className="text-sm font-medium leading-relaxed text-black/60 mb-6">
-              Use the deposit to reserve a build slot after scope is confirmed.
-              The first session maps your work, picks the workspace bundle, and
-              defines the first five workflows.
-            </p>
-            <Link
-              href="/pay"
-              className="block w-full border border-black bg-black px-5 py-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-black/90"
-            >
-              Open Quick Pay
-            </Link>
-          </div>
-        </section>
-
-        <section className="mt-20 grid gap-px border border-black bg-black lg:grid-cols-3">
-          {bundles.map((bundle) => (
-            <article key={bundle.name} className="bg-white p-8">
-              <div className="mb-6 text-[10px] font-bold uppercase tracking-[0.2em] text-[#2563eb]">
-                {bundle.price}
+      <main>
+        <section>
+          <div className="wrap tight">
+            <div className="price-grid" style={{ gridTemplateColumns: '1fr' }}>
+              <div className="price feat">
+                <div className="lbl">Fast start</div>
+                <div className="amt">$500<small> blueprint deposit</small></div>
+                <p>
+                  Use the deposit to reserve a build slot after scope is confirmed. The first
+                  session maps your work, picks the workspace bundle, and defines the first
+                  five workflows.
+                </p>
+                <Link href="/pay" className="btn">Open Quick Pay</Link>
               </div>
-              <h2 className="mb-5 text-2xl font-bold uppercase tracking-tight">
-                {bundle.name}
-              </h2>
-              <p className="text-sm font-medium leading-relaxed text-black/60">
-                {bundle.detail}
-              </p>
-            </article>
-          ))}
-        </section>
-
-        <section className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-5">
-              What gets delivered
-            </h2>
-            <p className="text-sm font-medium leading-relaxed text-black/60">
-              This is implementation, not a slide deck. The output is a working
-              AI workspace your team can use, with documented workflows and
-              guardrails.
-            </p>
-          </div>
-          <div className="space-y-4">
-            {deliverables.map((item) => (
-              <div key={item} className="flex items-start border border-black/10 bg-white p-5">
-                <div className="w-2 h-2 bg-[#2563eb] rotate-45 mt-2 mr-4 flex-shrink-0" />
-                <p className="text-sm font-medium leading-relaxed text-black/70">{item}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-20 border-t border-black pt-16">
-          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-5">
-                Common questions
-              </h2>
-              <p className="text-sm font-medium leading-relaxed text-black/60">
-                The goal is not to buy AI theater. The goal is to turn the work
-                your team already repeats into a controlled, reusable operating
-                layer.
-              </p>
             </div>
-            <div className="space-y-4">
-              {faqs.map((faq) => (
-                <article key={faq.question} className="border border-black/10 bg-white p-6">
-                  <h3 className="text-lg font-bold uppercase tracking-tight text-black">{faq.question}</h3>
-                  <p className="mt-3 text-sm font-medium leading-relaxed text-black/60">{faq.answer}</p>
-                </article>
+          </div>
+        </section>
+
+        <section style={{ background: 'var(--panel)' }}>
+          <div className="wrap">
+            <div className="sec-head">
+              <span className="tagchip">01 / Bundles</span>
+              <h2 className="h2">Pick the <span className="out">workspace.</span></h2>
+            </div>
+            <div className="price-grid">
+              {bundles.map((bundle) => (
+                <div className="price" key={bundle.name}>
+                  <div className="lbl">{bundle.price}</div>
+                  <div className="amt" style={{ fontSize: '1.5rem' }}>{bundle.name}</div>
+                  <p>{bundle.detail}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="mt-20 border-t border-black pt-16">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <h2 className="text-3xl font-bold text-black mb-6 uppercase tracking-tighter">
-                Book the blueprint
-              </h2>
-              <p className="text-black/60 font-medium mb-8">
-                Send the current mess: spreadsheets, inboxes, SOPs, CRM, client
-                intake, or whatever your team keeps manually repeating. We will
-                turn it into the first workspace map and quote the implementation.
-              </p>
-              <div className="space-y-5 text-xs font-bold uppercase tracking-widest">
-                <div>
-                  <span className="opacity-40 block mb-2">Best fit</span>
-                  SMB owners, local service firms, agencies, sales teams, operators
-                </div>
-                <div>
-                  <span className="opacity-40 block mb-2">Payment start</span>
-                  <Link href="/pay" className="hover:underline">3kpro.services/pay</Link>
-                </div>
-              </div>
+        <section>
+          <div className="wrap">
+            <div className="sec-head">
+              <span className="tagchip">02 / Deliverables</span>
+              <h2 className="h2">What gets <span className="out">delivered.</span></h2>
             </div>
-            <div className="border border-black p-8 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)]">
+            <p className="lede" style={{ marginBottom: 40 }}>
+              This is implementation, not a slide deck. The output is a working AI workspace
+              your team can use, with documented workflows and guardrails.
+            </p>
+            <div className="svc-grid">
+              {deliverables.map((item, index) => (
+                <div className="svc" key={item} style={{ clipPath: 'none' }}>
+                  <div className="top">
+                    <span className="num">0{index + 1}</span>
+                    <span className="st">ONLINE</span>
+                  </div>
+                  <p style={{ marginTop: 20 }}>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section style={{ background: 'var(--panel)' }}>
+          <div className="wrap">
+            <div className="sec-head">
+              <span className="tagchip">03 / Questions</span>
+              <h2 className="h2">Common <span className="out">questions.</span></h2>
+            </div>
+            <div className="svc-grid cols-3">
+              {faqs.map((faq) => (
+                <div className="svc" key={faq.question} style={{ clipPath: 'none' }}>
+                  <h3>{faq.question}</h3>
+                  <p>{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="cta-band" id="contact">
+          <div className="wrap">
+            <span className="tagchip">04 / Contact</span>
+            <h2 className="h2" style={{ marginTop: 26 }}>Book the <span className="amb">blueprint.</span></h2>
+            <p className="lede" style={{ marginTop: 18 }}>
+              Send the current mess: spreadsheets, inboxes, SOPs, CRM, client intake, or
+              whatever your team keeps manually repeating. We will turn it into the first
+              workspace map and quote the implementation.
+            </p>
+            <div className="contact-line">
+              <span style={{ color: 'var(--faint)' }}>Best fit: SMB owners, local service firms, agencies, sales teams</span>
+              <Link href="/pay">3kpro.services/pay</Link>
+            </div>
+            <div className="contact-frame" style={{ marginTop: 32, maxWidth: 620 }}>
               <ContactForm />
             </div>
           </div>

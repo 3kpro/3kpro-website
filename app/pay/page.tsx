@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import OperatorStyles from '@/components/operator/OperatorStyles'
 
 const pageUrl = 'https://3kpro.services/pay'
 const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=14&data=${encodeURIComponent(pageUrl)}`
@@ -54,113 +55,108 @@ const paymentOptions = [
 
 export default function PayPage() {
   return (
-    <div className="min-h-screen bg-white bg-grid text-black">
-      <nav className="bg-white/80 backdrop-blur-md border-b border-black sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative flex h-10 w-10 items-center justify-center border border-black transition-all group-hover:bg-black group-hover:text-white">
-                <span className="text-xl font-bold tracking-tight">3K</span>
-              </div>
-              <span className="text-xl font-bold uppercase tracking-tight">3kpro.services</span>
-            </Link>
-            <div className="hidden md:flex items-center gap-10">
-              <Link href="/#services" className="text-sm font-medium uppercase tracking-widest text-black/60 transition-colors hover:text-black">Services</Link>
-              <Link href="/marketplace" className="text-sm font-medium uppercase tracking-widest text-black/60 transition-colors hover:text-black">Marketplace</Link>
-              <Link href="/#contact" className="border border-black px-6 py-2 text-sm font-bold uppercase tracking-widest transition-all hover:bg-black hover:text-white">
-                Contact
-              </Link>
-            </div>
-          </div>
+    <div className="op">
+      <OperatorStyles />
+      <nav className="topnav">
+        <Link href="/" className="logo">
+          <span className="sq" />3KPRO<span style={{ color: 'var(--faint)', fontWeight: 600 }}>·OS</span>
+        </Link>
+        <div className="nav-links">
+          <Link href="/#services">Services</Link>
+          <Link href="/marketplace">Marketplace</Link>
+          <Link href="/pay" className="active">Quick Pay</Link>
         </div>
+        <div className="nav-clock" />
+        <Link href="/#contact" className="btn nav-cta">Initiate</Link>
       </nav>
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid gap-16 lg:grid-cols-[1fr_360px] lg:items-start">
-          <section>
-            <div className="mb-8 inline-flex border border-black px-3 py-1">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Secure payment handoff</span>
-            </div>
-            <h1 className="mb-8 text-5xl font-bold leading-tight tracking-tight md:text-6xl">
-              Quick Pay<br />
-              <span className="opacity-40">3K Pro Services</span>
-            </h1>
-            <p className="mb-12 max-w-2xl text-lg font-medium leading-relaxed text-black/65">
-              Use this page after James has confirmed the work, price, and next step. Payments are processed through Stripe; 3K Pro Services never stores card details.
-            </p>
+      <header className="pghead">
+        <div className="eyebrow">Secure payment handoff</div>
+        <h1>
+          Quick <span className="amb">pay.</span><br />
+          <span className="out">3K Pro Services</span>
+        </h1>
+        <p>
+          Use this page after James has confirmed the work, price, and next step.
+          Payments are processed through Stripe; 3K Pro Services never stores card details.
+        </p>
+      </header>
 
-            <div className="grid gap-px overflow-hidden border border-black bg-black md:grid-cols-3">
-              {paymentOptions.map((option) => (
-                <form key={option.label} action="/api/quick-pay/checkout" method="post" className="flex min-h-[300px] flex-col bg-white p-8">
-                  <input type="hidden" name="type" value={option.type} />
-                  <div className="mb-8">
-                    <h2 className="mb-4 text-2xl font-bold uppercase tracking-tight">{option.label}</h2>
-                    <p className="text-sm font-medium leading-relaxed text-black/60">{option.detail}</p>
-                  </div>
-                  <div className="mt-auto space-y-4">
-                    <label className="block">
-                      <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.18em] text-black/40">
+      <main>
+        <div className="wrap tight">
+          <div className="grid gap-8 lg:grid-cols-[1fr_340px] lg:items-start" style={{ display: 'grid' }}>
+            <section>
+              <div className="price-grid">
+                {paymentOptions.map((option, index) => (
+                  <form
+                    key={option.label}
+                    action="/api/quick-pay/checkout"
+                    method="post"
+                    className={`price${index === 0 ? ' feat' : ''}`}
+                  >
+                    <input type="hidden" name="type" value={option.type} />
+                    <div className="lbl">{option.label}</div>
+                    <p style={{ marginTop: 14 }}>{option.detail}</p>
+                    <label className="block" style={{ marginTop: 'auto', display: 'block' }}>
+                      <span className="lbl" style={{ display: 'block', marginTop: 20, marginBottom: 8 }}>
                         {option.amountLabel}
                       </span>
                       {option.defaultAmount ? (
-                        <div className="flex items-center border border-black">
-                          <span className="border-r border-black px-4 py-3 text-sm font-bold">$</span>
+                        <div className="field">
+                          <span>$</span>
                           <input
                             name="amount"
                             type="number"
                             min={option.min}
                             step="25"
                             defaultValue={option.defaultAmount}
-                            className="min-w-0 flex-1 px-4 py-3 text-sm font-bold outline-none"
                             aria-label={`${option.label} amount`}
                           />
                         </div>
                       ) : (
-                        <div className="border border-black/15 px-4 py-3 text-sm font-bold text-black/60">$500.00</div>
+                        <div className="fixed">$500.00</div>
                       )}
                     </label>
-                    <button
-                      type="submit"
-                      className="block w-full border border-black bg-black px-5 py-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-black/90"
-                    >
-                      {option.button}
-                    </button>
-                  </div>
-                </form>
-              ))}
-            </div>
+                    <button type="submit" className="btn">{option.button}</button>
+                  </form>
+                ))}
+              </div>
 
-            <div className="mt-8 border border-black/10 bg-black/[0.02] p-6 text-sm font-medium leading-relaxed text-black/60">
-              Stripe Checkout opens after choosing a payment path. For invoice and custom payments, enter the agreed amount before opening checkout.
-            </div>
-          </section>
+              <p style={{ marginTop: 28, color: 'var(--dim)', fontSize: 13, lineHeight: 1.8, borderTop: '1px solid var(--line)', paddingTop: 24 }}>
+                Stripe Checkout opens after choosing a payment path. For invoice and custom payments,
+                enter the agreed amount before opening checkout.
+              </p>
+            </section>
 
-          <aside className="border border-black bg-white p-8 shadow-[10px_10px_0px_0px_rgba(0,0,0,0.05)]">
-            <div className="mb-6 text-[10px] font-bold uppercase tracking-[0.2em] text-black/40">Scan to pay</div>
-            <div className="mb-8 flex justify-center border border-black/10 bg-white p-6">
-              <img src={qrSrc} width="260" height="260" alt="QR code for 3K Pro Services quick pay page" />
-            </div>
-            <div className="space-y-5 text-xs font-bold uppercase tracking-widest">
-              <div>
-                <span className="mb-2 block text-black/40">Page</span>
-                <a href={pageUrl} className="break-all hover:underline">{pageUrl}</a>
+            <aside className="panel-card">
+              <div className="lbl">Scan to pay</div>
+              <div className="qr">
+                <img src={qrSrc} width="260" height="260" alt="QR code for 3K Pro Services quick pay page" />
               </div>
-              <div>
-                <span className="mb-2 block text-black/40">Phone</span>
-                <a href="tel:+19188168832" className="hover:underline">918-816-8832</a>
+              <div className="rows">
+                <div>
+                  <span className="k">Page</span>
+                  <a href={pageUrl}>{pageUrl}</a>
+                </div>
+                <div>
+                  <span className="k">Phone</span>
+                  <a href="tel:+19188168832">918-816-8832</a>
+                </div>
+                <div>
+                  <span className="k">Email</span>
+                  <a href="mailto:james@3kpro.services">james@3kpro.services</a>
+                </div>
               </div>
-              <div>
-                <span className="mb-2 block text-black/40">Email</span>
-                <a href="mailto:james@3kpro.services" className="break-all hover:underline">james@3kpro.services</a>
-              </div>
-            </div>
-          </aside>
+            </aside>
+          </div>
         </div>
       </main>
 
-      <footer className="border-t border-black bg-white py-12">
-        <div className="max-w-7xl mx-auto px-4 text-center sm:px-6 lg:px-8">
-          <p className="text-[10px] font-bold uppercase tracking-widest opacity-40">Payments handled through Stripe. Tulsa and Broken Arrow, OK.</p>
+      <footer className="foot">
+        <span>Payments handled through Stripe {'//'} Tulsa and Broken Arrow, OK</span>
+        <div className="links">
+          <Link href="/marketplace">Marketplace</Link>
+          <Link href="/#contact">Contact</Link>
         </div>
       </footer>
     </div>
