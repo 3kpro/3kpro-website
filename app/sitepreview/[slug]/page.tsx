@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowRight, BadgeCheck, ExternalLink, FileText, Gauge, MapPin, PhoneCall, SearchCheck, ShieldCheck, Wrench } from 'lucide-react'
 import { getSitePreview, sitePreviewExtraSlugs, sitePreviews } from '@/lib/sitePreviews'
+import { ScrollReveal } from './ScrollReveal'
 
 type PageProps = {
   params: Promise<{
@@ -122,6 +123,7 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
 
   return (
     <div className={`min-h-screen overflow-x-hidden ${isMechanicPreview ? 'bg-[#f2f0ec] text-[#161719]' : 'bg-[#f5f1e8] text-[#182417]'}`} style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: 0 }}>
+      <ScrollReveal />
       <header className={`absolute inset-x-0 top-0 z-20 border-b text-white backdrop-blur-md ${isMechanicPreview ? 'border-[#e50914]/34 bg-[#050506]/78' : 'border-white/20 bg-black/45'}`}>
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
           <Link href="/" className="flex min-w-0 items-center gap-3">

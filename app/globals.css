@@ -86,21 +86,26 @@
 }
 
 .scroll-reveal {
-  animation: scrollRevealUp 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: var(--reveal-delay, 0ms);
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  filter: blur(6px);
+  transition:
+    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
 }
 
-@supports (animation-timeline: view()) {
-  .scroll-reveal {
-    animation-delay: 0ms;
-    animation-timeline: view();
-    animation-range: entry 0% cover 28%;
-  }
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal {
-    animation: none;
+    transition: none;
     opacity: 1;
     transform: none;
     filter: none;
