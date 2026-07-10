@@ -92,6 +92,8 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
   const trustHeading = preview.trustHeading ?? 'Trust signals to surface'
   const listingHeading = preview.listingHeading ?? 'Listing cleanup notes'
   const isMechanicPreview = preview.category === 'Mobile Mechanic'
+  const logoImage = preview.logoImage
+  const logoAlt = preview.logoAlt ?? `${preview.shortName} logo`
   const heroSurface = isMechanicPreview ? 'bg-[#0f1115]' : 'bg-[#132316]'
   const heroOverlay = isMechanicPreview
     ? `linear-gradient(90deg, rgba(8,10,13,0.94), rgba(8,10,13,0.68) 46%, rgba(8,10,13,0.2)), linear-gradient(0deg, rgba(8,10,13,0.9), transparent 46%), url(${preview.heroImage})`
@@ -121,8 +123,16 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
     <div className="min-h-screen overflow-x-hidden bg-[#f5f1e8] text-[#182417]" style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: 0 }}>
       <header className="absolute inset-x-0 top-0 z-20 border-b border-white/20 bg-black/45 text-white backdrop-blur-md">
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
-          <Link href="/" className="text-lg font-black uppercase">
-            3KPRO.SERVICES
+          <Link href="/" className="flex min-w-0 items-center gap-3">
+            {logoImage ? (
+              <span className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-xl border border-white/22 bg-white p-1 shadow-[0_10px_28px_rgba(0,0,0,0.22)]">
+                <img src={logoImage} alt={logoAlt} className="h-full w-full object-contain" />
+              </span>
+            ) : null}
+            <span className="min-w-0">
+              <span className="block truncate text-sm font-black uppercase leading-tight sm:text-base">{preview.businessName}</span>
+              <span className="block text-[10px] font-bold uppercase text-white/58">Preview by 3KPRO</span>
+            </span>
           </Link>
           <nav className="flex items-center gap-5 text-xs font-semibold uppercase text-white/78">
             <Link href="/sitepreview" className="hidden transition hover:text-white sm:inline">
@@ -149,6 +159,16 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
           ) : null}
           <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[0.92fr_0.58fr] lg:items-end">
             <div className="max-w-3xl">
+              {logoImage ? (
+                <div className="mb-7 inline-flex items-center gap-4 rounded-[24px] border border-white/22 bg-white/94 p-3 pr-5 text-[#111318] shadow-[0_22px_70px_rgba(0,0,0,0.28)] backdrop-blur-md">
+                  <span className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-[18px] bg-white">
+                    <img src={logoImage} alt={logoAlt} className="h-full w-full object-contain" />
+                  </span>
+                  <span className="max-w-[13rem] text-left text-sm font-black uppercase leading-tight sm:max-w-none sm:text-base">
+                    {preview.businessName}
+                  </span>
+                </div>
+              ) : null}
               <div className="inline-flex items-center gap-3 rounded-full border border-white/24 bg-white/14 px-5 py-3 text-xs font-semibold uppercase text-white shadow-[0_14px_50px_rgba(0,0,0,0.22)] backdrop-blur-md">
                 <span className={`h-2.5 w-2.5 rounded-full ${isMechanicPreview ? 'bg-[#ffb703] shadow-[0_0_22px_rgba(255,183,3,0.95)]' : 'bg-[#9be15d] shadow-[0_0_18px_rgba(155,225,93,0.85)]'}`} />
                 {categoryEyebrow}
@@ -193,6 +213,17 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
             </div>
 
             <aside className={`rounded-[28px] border ${isMechanicPreview ? 'border-[#ffb703]/36 bg-[#111318]/90 text-white' : 'border-white/22 bg-[#f8f3e7]/94 text-[#172315]'} p-5 shadow-[0_26px_80px_rgba(0,0,0,0.28)] backdrop-blur-md`}>
+              {logoImage ? (
+                <div className={`mb-5 flex items-center gap-4 rounded-[22px] border p-4 ${isMechanicPreview ? 'border-white/12 bg-white/[0.08]' : 'border-[#d7ccb7] bg-white'}`}>
+                  <span className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-[18px] bg-white p-1">
+                    <img src={logoImage} alt={logoAlt} className="h-full w-full object-contain" />
+                  </span>
+                  <div>
+                    <div className={`text-[11px] font-black uppercase ${isMechanicPreview ? 'text-[#ffd166]' : 'text-[#386018]'}`}>Logo in preview</div>
+                    <div className="mt-2 text-xl font-black leading-tight">{preview.shortName}</div>
+                  </div>
+                </div>
+              ) : null}
               <div className={`flex items-center gap-3 text-sm font-black uppercase ${isMechanicPreview ? 'text-[#ffd166]' : 'text-[#386018]'}`}>
                 <SearchCheck size={18} aria-hidden="true" />
                 {isMechanicPreview ? 'Diagnostic-first angle' : 'Website rescue angle'}

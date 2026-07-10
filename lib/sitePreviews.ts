@@ -13,6 +13,8 @@ export type SitePreview = {
   observedOpportunity: string
   primaryCta: string
   secondaryCta: string
+  logoImage?: string
+  logoAlt?: string
   headline?: string
   headlineAccent?: string
   primaryFix?: string
@@ -236,6 +238,8 @@ export const sitePreviews: SitePreview[] = [
       'Mobile mechanic customers are usually in a hurry: the car is not starting, a warning light is on, or they need a trusted mechanic to come to them. A focused site should sell fast diagnosis first, then convert the repair into a clear parts-and-labor plan.',
     primaryCta: 'Book a diagnostic',
     secondaryCta: 'See site variations',
+    logoImage: '/sitepreview/the-last-stop-shop/logo.jpg',
+    logoAlt: 'The Last Stop Shop LLC logo',
     headline: 'The Last Stop Shop LLC',
     headlineAccent: 'diagnostics and repair that come to you',
     primaryFix: '$129 diagnostic',
@@ -254,7 +258,7 @@ export const sitePreviews: SitePreview[] = [
       },
     ],
     placeholderNote:
-      'Stock images are placeholders for preview only. Replace with The Last Stop Shop logo, Randall, his vehicle, real tools, and before/after repair photos before launch.',
+      'The provided The Last Stop Shop LLC logo is included. Stock mechanic images are placeholders for Randall, his vehicle, real tools, and before/after repair photos before launch.',
     sectionKicker: 'Three directions to choose from',
     sectionHeadline: 'Same offer, different first impression.',
     sectionCopy:

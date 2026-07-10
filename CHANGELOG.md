@@ -6,6 +6,7 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 ### Added
+- `app/sitepreview/[slug]/page.tsx`, `lib/sitePreviews.ts`, `public/sitepreview/the-last-stop-shop/logo.jpg`: 2026-07-10 — wired the provided The Last Stop Shop LLC logo into the preview header, hero brand block, and diagnostic panel so the live preview visibly shows the business logo instead of only mentioning it.
 - `lib/sitePreviews.ts`: 2026-07-10 — added a clean `/sitepreview/the-last-stop-shop` alias and rebranded the mobile mechanic preview around The Last Stop Shop LLC with clearer logo/business-name placement notes.
 - `app/tv/page.tsx`, `public/totalvalve.pdf`: 2026-07-08 — added a noindex `/tv` interview brief route that embeds the Total Valve PDF and provides a direct PDF open action.
 - `app/sitepreview/[slug]/page.tsx`, `lib/sitePreviews.ts`: 2026-07-08 — upgraded Randall's Mobile Mechanic preview presentation with a mechanic-specific dark/amber hero treatment, diagnostic proof stats, stronger $129 diagnostic framing, call/text and repair-approval chips, and more polished variation cards.
