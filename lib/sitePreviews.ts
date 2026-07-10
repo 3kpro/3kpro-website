@@ -294,8 +294,8 @@ export const sitePreviews: SitePreview[] = [
         copy: 'Collect warning lights, VIN, part photos, noises, and issue notes before Randall arrives.',
         icon: Camera,
         image:
-          'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&fm=jpg&q=72&w=1200',
-        imageAlt: 'Close view of car engine and mechanic inspection',
+          'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&fm=jpg&q=72&w=1200',
+        imageAlt: 'Mechanic checking vehicle details with tools nearby',
       },
       {
         title: 'Parts plus labor approval',

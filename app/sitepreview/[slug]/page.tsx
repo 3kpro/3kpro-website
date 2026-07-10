@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import type { CSSProperties } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowRight, BadgeCheck, ExternalLink, FileText, Gauge, MapPin, PhoneCall, SearchCheck, ShieldCheck, Wrench } from 'lucide-react'
@@ -251,10 +252,15 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
           </div>
         </section>
 
-        <section className={`${isMechanicPreview ? 'bg-[#08090b]' : 'bg-[#20351b]'} px-5 py-6 text-white sm:px-6 lg:px-8`}>
+        <section className={`relative ${isMechanicPreview ? 'bg-[#08090b]' : 'bg-[#20351b]'} px-5 py-6 text-white sm:px-6 lg:px-8`}>
+          <div className={`pointer-events-none absolute inset-0 ${isMechanicPreview ? 'bg-[linear-gradient(90deg,rgba(229,9,20,0.12)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.055)_1px,transparent_1px)]' : 'bg-grid-dark'} bg-[size:56px_56px] opacity-70`} />
           <div className="mx-auto grid max-w-7xl gap-3 md:grid-cols-3">
-            {proofStats.map((stat) => (
-              <div key={`${stat.value}-${stat.label}`} className={`rounded-[22px] border p-5 shadow-[0_18px_45px_rgba(0,0,0,0.18)] ${isMechanicPreview ? 'border-[#e50914]/24 bg-[#e50914]/10' : 'border-white/12 bg-white/[0.075]'}`}>
+            {proofStats.map((stat, index) => (
+              <div
+                key={`${stat.value}-${stat.label}`}
+                className={`scroll-reveal relative rounded-[22px] border p-5 shadow-[0_18px_45px_rgba(0,0,0,0.18)] ${isMechanicPreview ? 'border-[#e50914]/24 bg-[#e50914]/10' : 'border-white/12 bg-white/[0.075]'}`}
+                style={{ '--reveal-delay': `${index * 80}ms` } as CSSProperties}
+              >
                 <div className={`text-3xl font-black ${isMechanicPreview ? 'text-[#ff2a2a]' : 'text-[#d8f7b2]'}`}>{stat.value}</div>
                 <div className="mt-2 text-xs font-black uppercase text-white/58">{stat.label}</div>
               </div>
@@ -280,7 +286,11 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
           <section id="variations" className={`${isMechanicPreview ? 'bg-[#f2f0ec]' : 'bg-[#f5f1e8]'} px-5 pb-16 sm:px-6 lg:px-8`}>
             <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">
               {preview.variations.map((variation, index) => (
-                <article key={variation.title} className={`group overflow-hidden rounded-[28px] bg-white shadow-[0_18px_60px_rgba(35,48,27,0.12)] ring-1 transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(17,19,24,0.18)] ${isMechanicPreview ? 'ring-[#e50914]/12' : 'ring-black/5'}`}>
+                <article
+                  key={variation.title}
+                  className={`scroll-reveal group overflow-hidden rounded-[28px] bg-white shadow-[0_18px_60px_rgba(35,48,27,0.12)] ring-1 transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(17,19,24,0.18)] ${isMechanicPreview ? 'ring-[#e50914]/12' : 'ring-black/5'}`}
+                  style={{ '--reveal-delay': `${index * 110}ms` } as CSSProperties}
+                >
                   <div className="relative aspect-[16/11] overflow-hidden bg-[#182417]">
                     <img src={variation.image} alt={variation.imageAlt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                     <div className={`absolute inset-0 ${isMechanicPreview ? 'bg-gradient-to-t from-black/82 via-black/22 to-transparent' : 'bg-gradient-to-t from-black/72 via-black/18 to-transparent'}`} />
@@ -328,11 +338,15 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
 
         <section id="services" className={`${isMechanicPreview ? 'bg-[#f2f0ec]' : 'bg-[#f5f1e8]'} px-5 pb-16 sm:px-6 lg:px-8`}>
           <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {preview.services.map((service) => {
+            {preview.services.map((service, index) => {
               const Icon = service.icon
 
               return (
-                <article key={service.title} className="overflow-hidden rounded-[26px] bg-white shadow-[0_18px_60px_rgba(35,48,27,0.12)]">
+                <article
+                  key={service.title}
+                  className="scroll-reveal overflow-hidden rounded-[26px] bg-white shadow-[0_18px_60px_rgba(35,48,27,0.12)]"
+                  style={{ '--reveal-delay': `${index * 90}ms` } as CSSProperties}
+                >
                   <div className="relative aspect-[4/3] overflow-hidden bg-[#d9e7c5]">
                     <img src={service.image} alt={service.imageAlt} className="h-full w-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -350,22 +364,27 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
           </div>
         </section>
 
-        <section id="quote-flow" className={`${isMechanicPreview ? 'bg-[#08090b]' : 'bg-[#20351b]'} px-5 py-16 text-white sm:px-6 lg:px-8`}>
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <section id="quote-flow" className={`relative ${isMechanicPreview ? 'bg-[#08090b]' : 'bg-[#20351b]'} px-5 py-16 text-white sm:px-6 lg:px-8`}>
+          <div className={`pointer-events-none absolute inset-0 ${isMechanicPreview ? 'bg-[linear-gradient(90deg,rgba(229,9,20,0.12)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.055)_1px,transparent_1px)]' : 'bg-grid-dark'} bg-[size:56px_56px] opacity-70`} />
+          <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <div className={`text-xs font-black uppercase ${isMechanicPreview ? 'text-[#ff2a2a]' : 'text-[#bde681]'}`}>{quoteFlowKicker}</div>
               <h2 className="mt-5 text-4xl font-black leading-tight md:text-5xl">{quoteFlowHeadline}</h2>
               <p className="mt-6 text-sm leading-7 text-white/72">
                 {quoteFlowCopy}
               </p>
-              <div className="mt-8 overflow-hidden rounded-[24px] border border-white/14 bg-white/8">
+              <div className="scroll-reveal mt-8 overflow-hidden rounded-[24px] border border-white/14 bg-white/8">
                 <img src={preview.gallery[1]?.image} alt={preview.gallery[1]?.imageAlt} className="aspect-[5/3] w-full object-cover" />
               </div>
             </div>
 
             <div className="space-y-3">
               {preview.conversionFlow.map((item, index) => (
-                <div key={item} className="grid gap-4 rounded-[20px] border border-white/12 bg-white/[0.075] p-4 sm:grid-cols-[auto_1fr] sm:items-center">
+                <div
+                  key={item}
+                  className="scroll-reveal grid gap-4 rounded-[20px] border border-white/12 bg-white/[0.075] p-4 sm:grid-cols-[auto_1fr] sm:items-center"
+                  style={{ '--reveal-delay': `${index * 75}ms` } as CSSProperties}
+                >
                   <span className={`grid h-11 w-11 place-items-center rounded-full text-sm font-black ${isMechanicPreview ? 'bg-[#e50914] text-white' : 'bg-[#f2c14e] text-[#15200f]'}`}>
                     {index + 1}
                   </span>
@@ -378,8 +397,12 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
 
         <section className={`${isMechanicPreview ? 'bg-[#f2f0ec]' : 'bg-[#f5f1e8]'} px-5 py-16 sm:px-6 lg:px-8`}>
           <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
-            {preview.gallery.map((item) => (
-              <article key={item.title} className="overflow-hidden rounded-[28px] bg-white shadow-[0_20px_70px_rgba(35,48,27,0.12)]">
+            {preview.gallery.map((item, index) => (
+              <article
+                key={item.title}
+                className="scroll-reveal overflow-hidden rounded-[28px] bg-white shadow-[0_20px_70px_rgba(35,48,27,0.12)]"
+                style={{ '--reveal-delay': `${index * 110}ms` } as CSSProperties}
+              >
                 <img src={item.image} alt={item.imageAlt} className="aspect-[16/10] w-full object-cover" />
                 <div className="p-6 sm:p-8">
                   <h2 className="text-3xl font-black text-[#172315]">{item.title}</h2>
@@ -424,9 +447,10 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
           </div>
         </section>
 
-        <section className={`${isMechanicPreview ? 'bg-[#07080a]' : 'bg-[#172315]'} px-5 py-14 text-white sm:px-6 lg:px-8`}>
-          <div className="mx-auto max-w-7xl">
-            <div className="grid gap-8 rounded-[30px] border border-white/10 bg-white/[0.06] p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
+        <section className={`relative ${isMechanicPreview ? 'bg-[#07080a]' : 'bg-[#172315]'} px-5 py-14 text-white sm:px-6 lg:px-8`}>
+          <div className={`pointer-events-none absolute inset-0 ${isMechanicPreview ? 'bg-[linear-gradient(90deg,rgba(229,9,20,0.12)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.055)_1px,transparent_1px)]' : 'bg-grid-dark'} bg-[size:56px_56px] opacity-70`} />
+          <div className="relative mx-auto max-w-7xl">
+            <div className="scroll-reveal grid gap-8 rounded-[30px] border border-white/10 bg-white/[0.06] p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
                 <div className={`flex items-center gap-3 text-xs font-black uppercase ${isMechanicPreview ? 'text-[#ff2a2a]' : 'text-[#bde681]'}`}>
                   <MapPin size={15} aria-hidden="true" />
@@ -443,13 +467,14 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
               </Link>
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {preview.sources.map((source) => (
+              {preview.sources.map((source, index) => (
                 <a
                   key={source.href}
                   href={source.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex min-h-14 items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.065] px-4 py-3 text-sm font-semibold text-white/76 transition hover:border-white/28 hover:text-white"
+                  className="scroll-reveal flex min-h-14 items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.065] px-4 py-3 text-sm font-semibold text-white/76 transition hover:border-white/28 hover:text-white"
+                  style={{ '--reveal-delay': `${index * 70}ms` } as CSSProperties}
                 >
                   {source.label}
                   <ExternalLink size={15} aria-hidden="true" />
