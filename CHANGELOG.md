@@ -6,6 +6,9 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 ### Added
+- `lib/sitePreviews.ts`: 2026-07-10 — added a clean `/sitepreview/the-last-stop-shop` alias and rebranded the mobile mechanic preview around The Last Stop Shop LLC with clearer logo/business-name placement notes.
+- `app/tv/page.tsx`, `public/totalvalve.pdf`: 2026-07-08 — added a noindex `/tv` interview brief route that embeds the Total Valve PDF and provides a direct PDF open action.
+- `app/sitepreview/[slug]/page.tsx`, `lib/sitePreviews.ts`: 2026-07-08 — upgraded Randall's Mobile Mechanic preview presentation with a mechanic-specific dark/amber hero treatment, diagnostic proof stats, stronger $129 diagnostic framing, call/text and repair-approval chips, and more polished variation cards.
 - `lib/sitePreviews.ts`, `app/sitepreview/[slug]/page.tsx`: 2026-07-07 — added Randall's Mobile Mechanic preview set with one overview route plus three direct variation routes: urgent diagnostic, trusted neighborhood mechanic, and fleet/work-truck direction. Each route keeps the $129 diagnostic-first flow, parts priced separately, labor approval after diagnosis, mobile booking, photo/code upload, and follow-up approval path.
 - `app/page.tsx`: 2026-07-06 — promoted the approved OPERATOR direction (V3 from `docs/redesign-2026-07/`) into the production homepage: terminal boot intro (typed BIOS sequence with CRT power-flash, plays once per session via sessionStorage, skip button, reduced-motion bypass), fixed nav with live Tulsa clock, expanded-Archivo/JetBrains Mono type system, amber mission-control aesthetic, status rack with animated counters, dossier credibility rows, clip-cornered service modules, product cards with grid screens, pricing with recommended-entry flag, and operator-styled Start a Project drawer wired to the existing ContactForm server action. Previous homepage backed up at `docs/redesign-2026-07/page.tsx.pre-operator.bak`.
 ### Verified

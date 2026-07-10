@@ -25,6 +25,10 @@ export type SitePreview = {
   quoteFlowCopy?: string
   trustHeading?: string
   listingHeading?: string
+  proofStats?: Array<{
+    value: string
+    label: string
+  }>
   variations?: Array<{
     title: string
     subtitle: string
@@ -73,7 +77,7 @@ const randallVariantPreviews = {
       'The page leads with speed, the $129 diagnostic, and a large call path so urgent customers can move from problem to appointment without reading a full brochure.',
     quoteFlowHeadline: 'Urgent issue, clear first step.',
     quoteFlowCopy:
-      'Capture the vehicle, symptom, location, photos, and service window first. The repair scope only gets priced after Randall completes the diagnostic.',
+      'Capture the vehicle, symptom, location, photos, and service window first. The repair scope only gets priced after The Last Stop Shop completes the diagnostic.',
     primaryCta: 'Call for diagnostic',
   },
   'randall-mobile-mechanic-trusted-neighborhood': {
@@ -81,14 +85,14 @@ const randallVariantPreviews = {
     headlineAccent: 'the driveway mechanic customers can trust',
     conceptTitle: 'Trusted neighborhood mechanic preview built around confidence and repeat customers.',
     conceptSubtitle:
-      'This direction feels warmer and more personal, positioning Randall as the local mechanic people can call for home driveway repairs and family vehicles.',
+      'This direction feels warmer and more personal, positioning The Last Stop Shop as the local mechanic people can call for home driveway repairs and family vehicles.',
     sectionKicker: 'Variation 2',
-    sectionHeadline: 'Make Randall feel familiar before the first call.',
+    sectionHeadline: 'Make The Last Stop Shop feel familiar before the first call.',
     sectionCopy:
       'The page gives more space to trust proof, plain-language service explanations, review placeholders, and the diagnostic-first process.',
     quoteFlowHeadline: 'Explain the problem, then approve the repair.',
     quoteFlowCopy:
-      'Customers describe what happened, upload photos or codes, and choose a service window. Randall diagnoses first, then sends parts and labor for approval.',
+      'Customers describe what happened, upload photos or codes, and choose a service window. The Last Stop Shop diagnoses first, then sends parts and labor for approval.',
     primaryCta: 'Request a service window',
   },
   'randall-mobile-mechanic-fleet-work-truck': {
@@ -100,7 +104,7 @@ const randallVariantPreviews = {
     sectionKicker: 'Variation 3',
     sectionHeadline: 'Sell uptime, scheduling, and clear repair approval.',
     sectionCopy:
-      'The page frames Randall as a practical mobile service option for contractors who need diagnostics, repairs, and maintenance without losing a workday.',
+      'The page frames The Last Stop Shop as a practical mobile service option for contractors who need diagnostics, repairs, and maintenance without losing a workday.',
     quoteFlowHeadline: 'Route fleet issues into a clean service queue.',
     quoteFlowCopy:
       'Capture vehicle count, issue type, location, urgency, and maintenance needs, then turn diagnostics into an approved parts-and-labor repair path.',
@@ -108,7 +112,9 @@ const randallVariantPreviews = {
   },
 } as const
 
-export const sitePreviewExtraSlugs = Object.keys(randallVariantPreviews)
+const sitePreviewAliasSlugs = ['the-last-stop-shop'] as const
+
+export const sitePreviewExtraSlugs = [...Object.keys(randallVariantPreviews), ...sitePreviewAliasSlugs]
 
 export const sitePreviews: SitePreview[] = [
   {
@@ -218,27 +224,41 @@ export const sitePreviews: SitePreview[] = [
   },
   {
     slug: 'randall-mobile-mechanic',
-    businessName: "Randall's Mobile Mechanic",
-    shortName: 'Randall Mobile Mechanic',
+    businessName: 'The Last Stop Shop LLC',
+    shortName: 'The Last Stop Shop',
     category: 'Mobile Mechanic',
     location: 'Tulsa area',
     categoryEyebrow: 'Tulsa-area mobile mechanic',
-    conceptTitle: 'Three practical website directions for turning calls into booked diagnostics.',
+    conceptTitle: 'A branded mobile mechanic preview for turning calls into booked diagnostics.',
     conceptSubtitle:
-      'This preview shows three ways Randall could present mobile diagnostics, driveway repair, parts transparency, and direct booking without making customers hunt for the next step.',
+      'This preview shows how The Last Stop Shop LLC can present mobile diagnostics, driveway repair, parts transparency, and direct booking while keeping the business name and brand clear everywhere.',
     observedOpportunity:
       'Mobile mechanic customers are usually in a hurry: the car is not starting, a warning light is on, or they need a trusted mechanic to come to them. A focused site should sell fast diagnosis first, then convert the repair into a clear parts-and-labor plan.',
     primaryCta: 'Book a diagnostic',
     secondaryCta: 'See site variations',
-    headline: 'Randall Mobile Mechanic',
+    headline: 'The Last Stop Shop LLC',
     headlineAccent: 'diagnostics and repair that come to you',
     primaryFix: '$129 diagnostic',
+    proofStats: [
+      {
+        value: '$129',
+        label: 'diagnostic first',
+      },
+      {
+        value: 'Call/Text',
+        label: 'mobile-first booking',
+      },
+      {
+        value: 'Approve',
+        label: 'parts and labor before repair',
+      },
+    ],
     placeholderNote:
-      'Stock images are placeholders for preview only. Replace with Randall, his vehicle, real tools, and before/after repair photos before launch.',
+      'Stock images are placeholders for preview only. Replace with The Last Stop Shop logo, Randall, his vehicle, real tools, and before/after repair photos before launch.',
     sectionKicker: 'Three directions to choose from',
     sectionHeadline: 'Same offer, different first impression.',
     sectionCopy:
-      'Each version keeps the core deal intact: a $129 diagnostic first, parts priced separately, labor scoped clearly, easy call/text booking, photo upload, and follow-up reminders.',
+      'Each version keeps the brand visible in the header, call/text buttons, diagnostic request area, confirmation message, and lead flow while keeping the core offer clear: a $129 diagnostic first, parts priced separately, labor scoped clearly, easy call/text booking, photo upload, and follow-up reminders.',
     quoteFlowKicker: 'Recommended booking flow',
     quoteFlowHeadline: 'Start with the diagnostic, then price the repair clearly.',
     quoteFlowCopy:
@@ -246,16 +266,16 @@ export const sitePreviews: SitePreview[] = [
     trustHeading: 'Trust signals to surface',
     listingHeading: 'Launch notes',
     heroImage:
-      'https://images.unsplash.com/photo-1632823471565-1ecdf5c761dc?auto=format&fit=crop&fm=jpg&q=72&w=2200',
-    heroImageAlt: 'Mechanic inspecting a vehicle engine with tools nearby',
+      'https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&fm=jpg&q=72&w=2200',
+    heroImageAlt: 'Mechanic working on a vehicle outdoors',
     services: [
       {
         title: '$129 diagnostic',
         copy: 'Make the first step obvious: confirm the problem before anyone commits to parts or repair labor.',
         icon: Gauge,
         image:
-          'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&fm=jpg&q=72&w=1200',
-        imageAlt: 'Mechanic diagnostic tools near a vehicle engine',
+          'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&fm=jpg&q=72&w=1200',
+        imageAlt: 'Close view of car engine and mechanic inspection',
       },
       {
         title: 'Mobile repair booking',
@@ -290,13 +310,13 @@ export const sitePreviews: SitePreview[] = [
         visualDirection: 'Bold black, high-contrast yellow, close-up engine imagery, large phone CTA.',
         customerAction: 'Call or book the $129 diagnostic.',
         image:
-          'https://images.unsplash.com/photo-1632823471565-1ecdf5c761dc?auto=format&fit=crop&fm=jpg&q=72&w=1400',
-        imageAlt: 'Mechanic checking a vehicle engine',
+          'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&fm=jpg&q=72&w=1400',
+        imageAlt: 'Close view of car engine and mechanic inspection',
         linkHref: '/sitepreview/randall-mobile-mechanic-urgent-diagnostic',
       },
       {
         title: 'Variation 2: Trusted Neighborhood Mechanic',
-        subtitle: 'Warmer and personal, built around Randall as the mechanic customers can trust.',
+        subtitle: 'Warmer and personal, built around The Last Stop Shop as the mechanic customers can trust.',
         bestFor: 'Home driveway repairs, repeat customers, family vehicles, and review-driven trust.',
         visualDirection: 'Warm white, steel blue, clean service cards, visible reviews and warranty language.',
         customerAction: 'Describe the issue and request a service window.',
@@ -322,8 +342,8 @@ export const sitePreviews: SitePreview[] = [
         title: 'Diagnostic-first offer',
         copy: 'Lead with the $129 diagnostic so customers understand the first paid step before repair scope, parts, or labor are discussed.',
         image:
-          'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&fm=jpg&q=72&w=1400',
-        imageAlt: 'Diagnostic work near a vehicle engine',
+          'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&fm=jpg&q=72&w=1400',
+        imageAlt: 'Close view of car engine and mechanic inspection',
       },
       {
         title: 'Simple repair approval',
@@ -336,6 +356,7 @@ export const sitePreviews: SitePreview[] = [
     trustPoints: [
       'Show the $129 diagnostic clearly before talking about bigger repairs.',
       'Make call, text, and booking buttons visible on mobile without scrolling too far.',
+      'Keep The Last Stop Shop LLC name and logo clear in the header, call/text path, request form, and confirmation message.',
       'Use real photos of Randall, vehicle, tools, and completed repairs as soon as available.',
       'Explain parts are priced separately and labor is approved after diagnosis.',
       'Surface service area, hours, emergency availability, and review proof.',
@@ -345,18 +366,18 @@ export const sitePreviews: SitePreview[] = [
       'Hero makes mobile mechanic service and $129 diagnostic obvious immediately.',
       'Customer taps call, text, or book diagnostic.',
       'Form captures name, phone, vehicle, location, symptoms, photos, codes, urgency, and preferred service window.',
-      'Randall sends diagnostic result with parts list, labor estimate, and approval step before repair starts.',
+      'The Last Stop Shop sends diagnostic result with parts list, labor estimate, and approval step before repair starts.',
     ],
     listingNotes: [
-      'Confirm exact business name, phone, service area, and whether Randall wants call-only or online booking.',
+      'Confirm exact logo file, phone, service area, and whether Randall wants call-only or online booking.',
       'Add Google Business Profile, Facebook, and review links when available.',
-      'Prepare real photo slots: Randall headshot, service vehicle, tools, engine bay, completed repairs.',
+      'Prepare real photo slots: The Last Stop Shop logo, Randall headshot, service vehicle, tools, engine bay, completed repairs.',
       'Build the site around diagnostic booking first; full repair quote happens after the diagnosis.',
     ],
     sources: [
       {
         label: 'Preview brief from James',
-        href: '/sitepreview/randall-mobile-mechanic',
+        href: '/sitepreview/the-last-stop-shop',
       },
       {
         label: 'Book diagnostic CTA',
@@ -371,7 +392,7 @@ export const sitePreviews: SitePreview[] = [
         href: '/sitepreview',
       },
     ],
-    preparedFor: "Prepared as a concept preview by 3KPRO. This is not Randall's official website.",
+    preparedFor: 'Prepared as a concept preview by 3KPRO. This is not the official website for The Last Stop Shop LLC.',
   },
 ]
 
@@ -382,8 +403,24 @@ export function getSitePreview(slug: string) {
     return directPreview
   }
 
-  const randallVariant = randallVariantPreviews[slug as keyof typeof randallVariantPreviews]
   const randallBase = sitePreviews.find((preview) => preview.slug === 'randall-mobile-mechanic')
+
+  if (slug === 'the-last-stop-shop' && randallBase) {
+    return {
+      ...randallBase,
+      slug,
+      secondaryCta: 'Review the package',
+      sources: [
+        {
+          label: 'Original preview set',
+          href: '/sitepreview/randall-mobile-mechanic',
+        },
+        ...randallBase.sources,
+      ],
+    }
+  }
+
+  const randallVariant = randallVariantPreviews[slug as keyof typeof randallVariantPreviews]
   const variation = randallBase?.variations?.[randallVariant?.index]
 
   if (!randallBase || !randallVariant || !variation) {

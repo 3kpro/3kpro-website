@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, BadgeCheck, ExternalLink, FileText, MapPin, SearchCheck, ShieldCheck } from 'lucide-react'
+import { ArrowRight, BadgeCheck, ExternalLink, FileText, Gauge, MapPin, PhoneCall, SearchCheck, ShieldCheck, Wrench } from 'lucide-react'
 import { getSitePreview, sitePreviewExtraSlugs, sitePreviews } from '@/lib/sitePreviews'
 
 type PageProps = {
@@ -91,10 +91,35 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
     'The site should behave like a front-office intake assistant: route the customer, gather the right detail, and make follow-up easy.'
   const trustHeading = preview.trustHeading ?? 'Trust signals to surface'
   const listingHeading = preview.listingHeading ?? 'Listing cleanup notes'
+  const isMechanicPreview = preview.category === 'Mobile Mechanic'
+  const heroSurface = isMechanicPreview ? 'bg-[#0f1115]' : 'bg-[#132316]'
+  const heroOverlay = isMechanicPreview
+    ? `linear-gradient(90deg, rgba(8,10,13,0.94), rgba(8,10,13,0.68) 46%, rgba(8,10,13,0.2)), linear-gradient(0deg, rgba(8,10,13,0.9), transparent 46%), url(${preview.heroImage})`
+    : `linear-gradient(90deg, rgba(8,21,10,0.88), rgba(8,21,10,0.52) 45%, rgba(8,21,10,0.16)), linear-gradient(0deg, rgba(8,21,10,0.86), transparent 42%), url(${preview.heroImage})`
+  const accentText = isMechanicPreview ? 'text-[#ffd166]' : 'text-[#d8f7b2]'
+  const primaryButton = isMechanicPreview
+    ? 'bg-[#ffb703] text-[#111318] hover:bg-[#ffd166]'
+    : 'bg-[#f2c14e] text-[#15200f] hover:bg-[#ffd666]'
+  const proofStats =
+    preview.proofStats ??
+    [
+      {
+        value: preview.location,
+        label: 'local service area',
+      },
+      {
+        value: primaryFix,
+        label: 'primary conversion path',
+      },
+      {
+        value: 'Noindex',
+        label: 'private concept preview',
+      },
+    ]
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f5f1e8] text-[#182417]" style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: 0 }}>
-      <header className="absolute inset-x-0 top-0 z-20 border-b border-white/20 bg-[#112115]/45 text-white backdrop-blur-md">
+      <header className="absolute inset-x-0 top-0 z-20 border-b border-white/20 bg-black/45 text-white backdrop-blur-md">
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
           <Link href="/" className="text-lg font-black uppercase">
             3KPRO.SERVICES
@@ -112,29 +137,32 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
 
       <main>
         <section
-          className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-[#132316] px-5 pb-10 pt-32 text-white sm:px-6 lg:px-8"
+          className={`relative isolate flex min-h-[88svh] items-end overflow-hidden ${heroSurface} px-5 pb-10 pt-32 text-white sm:px-6 lg:px-8`}
           style={{
-            backgroundImage: `linear-gradient(90deg, rgba(8,21,10,0.88), rgba(8,21,10,0.52) 45%, rgba(8,21,10,0.16)), linear-gradient(0deg, rgba(8,21,10,0.86), transparent 42%), url(${preview.heroImage})`,
+            backgroundImage: heroOverlay,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
           }}
         >
+          {isMechanicPreview ? (
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(90deg,rgba(255,183,3,0.18)_1px,transparent_1px),linear-gradient(0deg,rgba(255,183,3,0.12)_1px,transparent_1px)] bg-[size:56px_56px] opacity-70" />
+          ) : null}
           <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[0.92fr_0.58fr] lg:items-end">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-3 rounded-full border border-white/24 bg-white/14 px-5 py-3 text-xs font-semibold uppercase text-white shadow-[0_14px_50px_rgba(0,0,0,0.22)] backdrop-blur-md">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#9be15d] shadow-[0_0_18px_rgba(155,225,93,0.85)]" />
+                <span className={`h-2.5 w-2.5 rounded-full ${isMechanicPreview ? 'bg-[#ffb703] shadow-[0_0_22px_rgba(255,183,3,0.95)]' : 'bg-[#9be15d] shadow-[0_0_18px_rgba(155,225,93,0.85)]'}`} />
                 {categoryEyebrow}
               </div>
               <h1 className="mt-7 max-w-4xl text-5xl font-black leading-[0.9] md:text-7xl lg:text-8xl" style={{ letterSpacing: 0 }}>
                 {headline}
-                <span className="block text-[#d8f7b2]">{headlineAccent}</span>
+                <span className={`block ${accentText}`}>{headlineAccent}</span>
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/84">{preview.conceptSubtitle}</p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#quote-flow"
-                  className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#f2c14e] px-7 text-sm font-black text-[#15200f] shadow-[0_14px_34px_rgba(0,0,0,0.22)] transition hover:bg-[#ffd666]"
+                  className={`inline-flex min-h-14 items-center justify-center gap-3 rounded-full px-7 text-sm font-black shadow-[0_14px_34px_rgba(0,0,0,0.22)] transition ${primaryButton}`}
                 >
                   {preview.primaryCta}
                   <ArrowRight size={17} aria-hidden="true" />
@@ -146,28 +174,55 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                   {preview.secondaryCta}
                 </a>
               </div>
+              {isMechanicPreview ? (
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/22 bg-white/12 px-4 py-2 text-xs font-black uppercase text-white/86 backdrop-blur-md">
+                    <PhoneCall size={14} aria-hidden="true" />
+                    Call or text first
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/22 bg-white/12 px-4 py-2 text-xs font-black uppercase text-white/86 backdrop-blur-md">
+                    <Gauge size={14} aria-hidden="true" />
+                    Diagnostic before quote
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/22 bg-white/12 px-4 py-2 text-xs font-black uppercase text-white/86 backdrop-blur-md">
+                    <Wrench size={14} aria-hidden="true" />
+                    Repair approval flow
+                  </span>
+                </div>
+              ) : null}
             </div>
 
-            <aside className="rounded-[28px] border border-white/22 bg-[#f8f3e7]/94 p-5 text-[#172315] shadow-[0_26px_80px_rgba(0,0,0,0.28)] backdrop-blur-md">
-              <div className="flex items-center gap-3 text-sm font-black uppercase text-[#386018]">
+            <aside className={`rounded-[28px] border ${isMechanicPreview ? 'border-[#ffb703]/36 bg-[#111318]/90 text-white' : 'border-white/22 bg-[#f8f3e7]/94 text-[#172315]'} p-5 shadow-[0_26px_80px_rgba(0,0,0,0.28)] backdrop-blur-md`}>
+              <div className={`flex items-center gap-3 text-sm font-black uppercase ${isMechanicPreview ? 'text-[#ffd166]' : 'text-[#386018]'}`}>
                 <SearchCheck size={18} aria-hidden="true" />
-                Website rescue angle
+                {isMechanicPreview ? 'Diagnostic-first angle' : 'Website rescue angle'}
               </div>
-              <p className="mt-4 text-sm leading-7 text-[#3b4635]">{preview.observedOpportunity}</p>
+              <p className={`mt-4 text-sm leading-7 ${isMechanicPreview ? 'text-white/76' : 'text-[#3b4635]'}`}>{preview.observedOpportunity}</p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl bg-white p-4 shadow-[0_12px_34px_rgba(24,36,23,0.09)]">
-                  <div className="text-xs font-black uppercase text-[#7a846f]">Location</div>
+                <div className={`${isMechanicPreview ? 'bg-white/10 ring-1 ring-white/12' : 'bg-white shadow-[0_12px_34px_rgba(24,36,23,0.09)]'} rounded-2xl p-4`}>
+                  <div className={`text-xs font-black uppercase ${isMechanicPreview ? 'text-white/54' : 'text-[#7a846f]'}`}>Location</div>
                   <div className="mt-2 text-lg font-black">{preview.location}</div>
                 </div>
-                <div className="rounded-2xl bg-white p-4 shadow-[0_12px_34px_rgba(24,36,23,0.09)]">
-                  <div className="text-xs font-black uppercase text-[#7a846f]">Primary fix</div>
+                <div className={`${isMechanicPreview ? 'bg-[#ffb703] text-[#111318]' : 'bg-white shadow-[0_12px_34px_rgba(24,36,23,0.09)]'} rounded-2xl p-4`}>
+                  <div className={`text-xs font-black uppercase ${isMechanicPreview ? 'text-[#5c4300]' : 'text-[#7a846f]'}`}>Primary fix</div>
                   <div className="mt-2 text-lg font-black">{primaryFix}</div>
                 </div>
               </div>
-              <p className="mt-4 rounded-2xl border border-[#d7ccb7] bg-[#fffaf0] p-4 text-xs leading-6 text-[#6b6251]">
+              <p className={`mt-4 rounded-2xl border p-4 text-xs leading-6 ${isMechanicPreview ? 'border-white/12 bg-white/[0.06] text-white/62' : 'border-[#d7ccb7] bg-[#fffaf0] text-[#6b6251]'}`}>
                 {placeholderNote}
               </p>
             </aside>
+          </div>
+        </section>
+
+        <section className={`${isMechanicPreview ? 'bg-[#111318]' : 'bg-[#20351b]'} px-5 py-6 text-white sm:px-6 lg:px-8`}>
+          <div className="mx-auto grid max-w-7xl gap-3 md:grid-cols-3">
+            {proofStats.map((stat) => (
+              <div key={`${stat.value}-${stat.label}`} className="rounded-[22px] border border-white/12 bg-white/[0.075] p-5 shadow-[0_18px_45px_rgba(0,0,0,0.18)]">
+                <div className={`text-3xl font-black ${isMechanicPreview ? 'text-[#ffd166]' : 'text-[#d8f7b2]'}`}>{stat.value}</div>
+                <div className="mt-2 text-xs font-black uppercase text-white/58">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -189,12 +244,17 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
           <section id="variations" className="bg-[#f5f1e8] px-5 pb-16 sm:px-6 lg:px-8">
             <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">
               {preview.variations.map((variation, index) => (
-                <article key={variation.title} className="overflow-hidden rounded-[28px] bg-white shadow-[0_18px_60px_rgba(35,48,27,0.12)]">
+                <article key={variation.title} className="group overflow-hidden rounded-[28px] bg-white shadow-[0_18px_60px_rgba(35,48,27,0.12)] ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(17,19,24,0.18)]">
                   <div className="relative aspect-[16/11] overflow-hidden bg-[#182417]">
-                    <img src={variation.image} alt={variation.imageAlt} className="h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-transparent" />
+                    <img src={variation.image} alt={variation.imageAlt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                    <div className={`absolute inset-0 ${isMechanicPreview ? 'bg-gradient-to-t from-black/82 via-black/22 to-transparent' : 'bg-gradient-to-t from-black/72 via-black/18 to-transparent'}`} />
+                    {isMechanicPreview ? (
+                      <div className="absolute right-4 top-4 rounded-full border border-white/20 bg-black/48 px-3 py-2 text-[11px] font-black uppercase text-[#ffd166] backdrop-blur-md">
+                        Option {index + 1}
+                      </div>
+                    ) : null}
                     <div className="absolute bottom-4 left-4 right-4">
-                      <span className="inline-grid h-10 w-10 place-items-center rounded-full bg-[#f2c14e] text-sm font-black text-[#15200f]">
+                      <span className={`inline-grid h-10 w-10 place-items-center rounded-full text-sm font-black ${isMechanicPreview ? 'bg-[#ffb703] text-[#111318]' : 'bg-[#f2c14e] text-[#15200f]'}`}>
                         {index + 1}
                       </span>
                       <h3 className="mt-3 text-2xl font-black leading-tight text-white">{variation.title}</h3>
@@ -217,7 +277,7 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                     {variation.linkHref ? (
                       <Link
                         href={variation.linkHref}
-                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#172315] px-5 text-sm font-black text-white transition hover:bg-[#2a3a21]"
+                        className={`inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-5 text-sm font-black transition ${isMechanicPreview ? 'bg-[#111318] text-white hover:bg-[#2a2d35]' : 'bg-[#172315] text-white hover:bg-[#2a3a21]'}`}
                       >
                         Open this preview
                         <ArrowRight size={16} aria-hidden="true" />
