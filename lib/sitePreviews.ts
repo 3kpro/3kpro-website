@@ -238,7 +238,7 @@ export const sitePreviews: SitePreview[] = [
       'Mobile mechanic customers are usually in a hurry: the car is not starting, a warning light is on, or they need a trusted mechanic to come to them. A focused site should sell fast diagnosis first, then convert the repair into a clear parts-and-labor plan.',
     primaryCta: 'Book a diagnostic',
     secondaryCta: 'See site variations',
-    logoImage: '/sitepreview/the-last-stop-shop/logo.jpg',
+    logoImage: '/sitepreview/the-last-stop-shop/logo-transparent.png',
     logoAlt: 'The Last Stop Shop LLC logo',
     headline: 'The Last Stop Shop LLC',
     headlineAccent: 'diagnostics and repair that come to you',
