@@ -98,6 +98,28 @@ The first viewport must communicate the prospect's business category before anyo
 - If James requests changes, KITT/Website owns the revision path; NOVA is consulted only if the issue is visual/media quality.
 - HubSpot is updated only after James confirms the email was manually sent.
 
+## Publish Verification Gate
+
+Use the publish verifier before any preview link is treated as sendable:
+
+```powershell
+npm run verify:publish -- -Route /sitepreview/the-last-stop-shop -Phrase "The Last Stop Shop" -SkipLive
+```
+
+After the verified commit is pushed and Vercel deploys, rerun without `-SkipLive`:
+
+```powershell
+npm run verify:publish -- -Route /sitepreview/the-last-stop-shop -Phrase "The Last Stop Shop"
+```
+
+Rules:
+
+- If `npm ci` fails, this is a dependency/environment issue. Route to SAGE/Codex; do not keep editing preview copy.
+- If `npm run build` fails, do not publish and do not send the link.
+- If the route is missing from the build output, the page is not actually wired.
+- If the live URL does not return HTTP 200 with the expected phrase, the preview is not sendable.
+- Jeremy reports build/deploy failures with the failing layer: dependency, build, route, deploy, or live verification.
+
 ## Payment Rules
 
 - Discovery and lightweight fit checks can happen before payment.
@@ -165,6 +187,7 @@ James / 3KPRO
 - Preview request or equivalent brief is captured.
 - Pain angle is written in plain language.
 - Read-the-room visual gate passes: category, service, and CTA are obvious in the first viewport, and no off-industry imagery remains.
+- Publish verification passes before the preview is treated as sendable.
 - James has approved the preview URL before Jeremy drafts the client-facing email.
 - Preview or recommendation is sent.
 - Preview URL is mirrored to the MainBrain prospect preview registry.

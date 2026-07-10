@@ -6,6 +6,7 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 ### Added
+- `ops/verify-publish.ps1`, `package.json`, `docs/CLIENT_WEBSITE_PREVIEW_PROCESS.md`: 2026-07-10 — added a repeatable publish verification gate for prospect previews: git state, `npm ci`, production build, route-output check, and optional live URL/phrase check.
 - `app/sitepreview/[slug]/page.tsx`, `lib/sitePreviews.ts`, `public/sitepreview/the-last-stop-shop/logo-transparent.png`: 2026-07-10 — rebuilt The Last Stop Shop LLC preview treatment around a transparent logo asset, red/black brand palette, header/hero integration, watermark, and matching section accents so the logo no longer looks pasted onto a generic template.
 - `lib/sitePreviews.ts`: 2026-07-10 — added a clean `/sitepreview/the-last-stop-shop` alias and rebranded the mobile mechanic preview around The Last Stop Shop LLC with clearer logo/business-name placement notes.
 - `app/tv/page.tsx`, `public/totalvalve.pdf`: 2026-07-08 — added a noindex `/tv` interview brief route that embeds the Total Valve PDF and provides a direct PDF open action.
