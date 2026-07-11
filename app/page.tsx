@@ -500,6 +500,7 @@ export default function Home() {
           <a href="#products">Products</a>
           <a href="#pricing">Pricing</a>
           <a href="#contact">Contact</a>
+          <Link href="/pay" style={{ color: 'var(--amb, #f5b942)' }}>Quick Pay</Link>
         </div>
         <div className="nav-clock">TULSA <b suppressHydrationWarning>{clock}</b> CST</div>
         <button type="button" className="btn nav-cta" onClick={() => setDrawerOpen(true)}>Initiate</button>

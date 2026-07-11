@@ -6,6 +6,9 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 ### Added
+- `app/page.tsx`: 2026-07-10 — restored Quick Pay to the top nav (amber-accented `/pay` link after Contact). The OPERATOR homepage promotion (2026-07-06) had left Quick Pay reachable only via the footer; field leads need the payment path one click from the front door.
+### Fixed
+- `app/globals.css`: 2026-07-10 — production build was failing with `CssSyntaxError: Missed semicolon` because Tailwind v4's content scanner was ingesting binary junk (DEFLATE fragments from `3KPRO Design System.zip` at the repo root) as an arbitrary-property candidate. Restricted scanning to real source dirs via `@import "tailwindcss" source(none)` + explicit `@source "../app"/"../components"/"../lib"`. Also repaired node_modules (lightningcss native binding + devDeps) that the machine-level `npm omit=dev` config had pruned. Build green: 76/76 pages.
 - `ops/verify-publish.ps1`, `package.json`, `docs/CLIENT_WEBSITE_PREVIEW_PROCESS.md`: 2026-07-10 — added a repeatable publish verification gate for prospect previews: git state, `npm ci`, production build, route-output check, and optional live URL/phrase check.
 - `app/sitepreview/[slug]/page.tsx`, `lib/sitePreviews.ts`, `public/sitepreview/the-last-stop-shop/logo-transparent.png`: 2026-07-10 — rebuilt The Last Stop Shop LLC preview treatment around a transparent logo asset, red/black brand palette, header/hero integration, watermark, and matching section accents so the logo no longer looks pasted onto a generic template.
 - `lib/sitePreviews.ts`: 2026-07-10 — added a clean `/sitepreview/the-last-stop-shop` alias and rebranded the mobile mechanic preview around The Last Stop Shop LLC with clearer logo/business-name placement notes.
