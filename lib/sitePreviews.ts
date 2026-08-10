@@ -413,14 +413,95 @@ export function getSitePreview(slug: string) {
     return {
       ...randallBase,
       slug,
-      secondaryCta: 'Review the package',
+      conceptTitle: 'Mobile diagnostics and repair across the Tulsa area.',
+      conceptSubtitle:
+        'The Last Stop Shop LLC brings diagnostic checks, repair planning, and mobile mechanic service to your driveway, job site, or parking lot.',
+      observedOpportunity:
+        'Start with a $129 diagnostic visit, explain what the vehicle is doing, and get a clear parts-and-labor repair path before work begins.',
+      secondaryCta: 'View services',
+      headlineAccent: 'mobile diagnostics and repair',
+      sectionKicker: 'Mobile mechanic service',
+      sectionHeadline: 'Diagnostics first. Repairs approved clearly.',
+      sectionCopy:
+        'When a warning light, no-start, noise, leak, or drivability issue interrupts the day, The Last Stop Shop makes the first step simple: schedule the diagnostic, share the vehicle details, and approve the repair plan after the issue is confirmed.',
+      quoteFlowKicker: 'Booking flow',
+      quoteFlowHeadline: 'Tell us what the vehicle is doing.',
+      quoteFlowCopy:
+        'Send the basics before the visit: vehicle, location, symptoms, photos, codes, urgency, and preferred service window. After the diagnostic, parts and labor are reviewed before repair work starts.',
+      trustHeading: 'What to expect',
+      listingHeading: 'Common requests',
+      placeholderNote:
+        'Mobile diagnostics start at $129. Parts are priced separately, and repair labor is approved after the problem is confirmed.',
+      variations: undefined,
+      services: [
+        {
+          ...randallBase.services[0],
+          title: '$129 mobile diagnostic',
+          copy: 'Confirm the issue first so the repair plan starts with the actual problem, not a guess.',
+        },
+        {
+          ...randallBase.services[1],
+          title: 'Driveway and job-site repair',
+          copy: 'Request mobile service at home, work, or a nearby parking location when the vehicle cannot easily get to a shop.',
+        },
+        {
+          ...randallBase.services[2],
+          title: 'Photos, codes, and symptoms',
+          copy: 'Share warning lights, part photos, noises, leaks, VIN details, and issue notes before the visit.',
+        },
+        {
+          ...randallBase.services[3],
+          title: 'Parts and labor approval',
+          copy: 'Review the recommended parts and labor after diagnosis so the repair scope stays clear.',
+        },
+      ],
+      gallery: [
+        {
+          ...randallBase.gallery[0],
+          title: 'Start with the diagnostic',
+          copy: 'The first paid step is a $129 diagnostic visit. Once the issue is confirmed, The Last Stop Shop can explain the repair path and next available service window.',
+        },
+        {
+          ...randallBase.gallery[1],
+          title: 'Approve the repair plan',
+          copy: 'Parts are handled separately from labor, and the repair plan is reviewed before work starts so customers know what is being fixed.',
+        },
+      ],
+      trustPoints: [
+        '$129 diagnostic-first service.',
+        'Mobile mechanic support across the Tulsa area.',
+        'Call, text, or request a service window from a phone.',
+        'Share photos, warning lights, codes, and symptoms before the visit.',
+        'Parts priced separately from labor.',
+        'Repair work approved after the diagnostic confirms the issue.',
+      ],
+      conversionFlow: [
+        'Choose call, text, or diagnostic request.',
+        'Share name, phone, vehicle, location, symptoms, photos, codes, urgency, and preferred service window.',
+        'The Last Stop Shop confirms the diagnostic visit.',
+        'The vehicle issue is checked on site.',
+        'Parts and labor are reviewed for approval before repair work begins.',
+      ],
+      listingNotes: [
+        'No-start and hard-start problems.',
+        'Check-engine lights and warning indicators.',
+        'Battery, charging, and electrical issues.',
+        'Leaks, noises, overheating, and drivability concerns.',
+        'Driveway, home, worksite, and parking-lot service requests.',
+        'Small fleet and work-truck diagnostic requests.',
+      ],
       sources: [
         {
-          label: 'Original preview set',
-          href: '/sitepreview/randall-mobile-mechanic',
+          label: 'Book diagnostic',
+          href: '#quote-flow',
         },
-        ...randallBase.sources,
+        {
+          label: 'Services',
+          href: '#services',
+        },
       ],
+      preparedFor:
+        'Serving Tulsa-area drivers with mobile diagnostics, repair planning, and clear approval before repair work begins.',
     }
   }
 

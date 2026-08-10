@@ -24,19 +24,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {}
   }
 
+  const isFinalDraft = slug === 'the-last-stop-shop'
   const pageUrl = `https://3kpro.services/sitepreview/${preview.slug}`
-  const title = `${preview.shortName} Website Preview`
+  const title = isFinalDraft ? `${preview.shortName} | ${preview.categoryEyebrow ?? preview.category}` : `${preview.shortName} Website Preview`
   const description = preview.conceptSubtitle
   const image = {
     url: preview.heroImage,
     width: 1200,
     height: 630,
-    alt: `${preview.shortName} website preview`,
+    alt: isFinalDraft ? `${preview.shortName} mobile mechanic service` : `${preview.shortName} website preview`,
   }
 
   return {
-    title: `${title} | 3K Pro Services`,
-    description: `A 3KPRO concept preview for ${preview.businessName}: ${preview.conceptTitle}`,
+    title: isFinalDraft ? title : `${title} | 3K Pro Services`,
+    description: isFinalDraft ? preview.conceptSubtitle : `A 3KPRO concept preview for ${preview.businessName}: ${preview.conceptTitle}`,
     alternates: {
       canonical: pageUrl,
     },
@@ -60,7 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title,
       description,
-      creator: '@3KPRO_SAAS',
+      creator: isFinalDraft ? undefined : '@3KPRO_SAAS',
       images: [image],
     },
   }
@@ -74,13 +75,14 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
     notFound()
   }
 
+  const isFinalDraft = slug === 'the-last-stop-shop'
   const categoryEyebrow = preview.categoryEyebrow ?? preview.category
   const headline = preview.headline ?? preview.shortName
   const headlineAccent = preview.headlineAccent ?? 'lawn care website preview'
   const primaryFix = preview.primaryFix ?? 'Estimate flow'
   const placeholderNote =
     preview.placeholderNote ??
-    `Stock images are placeholders for preview only. Replace with ${preview.shortName} trucks, crew, real work, and before/after photos.`
+    `Schedule service with ${preview.shortName}, share the problem up front, and get a clear next step before repair work begins.`
   const sectionKicker = preview.sectionKicker ?? 'What this page should sell instantly'
   const sectionHeadline = preview.sectionHeadline ?? 'Green lawns, fixed sprinklers, easy estimates.'
   const sectionCopy =
@@ -117,7 +119,7 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
       },
       {
         value: 'Noindex',
-        label: 'private concept preview',
+        label: isFinalDraft ? 'service focus' : 'private concept preview',
       },
     ]
 
@@ -128,22 +130,35 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
           <Link href="/" className="flex min-w-0 items-center gap-3">
             {logoImage ? (
-              <span className={`grid h-14 w-14 shrink-0 place-items-center overflow-hidden ${isMechanicPreview ? 'drop-shadow-[0_0_20px_rgba(229,9,20,0.55)]' : 'rounded-xl border border-white/22 bg-white p-1 shadow-[0_10px_28px_rgba(0,0,0,0.22)]'}`}>
+              <span className={`grid h-12 w-12 shrink-0 place-items-center overflow-hidden ${isMechanicPreview ? 'drop-shadow-[0_0_20px_rgba(229,9,20,0.55)]' : 'rounded-xl border border-white/22 bg-white p-1 shadow-[0_10px_28px_rgba(0,0,0,0.22)]'}`}>
                 <img src={logoImage} alt={logoAlt} className="h-full w-full object-contain" />
               </span>
             ) : null}
             <span className="min-w-0">
               <span className="block truncate text-sm font-black uppercase leading-tight sm:text-base">{preview.businessName}</span>
-              <span className="block text-[10px] font-bold uppercase text-white/58">Preview by 3KPRO</span>
+              <span className="block text-[10px] font-bold uppercase text-white/58">{isFinalDraft ? categoryEyebrow : 'Preview by 3KPRO'}</span>
             </span>
           </Link>
           <nav className="flex items-center gap-5 text-xs font-semibold uppercase text-white/78">
-            <Link href="/sitepreview" className="hidden transition hover:text-white sm:inline">
-              Preview system
-            </Link>
-            <a href="mailto:james@3kpro.services" className="transition hover:text-white">
-              Contact James
-            </a>
+            {isFinalDraft ? (
+              <>
+                <a href="#services" className="hidden transition hover:text-white sm:inline">
+                  Services
+                </a>
+                <a href="#quote-flow" className="transition hover:text-white">
+                  Book diagnostic
+                </a>
+              </>
+            ) : (
+              <>
+                <Link href="/sitepreview" className="hidden transition hover:text-white sm:inline">
+                  Preview system
+                </Link>
+                <a href="mailto:james@3kpro.services" className="transition hover:text-white">
+                  Contact James
+                </a>
+              </>
+            )}
           </nav>
         </div>
       </header>
@@ -167,19 +182,21 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
           ) : null}
           <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[0.92fr_0.58fr] lg:items-end">
             <div className="max-w-3xl">
-              {logoImage ? (
-                <div className={`mb-7 inline-flex items-center gap-4 border p-3 pr-5 shadow-[0_22px_70px_rgba(0,0,0,0.28)] backdrop-blur-md ${isMechanicPreview ? 'rounded-[28px] border-[#e50914]/42 bg-[#090a0c]/82 text-white' : 'rounded-[24px] border-white/22 bg-white/94 text-[#111318]'}`}>
-                  <span className={`grid h-24 w-24 shrink-0 place-items-center overflow-hidden ${isMechanicPreview ? 'drop-shadow-[0_0_22px_rgba(229,9,20,0.52)]' : 'rounded-[18px] bg-white'}`}>
-                    <img src={logoImage} alt={logoAlt} className="h-full w-full object-contain" />
-                  </span>
-                  <span className="max-w-[13rem] text-left text-sm font-black uppercase leading-tight sm:max-w-none sm:text-base">
-                    {preview.businessName}
-                  </span>
+              <div className="mb-7 flex flex-wrap items-center gap-3">
+                {logoImage ? (
+                  <div className={`inline-flex h-[122px] max-w-full items-center gap-4 border py-3 pl-4 pr-5 shadow-[0_22px_70px_rgba(0,0,0,0.28)] backdrop-blur-md sm:h-[112px] ${isMechanicPreview ? 'rounded-[28px] border-[#e50914]/42 bg-[#090a0c]/82 text-white' : 'rounded-[24px] border-white/22 bg-white/94 text-[#111318]'}`}>
+                    <span className={`grid h-[88px] w-[88px] shrink-0 place-items-center overflow-hidden sm:h-[82px] sm:w-[82px] ${isMechanicPreview ? 'drop-shadow-[0_0_22px_rgba(229,9,20,0.52)]' : 'rounded-[18px] bg-white'}`}>
+                      <img src={logoImage} alt={logoAlt} className="h-full w-full object-contain" />
+                    </span>
+                    <span className="min-w-0 max-w-[12rem] text-left text-base font-black uppercase leading-tight sm:max-w-[18rem] sm:text-lg">
+                      {preview.businessName}
+                    </span>
+                  </div>
+                ) : null}
+                <div className="inline-flex h-11 items-center gap-3 rounded-full border border-white/24 bg-white/14 px-5 text-xs font-semibold uppercase text-white shadow-[0_14px_50px_rgba(0,0,0,0.22)] backdrop-blur-md">
+                  <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${isMechanicPreview ? 'bg-[#e50914] shadow-[0_0_22px_rgba(229,9,20,0.95)]' : 'bg-[#9be15d] shadow-[0_0_18px_rgba(155,225,93,0.85)]'}`} />
+                  <span className="whitespace-nowrap">{categoryEyebrow}</span>
                 </div>
-              ) : null}
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/24 bg-white/14 px-5 py-3 text-xs font-semibold uppercase text-white shadow-[0_14px_50px_rgba(0,0,0,0.22)] backdrop-blur-md">
-                <span className={`h-2.5 w-2.5 rounded-full ${isMechanicPreview ? 'bg-[#e50914] shadow-[0_0_22px_rgba(229,9,20,0.95)]' : 'bg-[#9be15d] shadow-[0_0_18px_rgba(155,225,93,0.85)]'}`} />
-                {categoryEyebrow}
               </div>
               <h1 className="mt-7 max-w-4xl text-5xl font-black leading-[0.9] md:text-7xl lg:text-8xl" style={{ letterSpacing: 0 }}>
                 {headline}
@@ -227,14 +244,14 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                     <img src={logoImage} alt={logoAlt} className="h-full w-full object-contain" />
                   </span>
                   <div>
-                    <div className={`text-[11px] font-black uppercase ${isMechanicPreview ? 'text-[#ff2a2a]' : 'text-[#386018]'}`}>Branded preview</div>
+                    <div className={`text-[11px] font-black uppercase ${isMechanicPreview ? 'text-[#ff2a2a]' : 'text-[#386018]'}`}>{isFinalDraft ? categoryEyebrow : 'Branded preview'}</div>
                     <div className="mt-2 text-xl font-black leading-tight">{preview.shortName}</div>
                   </div>
                 </div>
               ) : null}
               <div className={`flex items-center gap-3 text-sm font-black uppercase ${isMechanicPreview ? 'text-[#ff2a2a]' : 'text-[#386018]'}`}>
                 <SearchCheck size={18} aria-hidden="true" />
-                {isMechanicPreview ? 'Diagnostic-first angle' : 'Website rescue angle'}
+                {isMechanicPreview ? 'Mobile mechanic service' : 'Website rescue angle'}
               </div>
               <p className={`mt-4 text-sm leading-7 ${isMechanicPreview ? 'text-white/76' : 'text-[#3b4635]'}`}>{preview.observedOpportunity}</p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -284,7 +301,7 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
           </div>
         </section>
 
-        {preview.variations ? (
+        {preview.variations && !isFinalDraft ? (
           <section id="variations" className={`${isMechanicPreview ? 'bg-[#f2f0ec]' : 'bg-[#f5f1e8]'} px-5 pb-16 sm:px-6 lg:px-8`}>
             <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">
               {preview.variations.map((variation, index) => (
@@ -456,33 +473,44 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
               <div>
                 <div className={`flex items-center gap-3 text-xs font-black uppercase ${isMechanicPreview ? 'text-[#ff2a2a]' : 'text-[#bde681]'}`}>
                   <MapPin size={15} aria-hidden="true" />
-                  Public research snapshot
+                  {isFinalDraft ? preview.location : 'Public research snapshot'}
                 </div>
-                <h2 className="mt-4 text-3xl font-black">Sources used for this concept</h2>
+                <h2 className="mt-4 text-3xl font-black">{isFinalDraft ? 'Mobile diagnostics, clear repair approval.' : 'Sources used for this concept'}</h2>
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-white/64">{preview.preparedFor}</p>
               </div>
-              <Link
-                href="/sitepreview"
-                className="inline-flex min-h-12 w-fit items-center justify-center rounded-full border border-white/18 px-6 text-sm font-semibold text-white/86 transition hover:bg-white/10"
-              >
-                How previews work
-              </Link>
-            </div>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {preview.sources.map((source, index) => (
+              {isFinalDraft ? (
                 <a
-                  key={source.href}
-                  href={source.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="scroll-reveal flex min-h-14 items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.065] px-4 py-3 text-sm font-semibold text-white/76 transition hover:border-white/28 hover:text-white"
-                  style={{ '--reveal-delay': `${index * 70}ms` } as CSSProperties}
+                  href="#quote-flow"
+                  className={`inline-flex min-h-12 w-fit items-center justify-center rounded-full px-6 text-sm font-black transition ${primaryButton}`}
                 >
-                  {source.label}
-                  <ExternalLink size={15} aria-hidden="true" />
+                  Book a diagnostic
                 </a>
-              ))}
+              ) : (
+                <Link
+                  href="/sitepreview"
+                  className="inline-flex min-h-12 w-fit items-center justify-center rounded-full border border-white/18 px-6 text-sm font-semibold text-white/86 transition hover:bg-white/10"
+                >
+                  How previews work
+                </Link>
+              )}
             </div>
+            {!isFinalDraft ? (
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {preview.sources.map((source, index) => (
+                  <a
+                    key={source.href}
+                    href={source.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="scroll-reveal flex min-h-14 items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.065] px-4 py-3 text-sm font-semibold text-white/76 transition hover:border-white/28 hover:text-white"
+                    style={{ '--reveal-delay': `${index * 70}ms` } as CSSProperties}
+                  >
+                    {source.label}
+                    <ExternalLink size={15} aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </div>
         </section>
       </main>
