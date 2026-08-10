@@ -1,5 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/lp',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/lp/:path*',
+        destination: '/',
+        permanent: false,
+      },
+    ]
+  },
   turbopack: {
     root: __dirname,
   },
