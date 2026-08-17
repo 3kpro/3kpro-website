@@ -1,8 +1,7 @@
 {
     "ci": {
         "collect": {
-            "numberOfRuns": 3,
-            "staticDistDir": "./out"
+            "numberOfRuns": 3
         },
         "assert": {
             "assertions": {
