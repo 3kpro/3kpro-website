@@ -3,7 +3,7 @@ title: "3kpro-website — Agent Guide"
 tags:
   - pillar/consulting
   - agent/onboarding
-last-updated: "2026-04-17"
+last-updated: "2026-08-17"
 status: active
 ---
 
@@ -60,38 +60,36 @@ Public marketing site for the 3KPRO Services consultancy. Next.js app (dev port 
   - Marketplace product portfolio → `Dev/`
   - Cross-project notes → `MainBrain/`
 
-## Deploy Workflow (mandatory — every task)
+## Deploy Workflow (mandatory - every task)
 
-This is the full ship sequence. Execute it in order. Do not skip steps.
+Use the company release lane documented at:
 
-```
-# 1. Verify the build passes locally
-npm run build
+`C:\DEV\_3KPRO-GENERAL\MainBrain\PLAYBOOKS\Website_Review_To_Production.md`
 
-# 2. Commit (AFTER build passes — never before)
-git add -A
-git commit -m "[3KPRO Website] YYYY-MM-DD: what changed"
+For every new client task:
 
-# 3. Push to GitHub (keeps history, triggers Vercel webhook as backup)
-git push origin main
+1. Run `website_review_release.sh start --client <slug>` before editing.
+2. Edit only the returned client worktree, never the shared canonical checkout.
+3. Run `preview` with the exact route, expected client text, and named paths.
+4. Give James the returned HTTPS review URL for desktop/mobile review.
+5. After James approves that exact URL, run `promote` with the same worktree,
+   route, expected text, and paths.
+6. Record the returned source branch, commit, production URL, and rollback URL.
 
-# 4. Deploy directly to production via Vercel CLI
-npm run deploy
-# which runs: vercel --prod
-```
-
-**Vercel CLI must be installed globally:** `npm install -g vercel`
-The project is already linked (`.vercel/project.json` is present) — no `vercel link` needed.
+The release lane uses a pinned Vercel CLI, serializes releases, binds approval
+to an exact Git tree, pushes a scoped client branch, promotes without
+rebuilding, verifies production, and automatically restores the prior
+deployment when production verification fails.
 
 **Rules:**
-- Never run `npm run deploy` without a passing `npm run build` first.
-- Never commit with `git add .` blindly — always `git diff --stat` first.
-- Never skip the push — GitHub must stay in sync with production.
-- If build fails: fix it, do not deploy.
+- Never use `next dev`, localhost, or a tunnel as the client review surface.
+- Never use `npm run deploy`, `vercel --prod`, or `vercel@latest` for client releases.
+- Never commit or push before James approves the exact review URL.
+- Never bypass the release manifest, lock, path scope, CI, or route checks.
 
 ## Before declaring a task done
 
 1. Edit `CHANGELOG.md` with a dated entry.
 2. If strategy shifted, update `VISION.md`.
 3. If you created or moved a runbook, note it in `CHANGELOG.md`.
-4. Run the full deploy workflow above.
+4. Run the full review-to-production workflow above.
