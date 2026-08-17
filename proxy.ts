@@ -14,8 +14,19 @@ import { isAllowedAdminEmail } from "@/lib/admin/access";
 export async function proxy(req: NextRequest) {
   const res = NextResponse.next();
   const url = req.nextUrl;
+  const host = req.headers.get("host")?.split(":")[0].toLowerCase();
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (host === "thelaststopshop.com" || host === "www.thelaststopshop.com") {
+    if (url.pathname === "/") {
+      return NextResponse.rewrite(new URL("/sitepreview/the-last-stop-shop", req.url));
+    }
+
+    if (url.pathname === "/pay" || url.pathname === "/pay/") {
+      return NextResponse.rewrite(new URL("/sitepreview/the-last-stop-shop/pay", req.url));
+    }
+  }
 
   // --- 1. RATE LIMITING (API Routes Only) ---
   if (url.pathname.startsWith("/api")) {
