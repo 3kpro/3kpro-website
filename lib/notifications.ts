@@ -2,8 +2,6 @@ import { Resend } from "resend";
 import { WelcomeEmail } from "@/components/emails/WelcomeEmail";
 import React from "react";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 /**
  * Unified Notification Service
  * 
@@ -11,6 +9,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
  */
 class NotificationService {
   private static instance: NotificationService;
+  private resendClient?: Resend;
   private fromAddress = "3KPRO <system@3kpro.services>";
 
   private constructor() {}
@@ -22,6 +21,16 @@ class NotificationService {
     return NotificationService.instance;
   }
 
+  private getResend() {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error("Resend is not configured.");
+    }
+
+    this.resendClient ??= new Resend(apiKey);
+    return this.resendClient;
+  }
+
   /**
    * Send Welcome Email after successful checkout
    */
@@ -30,6 +39,7 @@ class NotificationService {
     const dashboardUrl = this.resolveDashboardUrl(productCode);
 
     try {
+      const resend = this.getResend();
       const { data, error } = await resend.emails.send({
         from: this.fromAddress,
         to: [to],

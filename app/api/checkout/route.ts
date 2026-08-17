@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
-import { stripe, createProductionCheckoutSession } from "@/lib/stripe";
+import { getStripe, createProductionCheckoutSession } from "@/lib/stripe";
 import { z } from "zod";
 
 const checkoutSchema = z.object({
@@ -19,6 +19,7 @@ const checkoutSchema = z.object({
  */
 export async function POST(request: Request) {
   try {
+    const stripe = getStripe();
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 

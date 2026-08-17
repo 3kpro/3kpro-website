@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -30,6 +30,7 @@ export async function GET() {
   // Check Stripe
   try {
     // Basic connectivity check
+    const stripe = getStripe();
     await stripe.balance.retrieve();
     health.services.stripe = "healthy";
   } catch (e: any) {

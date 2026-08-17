@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { monitoring } from "@/lib/monitoring";
 import { notifications } from "@/lib/notifications";
 import Stripe from "stripe";
@@ -13,6 +13,7 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
 
   try {
+    const stripe = getStripe();
     event = stripe.webhooks.constructEvent(
       body,
       signature,
@@ -80,6 +81,7 @@ async function handleCheckoutSession(session: Stripe.Checkout.Session, eventType
 
 // Unified Subscription Handler
 async function handleSubscriptionEvent(subscription: Stripe.Subscription, eventType: string) {
+  const stripe = getStripe();
   // 1. Identify Product
   // A subscription might have multiple items, but for now we assume 1 main product per sub or compatible mix
   const primaryItem = subscription.items.data[0];

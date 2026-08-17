@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
-import { stripe, STRIPE_PRICES, createProductionCheckoutSession } from "@/lib/stripe";
+import { getStripe, STRIPE_PRICES, createProductionCheckoutSession } from "@/lib/stripe";
 import { z } from "zod";
 
 const checkoutSchema = z.object({
@@ -21,6 +21,7 @@ export async function POST(request: Request) {
     if (!process.env.STRIPE_SECRET_KEY) {
       return NextResponse.json({ error: "Server configuration error: Missing Stripe Key" }, { status: 500 });
     }
+    const stripe = getStripe();
 
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();

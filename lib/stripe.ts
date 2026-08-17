@@ -1,8 +1,16 @@
 import Stripe from "stripe";
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  typescript: true,
-});
+let stripeClient: Stripe | undefined;
+
+export function getStripe() {
+  const apiKey = process.env.STRIPE_SECRET_KEY;
+  if (!apiKey) {
+    throw new Error("Stripe is not configured.");
+  }
+
+  stripeClient ??= new Stripe(apiKey, { typescript: true });
+  return stripeClient;
+}
 
 export const STRIPE_PRICES = {
   CLOUD_LEDGER_ONE_TIME: (process.env.STRIPE_CLOUD_LEDGER_ONE_TIME_PRICE_ID || "").trim(),
@@ -27,6 +35,7 @@ export async function createProductionCheckoutSession(params: {
   metadata?: Record<string, string>;
   mode?: "payment" | "subscription";
 }) {
+  const stripe = getStripe();
   return await stripe.checkout.sessions.create({
     customer: params.customerId,
     customer_email: (!params.customerId && params.customerEmail) ? params.customerEmail : undefined,

@@ -1,4 +1,4 @@
-import { stripe } from '@/lib/stripe'
+import { getStripe } from '@/lib/stripe'
 import { NextRequest, NextResponse } from 'next/server'
 
 type PaymentType = 'deposit' | 'invoice' | 'custom'
@@ -25,6 +25,7 @@ export async function POST(request: NextRequest) {
   if (!process.env.STRIPE_SECRET_KEY) {
     return NextResponse.json({ error: 'Stripe is not configured.' }, { status: 500 })
   }
+  const stripe = getStripe()
 
   const formData = await request.formData()
   const type = String(formData.get('type') || 'custom') as PaymentType
