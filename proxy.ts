@@ -43,6 +43,10 @@ export async function proxy(req: NextRequest) {
         },
       });
     }
+
+    res.headers.set("X-RateLimit-Limit", "10");
+    res.headers.set("X-RateLimit-Remaining", remaining.toString());
+    res.headers.set("X-RateLimit-Reset", reset.toString());
   }
 
   // --- 2. AUTHENTICATION (Shared Supabase Identity) ---
