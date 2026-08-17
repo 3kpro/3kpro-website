@@ -8,17 +8,19 @@ import { Redis } from "@upstash/redis";
  * allocation across the portfolio.
  */
 
-if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+const redisUrl = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+
+if (!redisUrl || !redisToken) {
   console.warn("[RateLimit] Upstash environment variables missing. Rate limiting disabled.");
 }
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL || "",
-  token: process.env.UPSTASH_REDIS_REST_TOKEN || "",
-});
+const redis = redisUrl && redisToken
+  ? new Redis({ url: redisUrl, token: redisToken })
+  : null;
 
 // Create different limiters for different tiers
-export const ratelimit = {
+export const ratelimit = redis ? {
   // Anonymous / Public endpoints
   public: new Ratelimit({
     redis,
@@ -42,13 +44,13 @@ export const ratelimit = {
     analytics: true,
     prefix: "@3kpro/enterprise",
   }),
-};
+} : null;
 
 /**
  * Helper to get the rate limit for a specific user/IP
  */
 export async function checkRateLimit(identifier: string, tier: "public" | "user" | "enterprise" = "public") {
-  if (!process.env.UPSTASH_REDIS_REST_URL) return { success: true, remaining: 999, reset: 0 };
+  if (!ratelimit) return { success: true, remaining: 999, reset: 0 };
   
   const { success, remaining, reset } = await ratelimit[tier].limit(identifier);
   return { success, remaining, reset };
