@@ -76,7 +76,7 @@ const randallVariantPreviews = {
     sectionKicker: 'Variation 1',
     sectionHeadline: 'Book the diagnostic before the customer calls someone else.',
     sectionCopy:
-      'The page leads with speed, the $129 diagnostic, and a large call path so urgent customers can move from problem to appointment without reading a full brochure.',
+      'The page leads with speed, the $125.00 diagnostic, and a large call path so urgent customers can move from problem to appointment without reading a full brochure.',
     quoteFlowHeadline: 'Urgent issue, clear first step.',
     quoteFlowCopy:
       'Capture the vehicle, symptom, location, photos, and service window first. The repair scope only gets priced after The Last Stop Shop completes the diagnostic.',
@@ -233,7 +233,7 @@ export const sitePreviews: SitePreview[] = [
     categoryEyebrow: 'Tulsa-area mobile mechanic',
     conceptTitle: 'A branded mobile mechanic preview for turning calls into booked diagnostics.',
     conceptSubtitle:
-      'This preview shows how The Last Stop Shop LLC can present mobile diagnostics, driveway repair, parts transparency, and direct booking while keeping the business name and brand clear everywhere.',
+      'This preview shows how The Last Stop Shop LLC can present $125.00 AC diagnostics, mobile diagnostics, driveway repair, hydraulic system service, parts transparency, and direct booking while keeping the business name and brand clear everywhere.',
     observedOpportunity:
       'Mobile mechanic customers are usually in a hurry: the car is not starting, a warning light is on, or they need a trusted mechanic to come to them. A focused site should sell fast diagnosis first, then convert the repair into a clear parts-and-labor plan.',
     primaryCta: 'Book a diagnostic',
@@ -241,16 +241,16 @@ export const sitePreviews: SitePreview[] = [
     logoImage: '/sitepreview/the-last-stop-shop/logo-transparent.png',
     logoAlt: 'The Last Stop Shop LLC logo',
     headline: 'The Last Stop Shop LLC',
-    headlineAccent: 'diagnostics and repair that come to you',
-    primaryFix: '$129 diagnostic',
+    headlineAccent: '$125.00 AC diagnostics and repair that come to you',
+    primaryFix: '$125.00 AC diagnostic',
     proofStats: [
       {
-        value: '$129',
-        label: 'diagnostic first',
+        value: '$125.00',
+        label: 'AC diagnostic first',
       },
       {
-        value: 'Call/Text',
-        label: 'mobile-first booking',
+        value: 'Hydraulic',
+        label: 'systems diag and repair',
       },
       {
         value: 'Approve',
@@ -262,7 +262,7 @@ export const sitePreviews: SitePreview[] = [
     sectionKicker: 'Three directions to choose from',
     sectionHeadline: 'Same offer, different first impression.',
     sectionCopy:
-      'Each version keeps the brand visible in the header, call/text buttons, diagnostic request area, confirmation message, and lead flow while keeping the core offer clear: a $129 diagnostic first, parts priced separately, labor scoped clearly, easy call/text booking, photo upload, and follow-up reminders.',
+      'Each version keeps the brand visible in the header, call/text buttons, diagnostic request area, confirmation message, and lead flow while keeping the core offer clear: a $125.00 diagnostic first, parts priced separately, labor scoped clearly, easy call/text booking, photo upload, and follow-up reminders.',
     quoteFlowKicker: 'Recommended booking flow',
     quoteFlowHeadline: 'Start with the diagnostic, then price the repair clearly.',
     quoteFlowCopy:
@@ -274,8 +274,8 @@ export const sitePreviews: SitePreview[] = [
     heroImageAlt: 'Mechanic working on a vehicle outdoors',
     services: [
       {
-        title: '$129 diagnostic',
-        copy: 'Make the first step obvious: confirm the problem before anyone commits to parts or repair labor.',
+        title: '$125.00 diagnostic',
+        copy: 'Make the first step obvious: confirm AC, warning-light, no-start, overheating, or drivability problems before anyone commits to parts or repair labor.',
         icon: Gauge,
         image:
           'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&fm=jpg&q=72&w=1200',
@@ -283,7 +283,7 @@ export const sitePreviews: SitePreview[] = [
       },
       {
         title: 'Mobile repair booking',
-        copy: 'Let customers request driveway, home, or worksite service with a phone-first booking path.',
+        copy: 'Let customers request driveway, home, or worksite service for cars, trucks, work vehicles, small fleets, and equipment.',
         icon: Route,
         image:
           'https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&fm=jpg&q=72&w=1200',
@@ -291,7 +291,7 @@ export const sitePreviews: SitePreview[] = [
       },
       {
         title: 'Photo and code upload',
-        copy: 'Collect warning lights, VIN, part photos, noises, and issue notes before Randall arrives.',
+        copy: 'Collect AC symptoms, warning lights, VIN, part photos, hydraulic leaks, noises, and issue notes before Randall arrives.',
         icon: Camera,
         image:
           'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&fm=jpg&q=72&w=1200',
@@ -299,7 +299,7 @@ export const sitePreviews: SitePreview[] = [
       },
       {
         title: 'Parts plus labor approval',
-        copy: 'Separate customer-paid parts from approved labor so every repair feels fair and documented.',
+        copy: 'Separate customer-paid parts from approved labor so AC, hydraulic, and general mobile repairs feel fair and documented.',
         icon: ClipboardCheck,
         image:
           'https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&fm=jpg&q=72&w=1200',
@@ -312,7 +312,7 @@ export const sitePreviews: SitePreview[] = [
         subtitle: 'Fast, direct, and call-heavy for drivers who need help today.',
         bestFor: 'No-starts, warning lights, roadside-style urgency, and quick diagnostic bookings.',
         visualDirection: 'Bold black, high-contrast yellow, close-up engine imagery, large phone CTA.',
-        customerAction: 'Call or book the $129 diagnostic.',
+        customerAction: 'Call or book the $125.00 diagnostic.',
         image:
           'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&fm=jpg&q=72&w=1400',
         imageAlt: 'Close view of car engine and mechanic inspection',
@@ -344,7 +344,7 @@ export const sitePreviews: SitePreview[] = [
     gallery: [
       {
         title: 'Diagnostic-first offer',
-        copy: 'Lead with the $129 diagnostic so customers understand the first paid step before repair scope, parts, or labor are discussed.',
+        copy: 'Lead with the $125.00 diagnostic so customers understand the first paid step before repair scope, parts, or labor are discussed.',
         image:
           'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&fm=jpg&q=72&w=1400',
         imageAlt: 'Close view of car engine and mechanic inspection',
@@ -358,7 +358,9 @@ export const sitePreviews: SitePreview[] = [
       },
     ],
     trustPoints: [
-      'Show the $129 diagnostic clearly before talking about bigger repairs.',
+      'Show the $125.00 diagnostic clearly before talking about bigger repairs.',
+      'Make AC diagnostic and repair the front-door offer during hot weather.',
+      'Surface hydraulic system diagnostic and repair as a visible service line.',
       'Make call, text, and booking buttons visible on mobile without scrolling too far.',
       'Keep The Last Stop Shop LLC name and logo clear in the header, call/text path, request form, and confirmation message.',
       'Use real photos of Randall, vehicle, tools, and completed repairs as soon as available.',
@@ -367,7 +369,7 @@ export const sitePreviews: SitePreview[] = [
     ],
     conversionFlow: [
       'Customer lands from Google, Facebook, referral, or a texted preview link.',
-      'Hero makes mobile mechanic service and $129 diagnostic obvious immediately.',
+      'Hero makes mobile mechanic service and $125.00 diagnostic obvious immediately.',
       'Customer taps call, text, or book diagnostic.',
       'Form captures name, phone, vehicle, location, symptoms, photos, codes, urgency, and preferred service window.',
       'The Last Stop Shop sends diagnostic result with parts list, labor estimate, and approval step before repair starts.',
@@ -415,51 +417,67 @@ export function getSitePreview(slug: string) {
       slug,
       conceptTitle: 'Mobile diagnostics and repair across the Tulsa area.',
       conceptSubtitle:
-        'The Last Stop Shop LLC brings diagnostic checks, repair planning, and mobile mechanic service to your driveway, job site, or parking lot.',
+        'The Last Stop Shop LLC brings mobile diagnostics, repair planning, and mechanic service to your driveway, job site, or parking lot across the Tulsa area.',
       observedOpportunity:
-        'Start with a $129 diagnostic visit, explain what the vehicle is doing, and get a clear parts-and-labor repair path before work begins.',
+        'Start with a clear diagnostic visit, then review parts and labor before repair work begins. AC, no-starts, warning lights, leaks, overheating, and hydraulic system problems can all begin from the same mobile service request.',
+      primaryCta: 'Book $125.00 AC diagnostic',
       secondaryCta: 'View services',
-      headlineAccent: 'mobile diagnostics and repair',
+      headlineAccent: 'Mobile mechanic service in Tulsa',
+      primaryFix: '$125.00 AC diagnostic',
+      proofStats: [
+        {
+          value: 'Mobile',
+          label: 'driveway and job-site service',
+        },
+        {
+          value: 'Hydraulic',
+          label: 'system diagnostic and repair',
+        },
+        {
+          value: 'Approve',
+          label: 'parts and labor before repair',
+        },
+      ],
       sectionKicker: 'Mobile mechanic service',
       sectionHeadline: 'Diagnostics first. Repairs approved clearly.',
       sectionCopy:
-        'When a warning light, no-start, noise, leak, or drivability issue interrupts the day, The Last Stop Shop makes the first step simple: schedule the diagnostic, share the vehicle details, and approve the repair plan after the issue is confirmed.',
+        'The first step is simple: share what the vehicle or equipment is doing, schedule the diagnostic, and approve the repair plan after the issue is confirmed. The same mobile-first process covers AC trouble, warning lights, no-starts, noises, leaks, overheating, hydraulic system problems, and drivability issues.',
       quoteFlowKicker: 'Booking flow',
       quoteFlowHeadline: 'Tell us what the vehicle is doing.',
       quoteFlowCopy:
-        'Send the basics before the visit: vehicle, location, symptoms, photos, codes, urgency, and preferred service window. After the diagnostic, parts and labor are reviewed before repair work starts.',
+        'Send the basics before the visit: vehicle, location, symptoms, photos, codes, urgency, and preferred service window. Parts and labor are reviewed before repair work starts.',
       trustHeading: 'What to expect',
       listingHeading: 'Common requests',
       placeholderNote:
-        'Mobile diagnostics start at $129. Parts are priced separately, and repair labor is approved after the problem is confirmed.',
+        'Mobile diagnostics start at $125.00. Parts are priced separately, and repair labor is approved after the problem is confirmed.',
       variations: undefined,
       services: [
         {
           ...randallBase.services[0],
-          title: '$129 mobile diagnostic',
-          copy: 'Confirm the issue first so the repair plan starts with the actual problem, not a guess.',
+          title: '$125.00 AC diagnostic',
+          copy: 'Check weak cooling, warm vents, compressor issues, leaks, pressure concerns, blower problems, and electrical faults before parts are recommended.',
         },
         {
           ...randallBase.services[1],
           title: 'Driveway and job-site repair',
-          copy: 'Request mobile service at home, work, or a nearby parking location when the vehicle cannot easily get to a shop.',
+          copy: 'Request mobile service at home, work, or a nearby parking location for cars, trucks, work vehicles, small fleets, and equipment.',
         },
         {
           ...randallBase.services[2],
-          title: 'Photos, codes, and symptoms',
-          copy: 'Share warning lights, part photos, noises, leaks, VIN details, and issue notes before the visit.',
+          title: 'Hydraulic Systems Diagnostic and Repair',
+          copy: 'Visible support for hydraulic leaks, hoses, pumps, cylinders, lift issues, pressure problems, and equipment that needs on-site troubleshooting.',
         },
         {
           ...randallBase.services[3],
-          title: 'Parts and labor approval',
-          copy: 'Review the recommended parts and labor after diagnosis so the repair scope stays clear.',
+          title: 'General mobile mechanic work',
+          copy: 'No-starts, batteries, alternators, brakes, belts, hoses, leaks, overheating, tune-ups, suspension, sensors, codes, and small-engine service.',
         },
       ],
       gallery: [
         {
           ...randallBase.gallery[0],
           title: 'Start with the diagnostic',
-          copy: 'The first paid step is a $129 diagnostic visit. Once the issue is confirmed, The Last Stop Shop can explain the repair path and next available service window.',
+          copy: 'The first paid step confirms the issue before parts or labor are recommended. Once the problem is clear, The Last Stop Shop can explain the repair path and next available service window.',
         },
         {
           ...randallBase.gallery[1],
@@ -468,7 +486,10 @@ export function getSitePreview(slug: string) {
         },
       ],
       trustPoints: [
-        '$129 diagnostic-first service.',
+        '$125.00 diagnostic-first service.',
+        'AC repair and diagnostic for hot-weather problems.',
+        'Hydraulic systems diagnostic and repair.',
+        'Certified small-engine service for mowers, outdoor equipment, and other small-engine jobs.',
         'Mobile mechanic support across the Tulsa area.',
         'Call, text, or request a service window from a phone.',
         'Share photos, warning lights, codes, and symptoms before the visit.',
@@ -487,10 +508,16 @@ export function getSitePreview(slug: string) {
         'Check-engine lights and warning indicators.',
         'Battery, charging, and electrical issues.',
         'Leaks, noises, overheating, and drivability concerns.',
+        'AC not cooling, weak airflow, and hot-weather comfort issues.',
+        'Hydraulic leaks, pumps, hoses, cylinders, and lift issues.',
         'Driveway, home, worksite, and parking-lot service requests.',
-        'Small fleet and work-truck diagnostic requests.',
+        'Small fleet, work-truck, mower, and small-engine service requests.',
       ],
       sources: [
+        {
+          label: 'Google reviews and Maps listing',
+          href: 'https://maps.app.goo.gl/oJJYcUw7r3u4wfae9',
+        },
         {
           label: 'Book diagnostic',
           href: '#quote-flow',

@@ -6,12 +6,16 @@ import { z } from 'zod'
 const CONTACT_FORM_FROM =
   process.env.CONTACT_FORM_FROM || '3KPRO Contact <james@3kpro.services>'
 const CONTACT_FORM_TO = process.env.CONTACT_FORM_TO || 'james@3kpro.services'
+const CONTACT_FORM_RECIPIENTS = {
+  tlss: 'randall@thelaststopshop.com',
+} as const
 
 const schema = z.object({
   name: z.string().trim().min(1, 'Name is required'),
   email: z.string().trim().email('Invalid email address'),
   company: z.string().trim().optional(),
   message: z.string().trim().min(1, 'Message is required'),
+  recipient: z.enum(['tlss']).optional(),
 })
 
 export async function submitContactForm(prevState: any, formData: FormData) {
@@ -20,6 +24,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     email: formData.get('email'),
     company: formData.get('company'),
     message: formData.get('message'),
+    recipient: formData.get('recipient') || undefined,
   })
 
   if (!validatedFields.success) {
@@ -30,7 +35,9 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     }
   }
 
-  const { name, email, company, message } = validatedFields.data
+  const { name, email, company, message, recipient } = validatedFields.data
+  const to = recipient ? CONTACT_FORM_RECIPIENTS[recipient] : CONTACT_FORM_TO
+  const subjectPrefix = recipient === 'tlss' ? 'The Last Stop Shop service request' : 'New Contact Form Submission'
 
   try {
     if (!process.env.RESEND_API_KEY) {
@@ -45,8 +52,8 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     
     const { error } = await resend.emails.send({
       from: CONTACT_FORM_FROM,
-      to: CONTACT_FORM_TO,
-      subject: `New Contact Form Submission from ${name}`,
+      to,
+      subject: `${subjectPrefix} from ${name}`,
       replyTo: email,
       text: `
 Name: ${name}

@@ -14,6 +14,8 @@ import { isAllowedAdminEmail } from "@/lib/admin/access";
 export async function proxy(req: NextRequest) {
   const res = NextResponse.next();
   const url = req.nextUrl;
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   // --- 1. RATE LIMITING (API Routes Only) ---
   if (url.pathname.startsWith("/api")) {
@@ -33,9 +35,20 @@ export async function proxy(req: NextRequest) {
   }
 
   // --- 2. AUTHENTICATION (Shared Supabase Identity) ---
+  if (!supabaseUrl || !supabaseAnonKey) {
+    if (url.pathname.startsWith("/admin") && url.pathname !== "/admin/login") {
+      const loginUrl = req.nextUrl.clone();
+      loginUrl.pathname = "/admin/login";
+      loginUrl.searchParams.set("next", url.pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    return res;
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         get(name: string) {

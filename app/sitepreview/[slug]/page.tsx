@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowRight, BadgeCheck, ExternalLink, FileText, Gauge, MapPin, PhoneCall, SearchCheck, ShieldCheck, Wrench } from 'lucide-react'
 import { getSitePreview, sitePreviewExtraSlugs, sitePreviews } from '@/lib/sitePreviews'
+import { LastStopShopRequestForm } from './LastStopShopRequestForm'
 import { ScrollReveal } from './ScrollReveal'
 
 type PageProps = {
@@ -102,7 +103,7 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
   const heroOverlay = isMechanicPreview
     ? `radial-gradient(circle at 74% 35%, rgba(239, 13, 13, 0.34), transparent 30%), linear-gradient(90deg, rgba(3,4,6,0.96), rgba(3,4,6,0.82) 48%, rgba(3,4,6,0.42)), linear-gradient(0deg, rgba(3,4,6,0.96), transparent 52%), url(${preview.heroImage})`
     : `linear-gradient(90deg, rgba(8,21,10,0.88), rgba(8,21,10,0.52) 45%, rgba(8,21,10,0.16)), linear-gradient(0deg, rgba(8,21,10,0.86), transparent 42%), url(${preview.heroImage})`
-  const accentText = isMechanicPreview ? 'text-[#ff2a2a]' : 'text-[#d8f7b2]'
+  const accentText = isMechanicPreview ? 'text-white/86' : 'text-[#d8f7b2]'
   const primaryButton = isMechanicPreview
     ? 'bg-[#e50914] text-white hover:bg-[#ff2a2a]'
     : 'bg-[#f2c14e] text-[#15200f] hover:bg-[#ffd666]'
@@ -122,6 +123,43 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
         label: isFinalDraft ? 'service focus' : 'private concept preview',
       },
     ]
+  const lastStopShopTikTokUrl = 'https://www.tiktok.com/@tlss18?_r=1&_t=ZP-98ppizbieNT'
+  const lastStopShopPayUrl = '/sitepreview/the-last-stop-shop/pay'
+  const lastStopShopGoogleUrl = 'https://maps.app.goo.gl/oJJYcUw7r3u4wfae9'
+  const mobileMechanicServiceDetails = [
+    {
+      title: 'AC and cooling',
+      items: [
+        'AC diagnostic and repair planning.',
+        'No cold air, weak airflow, compressor concerns, leaks, pressure checks, and electrical checks.',
+        'Overheating, coolant leaks, fans, thermostats, hoses, and radiator concerns.',
+      ],
+    },
+    {
+      title: 'Starting, charging, and electrical',
+      items: [
+        'No-start and hard-start troubleshooting.',
+        'Battery, alternator, starter, parasitic draw, fuse, relay, and wiring checks.',
+        'Check-engine lights, warning indicators, scan codes, and sensor issues.',
+      ],
+    },
+    {
+      title: 'Repairs and maintenance',
+      items: [
+        'Brakes, belts, hoses, tune-ups, fluid leaks, drivability, and road-readiness checks.',
+        'Work trucks, small fleets, driveway repairs, and job-site service calls.',
+        'Parts and labor reviewed before repair work starts.',
+      ],
+    },
+    {
+      title: 'Hydraulic Systems Diagnostic and Repair',
+      items: [
+        'Hydraulic system diagnostic and repair.',
+        'Hoses, cylinders, pumps, lift issues, pressure problems, and fluid leaks.',
+        'Mowers, generators, outdoor equipment, and small-engine service.',
+      ],
+    },
+  ]
 
   return (
     <div className={`min-h-screen overflow-x-hidden ${isMechanicPreview ? 'bg-[#f2f0ec] text-[#161719]' : 'bg-[#f5f1e8] text-[#182417]'}`} style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: 0 }}>
@@ -146,7 +184,10 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                   Services
                 </a>
                 <a href="#quote-flow" className="transition hover:text-white">
-                  Book diagnostic
+                  Book service
+                </a>
+                <a href={lastStopShopPayUrl} className="hidden transition hover:text-white sm:inline">
+                  Pay
                 </a>
               </>
             ) : (
@@ -198,9 +239,9 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                   <span className="whitespace-nowrap">{categoryEyebrow}</span>
                 </div>
               </div>
-              <h1 className="mt-7 max-w-4xl text-5xl font-black leading-[0.9] md:text-7xl lg:text-8xl" style={{ letterSpacing: 0 }}>
+              <h1 className="mt-7 max-w-4xl text-5xl font-black leading-[1.02] md:text-7xl lg:text-[5.5rem]" style={{ letterSpacing: 0 }}>
                 {headline}
-                <span className={`block ${accentText}`}>{headlineAccent}</span>
+                <span className={`mt-3 block text-4xl leading-[1.08] md:text-5xl lg:text-6xl ${accentText}`}>{headlineAccent}</span>
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/84">{preview.conceptSubtitle}</p>
 
@@ -218,6 +259,14 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                 >
                   {preview.secondaryCta}
                 </a>
+                {isFinalDraft ? (
+                  <Link
+                    href={lastStopShopPayUrl}
+                    className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/30 bg-white/10 px-7 text-sm font-semibold text-white transition hover:bg-white/18"
+                  >
+                    Pay diagnostic
+                  </Link>
+                ) : null}
               </div>
               {isMechanicPreview ? (
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -229,10 +278,27 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                     <Gauge size={14} aria-hidden="true" />
                     Diagnostic before quote
                   </span>
+                  {isFinalDraft ? (
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/22 bg-white/12 px-4 py-2 text-xs font-black uppercase text-white/86 backdrop-blur-md">
+                      <Wrench size={14} aria-hidden="true" />
+                      Hydraulic systems
+                    </span>
+                  ) : null}
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/22 bg-white/12 px-4 py-2 text-xs font-black uppercase text-white/86 backdrop-blur-md">
                     <Wrench size={14} aria-hidden="true" />
                     Repair approval flow
                   </span>
+                  {isFinalDraft ? (
+                    <a
+                      href={lastStopShopTikTokUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/22 bg-white/12 px-4 py-2 text-xs font-black uppercase text-white/86 backdrop-blur-md transition hover:bg-white/18"
+                    >
+                      <ExternalLink size={14} aria-hidden="true" />
+                      TikTok @tlss18
+                    </a>
+                  ) : null}
                 </div>
               ) : null}
             </div>
@@ -260,8 +326,8 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                   <div className="mt-2 text-lg font-black">{preview.location}</div>
                 </div>
                 <div className={`${isMechanicPreview ? 'bg-[#e50914] text-white' : 'bg-white shadow-[0_12px_34px_rgba(24,36,23,0.09)]'} rounded-2xl p-4`}>
-                  <div className={`text-xs font-black uppercase ${isMechanicPreview ? 'text-white/68' : 'text-[#7a846f]'}`}>Primary fix</div>
-                  <div className="mt-2 text-lg font-black">{primaryFix}</div>
+                  <div className={`text-xs font-black uppercase ${isMechanicPreview ? 'text-white/68' : 'text-[#7a846f]'}`}>{isFinalDraft ? 'First step' : 'Primary fix'}</div>
+                  <div className="mt-2 text-lg font-black">{isFinalDraft ? 'Diagnostic visit' : primaryFix}</div>
                 </div>
               </div>
               <p className={`mt-4 rounded-2xl border p-4 text-xs leading-6 ${isMechanicPreview ? 'border-white/12 bg-white/[0.06] text-white/62' : 'border-[#d7ccb7] bg-[#fffaf0] text-[#6b6251]'}`}>
@@ -383,6 +449,73 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
           </div>
         </section>
 
+        {isFinalDraft ? (
+          <section className="bg-[#f2f0ec] px-5 pb-16 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl">
+              <div className="max-w-3xl">
+                <div className="text-xs font-black uppercase text-[#e50914]">More mobile mechanic services</div>
+                <h2 className="mt-5 text-4xl font-black leading-tight text-[#101113] md:text-6xl">
+                  The practical work customers call a mobile mechanic for.
+                </h2>
+              </div>
+              <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                {mobileMechanicServiceDetails.map((service, index) => (
+                  <article
+                    key={service.title}
+                    className="scroll-reveal rounded-[26px] bg-white p-6 shadow-[0_18px_60px_rgba(35,48,27,0.12)]"
+                    style={{ '--reveal-delay': `${index * 80}ms` } as CSSProperties}
+                  >
+                    <h3 className="text-2xl font-black leading-tight text-[#172315]">{service.title}</h3>
+                    <ul className="mt-5 space-y-3 text-sm leading-6 text-[#56614c]">
+                      {service.items.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <BadgeCheck className="mt-0.5 shrink-0 text-[#e50914]" size={16} aria-hidden="true" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        {isFinalDraft ? (
+          <section className="bg-[#ebe7e1] px-5 py-16 sm:px-6 lg:px-8">
+            <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_420px] lg:items-center">
+              <div>
+                <div className="text-xs font-black uppercase text-[#e50914]">Google reviews and Maps listing</div>
+                <h2 className="mt-5 max-w-3xl text-4xl font-black leading-tight text-[#101113] md:text-6xl">
+                  See The Last Stop Shop on Google.
+                </h2>
+                <p className="mt-5 max-w-2xl text-base leading-8 text-[#56614c]">
+                  Open Randall&apos;s Google Business Profile to check current reviews, directions, business details, and the live Maps listing.
+                </p>
+              </div>
+              <a
+                href={lastStopShopGoogleUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="scroll-reveal rounded-[26px] border border-[#e50914]/34 bg-[#07080a] p-7 text-white shadow-[0_22px_70px_rgba(0,0,0,0.2)] transition hover:-translate-y-0.5 hover:border-[#ff2a2a]/70"
+              >
+                <div className="flex items-center gap-3 text-xs font-black uppercase text-[#ff2a2a]">
+                  <MapPin size={16} aria-hidden="true" />
+                  Google Maps business listing
+                </div>
+                <strong className="mt-5 block text-3xl font-black leading-tight">The Last Stop Shop LLC</strong>
+                <span className="mt-3 block text-sm font-bold leading-6 text-white/68">
+                  View reviews, directions, listing details, and the current Google Business Profile.
+                </span>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-black text-[#ff2a2a]">
+                  Open Google listing
+                  <ExternalLink size={16} aria-hidden="true" />
+                </span>
+              </a>
+            </div>
+          </section>
+        ) : null}
+
         <section id="quote-flow" className={`relative ${isMechanicPreview ? 'bg-[#08090b]' : 'bg-[#20351b]'} px-5 py-16 text-white sm:px-6 lg:px-8`}>
           <div className={`pointer-events-none absolute inset-0 ${isMechanicPreview ? 'bg-[linear-gradient(90deg,rgba(229,9,20,0.12)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.055)_1px,transparent_1px)]' : 'bg-grid-dark'} bg-[size:56px_56px] opacity-70`} />
           <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
@@ -398,6 +531,7 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
             </div>
 
             <div className="space-y-3">
+              {isFinalDraft ? <LastStopShopRequestForm /> : null}
               {preview.conversionFlow.map((item, index) => (
                 <div
                   key={item}
@@ -479,12 +613,20 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-white/64">{preview.preparedFor}</p>
               </div>
               {isFinalDraft ? (
-                <a
-                  href="#quote-flow"
-                  className={`inline-flex min-h-12 w-fit items-center justify-center rounded-full px-6 text-sm font-black transition ${primaryButton}`}
-                >
-                  Book a diagnostic
-                </a>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="#quote-flow"
+                    className={`inline-flex min-h-12 w-fit items-center justify-center rounded-full px-6 text-sm font-black transition ${primaryButton}`}
+                  >
+                    Book $125.00 AC diagnostic
+                  </a>
+                  <Link
+                    href={lastStopShopPayUrl}
+                    className="inline-flex min-h-12 w-fit items-center justify-center rounded-full border border-white/18 px-6 text-sm font-semibold text-white/86 transition hover:bg-white/10"
+                  >
+                    Pay upfront
+                  </Link>
+                </div>
               ) : (
                 <Link
                   href="/sitepreview"
