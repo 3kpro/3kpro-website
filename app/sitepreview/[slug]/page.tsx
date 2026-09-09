@@ -245,6 +245,25 @@ export default async function ProspectSitePreviewPage({ params }: PageProps) {
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/84">{preview.conceptSubtitle}</p>
 
+              {isFinalDraft ? (
+                <div className="mt-6 max-w-2xl rounded-2xl border border-[#e50914]/42 bg-[#090a0c]/82 p-4 shadow-[0_18px_45px_rgba(0,0,0,0.24)] backdrop-blur-md">
+                  <div className="flex items-center gap-3 text-xs font-black uppercase text-[#ff4a4a]">
+                    <Gauge size={16} aria-hidden="true" />
+                    Mobile Diagnostic service
+                  </div>
+                  <p className="mt-3 text-sm font-bold leading-6 text-white/84">
+                    Randall can come to your driveway, job site, or parking location to check AC trouble, warning lights, no-starts, overheating, hydraulic issues, and drivability problems before repair parts or labor are approved.
+                  </p>
+                  <a
+                    href="#quote-flow"
+                    className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#e50914] px-5 text-sm font-black text-white transition hover:bg-[#ff2a2a]"
+                  >
+                    Book mobile diagnostic
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </a>
+                </div>
+              ) : null}
+
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#quote-flow"
