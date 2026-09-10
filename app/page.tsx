@@ -58,15 +58,6 @@ const services = [
 
 const products = [
   {
-    mono: 'X',
-    name: 'Xelora',
-    copy: 'Predictive content intelligence for creators and operators who need stronger launch momentum.',
-    href: 'https://getxelora.com',
-    label: 'Live platform',
-    go: 'Open Xelora ↗',
-    external: true,
-  },
-  {
     mono: 'C',
     name: 'Cloud Ledger',
     copy: 'Self-service Azure waste audit for finding idle resources, cost leaks, and practical savings.',
