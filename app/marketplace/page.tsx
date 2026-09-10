@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function MarketplacePage() {
   const items = marketplaceItems.filter(
-    (item) => item.slug === 'xelora' || item.slug === 'fairmerge' || item.slug === 'cloud-ledger'
+    (item) => item.slug === 'fairmerge' || item.slug === 'cloud-ledger'
   )
 
   return (
