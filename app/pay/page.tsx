@@ -6,6 +6,7 @@ const pageUrl = 'https://3kpro.services/pay'
 const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=14&data=${encodeURIComponent(pageUrl)}`
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: 'Quick Pay | 3K Pro Services',
   description: 'Secure quick-pay page for 3K Pro Services deposits, invoice balances, and local consulting work.',
   alternates: {
@@ -26,6 +27,13 @@ export const metadata: Metadata = {
 }
 
 const paymentOptions = [
+  {
+    label: 'Local Estimate Capture Sprint',
+    detail: '$1,500 total. Pay $750 to start only after James confirms the written scope. Remaining $750 due before launch unless agreed otherwise.',
+    type: 'sprint',
+    amountLabel: '$750 fixed',
+    button: 'Pay Sprint Deposit',
+  },
   {
     label: 'Project Deposit',
     detail: 'Use after a scope, timeline, and price are confirmed.',
@@ -114,7 +122,7 @@ export default function PayPage() {
                           />
                         </div>
                       ) : (
-                        <div className="fixed">$500.00</div>
+                        <div className="fixed">{option.type === 'sprint' ? '$750.00' : '$500.00'}</div>
                       )}
                     </label>
                     <button type="submit" className="btn">{option.button}</button>

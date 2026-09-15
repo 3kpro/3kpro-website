@@ -6,6 +6,7 @@ import SitePreviewForm from '@/components/SitePreviewForm'
 const pageUrl = 'https://3kpro.services/sitepreview'
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: 'Website Preview Request | 3K Pro Services',
   description:
     'Request a fast website preview from 3K Pro Services. Built for local businesses that need a clearer web presence, quote path, and launch process.',
@@ -113,7 +114,7 @@ export default function SitePreviewPage() {
                   href="#preview-request"
                   className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 text-sm font-semibold text-black transition hover:bg-white/88"
                 >
-                  Start preview request
+                  Request a custom-site preview
                   <ArrowRight size={17} aria-hidden="true" />
                 </a>
                 <Link
@@ -132,7 +133,7 @@ export default function SitePreviewPage() {
                   <div className="text-xs font-semibold uppercase text-white/40">Starting lane</div>
                   <div className="mt-6 text-3xl font-semibold">$500</div>
                   <p className="mt-4 text-sm leading-6 text-white/58">
-                    Typical deposit path after preview approval. Final scope depends on build size.
+                    Legacy/custom-project deposit only when agreed in writing. The Local Estimate Capture Sprint is $1,500 total with $750 to start.
                   </p>
                 </div>
                 <div className="rounded-[22px] border border-white/10 bg-[#111113] p-5">

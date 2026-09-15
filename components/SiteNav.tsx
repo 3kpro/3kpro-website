@@ -24,12 +24,12 @@ export default function SiteNav({ active }: { active?: NavSection }) {
         </Link>
         <div className="nav-links">
           <Link href="/#services" className={link('services')}>Services</Link>
-          <Link href="/marketplace" className={link('marketplace')}>Marketplace</Link>
+          <Link href="/services/local-estimate-capture">Estimate Capture Sprint</Link>
           <Link href="/pay">Quick Pay</Link>
           <Link href="/#about" className={link('about')}>About</Link>
         </div>
         <div className="nav-clock" />
-        <Link href="/#contact" className="btn nav-cta">Initiate</Link>
+        <Link href="/services/local-estimate-capture#assessment" className="btn nav-cta">Request assessment</Link>
       </nav>
     </>
   )

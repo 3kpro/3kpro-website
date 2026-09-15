@@ -5,6 +5,7 @@ import SiteNav from '@/components/SiteNav'
 import SiteFooter from '@/components/SiteFooter'
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://3kpro.services/marketplace" },
   title: 'Marketplace | 3KPRO',
   description: 'Discover premium apps, micro-SaaS, and workflows built by 3KPRO.',
 }

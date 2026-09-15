@@ -1,16 +1,18 @@
 import { getStripe } from '@/lib/stripe'
 import { NextRequest, NextResponse } from 'next/server'
 
-type PaymentType = 'deposit' | 'invoice' | 'custom'
+type PaymentType = 'deposit' | 'sprint' | 'invoice' | 'custom'
 
 const paymentLabels: Record<PaymentType, string> = {
   deposit: '3K Pro Services Project Deposit',
+  sprint: 'Local Estimate Capture Sprint Deposit',
   invoice: '3K Pro Services Invoice Balance',
   custom: '3K Pro Services Custom Service Payment',
 }
 
 const minimumAmount: Record<PaymentType, number> = {
   deposit: 500,
+  sprint: 750,
   invoice: 100,
   custom: 50,
 }
@@ -30,12 +32,12 @@ export async function POST(request: NextRequest) {
   const formData = await request.formData()
   const type = String(formData.get('type') || 'custom') as PaymentType
 
-  if (!['deposit', 'invoice', 'custom'].includes(type)) {
+  if (!['deposit', 'sprint', 'invoice', 'custom'].includes(type)) {
     return NextResponse.json({ error: 'Invalid payment type.' }, { status: 400 })
   }
 
-  const amount = type === 'deposit'
-    ? 500
+  const amount = type === 'deposit' || type === 'sprint'
+    ? minimumAmount[type]
     : parseAmount(formData.get('amount'), minimumAmount[type])
 
   if (amount < minimumAmount[type]) {

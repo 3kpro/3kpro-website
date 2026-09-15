@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import ServiceDetailPage from '../_components/ServiceDetailPage'
 
 const pageUrl = 'https://3kpro.services/services/website-systems'
@@ -28,6 +29,10 @@ export const metadata: Metadata = {
 
 export default function WebsiteSystemsPage() {
   return (
+    <>
+    <div style={{background:'#15120c',color:'#fff',padding:'1rem',textAlign:'center'}}>
+      Local Estimate Capture Sprint: $1,500 total, $750 to start. <Link href="/services/local-estimate-capture">See scope and request an assessment →</Link>
+    </div>
     <ServiceDetailPage
       eyebrow="Website systems"
       title="Website Systems"
@@ -78,5 +83,6 @@ export default function WebsiteSystemsPage() {
         },
       ]}
     />
+    </>
   )
 }

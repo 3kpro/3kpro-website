@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://3kpro.services/cloud-ledger" },
   title: "Cloud Ledger - Azure Asset & Waste Audit",
   description: "Professional Azure Asset & Waste Audit. See everything. Pay for nothing you don’t use. Powered by 3K Pro Services.",
   openGraph: {

@@ -3,15 +3,19 @@
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { submitContactForm } from '@/app/actions'
+import { recordLeadEvent } from './LeadEvents'
 
 type FormData = {
   name: string
   email: string
   company: string
   message: string
+  phone: string
+  website: string
+  serviceArea: string
 }
 
-export default function ContactForm() {
+export default function ContactForm({ assessment = false }: { assessment?: boolean }) {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -25,12 +29,15 @@ export default function ContactForm() {
       formData.append('name', data.name)
       formData.append('email', data.email)
       formData.append('company', data.company || '')
-      formData.append('message', data.message)
+      formData.append('message', assessment
+        ? `Local Estimate Capture assessment\nPhone: ${data.phone}\nWebsite: ${data.website || 'None supplied'}\nService area: ${data.serviceArea}\nInquiry problem: ${data.message}`
+        : data.message)
 
       const result = await submitContactForm(null, formData)
 
       if (result.success) {
         setSubmitStatus('success')
+        recordLeadEvent('generate_lead', assessment ? 'estimate_assessment' : 'contact')
         reset()
         // Reset success message after 5 seconds
         setTimeout(() => setSubmitStatus('idle'), 5000)
@@ -52,7 +59,7 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
         <div>
           <label htmlFor="name" className="block text-[10px] font-bold uppercase tracking-[0.25em] text-black mb-3">
-            Entity Name / Representative *
+            Your name *
           </label>
           <input
             type="text"
@@ -68,7 +75,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="email" className="block text-[10px] font-bold uppercase tracking-[0.25em] text-black mb-3">
-            Communication Channel *
+            Email *
           </label>
           <input
             type="email"
@@ -90,12 +97,12 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="company" className="block text-[10px] font-bold uppercase tracking-[0.25em] text-black mb-3">
-            Organization (Optional)
+            {assessment ? 'Business name *' : 'Business name (optional)'}
           </label>
           <input
             type="text"
             id="company"
-            {...register('company')}
+            {...register('company', { required: assessment ? 'Business name is required' : false })}
             className={inputClasses}
             placeholder="LEGAL ENTITY NAME"
           />
@@ -103,26 +110,39 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="message" className="block text-[10px] font-bold uppercase tracking-[0.25em] text-black mb-3">
-            What can we bring to life? *
+            {assessment ? 'What service do you offer, and where do inquiries get stuck? *' : 'How can we help? *'}
           </label>
           <textarea
             id="message"
             rows={5}
             {...register('message', { required: 'Parameters required' })}
             className={`${inputClasses} resize-none ${errors.message ? 'border-red-500' : 'border-black'}`}
-            placeholder="DESCRIBE THE SYSTEM PARAMETERS OR YOUR VISION..."
+            placeholder="Tell us about your business and what you need help with."
           />
           {errors.message && (
             <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-red-500">{errors.message.message}</p>
           )}
         </div>
 
+        {assessment && <>
+          {(['phone', 'website', 'serviceArea'] as const).map(field => (
+            <div key={field}>
+              <label htmlFor={field} className="block text-sm text-black mb-3">
+                {field === 'phone' ? 'Phone *' : field === 'website' ? 'Current website (optional)' : 'Service area *'}
+              </label>
+              <input id={field} type={field === 'phone' ? 'tel' : 'text'} className={inputClasses}
+                {...register(field, { required: field !== 'website' ? 'Please complete this field' : false })} />
+              {errors[field] && <p className="text-red-500 text-sm">{errors[field]?.message}</p>}
+            </div>
+          ))}
+          {errors.company && <p className="text-red-500 text-sm">{errors.company.message}</p>}
+        </>}
         <button
           type="submit"
           disabled={isSubmitting}
           className="w-full py-6 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-[0.3em] text-xs disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? 'PROCESSING...' : 'INITIALIZE SUBMISSION'}
+          {isSubmitting ? 'Sending...' : assessment ? 'Request an assessment' : 'Send message'}
         </button>
       </form>
 

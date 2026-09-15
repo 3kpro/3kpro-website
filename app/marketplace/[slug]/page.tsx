@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: `${product.name} | Marketplace | 3KPRO`,
+    alternates: { canonical: `https://3kpro.services/marketplace/${product.slug}` },
     description: product.description,
     openGraph: {
       title: `${product.name} - ${product.tagline}`,

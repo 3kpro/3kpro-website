@@ -28,10 +28,10 @@ const BOOT: ReadonlyArray<readonly [string, string]> = [
 const services = [
   {
     num: 'SYS-01 / WEB',
-    title: 'Website Systems',
+    title: 'Local Estimate Capture',
     copy: 'Premium business sites, landing pages, local SEO foundations, conversion paths, and handoff docs.',
     points: ['Positioning', 'Responsive build', 'Launch handoff'],
-    href: '/services/website-systems',
+    href: '/services/local-estimate-capture',
   },
   {
     num: 'SYS-02 / AUTO',
@@ -58,22 +58,18 @@ const services = [
 
 const products = [
   {
-    mono: 'C',
-    name: 'Cloud Ledger',
-    copy: 'Self-service Azure waste audit for finding idle resources, cost leaks, and practical savings.',
-    href: '/cloud-ledger',
-    label: 'Available',
-    go: 'Run an audit ↗',
-    external: false,
-  },
-  {
     mono: 'M',
     name: 'Marketplace',
-    copy: 'A growing catalog of software assets, audits, and operating tools from the 3KPRO ecosystem.',
+    copy: 'The home for 3KPRO software products, audits, and operating tools.',
     href: '/marketplace',
     label: 'Explore',
     go: 'Browse catalog ↗',
     external: false,
+    featuredProduct: {
+      name: 'Cloud Ledger',
+      status: 'Available',
+      copy: 'Azure waste audit for idle resources, cost leaks, and practical savings.',
+    },
   },
 ]
 
@@ -192,13 +188,13 @@ function ProjectDrawer({ open, onClose }: { open: boolean; onClose: () => void }
             </button>
             <div className="op-drawer-kicker">PROJECT INTAKE / TULSA CONTROL</div>
             <h2 className="op-drawer-title">
-              Initiate<span> a Project</span>
+              Request<span> an assessment</span>
             </h2>
             <p className="op-drawer-copy">
-              Describe the system you need. Response target: 24 hours, direct from the operator.
+              Tell James about your business and where inquiries get stuck. Receive a fit check and written scope before deciding on paid work. Response target: one business day.
             </p>
             <div className="op-drawer-form">
-              <ContactForm />
+              <ContactForm assessment />
             </div>
           </motion.aside>
         </>
@@ -501,17 +497,15 @@ export default function Home() {
       <header className="hero" id="top">
         <div className="hero-status stagger"><span className="led" />All systems operational — accepting new projects</div>
         <h1 className="h1 stagger d1">
-          Your business.<br />
-          <span className="out">Running like</span><br />
-          <span className="amb">an operating system.</span>
+          Turn local searches<br /><span className="amb">into estimate requests.</span>
         </h1>
         <div className="hero-sub stagger d2">
           <span className="tick">&gt;_</span>
-          <p>Websites, automation, and AI workspaces engineered in Tulsa with precision and restraint. Fewer moving parts. Clear documentation. A system your business actually runs on.</p>
+          <p>3KPRO builds websites and inquiry follow-up systems for Tulsa and Broken Arrow service businesses. Clear services, easy contact, and a handoff you can manage.</p>
         </div>
         <div className="hero-ctas stagger d3">
-          <button type="button" className="btn" onClick={() => setDrawerOpen(true)}>Start a Project</button>
-          <a className="btn ghost" href="#services">View Systems</a>
+          <button type="button" className="btn" onClick={() => setDrawerOpen(true)}>Request an assessment</button>
+          <a className="btn ghost" href="tel:+19188168832">Call 918-816-8832</a>
         </div>
         <div className="rack stagger d4">
           <div className="mod"><div className="k">Operating since</div><div className="v"><Count end={2010} /></div><div className="s">● STABLE</div></div>
@@ -574,12 +568,42 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="pricing" style={{ background: 'var(--panel)' }}>
+        <div className="wrap">
+          <h2 className="h2">Local Estimate Capture Sprint</h2>
+          <div className="price feat">
+            <div className="amt">$1,500<small> total</small></div>
+            <p>$750 to start after written scope approval. Remaining $750 before launch unless agreed otherwise.</p>
+            <p>A focused service page or site repair, mobile call and inquiry paths, local SEO foundations, measurement, and owner handoff. No lead or ranking guarantees.</p>
+            <Link className="btn" href="/services/local-estimate-capture">See the sprint scope</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CTA ===== */}
+      <section className="cta" id="contact">
+        <div className="wrap rev">
+          <span className="tagchip">04 / Contact</span>
+          <h2 className="h2">Ready to put your business <span className="amb">on rails?</span></h2>
+          <p className="lead">One conversation. A narrow blueprint. A working first version — fast.</p>
+          <div className="hero-ctas">
+            <button type="button" className="btn" onClick={() => setDrawerOpen(true)}>Request an assessment</button>
+            <a className="btn ghost" href="tel:+19188168832">Call 918-816-8832</a>
+          </div>
+          <div className="contact-line">
+            <a href="mailto:james@3kpro.services">james@3kpro.services</a>
+            <a href="tel:+19188168832">918-816-8832</a>
+            <span style={{ color: 'var(--faint)' }}>Tulsa, Oklahoma / Remote capable</span>
+          </div>
+        </div>
+      </section>
+
       {/* ===== PRODUCTS ===== */}
       <section id="products">
         <div className="wrap">
           <div className="sec-head rev">
-            <span className="tagchip">02 / Product ecosystem</span>
-            <h2 className="h2">Useful tools. <span className="out">Not shelfware.</span></h2>
+            <span className="tagchip">02 / Marketplace</span>
+            <h2 className="h2">Software products. <span className="out">Built to be useful.</span></h2>
           </div>
           <div className="prod-grid rev">
             {products.map((p) => (
@@ -594,58 +618,20 @@ export default function Home() {
                 <div className="body">
                   <h3>{p.name}</h3>
                   <p>{p.copy}</p>
+                  {p.featuredProduct && (
+                    <div
+                      className="mt-5 border-t border-[rgba(255,178,30,0.3)] pt-4"
+                      aria-label={`Available in Marketplace: ${p.featuredProduct.name}`}
+                    >
+                      <span className="block font-mono text-[0.58rem] uppercase tracking-[0.18em] text-[#ffb21e]">Available now</span>
+                      <strong className="mt-1 block text-white">{p.featuredProduct.name}</strong>
+                      <span className="mt-1 block text-sm text-[#aaa]">{p.featuredProduct.copy}</span>
+                    </div>
+                  )}
                   <span className="go">{p.go}</span>
                 </div>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== PRICING ===== */}
-      <section id="pricing" style={{ background: 'var(--panel)' }}>
-        <div className="wrap">
-          <div className="sec-head rev">
-            <span className="tagchip">03 / Entry points</span>
-            <h2 className="h2">Clear ways <span className="out">to start.</span></h2>
-          </div>
-          <div className="price-grid rev">
-            <div className="price feat">
-              <div className="lbl">Website rebuild</div>
-              <div className="amt">$899<small>+</small></div>
-              <p>A focused business site with launch basics — positioning, build, and handoff.</p>
-              <Link className="btn" href="/sitepreview">Request free preview</Link>
-            </div>
-            <div className="price">
-              <div className="lbl">Automation sprint</div>
-              <div className="amt">SCOPED</div>
-              <p>One workflow mapped, built, and handed over — documented so it survives you.</p>
-              <button type="button" className="btn ghost" onClick={() => setDrawerOpen(true)}>Scope my workflow</button>
-            </div>
-            <div className="price">
-              <div className="lbl">AI workspace</div>
-              <div className="amt">BLUEPRINT</div>
-              <p>Private knowledge and assistant setup for teams that want AI doing real work.</p>
-              <button type="button" className="btn ghost" onClick={() => setDrawerOpen(true)}>Get the blueprint</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== CTA ===== */}
-      <section className="cta" id="contact">
-        <div className="wrap rev">
-          <span className="tagchip">04 / Contact</span>
-          <h2 className="h2">Ready to put your business <span className="amb">on rails?</span></h2>
-          <p className="lead">One conversation. A narrow blueprint. A working first version — fast.</p>
-          <div className="hero-ctas">
-            <button type="button" className="btn" onClick={() => setDrawerOpen(true)}>Start a Project</button>
-            <a className="btn ghost" href="tel:+19188168832">Call 918-816-8832</a>
-          </div>
-          <div className="contact-line">
-            <a href="mailto:james@3kpro.services">james@3kpro.services</a>
-            <a href="tel:+19188168832">918-816-8832</a>
-            <span style={{ color: 'var(--faint)' }}>Tulsa, Oklahoma / Remote capable</span>
           </div>
         </div>
       </section>

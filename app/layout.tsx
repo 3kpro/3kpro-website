@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import LeadEvents from '@/components/LeadEvents'
 
 const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
 
@@ -10,8 +11,8 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: '3K Pro Services | AI & Automation Consulting — Tulsa, OK',
-  description: '3K Pro Services helps Tulsa & Broken Arrow businesses deploy AI-native IT, cloud architecture, and micro-SaaS workflows. Book a strategy session today.',
+  title: 'Tulsa Website Design & Lead Capture | 3K Pro Services',
+  description: 'Websites and inquiry follow-up for Tulsa and Broken Arrow service businesses. Explore the $1,500 Local Estimate Capture Sprint and request an assessment.',
   icons: { icon: '/favicon.ico' },
   keywords: [
     'IT services Tulsa',
@@ -32,8 +33,8 @@ export const metadata: Metadata = {
     canonical: 'https://3kpro.services',
   },
   openGraph: {
-    title: '3K Pro Services | AI & Automation Consulting — Tulsa, OK',
-    description: '3K Pro Services helps Tulsa & Broken Arrow businesses deploy AI-native IT, cloud architecture, and micro-SaaS workflows. Book a strategy session today.',
+    title: 'Tulsa Website Design & Lead Capture | 3K Pro Services',
+    description: 'Websites and inquiry follow-up for Tulsa and Broken Arrow service businesses. Explore the $1,500 Local Estimate Capture Sprint and request an assessment.',
     url: 'https://3kpro.services',
     siteName: '3K Pro Services',
     locale: 'en_US',
@@ -49,8 +50,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '3K Pro Services | AI & Automation Consulting — Tulsa, OK',
-    description: '3K Pro Services helps Tulsa & Broken Arrow businesses deploy AI-native IT, cloud architecture, and micro-SaaS workflows. Book a strategy session today.',
+    title: 'Tulsa Website Design & Lead Capture | 3K Pro Services',
+    description: 'Websites and inquiry follow-up for Tulsa and Broken Arrow service businesses. Explore the $1,500 Local Estimate Capture Sprint and request an assessment.',
     creator: '@3KPRO_SAAS',
     images: ['/og-image.png'],
   },
@@ -195,7 +196,7 @@ export default function RootLayout({
         description: 'Cloud architecture, custom development, and SaaS consulting.',
       },
       priceCurrency: 'USD',
-      price: 'Custom'
+      // Pricing is defined on the specific service page.
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -251,6 +252,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <LeadEvents />
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
     </html>
