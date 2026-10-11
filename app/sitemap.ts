@@ -5,7 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // No invented lastModified timestamps; checkout and intake are not search destinations.
   const routes = ['', '/services/local-estimate-capture', '/services/website-systems',
     '/services/workflow-systems', '/services/ai-workspace-implementation',
-    '/services/operating-systems', '/marketplace', '/cloud-ledger', '/factory', '/parascanai']
+    '/services/operating-systems', '/marketplace', '/cloud-ledger', '/factory', '/parascanai',
+    '/privacy', '/terms']
   return [...routes.map(route => ({url: `${base}${route}`})),
     ...marketplaceItems.map(item => ({url: `${base}/marketplace/${item.slug}`}))]
 }

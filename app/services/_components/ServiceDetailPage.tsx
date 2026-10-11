@@ -226,6 +226,8 @@ export default function ServiceDetailPage({
           <Link href="/#services">Services</Link>
           <Link href="/marketplace">Marketplace</Link>
           <Link href="/pay">Quick Pay</Link>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
         </div>
       </footer>
     </div>

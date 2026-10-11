@@ -642,6 +642,8 @@ export default function Home() {
         <div className="links">
           <Link href="/marketplace">Marketplace</Link>
           <Link href="/pay">Quick Pay</Link>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
           <a href="#top">Return to top ↑</a>
         </div>
       </footer>

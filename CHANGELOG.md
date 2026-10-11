@@ -6,6 +6,9 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [Unreleased]
 ### Added
+- `app/privacy/page.tsx`, `app/terms/page.tsx`, `components/legal/LegalPage.tsx`: 2026-10-11 — added professional, accessible Privacy Policy and Terms of Use pages covering actual site contact collection, analytics, hosting, email delivery, Stripe checkout, service-agreement scope, and customer contact paths.
+### Changed
+- `app/page.tsx`, `components/SiteFooter.tsx`, `app/pay/page.tsx`, `app/services/_components/ServiceDetailPage.tsx`, `app/sitemap.ts`: 2026-10-11 — added Privacy and Terms links to core public surfaces and registered both policy routes in the sitemap.
 - `app/page.tsx`: 2026-07-10 — restored Quick Pay to the top nav (amber-accented `/pay` link after Contact). The OPERATOR homepage promotion (2026-07-06) had left Quick Pay reachable only via the footer; field leads need the payment path one click from the front door.
 ### Fixed
 - `package.json`, `package-lock.json`: 2026-08-10 — upgraded Next.js, PostCSS, the AI SDK pair, and audited transitive packages to patched releases. Fresh production install, `npm audit --omit=dev`, and the 74-route production build now pass with zero reported vulnerabilities.

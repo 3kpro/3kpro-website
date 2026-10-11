@@ -165,6 +165,8 @@ export default function PayPage() {
         <div className="links">
           <Link href="/marketplace">Marketplace</Link>
           <Link href="/#contact">Contact</Link>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
         </div>
       </footer>
     </div>
