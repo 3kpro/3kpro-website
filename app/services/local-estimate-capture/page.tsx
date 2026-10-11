@@ -57,7 +57,7 @@ export default function EstimateCapturePage() {
         <section id="assessment"><div className="wrap tight">
           <h2 className="h2">Request an assessment</h2>
           <p className="lede">Tell James where inquiries get stuck. Response target: one business day. You decide whether to proceed after the scope is clear.</p>
-          <div style={{background:'#fff',padding:'2rem',maxWidth:680,marginTop:24}}><ContactForm assessment /></div>
+          <div className="assessment-form"><ContactForm assessment operator /></div>
         </div></section>
       </main>
       <SiteFooter />

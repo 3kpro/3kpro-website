@@ -15,7 +15,7 @@ type FormData = {
   serviceArea: string
 }
 
-export default function ContactForm({ assessment = false }: { assessment?: boolean }) {
+export default function ContactForm({ assessment = false, operator = false }: { assessment?: boolean; operator?: boolean }) {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -55,7 +55,7 @@ export default function ContactForm({ assessment = false }: { assessment?: boole
   const inputClasses = "w-full px-4 py-4 bg-white border border-black focus:outline-none focus:ring-0 focus:border-black/40 transition-all text-black font-medium placeholder:text-black/20 text-sm"
 
   return (
-    <div className="font-sans">
+    <div className={operator ? "font-sans contact-form contact-form--operator" : "font-sans contact-form"}>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
         <div>
           <label htmlFor="name" className="block text-[10px] font-bold uppercase tracking-[0.25em] text-black mb-3">
@@ -140,7 +140,7 @@ export default function ContactForm({ assessment = false }: { assessment?: boole
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-6 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-[0.3em] text-xs disabled:opacity-50 disabled:cursor-not-allowed"
+          className="contact-submit w-full py-6 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-[0.3em] text-xs disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? 'Sending...' : assessment ? 'Request an assessment' : 'Send message'}
         </button>

@@ -155,6 +155,17 @@ export default function OperatorStyles() {
       .op .cta-band .contact-line a:hover{color:var(--amber)}
       .op .contact-frame{background:#fff;color:#000;padding:24px;border:1px solid var(--line)}
 
+      /* ---- assessment form: integrated dark control surface ---- */
+      .op .assessment-form{max-width:680px;margin-top:24px;padding:clamp(22px,4vw,38px);border:1px solid rgba(243,239,230,.16);background:linear-gradient(135deg,rgba(255,171,46,.09),transparent 34%),var(--panel);box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 24px 54px -38px #000;position:relative}
+      .op .assessment-form::before{content:"ASSESSMENT INTAKE // OPEN";position:absolute;top:0;right:0;padding:7px 11px;background:rgba(255,171,46,.14);border-left:1px solid rgba(255,171,46,.28);border-bottom:1px solid rgba(255,171,46,.28);font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.16em;color:var(--amber)}
+      .op .contact-form--operator label{color:var(--ink)!important;font-family:var(--mono);font-size:10px;letter-spacing:.2em}
+      .op .contact-form--operator input,.op .contact-form--operator textarea{background:rgba(0,0,0,.22)!important;border-color:rgba(243,239,230,.18)!important;color:var(--ink)!important;font-family:var(--sans);box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+      .op .contact-form--operator input::placeholder,.op .contact-form--operator textarea::placeholder{color:var(--faint)!important}
+      .op .contact-form--operator input:focus,.op .contact-form--operator textarea:focus{border-color:var(--amber)!important;box-shadow:0 0 0 3px rgba(255,171,46,.11),inset 0 1px 0 rgba(255,255,255,.035)}
+      .op .contact-form--operator .contact-submit{background:var(--amber)!important;color:#0c0b09!important;border:1px solid var(--amber);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+      .op .contact-form--operator .contact-submit:hover{background:var(--amber-hot)!important;border-color:var(--amber-hot);box-shadow:0 0 30px rgba(255,122,26,.28)}
+      @media(max-width:560px){.op .assessment-form{padding:22px 18px}.op .assessment-form::before{font-size:7.5px;padding:6px 8px}}
+
       /* ---- footer ---- */
       .op .foot{border-top:1px solid var(--line);padding:28px clamp(18px,3.5vw,40px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
       .op .foot a{color:var(--faint);text-decoration:none;transition:.25s}
