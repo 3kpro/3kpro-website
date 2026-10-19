@@ -18,6 +18,15 @@ export async function proxy(req: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+  // Keep one public hostname so visitors and crawlers consistently reach the
+  // canonical domain even when they use the common www alias.
+  if (host === "www.3kpro.services") {
+    return NextResponse.redirect(
+      new URL(`${url.pathname}${url.search}`, "https://3kpro.services"),
+      308,
+    );
+  }
+
   if (host === "thelaststopshop.com" || host === "www.thelaststopshop.com") {
     if (url.pathname === "/") {
       return NextResponse.rewrite(new URL("/sitepreview/the-last-stop-shop", req.url));
