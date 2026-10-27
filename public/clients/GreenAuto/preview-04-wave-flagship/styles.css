@@ -802,7 +802,7 @@ body.light-mode .cutaway-frame.is-cutaway {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 295px), 1fr));
   gap: 22px;
 }
 
@@ -992,7 +992,7 @@ body.light-mode .cutaway-frame.is-cutaway {
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 310px), 1fr));
   gap: 20px;
 }
 
@@ -1094,4 +1094,79 @@ body.light-mode .cutaway-frame.is-cutaway {
   }
   .hero-bg-media { width: 100%; opacity: 0.35; }
   .solution-banner-card { grid-template-columns: 1fr; }
+}
+
+/* Responsive containment: shrink/wrap content instead of widening the page. */
+.main-nav,
+.nav-actions,
+.science-grid > *,
+.blue-band-grid > *,
+.solutions-split-grid > *,
+.solution-banner-card > *,
+.mods-split > *,
+.form-grid > *,
+.footer-grid > *,
+.modal-panel,
+.modal-panel > div > * {
+  min-width: 0;
+}
+
+.hero-title,
+.section-heading,
+.section-eyebrow,
+.footer-links a {
+  overflow-wrap: anywhere;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  min-width: 0;
+  width: 100%;
+}
+
+/* Keep the publication-only design switcher inside the viewport, too. */
+#gat-preview-switcher {
+  max-width: calc(100% - 32px);
+}
+
+@media (max-width: 980px) {
+  .nav-inner {
+    flex-wrap: wrap;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .nav-actions {
+    flex-shrink: 1;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-actions {
+    width: 100%;
+  }
+  .nav-actions .btn-wave {
+    flex-grow: 1;
+  }
+  .form-grid,
+  .callouts-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .catalog-search {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .cart-item-row,
+  .cart-total-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .cart-item-row > div:first-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
 }

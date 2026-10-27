@@ -5,6 +5,9 @@ All notable changes to the 3kpro.services company website and marketplace.
 ---
 
 ## [Unreleased]
+### Flagship mobile containment — 2026-10-27
+- Repair GreenAuto WAVE Flagship horizontal overflow: wrap header actions and cart rows, allow grid/form children to shrink, and bound catalog, blog, video and product-dialog columns to the available width. Preserve the approved license graphic, other previews and company routes.
+
 ### Baseline reconciliation — 2026-10-27
 - Preserve origin/main company routes and www-to-apex redirect while restoring the existing four-preview GreenAuto suite and scoped route/noindex configuration.
 - Replace four Personal License graphics and flagship P013 with the approved-source Introducing The Wave image; version only their data references. Prepared for review; not published.

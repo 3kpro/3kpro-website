@@ -141,7 +141,7 @@
       : "";
 
     openModal(`
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:start;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;align-items:start;">
         <div style="background:#05080a;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
           <img src="${item.image}" alt="${item.name}" style="width:100%;max-height:360px;object-fit:contain;" />
         </div>
@@ -186,7 +186,7 @@
     const itemsHtml = cart.length === 0
       ? `<p class="result-story-desc" style="padding:20px 0;">Your WAVE™ &amp; Tribo-MAX™ cart is currently empty. Click <strong>+ ADD</strong> on any product in the store.</p>`
       : cart.map((c, i) => `
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);">
+          <div class="cart-item-row" style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);">
             <div>
               <strong>${c.name}</strong> <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted);">(${c.id})</span>
               ${c.note ? `<div style="font-size:0.78rem;color:var(--wave-green);">${c.note}</div>` : ""}
@@ -202,7 +202,7 @@
       <div class="section-eyebrow">GREEN AUTO TECHNOLOGY · ORDER SUMMARY</div>
       <h3 class="result-story-title" style="font-size:1.6rem;margin-bottom:12px;">YOUR SELECTED BUILD &amp; PRODUCTS (${cart.length})</h3>
       ${itemsHtml}
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:14px;border-top:2px solid var(--border);">
+      <div class="cart-total-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:14px;border-top:2px solid var(--border);">
         <span style="font-family:'Rajdhani',sans-serif;font-weight:800;font-size:1.3rem;">ESTIMATED TOTAL (EARNS ${Math.round(total * 10)} GREEN MILES PTS):</span>
         <span style="font-family:'Rajdhani',sans-serif;font-weight:800;font-size:1.8rem;color:var(--wave-green);">$${total.toFixed(2)}</span>
       </div>
