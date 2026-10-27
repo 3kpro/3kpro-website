@@ -1,3 +1,8 @@
+## 2026-10-27 — Precision Lab mobile border and header alignment
+
+- Reflow Preview 03's concept switcher and brand/action header without fixed-height overlap; retain concept order 01–04 and the selected Lab state.
+- Align mobile panel gutters/dividers, contain intrinsic-width grids and dialogs, and use the top concept menu instead of a duplicate floating mobile overlay. Preserve content, assets, links and flagship repair.
+
 # CHANGELOG.md - 3kpro.services Company Site
 
 All notable changes to the 3kpro.services company website and marketplace.

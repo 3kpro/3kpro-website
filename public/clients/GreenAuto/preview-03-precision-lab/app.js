@@ -202,7 +202,7 @@
         <span class="spec-code-bar">${p.categoryLabel}</span>
         <button type="button" class="btn-lab secondary sm" onclick="document.getElementById('lab-backdrop').click()">CLOSE ×</button>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;align-items:center">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px;align-items:center">
         <div style="background:#0b110d;border:2px solid var(--border);padding:16px;text-align:center">
           <img src="${p.image}" alt="${p.name}" style="max-width:100%;max-height:310px;object-fit:contain">
         </div>
