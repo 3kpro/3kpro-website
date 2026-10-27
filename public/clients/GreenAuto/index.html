@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3KPRO // Green Auto Technology — 4 Client Upgrade Previews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@118,800;118,900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080A0C;
+      --surface: #0F1419;
+      --border: #1F2A33;
+      --text: #F2F6FA;
+      --muted: #8FA1B3;
+      --green: #00E87B;
+      --wave: #5CE61E;
+      --amber: #FFB800;
+      --cyan: #00D2FF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      padding: 48px 28px;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .wrap { max-width: 1400px; margin: 0 auto; }
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Archivo', sans-serif;
+      font-stretch: 118%;
+      font-weight: 900;
+      font-size: clamp(2.1rem, 4.2vw, 3.8rem);
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.96;
+      margin-bottom: 16px;
+    }
+    .lead {
+      color: var(--muted);
+      max-width: 900px;
+      font-size: 1.04rem;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    .stat-cell {
+      background: var(--surface);
+      padding: 18px 20px;
+    }
+    .stat-val {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 900;
+      font-size: 1.75rem;
+      color: var(--green);
+    }
+    .stat-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--green);
+    }
+    .card.featured {
+      border-color: var(--wave);
+      box-shadow: 0 0 36px rgba(92, 230, 30, 0.14);
+    }
+    .card-thumb {
+      height: 210px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background: #050709;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.72;
+    }
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(8, 10, 12, 0.9);
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 5px 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .card-folder {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(8, 10, 12, 0.9);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+    .card-body { padding: 24px; }
+    .card-title {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 900;
+      font-size: 1.42rem;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .card-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--amber);
+      margin-bottom: 14px;
+    }
+    .card-desc {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      padding: 4px 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .card-foot {
+      padding: 0 24px 24px;
+    }
+    .btn {
+      display: inline-flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      background: var(--green);
+      color: #04120B;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+      transition: filter 0.15s ease;
+    }
+    .btn:hover { filter: brightness(1.12); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">3KPRO.SERVICES ARCHITECTURE × GREEN AUTO TECHNOLOGY (MICHAEL LEE)</div>
+    <h1>Green Auto Technology — 4 Full-Content Preview Builds</h1>
+    <p class="lead">
+      Every single item from <strong>https://www.greenautotechnology.com/</strong>—including all <strong>25 WAVE™ &amp; Tribo-MAX™ catalog items</strong>, <strong>18 store kits</strong>, remastered high-res Dynojet / MAP Oscilloscope / ASM Emissions charts, animated butterfly-valve intake vortex MP4 video, WAVE Science PDF, 6 YouTube proof videos, and 8 blog articles—built into four distinct preview variations.
+    </p>
+
+    <div class="stats-bar">
+      <div class="stat-cell">
+        <div class="stat-val">43 Items</div>
+        <div class="stat-lbl">25 WAVE/Tribo-MAX + 18 Store</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val">Remastered</div>
+        <div class="stat-lbl">Dyno + MAP 100kS/s + ASM + MP4</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val">6 / 6</div>
+        <div class="stat-lbl">Real YouTube Proof Videos</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val">8 / 8</div>
+        <div class="stat-lbl">Full Blog Articles &amp; Q&amp;A</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val">100%</div>
+        <div class="stat-lbl">WAVE Science PDF + Fitment Hub</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="card featured">
+        <div>
+          <div class="card-thumb">
+            <img src="/clients/GreenAuto/preview-04-wave-flagship/assets/hero-wave-dark-car.jpg" alt="Preview 04 WAVE Flagship" />
+            <span class="card-badge" style="border-color:#5CE61E;color:#5CE61E;">PREVIEW 04 // NEW WAVE™ FLAGSHIP LAYOUT</span>
+            <span class="card-folder">/clients/GreenAuto/preview-04-wave-flagship/</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">WAVE™ Flagship // Dual-Layout Showcase</h2>
+            <div class="card-sub">Exact Reference Layout (Dark &amp; Light WAVE Toggle) + Animated Vortex Video + All 43 Items</div>
+            <p class="card-desc">
+              Built directly from the <strong>Example of Layout</strong> design specification (with 1-click toggle between the Dark Coupe and Light Truck layouts), 3D Throttle Body Cutaway, <strong>animated butterfly-valve vortex MP4 simulation</strong>, remastered Mustang V8 Dynojet, MAP Oscilloscope &amp; Ram 5.7L ASM reports, WAVE Science PDF, and unified 43-item WAVE &amp; Tribo-MAX store.
+            </p>
+            <div class="pill-list">
+              <span class="pill">Dark &amp; Light WAVE Layout</span>
+              <span class="pill">Animated Vortex MP4</span>
+              <span class="pill">Remastered Lab Charts</span>
+              <span class="pill">All 25 WAVE + 18 Store Items</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <a class="btn" style="background:#5CE61E;" href="/clients/GreenAuto/preview-04-wave-flagship/index.html">Launch Preview 04 (WAVE Flagship) →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-thumb">
+            <img src="/clients/GreenAuto/preview-01-gat-os/assets/home_bg.jpg" alt="Preview 01 GAT-OS" />
+            <span class="card-badge">PREVIEW 01 // CLOSEST TO 3KPRO.SERVICES</span>
+            <span class="card-folder">/clients/GreenAuto/preview-01-gat-os/</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">GAT·OS // Dyno Mission Control</h2>
+            <div class="card-sub">Obsidian Carbon (#0A0D0E) + Bio-Combustion Emerald (#00E87B) + Tachometer Amber</div>
+            <p class="card-desc">
+              Direct translation of the <strong>3kpro.services</strong> operating-system aesthetic for automotive precision machining. Features skippable 850ms ECU Dyno boot sequence, 5-module animated counter rack, clipped-corner hardware buttons, numbered engineering dossier rows, full product store &amp; drawer.
+            </p>
+            <div class="pill-list">
+              <span class="pill">Archivo 118% Display</span>
+              <span class="pill">ECU Boot + Skip</span>
+              <span class="pill">5-Module Telemetry Rack</span>
+              <span class="pill">Interactive Lab Lightbox</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <a class="btn" href="/clients/GreenAuto/preview-01-gat-os/index.html">Launch Preview 01 (GAT·OS) →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-thumb">
+            <img src="/clients/GreenAuto/preview-02-apex-atelier/assets/WaveThrottleGraphic.jpg" alt="Preview 02 Apex Atelier" />
+            <span class="card-badge">PREVIEW 02 // MOTORSPORT SPEED SHOP</span>
+            <span class="card-folder">/clients/GreenAuto/preview-02-apex-atelier/</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">Apex Flow // Kinetic Motorsport Atelier</h2>
+            <div class="card-sub">Anodized Gunmetal (#090B10) + Nitrous Cyan (#00F0FF) + Dyno Acid Lime (#B8FF01)</div>
+            <p class="card-desc">
+              High-contrast exotic tuner &amp; dyno-house showcase with interactive <strong>Vehicle MPG &amp; Annual Fuel Savings Calculator</strong>, interactive <strong>Before/After Lab Telemetry Switcher</strong> (2010 Mustang GT V8 Dynojet, OWON MAP Waveform, 2009 Ram 5.7L Hemi ASM Trace), full product catalog, and slide-out Build &amp; Cart Drawer.
+            </p>
+            <div class="pill-list">
+              <span class="pill">Interactive MPG Calculator</span>
+              <span class="pill">Lab Telemetry Switcher</span>
+              <span class="pill">Full Store + Modal</span>
+              <span class="pill">Full Blog &amp; Video Vault</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <a class="btn" href="/clients/GreenAuto/preview-02-apex-atelier/index.html">Launch Preview 02 (Apex Atelier) →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-thumb">
+            <img src="/clients/GreenAuto/preview-03-precision-lab/assets/tb_info_wave.png" alt="Preview 03 Precision Lab" />
+            <span class="card-badge">PREVIEW 03 // CNC &amp; TRIBOLOGY LAB (LIGHT/DARK)</span>
+            <span class="card-folder">/clients/GreenAuto/preview-03-precision-lab/</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">Precision Lab // Architectural Dual-Mode</h2>
+            <div class="card-sub">Billet Aluminum Daylight (#F4F5F0) ⇄ Carbon Night Mode + Racing British Green (#008F4C)</div>
+            <p class="card-desc">
+              Swiss-grid cleanroom engineering showroom with instant <strong>Daylight Lab / Carbon Night Mode toggle</strong>. Features live search + category filtering, interactive step-by-step Core Exchange / Outright / Modify Yours workflow selector, full scientific breakdown of the V-groove vortex + nano-ceramic bonding, and complete articles &amp; FAQ.
+            </p>
+            <div class="pill-list">
+              <span class="pill">Daylight / Dark Theme Toggle</span>
+              <span class="pill">Live Product Search + Filter</span>
+              <span class="pill">Interactive Core Exchange Guide</span>
+              <span class="pill">100% Verbatim Site Content</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <a class="btn" href="/clients/GreenAuto/preview-03-precision-lab/index.html">Launch Preview 03 (Precision Lab) →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

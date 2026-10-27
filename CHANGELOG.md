@@ -5,6 +5,10 @@ All notable changes to the 3kpro.services company website and marketplace.
 ---
 
 ## [Unreleased]
+### Baseline reconciliation — 2026-10-27
+- Preserve origin/main company routes and www-to-apex redirect while restoring the existing four-preview GreenAuto suite and scoped route/noindex configuration.
+- Replace four Personal License graphics and flagship P013 with the approved-source Introducing The Wave image; version only their data references. Prepared for review; not published.
+
 ### Added
 - `app/privacy/page.tsx`, `app/terms/page.tsx`, `components/legal/LegalPage.tsx`: 2026-10-11 — added professional, accessible Privacy Policy and Terms of Use pages covering actual site contact collection, analytics, hosting, email delivery, Stripe checkout, service-agreement scope, and customer contact paths.
 ### Changed

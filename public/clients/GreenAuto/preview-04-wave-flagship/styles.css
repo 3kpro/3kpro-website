@@ -1,0 +1,1097 @@
+:root {
+  --bg: #05080a;
+  --bg-alt: #0b1015;
+  --surface: #10171f;
+  --surface-hover: #15202b;
+  --border: rgba(255, 255, 255, 0.11);
+  --text: #f5f9fc;
+  --muted: #9cb0c2;
+  --wave-green: #5ce61e;
+  --wave-green-dark: #259c1a;
+  --wave-green-text: #061402;
+  --wave-blue: #166096;
+  --wave-cyan: #1ec8ff;
+  --amber: #ffb800;
+  --shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
+  --header-bg: rgba(5, 8, 10, 0.92);
+  --hero-overlay: linear-gradient(90deg, #05080a 0%, #05080a 44%, rgba(5, 8, 10, 0.72) 64%, rgba(5, 8, 10, 0.12) 100%);
+  --split-tint: #091118;
+}
+
+body.light-mode {
+  --bg: #f6f9fb;
+  --bg-alt: #edf2f6;
+  --surface: #ffffff;
+  --surface-hover: #f0f6fa;
+  --border: rgba(15, 32, 48, 0.12);
+  --text: #0d1b26;
+  --muted: #4b6175;
+  --wave-green: #238b19;
+  --wave-green-dark: #186b10;
+  --wave-green-text: #ffffff;
+  --wave-blue: #1e6296;
+  --wave-cyan: #0b84c4;
+  --shadow: 0 16px 36px rgba(13, 27, 38, 0.08);
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --hero-overlay: linear-gradient(90deg, #eef3f7 0%, #eef3f7 45%, rgba(238, 243, 247, 0.78) 64%, rgba(238, 243, 247, 0.08) 100%);
+  --split-tint: #e4f3e2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.55;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* TOP NAVBAR (EXACT MATCH TO EXAMPLE OF LAYOUT.PNG) */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+  gap: 18px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--wave-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(92, 230, 30, 0.1);
+  color: var(--wave-green);
+}
+
+.brand-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand-top {
+  font-family: 'Rajdhani', 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 1.48rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.brand-top .green {
+  color: var(--wave-green);
+}
+
+.brand-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color 0.18s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--wave-green);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.icon-btn:hover {
+  border-color: var(--wave-green);
+}
+
+.btn-wave {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--wave-green);
+  color: var(--wave-green-text);
+  font-family: 'Rajdhani', 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 11px 22px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.18s ease, transform 0.15s ease;
+}
+
+.btn-wave:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-family: 'Rajdhani', 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 11px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--wave-green);
+}
+
+/* SECTION 1: HERO BANNER (EXACT MATCH TO EXAMPLE OF LAYOUT.PNG) */
+.wave-hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.hero-bg-media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 66%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 690px;
+  padding: 72px 0;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--wave-green);
+  background: rgba(92, 230, 30, 0.1);
+  border: 1px solid rgba(92, 230, 30, 0.35);
+  padding: 5px 12px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.hero-title {
+  font-family: 'Rajdhani', 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.8rem, 5.6vw, 4.75rem);
+  line-height: 0.94;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero-title .wave-word {
+  color: var(--wave-green);
+}
+
+.hero-subtitle {
+  font-family: 'Rajdhani', 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.3vw, 1.85rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  color: var(--muted);
+  font-size: 1.04rem;
+  max-width: 580px;
+  margin-bottom: 26px;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* SECTION 2: 5-ICON FEATURE STRIP */
+.feature-strip {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0;
+}
+
+.feature-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.feature-pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px 14px;
+  border-right: 1px solid var(--border);
+}
+
+.feature-pillar:last-child {
+  border-right: none;
+}
+
+.feature-icon {
+  width: 46px;
+  height: 46px;
+  color: var(--wave-green);
+  margin-bottom: 10px;
+}
+
+.feature-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.feature-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* SECTION 3: HOW WAVE TECHNOLOGY WORKS (CUTAWAY + VIDEO + BLUE STRIP) */
+.science-section {
+  padding: 76px 0 0;
+  background: var(--bg);
+}
+
+.science-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1.25fr;
+  gap: 44px;
+  align-items: center;
+  padding-bottom: 56px;
+}
+
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--wave-cyan);
+  margin-bottom: 8px;
+}
+
+.section-heading {
+  font-family: 'Rajdhani', 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.02;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-heading .accent {
+  color: var(--wave-green);
+}
+
+.section-subhead {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.section-copy {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 22px;
+}
+
+.science-visual-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.science-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sci-tab {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sci-tab.active {
+  background: var(--wave-green);
+  color: var(--wave-green-text);
+  border-color: var(--wave-green);
+}
+
+.callouts-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.callout-tag {
+  background: rgba(30, 200, 255, 0.08);
+  border: 1px solid rgba(30, 200, 255, 0.32);
+  border-radius: 6px;
+  padding: 7px 8px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cutaway-frame {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #06090c;
+}
+
+body.light-mode .cutaway-frame.is-cutaway {
+  background: #ffffff;
+}
+
+.cutaway-frame img,
+.cutaway-frame video {
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* STEEL-BLUE 3-PILLAR SCIENCE BAND (FROM LIGHT PANEL OF EXAMPLE OF LAYOUT.PNG) */
+.science-blue-band {
+  background: linear-gradient(90deg, #124d7d 0%, #1d6ca8 50%, #145487 100%);
+  color: #ffffff;
+  padding: 28px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.blue-band-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.blue-band-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.blue-band-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #124d7d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 900;
+}
+
+.blue-band-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.blue-band-desc {
+  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* SECTION 4: REAL-WORLD RESULTS & REMASTERED LAB TELEMETRY */
+.results-section {
+  padding: 76px 0;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header-center {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 40px;
+}
+
+.results-cards-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 44px;
+}
+
+.result-story-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.result-story-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--wave-green);
+}
+
+.result-story-thumb {
+  height: 185px;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-story-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-overlay-pill {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(5, 8, 10, 0.85);
+  color: var(--wave-green);
+  border: 1px solid var(--wave-green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.result-story-body {
+  padding: 20px;
+}
+
+.result-story-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.result-story-desc {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* REMASTERED LAB TELEMETRY SHOWCASE (THE 3 NEW ASSETS) */
+.lab-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.lab-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lab-card-img {
+  height: 230px;
+  background: #05080a;
+  position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.lab-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.lab-card-img:hover img {
+  transform: scale(1.04);
+}
+
+.lab-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(5, 8, 10, 0.88);
+  color: var(--wave-green);
+  border: 1px solid var(--wave-green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.lab-card-body {
+  padding: 20px;
+}
+
+.lab-card-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 1.22rem;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.lab-metrics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.lab-metric-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  background: rgba(92, 230, 30, 0.1);
+  border: 1px solid rgba(92, 230, 30, 0.35);
+  color: var(--wave-green);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* SECTION 5: DUAL CONVERSION SPLIT BANNER (SHOP PRODUCTS vs CUSTOM MODIFICATIONS) */
+.solutions-split-section {
+  padding: 64px 0;
+  background: var(--split-tint);
+  border-bottom: 1px solid var(--border);
+}
+
+.solutions-split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+
+.solution-banner-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.solution-thumb {
+  width: 180px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.solution-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* SECTION 6: CONSOLIDATED AUTHORITATIVE CATALOG (ALL 25 AUDIT ITEMS + 18 STORE ITEMS) */
+.catalog-section {
+  padding: 76px 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.catalog-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cat-pill {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cat-pill.active,
+.cat-pill:hover {
+  background: var(--wave-green);
+  color: var(--wave-green-text);
+  border-color: var(--wave-green);
+}
+
+.catalog-search {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 6px;
+  min-width: 260px;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+  gap: 22px;
+}
+
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--wave-green);
+}
+
+.product-img-wrap {
+  height: 210px;
+  background: #080c10;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-cat-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(5, 8, 10, 0.86);
+  color: var(--wave-green);
+  border: 1px solid rgba(92, 230, 30, 0.4);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.product-id-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(5, 8, 10, 0.86);
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  padding: 3px 7px;
+  border-radius: 4px;
+}
+
+.product-body {
+  padding: 18px;
+}
+
+.product-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  line-height: 1.18;
+  margin-bottom: 6px;
+}
+
+.product-desc {
+  color: var(--muted);
+  font-size: 0.86rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.product-foot {
+  padding: 0 18px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.product-price {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 1.45rem;
+  color: var(--wave-green);
+}
+
+.product-price del {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+/* SECTION 7: CUSTOM MODIFICATIONS & VEHICLE FITMENT WORKFLOW */
+.mods-workflow-section {
+  padding: 76px 0;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.mods-split {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.step-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 14px;
+  display: flex;
+  gap: 14px;
+}
+
+.step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: var(--wave-green);
+  color: var(--wave-green-text);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fitment-form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.92rem;
+}
+
+/* SECTION 8: RESOURCES, KNOWLEDGE DOCUMENTS, BLOG & REWARDS */
+.resources-section {
+  padding: 76px 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* FOOTER */
+.site-footer {
+  background: #040608;
+  color: #9cb0c2;
+  padding: 56px 0 90px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 32px;
+}
+
+.footer-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.88rem;
+}
+
+/* MODALS & DRAWER */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 6, 9, 0.84);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
+.modal-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  max-width: 960px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+@media (max-width: 980px) {
+  .main-nav { display: none; }
+  .feature-strip-grid { grid-template-columns: repeat(2, 1fr); }
+  .science-grid,
+  .blue-band-grid,
+  .results-cards-3,
+  .lab-telemetry-grid,
+  .solutions-split-grid,
+  .mods-split,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-bg-media { width: 100%; opacity: 0.35; }
+  .solution-banner-card { grid-template-columns: 1fr; }
+}
