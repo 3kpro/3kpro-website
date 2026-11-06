@@ -1,8 +1,54 @@
+## 2026-11-05 — Green Auto Technology 6-Variation Suite Expansion (`preview-05-vortex-3d` & `preview-06-heritage-fleet`)
+
+- Expanded the Green Auto Technology client preview suite from 4 variations to **6 full-content variations** under `C:\DEV\_3KPRO-WEBSITE\public\clients\GreenAuto\`, `C:\DEV\_3KPRO-GENERAL\MainBrain\CLIENT_DELIVERIES\`, and `C:\DEV\_3KPRO-GENERAL\MainBrain\CLIENT_DELIVERIES\green-auto-technology-site\`:
+  - **`preview-05-vortex-3d` — WAVE™ 3D Vortex & Combustion Stack Cinema:** Real-time Three.js WebGL + GSAP ScrollTrigger 3-stage throttle body disassembly (`cinematic-client-previews` standard with mobile `phoneComposition` and protected text ground), interactive Throttle Blade Opening (`5°–90°`) & Spectrum Bench, Dual MP4 CFD video studio (`ThrottleBodyCutaway.mp4` + `wave-vortex-animation.mp4`), MPG Payback Simulator, remastered Dynojet/Oscilloscope/ASM charts, 6 YouTube videos, 8 blog articles, and all 43 unified catalog items.
+  - **`preview-06-heritage-fleet` — Heavy-Duty, Diesel & Commercial Fleet Edition:** Warm Titanium Bone (`#F4F1EA`) ⇄ Night Haul dual-theme editorial & fleet workhorse showcase featuring a pinned scroll-scrubbed Stock vs. WAVE intake telemetry stage, 1–25 vehicle Fleet & Diesel Air-Stream Payback Calculator, Dual MP4 CFD video studio, remastered lab proof charts, and all 43 unified catalog items.
+- Updated `public/clients/GreenAuto/index.html`, `MainBrain/CLIENT_DELIVERIES/index.html`, `next.config.js`, and all 6 preview switcher bars (`01` through `06`). Verified `H1=1`, `noindex, nofollow`, and `0` missing local asset references across both new variations. Ready for James's review before any deployment promotion.
+
+## 2026-10-27 — GreenAuto Precision Lab mobile repair accepted and closed
+
+James approved the exact review URL and subsequently confirmed: "Good job it looks good now."
+Live: https://3kpro.services/clients/GreenAuto/preview-03-precision-lab/index.html
+Released source: `88c181a1b590c3e9a838d85316c31807d2238496`.
+Production: `dpl_FBozpaaTdT4pNPn8e9dHmd3NnCV1` (READY; apex/www aliases verified in release receipt).
+Fixed ordered 2x2 mobile design navigation, header overlap, gutters/panel borders,
+modal containment and inquiry anchor clearance in Precision Lab index/styles/app.
+Prior QA: 60/60 containment states across 12 widths; actual licensing dialog,
+light/dark/dual-video/inquiry states; four design-link destinations; typecheck/build passed.
+Exit check independently re-fetched six public files: HTTP 200 and SHA256 match
+for changed HTML/CSS/JS, licensing image, hub and preserved flagship CSS.
+Evidence: `/home/node/.openclaw/workspace-kitt/client-delivery/review-manifests/greenauto-lab-mobile-alignment/`
+(`production-parity.json`, `exit-verification.json`, `navigation-qa.json`, `RELEASE-HANDOFF.md`).
+Rollback: https://3kpro-website-35x0fbgxv-3kpros-projects.vercel.app
+No further release/approval pending for this repair. No new deploy during closeout.
+Client-owned hosting, commercial terms and CRM handoff remain separate/unverified;
+this remains a temporary 3KPRO-hosted review suite, not a client-account cutover.
+Existing unrelated thumbnail defects remain outside this repair.
+Canonical shared checkout remains at historical `c6519d2` with unrelated dirty app
+files; do not deploy it or infer that its HEAD is the released version. Consult
+origin/main and the pinned receipt before future work; no source reset/cleanup done.
+
 # SESSION_CONTEXT — 3KPRO Website
 
-**Last updated:** 2026-07-06 | **Agent:** Claude (Cowork) | **Session type:** Homepage redesign + production deploy
+**Last updated:** 2026-10-26 | **Agent:** Antigravity | **Session type:** Green Auto Technology 4-preview client suite + asset upgrades + production deploy
 
 ## Current State
+`3kpro.services` is live on production (`dpl_9DP9WYf323LFHDWLFXPoZFcqdTKE`, Next.js 16.3.0, 75 static/dynamic routes + static `/clients/GreenAuto` suite). All four Green Auto Technology client preview variations (`preview-01-gat-os`, `preview-02-apex-atelier`, `preview-03-precision-lab`, `preview-04-wave-flagship`) are live and verified at `https://3kpro.services/clients/GreenAuto`.
+
+## What Was Done (This Session — 2026-10-26)
+- Built and staged 4 full-content client preview variations for **Green Auto Technology** (`https://www.greenautotechnology.com/`) under `C:\DEV\_3KPRO-GENERAL\MainBrain\CLIENT_DELIVERIES\` and mirrored into `C:\DEV\_3KPRO-WEBSITE\public\clients\GreenAuto\`, with URL rewrites in `next.config.js`:
+  - `preview-01-gat-os` — GAT·OS Mission Control Console
+  - `preview-02-apex-atelier` — Apex Flow Motorsport Atelier
+  - `preview-03-precision-lab` — Precision Engineering Lab (Light/Dark toggle)
+  - `preview-04-wave-flagship` — WAVE™ Flagship Showcase (Dark Coupe & Light Truck layout toggle from `Example of Layout.png`)
+- Integrated all Gemini-upgraded client assets and MP4 animations across the suite:
+  - Replaced static cutaway graphics in Preview 04 and added a dedicated **"00 // How WAVE™ Technology Works"** section in Preview 03 with both MP4 animations (`ThrottleBodyCutaway.mp4` and `wave-vortex-animation.mp4`) plus interactive tab and dual side-by-side comparison views.
+  - Upgraded Dynojet (`dyno-mustang-remastered.jpg`), OWON MAP Sensor Oscilloscope (`map-sensor-oscilloscope-remastered.jpg`), and 2009 Dodge Ram 5.7L Hemi ASM Diagnostic (`asm-diagnostic-dodge-ram-remastered.jpg`) lab proof charts across Previews 01–04.
+  - Placed the cleaned-up `WaveThrottleGraphic.jpg` edge-to-edge on the right side of the splash page in Preview 02 (and replaced `home_1_power.png` in Previews 01, 03, and the suite hub).
+  - Adjusted vertical spacing between `TRUE FUEL EFFICIENCY.` and `<mark>COMPLETE COMBUSTION.</mark>` on the Preview 03 splash page (`line-height: 1.1; margin-top: 10px`).
+- Deployed via clean `git archive HEAD` snapshot (`dpl_9DP9WYf323LFHDWLFXPoZFcqdTKE`) so no unrelated uncommitted work in `C:\DEV\_3KPRO-WEBSITE` was published; verified HTTP 200 across all preview routes and MP4/JPG assets.
+
+## Previous Session Context (2026-07-06, Claude Cowork)
 3kpro.services is live on the **OPERATOR homepage** (deployed 2026-07-06,
 commit `05f791a`, Vercel deployment `FW4mrfqQuCr91u4rrz884CpLg8bH`, aliased to
 production). James chose OPERATOR (V3) from three prototype directions archived

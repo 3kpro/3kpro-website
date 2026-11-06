@@ -32,6 +32,16 @@ const nextConfig = {
         destination: '/clients/GreenAuto/preview-04-wave-flagship/index.html',
         permanent: false,
       },
+      {
+        source: '/clients/GreenAuto/preview-05-vortex-3d',
+        destination: '/clients/GreenAuto/preview-05-vortex-3d/index.html',
+        permanent: false,
+      },
+      {
+        source: '/clients/GreenAuto/preview-06-heritage-fleet',
+        destination: '/clients/GreenAuto/preview-06-heritage-fleet/index.html',
+        permanent: false,
+      },
     ]
   },
   async rewrites() {

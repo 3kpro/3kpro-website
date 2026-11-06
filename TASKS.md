@@ -23,6 +23,9 @@
 - [ ] **GetXelora.com SEO audit** — Next site in queue after 3kpro.services
 
 ## COMPLETED
+- [x] **Green Auto Technology 6-Variation Suite Expansion (`preview-05-vortex-3d` & `preview-06-heritage-fleet`)** — Added two new full-content client preview variations (real-time Three.js 3D Vortex Disassembly Cinema + Heavy-Duty Diesel & 1–25 Truck Commercial Fleet Edition) and updated all 6 switcher bars, hub pages, and `next.config.js` redirects (2026-11-05).
+- [x] **GreenAuto Precision Lab mobile alignment repair** — exact preview approved, released source `88c181a`, production READY; 60/60 responsive states and six live file parity checks passed; James accepted live result (2026-10-27). Closeout: `docs/operations/GREENAUTO_MOBILE_RELEASE_2026-10-27.md`.
+- [x] ✅ **Green Auto Technology client preview suite (01–04) + MP4 fluid-dynamics animations** — Built and deployed 4 preview variations at `https://3kpro.services/clients/GreenAuto`, updated `preview-04-wave-flagship` and `preview-03-precision-lab` with `ThrottleBodyCutaway.mp4` + `wave-vortex-animation.mp4` in the "How WAVE™ Technology Works" section and Gemini-remastered Dynojet/Oscilloscope/ASM evidence graphics (2026-10-26)
 - [x] ✅ **AI Workspace Implementation revenue page** — Added a productized
       consulting page, sitemap route, and manual outreach sheet; `npm run
       build` passes locally. Not deployed yet (2026-06-16)

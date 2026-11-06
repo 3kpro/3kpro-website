@@ -1,29 +1,29 @@
-## 2026-10-27 — Precision Lab mobile border and header alignment
-
-- Reflow Preview 03's concept switcher and brand/action header without fixed-height overlap; retain concept order 01–04 and the selected Lab state.
-- Align mobile panel gutters/dividers, contain intrinsic-width grids and dialogs, and use the top concept menu instead of a duplicate floating mobile overlay. Preserve content, assets, links and flagship repair.
-
 # CHANGELOG.md - 3kpro.services Company Site
 
 All notable changes to the 3kpro.services company website and marketplace.
 
 ---
 
+## [2026-11-05] — Green Auto Technology 6-Variation Suite Expansion (Previews 05 & 06)
+
+- Added two new full-content variations to the Green Auto Technology client preview suite (`public/clients/GreenAuto/`, `MainBrain/CLIENT_DELIVERIES/`, and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`):
+  - **`preview-05-vortex-3d` (WAVE™ 3D Vortex & Combustion Stack Cinema):** Built to the 2026-10-30 `cinematic-client-previews` standard with real-time Three.js WebGL + GSAP ScrollTrigger 3-stage throttle body disassembly, mobile `phoneComposition` text-protection scrims, interactive Throttle Blade Angle (`5°–90°`) & Airflow Spectrum Bench, Dual MP4 CFD video studio (`ThrottleBodyCutaway.mp4` + `wave-vortex-animation.mp4`), MPG payback simulator, remastered Dynojet/OWON/ASM charts, and all 43 unified catalog items.
+  - **`preview-06-heritage-fleet` (Heavy-Duty, Diesel & Commercial Fleet Edition):** Warm Titanium Bone (`#F4F1EA`) ⇄ Night Haul dual-theme editorial & fleet workhorse showcase featuring a pinned scroll-scrubbed Stock vs. WAVE intake telemetry stage, 1–25 vehicle Commercial Fleet & Diesel Air-Stream Payback Matrix, Dual MP4 CFD video studio, remastered lab proof charts, and all 43 unified catalog items.
+- Updated `public/clients/GreenAuto/index.html`, `MainBrain/CLIENT_DELIVERIES/index.html`, `next.config.js`, and the switcher bars across Previews 01–06 so all 6 variations cross-link seamlessly.
+
+## [2026-10-27] — GreenAuto mobile repair release and accepted closeout
+
+- Released Precision Lab `index.html`, `styles.css`, `app.js` mobile header/border/navigation repair from approved source `88c181a`; production `dpl_FBozpaaTdT4pNPn8e9dHmd3NnCV1` READY. James accepted the live result.
+- Preserved 60/60 responsive QA, navigation/typecheck/build receipts; six live HTTP/SHA256 checks re-passed at exit.
+- Updated `TASKS.md`, `SESSION_CONTEXT.md`, `SCORECARD.md` and `docs/operations/GREENAUTO_MOBILE_RELEASE_2026-10-27.md` with approval, production/rollback, evidence and remaining out-of-scope work. Documentation-only closeout; unrelated dirty app files preserved; no redeploy.
+
 ## [Unreleased]
-### Flagship mobile containment — 2026-10-27
-- Repair GreenAuto WAVE Flagship horizontal overflow: wrap header actions and cart rows, allow grid/form children to shrink, and bound catalog, blog, video and product-dialog columns to the available width. Preserve the approved license graphic, other previews and company routes.
-
-### Baseline reconciliation — 2026-10-27
-- Preserve origin/main company routes and www-to-apex redirect while restoring the existing four-preview GreenAuto suite and scoped route/noindex configuration.
-- Replace four Personal License graphics and flagship P013 with the approved-source Introducing The Wave image; version only their data references. Prepared for review; not published.
-
 ### Added
-- `app/privacy/page.tsx`, `app/terms/page.tsx`, `components/legal/LegalPage.tsx`: 2026-10-11 — added professional, accessible Privacy Policy and Terms of Use pages covering actual site contact collection, analytics, hosting, email delivery, Stripe checkout, service-agreement scope, and customer contact paths.
-### Changed
-- `app/page.tsx`, `components/SiteFooter.tsx`, `app/pay/page.tsx`, `app/services/_components/ServiceDetailPage.tsx`, `app/sitemap.ts`: 2026-10-11 — added Privacy and Terms links to core public surfaces and registered both policy routes in the sitemap.
+- `public/clients/GreenAuto/*`, `next.config.js`: 2026-10-26 — added and deployed 4-variation client preview suite (`preview-01-gat-os`, `preview-02-apex-atelier`, `preview-03-precision-lab`, `preview-04-wave-flagship`) for Green Auto Technology at `https://3kpro.services/clients/GreenAuto`. Includes the "How WAVE™ Technology Works" dual fluid-dynamics section in Preview 03 and Preview 04 with 3D cutaway MP4 (`ThrottleBodyCutaway.mp4`) and butterfly-valve intake vortex MP4 (`wave-vortex-animation.mp4`), full-width remastered `WaveThrottleGraphic.jpg` on the splash pages of Previews 01–03, Gemini-remastered lab telemetry graphics (`dyno-mustang-remastered.jpg`, `map-sensor-oscilloscope-remastered.jpg`, `asm-diagnostic-dodge-ram-remastered.jpg`), refined Preview 03 hero headline spacing, WAVE Science PDF, and all 25 WAVE & Tribo-MAX audited products (`P001`–`P025`).
+- `app/sitepreview/[slug]/LastStopShopRequestForm.tsx`, `app/sitepreview/the-last-stop-shop/pay/page.tsx`: 2026-08-13 — added a customer-facing Last Stop Shop service request form delivered to `randall@thelaststopshop.com`, TikTok link, and a noindex Cash App payment page for upfront diagnostic payments to `$tlss18`.
 - `app/page.tsx`: 2026-07-10 — restored Quick Pay to the top nav (amber-accented `/pay` link after Contact). The OPERATOR homepage promotion (2026-07-06) had left Quick Pay reachable only via the footer; field leads need the payment path one click from the front door.
 ### Fixed
-- `proxy.ts`: 2026-10-17 — added a permanent `www.3kpro.services` to `3kpro.services` redirect safeguard so the public hostname remains canonical once the `www` domain alias is attached to the company Vercel project.
+- `lib/sitePreviews.ts`, `app/sitepreview/[slug]/page.tsx`: 2026-08-13 — changed The Last Stop Shop diagnostic price from `$129` to `$125.00` and added Randall's small-engine certification to the final customer-facing preview content.
 - `package.json`, `package-lock.json`: 2026-08-10 — upgraded Next.js, PostCSS, the AI SDK pair, and audited transitive packages to patched releases. Fresh production install, `npm audit --omit=dev`, and the 74-route production build now pass with zero reported vulnerabilities.
 - `app/lp/*`, `next.config.js`: 2026-08-10 — removed the public Launchpad `/lp` route and added temporary redirects from `/lp` and `/lp/:path*` back to `/` so the internal Xelora launch/IP page is no longer exposed on 3kpro.services.
 - `app/sitepreview/[slug]/page.tsx`, `lib/sitePreviews.ts`: 2026-08-10 — updated `/sitepreview/the-last-stop-shop` into a final customer-facing draft by removing visible preview/concept/Randall-facing copy, hiding the internal variation selector on the final alias, replacing launch notes with service copy, and tightening the hero/header logo-and-text alignment.

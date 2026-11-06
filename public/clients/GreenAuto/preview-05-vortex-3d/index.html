@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Green Auto Technology — WAVE™ 3D Vortex &amp; Combustion Stack Cinema (Preview 05)</title>
+  <meta name="description" content="Interactive 3D scroll-disassembly of The WAVE™ Throttle Body, The Combustion Stack™, and Tribo-MAX™ Boron Nano-Ceramic Restoration by Michael Lee at Green Auto Technology." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- REAL-TIME 3D WEBGL BILLET THROTTLE BODY & VORTEX UNIVERSE -->
+  <div id="vortex-universe" aria-hidden="true">
+    <canvas id="vortex-canvas"></canvas>
+  </div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- TOP 6-VARIATION CONCEPT SWITCHER RIBBON -->
+  <div class="preview-ribbon" role="region" aria-label="Preview switcher">
+    <span class="r-label">GREEN AUTO TECHNOLOGY // 6-VARIATION PREVIEW SUITE</span>
+    <div class="p-links">
+      <a href="../preview-01-gat-os/index.html">01 · GAT·OS Console</a>
+      <a href="../preview-02-apex-atelier/index.html">02 · Apex Atelier</a>
+      <a href="../preview-03-precision-lab/index.html">03 · Precision Lab</a>
+      <a href="../preview-04-wave-flagship/index.html">04 · WAVE Flagship</a>
+      <a href="../preview-05-vortex-3d/index.html" class="active">05 · 3D Vortex Cinema</a>
+      <a href="../preview-06-heritage-fleet/index.html">06 · Heritage Fleet</a>
+    </div>
+  </div>
+
+  <!-- MAIN STICKY HEADER -->
+  <header class="site-header">
+    <a href="#top" class="brand-mark" aria-label="Green Auto Technology Home">
+      <span class="brand-badge">3D</span>
+      <span class="brand-text">
+        <strong>Green Auto Technology</strong>
+        <small>WAVE™ 3D VORTEX &amp; COMBUSTION CINEMA</small>
+      </span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary Navigation">
+      <a href="#combustion-3d-stage">3D Stack Disassembly</a>
+      <a href="#vortex-bench">Live Airflow Bench</a>
+      <a href="#fluid-videos">CFD Videos (MP4)</a>
+      <a href="#roi-simulator">MPG Payback</a>
+      <a href="#lab-evidence">Dyno &amp; Scope Proof</a>
+      <a href="#shop">Store (43)</a>
+      <a href="#custom-modifications">Fitment</a>
+      <a href="#resources">Articles</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" id="motion-toggle" class="btn ghost sm" aria-pressed="false">Reduce motion</button>
+      <button type="button" id="openCartBtn" class="btn ghost sm">🛒 Cart (<span id="cartCount">0</span>)</button>
+      <a href="tel:+15072153817" class="btn ghost sm">(507) 215-3817</a>
+      <a href="#custom-modifications" class="btn sm">Order WAVE ↗&#xFE0E;</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- SECTION 1: HERO VIEWPORT (READ-THE-ROOM + PROTECTED MOBILE COPY) -->
+    <section class="hero-vortex" aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        <div class="protected-copy" id="hero-copy-box">
+          <div class="eyebrow-tag">
+            <span class="status-dot"></span>
+            <span>ENGINEERED BY MICHAEL LEE · MAGNUSON-MOSS PROTECTED · ZERO ECU TUNING</span>
+          </div>
+          <h1 id="hero-heading" class="hero-title">
+            INSIDE THE <span class="accent">WAVE™</span><br>
+            COMBUSTION VORTEX.
+          </h1>
+          <p class="hero-lead">
+            Scroll to disassemble our 3-stage machined throttle body in real-time 3D. By contouring the high-pressure intake bore with <strong>The WAVE™ ($550)</strong>, <strong>The Cyclone™ ($250)</strong>, and <strong>Tribo-MAX™ Boron Nano-Ceramics (0.06μ friction)</strong>, incoming air accelerates into a high-vacuum vortex—delivering <strong>+38% average MPG</strong> across <strong>10,000+ custom builds</strong> and <strong>1 ppm HC</strong> clean exhaust.
+          </p>
+          <div class="hero-badges">
+            <span><b>✓</b> 10,000+ CUSTOM BUILDS</span>
+            <span><b>✓</b> +38% AVG MPG GAIN</span>
+            <span><b>✓</b> +9.52 RWHP DYNOJET PROVEN</span>
+            <span><b>✓</b> ZERO-DOWNTIME CORE EXCHANGE</span>
+          </div>
+          <div class="hero-cta-row">
+            <a href="#combustion-3d-stage" class="btn">Enter 3D Disassembly ↓&#xFE0E;</a>
+            <a href="#fluid-videos" class="btn ghost">▶ Watch Dual MP4 Cutaways</a>
+            <a href="#shop" class="btn ghost">Browse All 43 Items ↗&#xFE0E;</a>
+          </div>
+        </div>
+
+        <aside class="hero-telemetry-card" aria-label="The WAVE Throttle Body Hardware">
+          <div class="hero-telemetry-top">
+            <span>SYS-3D // THE WAVE™ THROTTLE BODY MOD</span>
+            <span>● CORE EXCHANGE READY</span>
+          </div>
+          <img src="assets/WaveThrottleGraphic.jpg" alt="The WAVE Throttle Body — 10,000+ Custom Builds, 38% Average MPG Gain" />
+          <div class="hero-stat-strip">
+            <div>
+              <strong>10,000+</strong>
+              <small>Custom Builds</small>
+            </div>
+            <div>
+              <strong>+38% MPG</strong>
+              <small>Fleet Avg Gain</small>
+            </div>
+            <div>
+              <strong>0.06 μ</strong>
+              <small>12× Oil Friction</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SECTION 2: STICKY 3D SCROLL-SCRUBBED COMBUSTION STACK DISASSEMBLY -->
+    <section id="combustion-3d-stage" class="journey-3d" aria-label="3D Combustion Stack Disassembly">
+      <div class="story-stage">
+        <div class="stage-hud-top">
+          <span>3D CNC BILLET ASSEMBLY // <strong id="assembly-status">STACK INTACT · IDLE VORTEX</strong></span>
+          <span>SCROLL FORWARD TO EXPLODE · BACKWARD TO REBUILD</span>
+        </div>
+
+        <div class="chapters-wrap">
+          <article class="chapter-card chapter-one protected-copy">
+            <div class="chapter-kicker">STAGE 01 // THE WAVE™ ($550 STANDALONE)</div>
+            <h2>High-Pressure Wave-Form Bore Contour.</h2>
+            <p>
+              As the front intake bellmouth separates, inspect the patented wave-form grooves machined into the high-pressure side of the bore and butterfly blade. Flat-plate turbulence vanishes—dropping the pressure curve and elevating intake manifold vacuum so liquid fuel droplets flash into vapor.
+            </p>
+            <div class="chapter-metrics">
+              <span>HIGHER MANIFOLD VACUUM</span>
+              <span>OWON 100 kS/s VERIFIED</span>
+              <span>NO ECU TUNING REQUIRED</span>
+            </div>
+          </article>
+
+          <article class="chapter-card chapter-two protected-copy">
+            <div class="chapter-kicker">STAGE 02 // THE CYCLONE™ ($250 STANDALONE)</div>
+            <h2>Helical Vortex-Flow Stator Pathways.</h2>
+            <p>
+              At the center of the exploded bore, precision helical pathways spin the air charge into a high-velocity rotational vortex. Kinetic energy stays locked across part-throttle cruising and wide-open throttle, homogenizing the air-fuel charge before it reaches the intake runners.
+            </p>
+            <div class="chapter-metrics">
+              <span>HELICAL SWIRL VELOCITY</span>
+              <span>+9.52 RWHP / +6.29 FT-LBS</span>
+              <span>INSTANT THROTTLE SNAP</span>
+            </div>
+          </article>
+
+          <article class="chapter-card chapter-three protected-copy">
+            <div class="chapter-kicker">STAGE 03 // PORT &amp; POLISH + TRIBO-MAX™ ($1,000 STACK)</div>
+            <h2>Zero-Restriction Venturi &amp; 0.06μ Boron Armor.</h2>
+            <p>
+              The assembly converges into a mirror-polished exit venturi paired with <strong>Tribo-MAX™ Boron Nano-Ceramic</strong> surface restoration (12× slicker than motor oil, filling microscopic wear up to 0.064"). The result: complete stoichiometric burn and <strong>1 ppm HC</strong> tailpipe emissions.
+            </p>
+            <div class="chapter-metrics">
+              <span>0.06 FRICTION COEFFICIENT</span>
+              <span>1 PPM HC ON RAM 5.7L ASM</span>
+              <span>COLLECTOR CASE INCLUDED</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="stage-hud-bottom">
+          <span id="phase-name">STAGE 01 · WAVE ENTRY</span>
+          <div class="phase-track"><span id="phase-bar"></span></div>
+          <span id="phase-percent">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE 3D THROTTLE ANGLE & VORTEX DYNO CONTROL ROOM -->
+    <section id="vortex-bench" class="control-room-section" aria-labelledby="bench-title">
+      <div class="container control-room-grid">
+        <div class="protected-copy" id="bench-copy-box">
+          <div class="section-eyebrow">INTERACTIVE 3D AIRFLOW BENCH</div>
+          <h2 id="bench-title" class="section-title" style="margin-bottom:16px;">
+            TUNE THROTTLE ANGLE &amp; <span style="color:var(--accent);">VORTEX VELOCITY.</span>
+          </h2>
+          <p style="color:#d5e2db;margin-bottom:20px;">
+            Take live control of the 3D WAVE™ throttle body. Switch between airflow visualization modes, sweep the butterfly valve from <strong>12% part-throttle highway cruise</strong> to <strong>100% wide-open throttle</strong>, and trigger a stoichiometric combustion flash.
+          </p>
+          <div class="hero-cta-row">
+            <button type="button" class="btn" onclick="window.openProductDetail('P019')">Inspect The Combustion Stack™ ($1,000) ↗&#xFE0E;</button>
+            <button type="button" class="btn ghost" onclick="window.openProductDetail('P001')">Inspect The WAVE™ Mod ($550) ↗&#xFE0E;</button>
+          </div>
+        </div>
+
+        <div class="console-box" id="console-panel">
+          <div class="control-group">
+            <span class="control-label" id="spectrum-label">3D TELEMETRY SPECTRUM</span>
+            <div class="swatches" role="group" aria-labelledby="spectrum-label">
+              <button type="button" class="swatch active" data-color="emerald" aria-pressed="true">
+                <i style="background:#00f58a"></i><span>WAVE™ Vortex</span>
+              </button>
+              <button type="button" class="swatch" data-color="cyan" aria-pressed="false">
+                <i style="background:#38bdf8"></i><span>Cyclone™ CFM</span>
+              </button>
+              <button type="button" class="swatch" data-color="amber" aria-pressed="false">
+                <i style="background:#ffb800"></i><span>Tribo-MAX™ 0.06μ</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="throttle-slider">
+              <span>THROTTLE BLADE OPENING ANGLE</span>
+              <output for="throttle-slider" id="throttle-angle-val">38° (CRUISE VORTEX)</output>
+            </label>
+            <input id="throttle-slider" type="range" min="5" max="90" value="38" />
+          </div>
+
+          <div class="telemetry-readout-grid">
+            <div class="telemetry-cell">
+              <small>MANIFOLD VACUUM</small>
+              <strong id="readout-vacuum">21.4 inHg</strong>
+            </div>
+            <div class="telemetry-cell">
+              <small>SWIRL VELOCITY</small>
+              <strong id="readout-swirl">64.2 m/s</strong>
+            </div>
+            <div class="telemetry-cell">
+              <small>UNBURNED HC</small>
+              <strong id="readout-hc">1 PPM</strong>
+            </div>
+          </div>
+
+          <button type="button" class="btn" id="ignite-btn" style="width:100%;">
+            ⚡ IGNITE STOICHIOMETRIC COMBUSTION FLASH ↗&#xFE0E;
+          </button>
+          <p id="ignition-status" style="font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center;margin-top:10px;">
+            3D WebGL Bench Ready · Scroll or adjust throttle angle above.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: DUAL MP4 FLUID DYNAMICS STUDIO & WAVE SCIENCE PDF -->
+    <section id="fluid-videos" class="content-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">01 // COMPUTATIONAL FLUID DYNAMICS &amp; CUTAWAY VIDEO STUDIO</div>
+            <h2 class="section-title">HOW <span style="color:var(--accent);">WAVE™</span> TECHNOLOGY WORKS IN MOTION</h2>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="assets/wave-science.pdf" target="_blank" rel="noopener" class="btn ghost sm">📄 Download WAVE Science PDF ↗&#xFE0E;</a>
+            <button type="button" class="btn sm" onclick="window.addToCart('P001')">+ Add WAVE Mod ($550)</button>
+          </div>
+        </div>
+
+        <div class="fluid-studio-grid">
+          <div class="feature-stack">
+            <article class="feature-box">
+              <div class="section-eyebrow" style="margin-bottom:2px;">STEP 01 // LAMINAR-TO-HELICAL BOUNDARY</div>
+              <h3>Eliminates Flat-Plate Throttle Turbulence</h3>
+              <p>Precision V-grooves and wave contours machined into the high-pressure side of the throttle body wall and butterfly blade guide air smoothly around the valve at cruising speeds.</p>
+            </article>
+            <article class="feature-box">
+              <div class="section-eyebrow" style="margin-bottom:2px;">STEP 02 // VACUUM VAPORIZATION</div>
+              <h3>Raises Manifold Vacuum &amp; Flashes Fuel to Vapor</h3>
+              <p>Accelerated swirling airflow elevates intake vacuum (verified on 100 kS/s OWON MAP sensor traces), atomizing liquid fuel droplets into a fast-burning homogeneous mist.</p>
+            </article>
+            <article class="feature-box">
+              <div class="section-eyebrow" style="margin-bottom:2px;">STEP 03 // TRIBO-MAX™ BORON-CERAMIC BONDING</div>
+              <h3>0.06 Friction Coefficient — 12× Better Than Motor Oil</h3>
+              <p>Boron nano-ceramics permanently bond to metal surfaces under heat, restoring up to 0.064" of wear across cylinders, transmissions, fuel pumps, and cooling systems.</p>
+            </article>
+          </div>
+
+          <div class="video-console">
+            <div class="sci-tabs" id="v5SciTabs">
+              <button type="button" class="sci-tab active" data-sci-view="cutaway">▶ 3D Cutaway (MP4)</button>
+              <button type="button" class="sci-tab" data-sci-view="vortex">▶ Intake Vortex (MP4)</button>
+              <button type="button" class="sci-tab" data-sci-view="dual">⚡ Dual Side-by-Side</button>
+              <button type="button" class="sci-tab" data-sci-view="diagram">V-Groove Diagram</button>
+            </div>
+
+            <div id="v5PaneCutaway" class="video-viewport">
+              <video id="v5CutawayVid" src="assets/ThrottleBodyCutaway.mp4" autoplay muted loop playsinline controls></video>
+            </div>
+
+            <div id="v5PaneVortex" class="video-viewport" style="display:none;">
+              <video id="v5VortexVid" src="assets/wave-vortex-animation.mp4" autoplay muted loop playsinline controls></video>
+            </div>
+
+            <div id="v5PaneDual" class="video-viewport" style="display:none;padding:12px;">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+                <div>
+                  <div style="font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px;">01 // 3D THROTTLE CUTAWAY</div>
+                  <video src="assets/ThrottleBodyCutaway.mp4" autoplay muted loop playsinline controls style="width:100%;border-radius:6px;"></video>
+                </div>
+                <div>
+                  <div style="font-family:var(--mono);font-size:10px;color:var(--cyan);margin-bottom:6px;">02 // BUTTERFLY VALVE VORTEX</div>
+                  <video src="assets/wave-vortex-animation.mp4" autoplay muted loop playsinline controls style="width:100%;border-radius:6px;"></video>
+                </div>
+              </div>
+            </div>
+
+            <div id="v5PaneDiagram" class="video-viewport" style="display:none;padding:12px;">
+              <img src="assets/tb_info_wave.png" alt="WAVE V-Groove Butterfly Valve Diagram" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: INTERACTIVE MPG & PAYBACK SIMULATOR -->
+    <section id="roi-simulator" class="content-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">02 // ILLUSTRATIVE FUEL SAVINGS &amp; PAYBACK CALCULATOR</div>
+            <h2 class="section-title">ESTIMATE YOUR <span style="color:var(--accent);">ANNUAL FUEL SAVINGS</span></h2>
+          </div>
+          <p style="color:var(--muted);max-width:460px;font-size:0.92rem;">
+            Illustrative model based on your current MPG, annual mileage, fuel price, and observed WAVE™ efficiency gains (+30% Ram 5.7L test to +38% fleet average).
+          </p>
+        </div>
+
+        <div class="roi-grid">
+          <div>
+            <div class="slider-item">
+              <label for="calc-mpg"><span>Current Vehicle Fuel Economy</span><strong id="val-mpg">16 MPG</strong></label>
+              <input type="range" id="calc-mpg" min="8" max="35" step="1" value="16" />
+            </div>
+            <div class="slider-item">
+              <label for="calc-miles"><span>Annual Miles Driven</span><strong id="val-miles">15,000 mi/yr</strong></label>
+              <input type="range" id="calc-miles" min="5000" max="50000" step="1000" value="15000" />
+            </div>
+            <div class="slider-item">
+              <label for="calc-gas"><span>Fuel Price Per Gallon</span><strong id="val-gas">$3.60/gal</strong></label>
+              <input type="range" id="calc-gas" min="2.50" max="6.00" step="0.10" value="3.60" />
+            </div>
+            <div class="slider-item">
+              <label for="calc-gain"><span>Projected Efficiency Gain (15% – 38% Fleet Avg)</span><strong id="val-gain">+38% MPG</strong></label>
+              <input type="range" id="calc-gain" min="15" max="38" step="1" value="38" />
+            </div>
+          </div>
+
+          <div class="roi-output-card">
+            <div>
+              <div class="section-eyebrow">ILLUSTRATIVE ANNUAL FUEL SAVINGS</div>
+              <div id="out-yearly-save" class="roi-big-number">$933 / yr</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;padding-top:14px;border-top:1px solid rgba(255,255,255,0.12);font-family:var(--mono);">
+                <div>
+                  <small style="color:var(--muted);font-size:10px;display:block;">NEW PROJECTED MPG</small>
+                  <strong id="out-new-mpg" style="font-size:1.3rem;">22.1 MPG</strong>
+                </div>
+                <div>
+                  <small style="color:var(--muted);font-size:10px;display:block;">$550 WAVE MOD PAYBACK</small>
+                  <strong id="out-payback" style="font-size:1.3rem;color:var(--accent);">7.1 Months</strong>
+                </div>
+              </div>
+            </div>
+            <a href="#custom-modifications" class="btn" style="width:100%;">Request Vehicle Fitment &amp; Core Exchange ↗&#xFE0E;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: REMASTERED LAB EVIDENCE & 6 YOUTUBE PROOF VIDEOS -->
+    <section id="lab-evidence" class="content-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">03 // EMPIRICAL DYNOJET, OSCILLOSCOPE &amp; ASM EMISSIONS PROOF</div>
+            <h2 class="section-title">INSTRUMENTED <span style="color:var(--accent);">LABORATORY</span> BENCHMARKS</h2>
+          </div>
+          <p style="color:var(--muted);font-size:0.92rem;">Click any remastered diagnostic sheet to inspect full-screen.</p>
+        </div>
+
+        <div class="cards-3" style="margin-bottom:48px;">
+          <article class="evidence-card">
+            <div>
+              <div class="evidence-thumb" onclick="openLightbox('assets/dyno-mustang-remastered.jpg', '2010 Mustang GT 4.6L V8 — Dynojet Research Before & After The WAVE Mod')">
+                <img src="assets/dyno-mustang-remastered.jpg" alt="2010 Mustang GT 4.6L V8 Dynojet Research" />
+                <span class="thumb-badge">DYNOJET · +9.52 RWHP</span>
+              </div>
+              <div class="evidence-body">
+                <div class="chip-row">
+                  <span class="chip">273.63 → 283.15 HP</span>
+                  <span class="chip">290.32 → 296.61 ft-lbs</span>
+                </div>
+                <h3>2010 Mustang GT 4.6L V8 — Dynojet Research</h3>
+                <p>Unedited Dynojet run (`Diamond_001.drf` vs `Diamond_006.drf`) proving immediate rear-wheel horsepower and torque gains across the RPM band.</p>
+              </div>
+            </div>
+            <div style="padding:0 20px 20px;">
+              <button type="button" class="btn ghost sm" style="width:100%;" onclick="openLightbox('assets/dyno-mustang-remastered.jpg', '2010 Mustang GT 4.6L V8 — Dynojet Research Before & After The WAVE Mod')">🔍 Inspect High-Res Dyno Chart</button>
+            </div>
+          </article>
+
+          <article class="evidence-card">
+            <div>
+              <div class="evidence-thumb" onclick="openLightbox('assets/map-sensor-oscilloscope-remastered.jpg', 'MAP Sensor Oscilloscope Testing (100 kS/s) — Pre-Installation vs Post-Installation (Wave)')">
+                <img src="assets/map-sensor-oscilloscope-remastered.jpg" alt="MAP Sensor Oscilloscope Testing 100 kS/s" />
+                <span class="thumb-badge">OWON SCOPE · 100 kS/s</span>
+              </div>
+              <div class="evidence-body">
+                <div class="chip-row">
+                  <span class="chip">Higher Peak Vacuum</span>
+                  <span class="chip">Mid-Stroke Pressure Release</span>
+                </div>
+                <h3>MAP Sensor Vacuum Waveform (Pre vs. Post WAVE)</h3>
+                <p>Automotive MAP sensor electrical waveform recorded at 100 kS/s before (blue) and after (yellow) installation of The WAVE™ throttle body modification.</p>
+              </div>
+            </div>
+            <div style="padding:0 20px 20px;">
+              <button type="button" class="btn ghost sm" style="width:100%;" onclick="openLightbox('assets/map-sensor-oscilloscope-remastered.jpg', 'MAP Sensor Oscilloscope Testing (100 kS/s) — Pre-Installation vs Post-Installation (Wave)')">🔍 Inspect Oscilloscope Trace</button>
+            </div>
+          </article>
+
+          <article class="evidence-card">
+            <div>
+              <div class="evidence-thumb" onclick="openLightbox('assets/asm-diagnostic-dodge-ram-remastered.jpg', 'ASM Diagnostic Test (02-Jun-2020) — 2009 Dodge Ram 1500 5.70L V8')">
+                <img src="assets/asm-diagnostic-dodge-ram-remastered.jpg" alt="ASM Diagnostic Test 2009 Dodge Ram 1500 5.70L V8" />
+                <span class="thumb-badge">ASM TEST · 1 PPM HC</span>
+              </div>
+              <div class="evidence-body">
+                <div class="chip-row">
+                  <span class="chip">HC: 1 ppm</span>
+                  <span class="chip">CO: 0.02%</span>
+                  <span class="chip">+30% Hwy MPG</span>
+                </div>
+                <h3>2009 Dodge Ram 1500 5.7L Hemi — ASM Emissions</h3>
+                <p>Official Acceleration Simulation Mode (ASM) test report verifying near-zero unburned hydrocarbons (1 ppm HC) and +30% highway mileage gain.</p>
+              </div>
+            </div>
+            <div style="padding:0 20px 20px;">
+              <button type="button" class="btn ghost sm" style="width:100%;" onclick="openLightbox('assets/asm-diagnostic-dodge-ram-remastered.jpg', 'ASM Diagnostic Test (02-Jun-2020) — 2009 Dodge Ram 1500 5.70L V8')">🔍 Inspect ASM Emissions Sheet</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-head" style="margin-bottom:20px;">
+          <div>
+            <div class="section-eyebrow">VERIFIED VIDEO TESTIMONIALS &amp; BENCH TESTS</div>
+            <h3 class="section-title" style="font-size:1.75rem;">DRIVER &amp; <span style="color:var(--accent);">DYNO VIDEO VAULT (6)</span></h3>
+          </div>
+        </div>
+        <div id="videoCardsContainer" class="cards-3"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: UNIFIED 43-ITEM WAVE & TRIBO-MAX STORE -->
+    <section id="shop" class="content-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">04 // COMPLETE 43-ITEM AUTHORITATIVE CATALOG</div>
+            <h2 class="section-title">WAVE™ &amp; TRIBO-MAX™ <span style="color:var(--accent);">STORE</span></h2>
+          </div>
+          <p style="color:var(--muted);max-width:480px;font-size:0.92rem;">
+            All 25 WAVE™ Custom Mods, Tribo-MAX™ Boron Nano-Ceramics, 10H Graphene Coatings &amp; Licensing packages plus all 18 Fleet &amp; Oil Store Kits.
+          </p>
+        </div>
+
+        <div class="catalog-bar">
+          <div id="categoryPills" class="cat-pills">
+            <button type="button" class="cat-pill active" data-cat="all">ALL PRODUCTS (43)</button>
+            <button type="button" class="cat-pill" data-cat="Custom Performance Mods">WAVE &amp; MODS (13)</button>
+            <button type="button" class="cat-pill" data-cat="Engine & Fluid Treatments">TRIBO-MAX &amp; FLUIDS (18)</button>
+            <button type="button" class="cat-pill" data-cat="Detailing & Coatings">10H GRAPHENE (3)</button>
+            <button type="button" class="cat-pill" data-cat="Digital Guides">PDF GUIDES (2)</button>
+            <button type="button" class="cat-pill" data-cat="Wholesale & Licensing">LICENSING (2)</button>
+            <button type="button" class="cat-pill" data-cat="Service & Shipping">CORE &amp; SERVICES (5)</button>
+          </div>
+          <input type="search" id="catalogSearchInput" class="catalog-search" placeholder="Search WAVE, Tribo-MAX, 102mm LS, Diesel..." />
+        </div>
+
+        <div id="catalogGrid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: CUSTOM MODIFICATION WORKFLOW & 24HR FITMENT FORM -->
+    <section id="custom-modifications" class="content-section">
+      <div class="container fitment-grid">
+        <div>
+          <div class="section-eyebrow">05 // ZERO-DOWNTIME CORE EXCHANGE &amp; DIRECT MACHINING</div>
+          <h2 class="section-title" style="margin-bottom:14px;">REQUEST YOUR <span style="color:var(--accent);">CUSTOM BUILD</span></h2>
+          <p style="color:var(--muted);margin-bottom:20px;">
+            Every WAVE™ throttle body, carburetor, and diesel air-stream modification is precision-machined for your exact vehicle year, make, model, and displacement.
+          </p>
+
+          <div class="step-box">
+            <div class="step-num">01</div>
+            <div>
+              <h3 style="font-size:1.05rem;margin-bottom:4px;">Option A: Core Exchange (+$100 Refundable Deposit)</h3>
+              <p style="color:var(--muted);font-size:0.88rem;">We ship a pre-machined WAVE throttle body to you first so you have zero vehicle downtime. Return your stock core in the same box for an immediate $100 refund.</p>
+            </div>
+          </div>
+
+          <div class="step-box">
+            <div class="step-num">02</div>
+            <div>
+              <h3 style="font-size:1.05rem;margin-bottom:4px;">Option B: Mail-In Your Part (Direct Machining)</h3>
+              <p style="color:var(--muted);font-size:0.88rem;">Ship your throttle body or diesel air-stream component directly to our shop. Diesel Air Stream turnaround is ~5 business days; custom gas WAVE builds average 3–4 weeks.</p>
+            </div>
+          </div>
+
+          <div class="step-box">
+            <div class="step-num">03</div>
+            <div>
+              <h3 style="font-size:1.05rem;margin-bottom:4px;">Option C: Outright / $95×3 Payment Plan / Mobile Install ($600)</h3>
+              <p style="color:var(--muted);font-size:0.88rem;">Split a $285 Throttle Body Modification into 3 monthly payments of $95/mo, or book a 2-hour on-site Mobile Installation ($600).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="section-eyebrow">REPLY IN 24 HOURS OR LESS · (507) 215-3817</div>
+          <h3 style="font-family:var(--display);font-size:1.45rem;margin-bottom:16px;">VEHICLE FITMENT &amp; MODIFICATION INQUIRY</h3>
+          <form id="fitmentRequestForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fitName">Your Name *</label>
+                <input type="text" id="fitName" required placeholder="e.g. Garey Miller" />
+              </div>
+              <div class="form-group">
+                <label for="fitPhone">Phone Number *</label>
+                <input type="tel" id="fitPhone" required placeholder="(507) 215-3817" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fitEmail">Email Address *</label>
+                <input type="email" id="fitEmail" required placeholder="you@example.com" />
+              </div>
+              <div class="form-group">
+                <label for="fitVehicle">Vehicle Year / Make / Model *</label>
+                <input type="text" id="fitVehicle" required placeholder="e.g. 2010 Ford Mustang GT" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fitEngine">Engine Displacement &amp; Fuel *</label>
+                <input type="text" id="fitEngine" required placeholder="e.g. 4.6L V8 Gas / 6.7L Cummins" />
+              </div>
+              <div class="form-group">
+                <label for="fitPackage">Modification Package *</label>
+                <select id="fitPackage">
+                  <option value="THE COMBUSTION STACK™ ($1,000)">THE COMBUSTION STACK™ — 3-Stage Wave + Cyclone + Port/Polish ($1,000)</option>
+                  <option value="The WAVE - Gas Throttle Body/Carb ($550)">The WAVE — Gas Throttle Body / Carburetor ($550)</option>
+                  <option value="Modified Throttle Body Service ($285)">Standard Modified Throttle Body Machining ($285)</option>
+                  <option value="Diesel Air Stream - WAVE Modification ($1,000)">Diesel Air Stream — WAVE Modification ($1,000)</option>
+                  <option value="BIG GULP 102mm LS Motor WAVE Throttle ($600)">BIG GULP 102mm (Gen 3 LS Motor) WAVE Throttle ($600)</option>
+                  <option value="WAVE Throttle Body Spacer - Cut to Order ($300)">WAVE Throttle Body Spacer — Cut to Order ($300)</option>
+                  <option value="The Cyclone ($250)">The Cyclone Vortex Mod ($250)</option>
+                  <option value="Port & Polish Service ($250)">Port &amp; Polish — Throttle Body / Carburetor ($250)</option>
+                  <option value="Personal License - WAVE Technology ($10,000)">Personal License — The WAVE Technology ($10,000)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fitFulfillment">Fulfillment Preference</label>
+              <select id="fitFulfillment">
+                <option value="Core Exchange (+$100 Refundable Deposit)">Core Exchange (Ship replacement first + $100 refundable core deposit)</option>
+                <option value="Send-In My Part">Mail-In My Existing Throttle Body / Component</option>
+                <option value="Outright Purchase">Outright Purchase (No Core Return)</option>
+                <option value="3-Month Payment Plan ($95/mo x 3)">3-Month Payment Plan ($95/mo × 3 = $285)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fitNotes">Goals / Notes</label>
+              <textarea id="fitNotes" rows="3" placeholder="Tell Michael about your vehicle setup or questions..."></textarea>
+            </div>
+            <button type="submit" class="btn" style="width:100%;">Submit 24Hr Fitment Request ↗&#xFE0E;</button>
+            <div id="fitmentStatusMsg" style="margin-top:10px;font-family:var(--mono);font-size:11.5px;color:var(--accent);display:none;"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: 8 TECHNICAL BLOG ARTICLES, GREEN MILES REWARDS & ALASKA DISTRIBUTOR -->
+    <section id="resources" class="content-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-eyebrow">06 // TECHNICAL ARTICLES, LOYALTY REWARDS &amp; ALASKA PARTNER</div>
+            <h2 class="section-title">FIELD JOURNAL &amp; <span style="color:var(--accent);">TECHNICAL Q&amp;A (8)</span></h2>
+          </div>
+        </div>
+
+        <div id="blogArticlesGrid" class="cards-3" style="margin-bottom:44px;"></div>
+
+        <div class="cards-3">
+          <div class="evidence-card" style="padding:22px;">
+            <div>
+              <div class="section-eyebrow">GREEN MILES REWARDS</div>
+              <h3 style="font-family:var(--display);font-size:1.25rem;margin-bottom:8px;">EARN 10 PTS PER $1 SPENT</h3>
+              <p style="color:var(--muted);font-size:0.9rem;">Includes a 100-point signup bonus across Green Starter, Eco Driver, and Green Legend VIP tiers.</p>
+            </div>
+            <a href="#shop" class="btn ghost sm" style="margin-top:16px;">Start Earning Green Miles ↗&#xFE0E;</a>
+          </div>
+
+          <div class="evidence-card" style="padding:22px;">
+            <div>
+              <div class="section-eyebrow">AUTHORIZED ALASKA DISTRIBUTOR</div>
+              <h3 style="font-family:var(--display);font-size:1.25rem;margin-bottom:8px;">MIKE BUCK — ANCHORAGE, AK</h3>
+              <p style="color:var(--muted);font-size:0.9rem;">Extreme-cold Tribo-MAX™ ceramic engine treatments, local inventory, and WAVE™ consultations in Alaska.</p>
+            </div>
+            <a href="tel:9072527452" class="btn ghost sm" style="margin-top:16px;">Call Mike Buck: (907) 252-7452</a>
+          </div>
+
+          <div class="evidence-card" style="padding:22px;">
+            <div>
+              <div class="section-eyebrow">DIRECT SHOP CONTACT · MICHAEL LEE</div>
+              <h3 style="font-family:var(--display);font-size:1.25rem;margin-bottom:8px;">GREEN AUTO TECHNOLOGY</h3>
+              <p style="color:var(--muted);font-size:0.9rem;">Phone: (507) 215-3817 · Email: greenautotechnology@gmail.com · 60-Min Video Consultation ($95).</p>
+            </div>
+            <a href="tel:+15072153817" class="btn sm" style="margin-top:16px;">Call (507) 215-3817 ↗&#xFE0E;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="font-family:var(--display);font-size:1.2rem;">GREEN AUTO TECHNOLOGY</strong>
+        <p style="color:var(--muted);font-size:0.88rem;margin:10px 0;">
+          Where POWER Meets Efficiency. Patented WAVE™ Waveform Air-Vortex Enhancement machining &amp; Tribo-MAX™ Boron-Ceramic engine restoration by Michael Lee.
+        </p>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent);">
+          3KPRO.SERVICES PREVIEW 05 // 3D VORTEX CINEMA
+        </div>
+      </div>
+      <div>
+        <div class="section-eyebrow">3D &amp; Lab Proof</div>
+        <ul class="footer-links">
+          <li><a href="#combustion-3d-stage">3D Stack Disassembly</a></li>
+          <li><a href="#vortex-bench">Live Airflow Bench</a></li>
+          <li><a href="#fluid-videos">Dual MP4 CFD Videos</a></li>
+          <li><a href="assets/wave-science.pdf" target="_blank">WAVE Science Whitepaper (PDF)</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-eyebrow">Catalog &amp; Fitment</div>
+        <ul class="footer-links">
+          <li><a href="#shop">WAVE &amp; Performance Mods</a></li>
+          <li><a href="#shop">Tribo-MAX Nano-Ceramics</a></li>
+          <li><a href="#custom-modifications">Zero-Downtime Core Exchange</a></li>
+          <li><a href="#roi-simulator">MPG Payback Simulator</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-eyebrow">Direct Contact</div>
+        <ul class="footer-links">
+          <li>Michael Lee — Founder &amp; Lead Machinist</li>
+          <li><a href="tel:+15072153817" style="color:var(--accent);">(507) 215-3817</a></li>
+          <li>greenautotechnology@gmail.com</li>
+          <li>Alaska Partner: Mike Buck (907) 252-7452</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- UNIVERSAL MODAL FOR LIGHTBOX / PRODUCT SPEC / BLOG / CART -->
+  <div id="universalModal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-panel">
+      <button type="button" class="modal-close" id="closeModalBtn">✕</button>
+      <div id="modalBodyContent"></div>
+    </div>
+  </div>
+
+  <!-- FLOATING 6-DESIGN SWITCHER BAR -->
+  <div id="gat-preview-switcher" style="position:fixed;bottom:16px;left:16px;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:6px;background:rgba(5,9,8,0.95);backdrop-filter:blur(12px);border:1px solid rgba(0,245,138,0.5);padding:7px 10px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#F2F6FA;box-shadow:0 10px 30px rgba(0,0,0,0.75);">
+    <a href="/clients/GreenAuto" style="color:#00F58A;text-decoration:none;font-weight:700;padding:4px 8px;border:1px solid rgba(0,245,138,0.4);background:rgba(0,245,138,0.1);">← ALL 6 DESIGNS</a>
+    <a href="/clients/GreenAuto/preview-01-gat-os/index.html" style="color:#C6D2DE;text-decoration:none;font-weight:700;padding:4px 7px;border-radius:3px;">01: GAT·OS</a>
+    <a href="/clients/GreenAuto/preview-02-apex-atelier/index.html" style="color:#C6D2DE;text-decoration:none;font-weight:700;padding:4px 7px;border-radius:3px;">02: APEX</a>
+    <a href="/clients/GreenAuto/preview-03-precision-lab/index.html" style="color:#C6D2DE;text-decoration:none;font-weight:700;padding:4px 7px;border-radius:3px;">03: LAB</a>
+    <a href="/clients/GreenAuto/preview-04-wave-flagship/index.html" style="color:#C6D2DE;text-decoration:none;font-weight:700;padding:4px 7px;border-radius:3px;">04: FLAGSHIP</a>
+    <a href="/clients/GreenAuto/preview-05-vortex-3d/index.html" style="color:#03120A;background:#00F58A;text-decoration:none;font-weight:700;padding:4px 7px;border-radius:3px;">05: 3D VORTEX</a>
+    <a href="/clients/GreenAuto/preview-06-heritage-fleet/index.html" style="color:#C6D2DE;text-decoration:none;font-weight:700;padding:4px 7px;border-radius:3px;">06: HERITAGE FLEET</a>
+  </div>
+
+  <script src="gat-data.js"></script>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
