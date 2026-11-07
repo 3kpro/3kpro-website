@@ -4,12 +4,14 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ---
 
-## [2026-11-05] — Green Auto Technology 6-Variation Suite Expansion (Previews 05 & 06)
+## [2026-11-07] — Green Auto Technology 6-Variation Suite Expansion & Live Visual QA Release (`dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`)
 
-- Added two new full-content variations to the Green Auto Technology client preview suite (`public/clients/GreenAuto/`, `MainBrain/CLIENT_DELIVERIES/`, and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`):
-  - **`preview-05-vortex-3d` (WAVE™ 3D Vortex & Combustion Stack Cinema):** Built to the 2026-10-30 `cinematic-client-previews` standard with real-time Three.js WebGL + GSAP ScrollTrigger 3-stage throttle body disassembly, mobile `phoneComposition` text-protection scrims, interactive Throttle Blade Angle (`5°–90°`) & Airflow Spectrum Bench, Dual MP4 CFD video studio (`ThrottleBodyCutaway.mp4` + `wave-vortex-animation.mp4`), MPG payback simulator, remastered Dynojet/OWON/ASM charts, and all 43 unified catalog items.
+- Built, aligned, and deployed two new full-content variations to the Green Auto Technology client preview suite (`public/clients/GreenAuto/`, `MainBrain/CLIENT_DELIVERIES/`, and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`), live at `https://3kpro.services/clients/GreenAuto` (deployments `dpl_8C25HhozyoSviawMyenJ97wHVCoX` -> `dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`, commits `b6c38db` -> `ada5016`):
+  - **`preview-05-vortex-3d` (WAVE™ 3D Vortex & Combustion Stack Cinema):** Built to the `cinematic-client-previews` standard with real-time Three.js WebGL + GSAP ScrollTrigger 3-stage throttle body disassembly, mobile `phoneComposition` text-protection scrims, interactive Throttle Blade Angle (`5°–90°`) & Airflow Spectrum Bench, Dual MP4 CFD video studio (`ThrottleBodyCutaway.mp4` + `wave-vortex-animation.mp4`), MPG payback simulator, remastered Dynojet/OWON/ASM charts, and all 43 unified catalog items.
   - **`preview-06-heritage-fleet` (Heavy-Duty, Diesel & Commercial Fleet Edition):** Warm Titanium Bone (`#F4F1EA`) ⇄ Night Haul dual-theme editorial & fleet workhorse showcase featuring a pinned scroll-scrubbed Stock vs. WAVE intake telemetry stage, 1–25 vehicle Commercial Fleet & Diesel Air-Stream Payback Matrix, Dual MP4 CFD video studio, remastered lab proof charts, and all 43 unified catalog items.
-- Updated `public/clients/GreenAuto/index.html`, `MainBrain/CLIENT_DELIVERIES/index.html`, `next.config.js`, and the switcher bars across Previews 01–06 so all 6 variations cross-link seamlessly.
+- Fixed root-relative thumbnail/button paths (`/clients/GreenAuto/preview-0X-...`) in `public/clients/GreenAuto/index.html` so visiting `/clients/GreenAuto` (without trailing slash) loads all 6 thumbnails with zero `404` broken-image `alt` text collisions.
+- Standardized single-line `.card-badge` pills on the hub, unified the top `.preview-ribbon` across Previews 01–06 (single-line on `1440×900` desktop, symmetrical 2-column grid on `390×844` mobile), removed the duplicate bottom-left floating `#gat-preview-switcher` overlay, fixed single-row desktop headers and hero typography containment in Previews 05 & 06, and fixed YouTube thumbnail ID resolution (`v.youtubeId || v.id`) in Previews 04–06.
+- Verified 14/14 desktop (`1440×900`) and mobile (`390×844`) viewports via Playwright (`visibleBroken: []`, `overflowX: 0`).
 
 ## [2026-10-27] — GreenAuto mobile repair release and accepted closeout
 
