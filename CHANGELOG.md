@@ -1,3 +1,18 @@
+## 2026-11-07 - Retired Xelora offering and catalog design continuity
+
+- James confirmed Xelora is abandoned and nonfunctioning. Removed the company-site catalog entry, search metadata, structured ownership data, notification dashboard mapping and active preview copy. Its old company marketplace route now resolves to not found; sitemap derives from the remaining catalog. Product source, hosting and historical launch templates remain intact.
+- Factory, product detail and ParaScan beta pages reuse the site's OPERATOR palette, Archivo/JetBrains Mono typography, shared navigation/footer and marketplace primitives. Readiness disclosures and free-beta corrections remain in this release.
+- This decision supersedes historical Xelora flagship/launched claims below. Production publication remains pending approval of the final review URL.
+
+## 2026-11-07 - Marketplace readiness and free-beta corrections
+
+- Applied the same readiness, planned-feature and free-beta pricing disclosures to the separate /factory catalog.
+
+- Show product status on detail pages; present unreleased features as planned and suppress price, purchase and demo actions until available.
+- Clarify medChron as an unavailable development project rather than a working extraction service.
+- Set ParaScan catalog price to zero and explain free-beta duration and future pricing; link to the beta information page.
+- Production publication awaits James's exact-preview approval. Application functionality and billing were not changed.
+
 # CHANGELOG.md - 3kpro.services Company Site
 
 All notable changes to the 3kpro.services company website and marketplace.

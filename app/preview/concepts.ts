@@ -127,11 +127,11 @@ export const concepts: PreviewConcept[] = [
       {
         title: 'SaaS ecosystem',
         copy:
-          'Xelora, Cloud Ledger, FairMerge, and custom MVP work presented as one practical catalog.',
+          'Cloud Ledger, FairMerge, and custom MVP work presented as one practical catalog.',
       },
     ],
     metrics: [
-      { value: '3', label: 'Active products' },
+      { value: '2', label: 'Catalog products' },
       { value: '$49+', label: 'Product entry' },
       { value: '4', label: 'Build lanes' },
     ],

@@ -60,7 +60,7 @@ export function PurchaseAction({ product }: PurchaseActionProps) {
     return (
       <a
         href="/#contact"
-        className="px-10 py-5 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-widest text-xs flex items-center justify-center"
+        className="btn"
       >
         <Zap className="w-4 h-4 mr-3" />
         Request Specifications
@@ -72,7 +72,7 @@ export function PurchaseAction({ product }: PurchaseActionProps) {
     <button
       onClick={handleCheckout}
       disabled={loading}
-      className="px-10 py-5 bg-black text-white hover:bg-black/90 transition-all font-bold uppercase tracking-widest text-xs flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed min-w-[300px]"
+      className="btn disabled:opacity-50 disabled:cursor-not-allowed"
     >
       {loading ? (
         <Loader2 className="w-4 h-4 mr-3 animate-spin" />

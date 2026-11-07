@@ -67,7 +67,6 @@ class NotificationService {
     const names: Record<string, string> = {
       "reviewlens": "FairMerge",
       "cloud-ledger": "Cloud Ledger",
-      "xelora": "XELORA",
       "n8n-templates": "n8n Templates",
     };
     return names[code] || code.toUpperCase();
@@ -80,7 +79,6 @@ class NotificationService {
     const urls: Record<string, string> = {
       "reviewlens": "https://reviewlens.3kpro.services/dashboard",
       "cloud-ledger": "https://3kpro.services/cloud-ledger",
-      "xelora": "https://getxelora.com",
     };
     return urls[code] || "https://3kpro.services/marketplace";
   }

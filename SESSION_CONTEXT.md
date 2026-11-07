@@ -1,3 +1,18 @@
+## 2026-11-07 - Retired Xelora offering and catalog design continuity
+
+- James confirmed Xelora is abandoned and nonfunctioning. Removed the company-site catalog entry, search metadata, structured ownership data, notification dashboard mapping and active preview copy. Its old company marketplace route now resolves to not found; sitemap derives from the remaining catalog. Product source, hosting and historical launch templates remain intact.
+- Factory, product detail and ParaScan beta pages reuse the site's OPERATOR palette, Archivo/JetBrains Mono typography, shared navigation/footer and marketplace primitives. Readiness disclosures and free-beta corrections remain in this release.
+- This decision supersedes historical Xelora flagship/launched claims below. Production publication remains pending approval of the final review URL.
+
+## 2026-11-07 - Marketplace readiness correction prepared
+
+- Applied the same readiness, planned-feature and free-beta pricing disclosures to the separate /factory catalog.
+
+Current state: isolated review worktree, production approval pending.
+Changed: medChron description and generic unreleased-product rendering; visible status labels; ParaScan free-beta price and messaging.
+Next: verify the HTTPS review on medChron, ParaScan and preserved FairMerge/Cloud Ledger routes; obtain James's approval of the exact preview before promotion.
+Known limitation: ParaScan's deployed Streamlit app was asleep during the preceding review. No extraction, billing or app wake-up was performed here.
+
 ## 2026-11-07 — Green Auto Technology 6-Variation Suite Deployed & Verified Live (`dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`)
 
 - **Live URL:** `https://3kpro.services/clients/GreenAuto` (and `/clients/GreenAuto/preview-01-gat-os/index.html` through `/clients/GreenAuto/preview-06-heritage-fleet/index.html`)

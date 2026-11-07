@@ -21,31 +21,6 @@ export type MarketplaceItem = {
 }
 
 export const marketplaceItems: MarketplaceItem[] = [
-  // FLAGSHIP PRODUCT
-  {
-    id: 'xelora',
-    slug: 'xelora',
-    name: 'XELORA',
-    tagline: 'Viral DNA Decoder',
-    description: 'Decode Viral DNA and generate multi-platform content in seconds. Predicts viral potential before you post.',
-    features: [
-      'Viral Score™ Prediction',
-      'Trend Discovery Engine',
-      'Multi-Platform Content Generation',
-      'Psychometric Viral Analysis'
-    ],
-    price: 0,
-    currency: 'USD',
-    category: 'SaaS',
-    status: 'Available',
-    demoUrl: 'https://getxelora.com',
-    pricingTiers: [
-      { name: 'Free', price: 0, features: ['5 campaigns/month', 'Basic analytics'] },
-      { name: 'Pro', price: 29, features: ['50 campaigns/month', 'Full analytics', 'All platforms'] },
-      { name: 'Agency', price: 79, features: ['Unlimited campaigns', 'White-label', 'API access'] }
-    ]
-  },
-
   // TIER 1: SaaS PRODUCTS (Subscriptions)
   {
     id: 'trial-revive',
@@ -453,7 +428,7 @@ export const marketplaceItems: MarketplaceItem[] = [
     slug: 'medchron',
     name: 'medChron',
     tagline: 'Medical Timeline AI',
-    description: 'Zero-shot extraction of defensible clinical timelines from massive medical records using Gemini 1.5 Pro.',
+    description: 'A medical-record timeline tool in development. Planned features include clinical event extraction and source references. Not available for use or purchase.',
     features: [
       'Long-context PDF analysis',
       'Clinical event extraction',
@@ -477,7 +452,7 @@ export const marketplaceItems: MarketplaceItem[] = [
       'Precedent identification',
       'Risk assessment scoring'
     ],
-    price: 49,
+    price: 0,
     currency: 'USD',
     category: 'AI Tool',
     status: 'Beta',

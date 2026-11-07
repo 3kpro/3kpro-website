@@ -1,3 +1,9 @@
+## 2026-11-07 - Retired Xelora offering and catalog design continuity
+
+- James confirmed Xelora is abandoned and nonfunctioning. Removed the company-site catalog entry, search metadata, structured ownership data, notification dashboard mapping and active preview copy. Its old company marketplace route now resolves to not found; sitemap derives from the remaining catalog. Product source, hosting and historical launch templates remain intact.
+- Factory, product detail and ParaScan beta pages reuse the site's OPERATOR palette, Archivo/JetBrains Mono typography, shared navigation/footer and marketplace primitives. Readiness disclosures and free-beta corrections remain in this release.
+- This decision supersedes historical Xelora flagship/launched claims below. Production publication remains pending approval of the final review URL.
+
 # VISION.md - 3kpro.services Company Strategy
 
 **Last Updated:** 2026-05-17

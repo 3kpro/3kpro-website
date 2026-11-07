@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     'SaaS development',
     'cloud architecture',
     'enterprise software',
-    'XELORA',
     'custom web development',
     '3kpro',
     'Tulsa software company'
@@ -178,15 +177,6 @@ export default function RootLayout({
       'https://www.tiktok.com/@3kpro.services',
       'https://www.youtube.com/@3KPRO.SERVICES',
       'https://x.com/3KPRO_SAAS',
-    ],
-    owns: [
-      {
-        '@type': 'SoftwareApplication',
-        name: 'XELORA',
-        url: 'https://getxelora.com',
-        applicationCategory: 'BusinessApplication',
-        description: 'AI-powered predictive intelligence platform for content creators. Predict momentum. Engineer virality.',
-      },
     ],
     offers: {
       '@type': 'Offer',
