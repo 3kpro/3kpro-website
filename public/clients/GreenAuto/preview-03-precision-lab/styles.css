@@ -793,3 +793,51 @@ body {
   /* One ordered switcher on mobile, not a second fixed overlay over content. */
   #gat-preview-switcher { display: none !important; }
 }
+
+/* UNIFIED 6-PREVIEW RIBBON ALIGNMENT */
+.preview-ribbon .p-links a {
+  white-space: nowrap;
+}
+.preview-ribbon .p-links a.hub-back {
+  border-color: #84cc16;
+  color: #84cc16;
+  font-weight: 700;
+}
+@media (max-width: 1480px) {
+  .preview-ribbon .r-label { display: none; }
+  .preview-ribbon { justify-content: center; }
+}
+@media (max-width: 1120px) {
+  .preview-ribbon {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: 44px;
+    padding: 8px 16px !important;
+  }
+  .topnav, .site-nav, .lab-header {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    padding: 14px 16px !important;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 680px) {
+  .preview-ribbon .p-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+  .preview-ribbon .p-links a {
+    text-align: center !important;
+    justify-content: center !important;
+    font-size: 9.5px !important;
+    padding: 7px 6px !important;
+    min-height: 36px !important;
+  }
+  .preview-ribbon .p-links a.hub-back {
+    grid-column: 1 / -1 !important;
+  }
+}

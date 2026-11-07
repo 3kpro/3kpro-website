@@ -87,7 +87,7 @@
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
       gap: 24px;
     }
     .card {
@@ -97,6 +97,7 @@
       flex-direction: column;
       justify-content: space-between;
       transition: transform 0.2s ease, border-color 0.2s ease;
+      min-width: 0;
     }
     .card:hover {
       transform: translateY(-4px);
@@ -120,31 +121,39 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.72;
+      opacity: 0.78;
+      display: block;
     }
     .card-badge {
       position: absolute;
       top: 14px;
       left: 14px;
-      background: rgba(8, 10, 12, 0.9);
+      max-width: calc(100% - 28px);
+      background: rgba(8, 10, 12, 0.92);
       border: 1px solid var(--green);
       color: var(--green);
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
+      line-height: 1.3;
       padding: 5px 10px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.09em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      z-index: 2;
     }
     .card-folder {
       position: absolute;
       bottom: 12px;
       right: 12px;
-      background: rgba(8, 10, 12, 0.9);
+      background: rgba(8, 10, 12, 0.92);
       border: 1px solid var(--border);
       color: var(--text);
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       padding: 4px 8px;
+      z-index: 2;
     }
     .card-body { padding: 24px; }
     .card-title {
@@ -159,6 +168,7 @@
       font-size: 11.5px;
       color: var(--amber);
       margin-bottom: 14px;
+      line-height: 1.45;
     }
     .card-desc {
       color: var(--muted);
@@ -201,6 +211,10 @@
       transition: filter 0.15s ease;
     }
     .btn:hover { filter: brightness(1.12); }
+    @media (max-width: 640px) {
+      body { padding: 28px 16px; }
+      .card-badge { font-size: 10px; padding: 4px 8px; }
+    }
   </style>
 </head>
 <body>
@@ -239,9 +253,9 @@
       <article class="card featured" style="border-color: #00F58A; box-shadow: 0 0 36px rgba(0, 245, 138, 0.2);">
         <div>
           <div class="card-thumb">
-            <img src="./preview-05-vortex-3d/assets/WaveThrottleGraphic.jpg" alt="Preview 05 WAVE 3D Vortex Cinema" />
-            <span class="card-badge" style="border-color:#00F58A;color:#00F58A;">PREVIEW 05 // NEW · 3D WEBGL DISASSEMBLY CINEMA</span>
-            <span class="card-folder">./preview-05-vortex-3d/</span>
+            <img src="/clients/GreenAuto/preview-05-vortex-3d/assets/prod_combustion_stack.png" alt="Preview 05 WAVE 3D Vortex Cinema" />
+            <span class="card-badge" style="border-color:#00F58A;color:#00F58A;">PREVIEW 05 // 3D WEBGL VORTEX CINEMA</span>
+            <span class="card-folder">/clients/GreenAuto/preview-05-vortex-3d/</span>
           </div>
           <div class="card-body">
             <h2 class="card-title">WAVE™ 3D Vortex // Scroll Disassembly Cinema</h2>
@@ -258,7 +272,7 @@
           </div>
         </div>
         <div class="card-foot">
-          <a class="btn" style="background:#00F58A;color:#03120A;" href="./preview-05-vortex-3d/index.html">Launch Preview 05 (3D Vortex Cinema) →</a>
+          <a class="btn" style="background:#00F58A;color:#03120A;" href="/clients/GreenAuto/preview-05-vortex-3d/index.html">Launch Preview 05 (3D Vortex Cinema) →</a>
         </div>
       </article>
 
@@ -266,9 +280,9 @@
       <article class="card featured" style="border-color: #F28538; box-shadow: 0 0 36px rgba(242, 133, 56, 0.2);">
         <div>
           <div class="card-thumb">
-            <img src="./preview-06-heritage-fleet/assets/hero-wave-light-truck.jpg" alt="Preview 06 Heritage Fleet & Diesel Edition" />
-            <span class="card-badge" style="border-color:#F28538;color:#F28538;">PREVIEW 06 // NEW · WORKHORSE, DIESEL &amp; FLEET EDITION</span>
-            <span class="card-folder">./preview-06-heritage-fleet/</span>
+            <img src="/clients/GreenAuto/preview-06-heritage-fleet/assets/hero-wave-light-truck.jpg" alt="Preview 06 Heritage Fleet & Diesel Edition" />
+            <span class="card-badge" style="border-color:#F28538;color:#F28538;">PREVIEW 06 // HERITAGE FLEET &amp; DIESEL</span>
+            <span class="card-folder">/clients/GreenAuto/preview-06-heritage-fleet/</span>
           </div>
           <div class="card-body">
             <h2 class="card-title">Heritage Fleet // Heavy-Duty &amp; Commercial Authority</h2>
@@ -285,7 +299,7 @@
           </div>
         </div>
         <div class="card-foot">
-          <a class="btn" style="background:#F28538;color:#101512;" href="./preview-06-heritage-fleet/index.html">Launch Preview 06 (Heritage Fleet) →</a>
+          <a class="btn" style="background:#F28538;color:#101512;" href="/clients/GreenAuto/preview-06-heritage-fleet/index.html">Launch Preview 06 (Heritage Fleet) →</a>
         </div>
       </article>
 
@@ -293,9 +307,9 @@
       <article class="card featured">
         <div>
           <div class="card-thumb">
-            <img src="./preview-04-wave-flagship/assets/hero-wave-dark-car.jpg" alt="Preview 04 WAVE Flagship" />
+            <img src="/clients/GreenAuto/preview-04-wave-flagship/assets/hero-wave-dark-car.jpg" alt="Preview 04 WAVE Flagship" />
             <span class="card-badge" style="border-color:#5CE61E;color:#5CE61E;">PREVIEW 04 // WAVE™ FLAGSHIP LAYOUT</span>
-            <span class="card-folder">./preview-04-wave-flagship/</span>
+            <span class="card-folder">/clients/GreenAuto/preview-04-wave-flagship/</span>
           </div>
           <div class="card-body">
             <h2 class="card-title">WAVE™ Flagship // Dual-Layout Showcase</h2>
@@ -312,7 +326,7 @@
           </div>
         </div>
         <div class="card-foot">
-          <a class="btn" style="background:#5CE61E;" href="./preview-04-wave-flagship/index.html">Launch Preview 04 (WAVE Flagship) →</a>
+          <a class="btn" style="background:#5CE61E;" href="/clients/GreenAuto/preview-04-wave-flagship/index.html">Launch Preview 04 (WAVE Flagship) →</a>
         </div>
       </article>
 
@@ -320,9 +334,9 @@
       <article class="card">
         <div>
           <div class="card-thumb">
-            <img src="./preview-01-gat-os/assets/home_bg.jpg" alt="Preview 01 GAT-OS" />
+            <img src="/clients/GreenAuto/preview-01-gat-os/assets/home_bg.jpg" alt="Preview 01 GAT-OS" />
             <span class="card-badge">PREVIEW 01 // CLOSEST TO 3KPRO.SERVICES</span>
-            <span class="card-folder">./preview-01-gat-os/</span>
+            <span class="card-folder">/clients/GreenAuto/preview-01-gat-os/</span>
           </div>
           <div class="card-body">
             <h2 class="card-title">GAT·OS // Dyno Mission Control</h2>
@@ -339,7 +353,7 @@
           </div>
         </div>
         <div class="card-foot">
-          <a class="btn" href="./preview-01-gat-os/index.html">Launch Preview 01 (GAT·OS) →</a>
+          <a class="btn" href="/clients/GreenAuto/preview-01-gat-os/index.html">Launch Preview 01 (GAT·OS) →</a>
         </div>
       </article>
 
@@ -347,9 +361,9 @@
       <article class="card">
         <div>
           <div class="card-thumb">
-            <img src="./preview-02-apex-atelier/assets/WaveThrottleGraphic.jpg" alt="Preview 02 Apex Atelier" />
+            <img src="/clients/GreenAuto/preview-02-apex-atelier/assets/WaveThrottleGraphic.jpg" alt="Preview 02 Apex Atelier" />
             <span class="card-badge">PREVIEW 02 // MOTORSPORT SPEED SHOP</span>
-            <span class="card-folder">./preview-02-apex-atelier/</span>
+            <span class="card-folder">/clients/GreenAuto/preview-02-apex-atelier/</span>
           </div>
           <div class="card-body">
             <h2 class="card-title">Apex Flow // Kinetic Motorsport Atelier</h2>
@@ -366,7 +380,7 @@
           </div>
         </div>
         <div class="card-foot">
-          <a class="btn" href="./preview-02-apex-atelier/index.html">Launch Preview 02 (Apex Atelier) →</a>
+          <a class="btn" href="/clients/GreenAuto/preview-02-apex-atelier/index.html">Launch Preview 02 (Apex Atelier) →</a>
         </div>
       </article>
 
@@ -374,9 +388,9 @@
       <article class="card">
         <div>
           <div class="card-thumb">
-            <img src="./preview-03-precision-lab/assets/tb_info_wave.png" alt="Preview 03 Precision Lab" />
-            <span class="card-badge">PREVIEW 03 // CNC &amp; TRIBOLOGY LAB (LIGHT/DARK)</span>
-            <span class="card-folder">./preview-03-precision-lab/</span>
+            <img src="/clients/GreenAuto/preview-03-precision-lab/assets/tb_info_wave.png" alt="Preview 03 Precision Lab" />
+            <span class="card-badge">PREVIEW 03 // CNC &amp; TRIBOLOGY LAB</span>
+            <span class="card-folder">/clients/GreenAuto/preview-03-precision-lab/</span>
           </div>
           <div class="card-body">
             <h2 class="card-title">Precision Lab // Architectural Dual-Mode</h2>
@@ -393,7 +407,7 @@
           </div>
         </div>
         <div class="card-foot">
-          <a class="btn" href="./preview-03-precision-lab/index.html">Launch Preview 03 (Precision Lab) →</a>
+          <a class="btn" href="/clients/GreenAuto/preview-03-precision-lab/index.html">Launch Preview 03 (Precision Lab) →</a>
         </div>
       </article>
     </div>

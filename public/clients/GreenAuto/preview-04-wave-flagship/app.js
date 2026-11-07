@@ -237,9 +237,9 @@
   const videoContainer = document.getElementById("videoCardsContainer");
   if (videoContainer) {
     videoContainer.innerHTML = videos.map((v) => `
-      <article class="result-story-card" onclick="window.openVideoModal('${v.youtubeId}', '${v.title.replace(/'/g, "\\'")}')">
+      <article class="result-story-card" onclick="window.openVideoModal('${(v.youtubeId || v.id)}', '${v.title.replace(/'/g, "\\'")}')">
         <div class="result-story-thumb">
-          <img src="https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
+          <img src="https://img.youtube.com/vi/${(v.youtubeId || v.id)}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
           <span class="play-overlay-pill">▶ PLAY VIDEO</span>
         </div>
         <div class="result-story-body">

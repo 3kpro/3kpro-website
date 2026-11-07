@@ -449,23 +449,24 @@
   const videoContainer = document.getElementById("videoCardsContainer");
   if (videoContainer) {
     videoContainer.innerHTML = videos
-      .map(
-        (v) => `
-      <article class="heritage-card" onclick="window.openVideoModal('${v.youtubeId}', '${v.title.replace(/'/g, "\\'")}')">
+      .map((v) => {
+        const ytId = v.youtubeId || v.id;
+        return `
+      <article class="heritage-card" onclick="window.openVideoModal('${ytId}', '${v.title.replace(/'/g, "\\'")}')">
         <div>
           <div class="heritage-thumb">
-            <img src="https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
+            <img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
             <span class="heritage-badge">▶ PLAY VIDEO PROOF</span>
           </div>
           <div class="heritage-body">
             <div class="sec-eyebrow" style="margin-bottom:4px;">${v.category || "VERIFIED PROOF"}</div>
             <h4>${v.title}</h4>
-            <p>${v.summary || ""}</p>
+            <p>${v.summary || v.tags || ""}</p>
           </div>
         </div>
       </article>
-    `
-      )
+    `;
+      })
       .join("");
   }
 

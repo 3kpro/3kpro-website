@@ -268,23 +268,24 @@ const videos = gatData.videos || [];
 const videoContainer = document.getElementById('videoCardsContainer');
 if (videoContainer) {
   videoContainer.innerHTML = videos
-    .map(
-      (v) => `
-      <article class="evidence-card" onclick="window.openVideoModal('${v.youtubeId}', '${v.title.replace(/'/g, "\\'")}')">
+    .map((v) => {
+      const ytId = v.youtubeId || v.id;
+      return `
+      <article class="evidence-card" onclick="window.openVideoModal('${ytId}', '${v.title.replace(/'/g, "\\'")}')">
         <div>
           <div class="evidence-thumb">
-            <img src="https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
+            <img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
             <span class="thumb-badge">▶ PLAY YOUTUBE PROOF</span>
           </div>
           <div class="evidence-body">
             <div class="section-eyebrow" style="margin-bottom:4px;">${v.category || 'VERIFIED PROOF'}</div>
             <h4>${v.title}</h4>
-            <p>${v.summary || ''}</p>
+            <p>${v.summary || v.tags || ''}</p>
           </div>
         </div>
       </article>
-    `
-    )
+    `;
+    })
     .join('');
 }
 
