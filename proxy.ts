@@ -58,7 +58,11 @@ export async function proxy(req: NextRequest) {
     res.headers.set("X-RateLimit-Reset", reset.toString());
   }
 
-  // --- 2. AUTHENTICATION (Shared Supabase Identity) ---
+  // --- 2. AUTHENTICATION (Shared Supabase Identity — /admin routes only) ---
+  if (!url.pathname.startsWith("/admin")) {
+    return res;
+  }
+
   if (!supabaseUrl || !supabaseAnonKey) {
     if (url.pathname.startsWith("/admin") && url.pathname !== "/admin/login") {
       const loginUrl = req.nextUrl.clone();
@@ -124,7 +128,8 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
+     * - clients/ (static client preview suites and their assets)
      */
-    "/((?!_next/static|_next/image|favicon.ico).*)",
+    "/((?!_next/static|_next/image|favicon.ico|clients/).*)",
   ],
 };

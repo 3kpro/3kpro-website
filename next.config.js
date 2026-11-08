@@ -54,6 +54,14 @@ const nextConfig = {
         source: '/clients/greenauto',
         destination: '/clients/GreenAuto/index.html',
       },
+      {
+        source: '/clients/greenauto/:path*',
+        destination: '/clients/GreenAuto/:path*',
+      },
+      {
+        source: '/clients/:preview(preview-0[1-6]-[^/]+)/:path*',
+        destination: '/clients/GreenAuto/:preview/:path*',
+      },
     ]
   },
   async headers() {
