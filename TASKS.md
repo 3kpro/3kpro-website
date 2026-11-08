@@ -1,15 +1,3 @@
-## 2026-11-07 - Retired Xelora offering and catalog design continuity
-
-- James confirmed Xelora is abandoned and nonfunctioning. Removed the company-site catalog entry, search metadata, structured ownership data, notification dashboard mapping and active preview copy. Its old company marketplace route now resolves to not found; sitemap derives from the remaining catalog. Product source, hosting and historical launch templates remain intact.
-- Factory, product detail and ParaScan beta pages reuse the site's OPERATOR palette, Archivo/JetBrains Mono typography, shared navigation/footer and marketplace primitives. Readiness disclosures and free-beta corrections remain in this release.
-- This decision supersedes historical Xelora flagship/launched claims below. Production publication remains pending approval of the final review URL.
-
-## 2026-11-07 - Marketplace readiness review
-
-- [x] Prepare medChron development disclosure and ParaScan free-beta catalog correction in an isolated worktree.
-- [ ] Validate protected review deployment and obtain James's exact-preview approval before production promotion.
-- [ ] Separately verify ParaScan runtime and advertised model tiers before claiming production readiness.
-
 # TASKS - 3kpro.services Company Site
 
 ## NOW
@@ -35,6 +23,7 @@
 - [ ] **GetXelora.com SEO audit** — Next site in queue after 3kpro.services
 
 ## COMPLETED
+- [x] **Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography (`dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB`)** — Built and wired the two-tier 3D scroll fly-in & spatial choreography engine (`gat-motion.css` + `gat-motion.js`) across the Suite Hub and Previews 01–06 (`f452441`), fixed Windows OS `prefers-reduced-motion` auto-kill in Previews 01/05/06, deployed to `https://3kpro.services/clients/GreenAuto`, and verified across 14/14 desktop & mobile viewports via Playwright (2026-11-08).
 - [x] **Green Auto Technology 6-Variation Suite Expansion & Visual QA Release (`preview-05-vortex-3d` & `preview-06-heritage-fleet`)** — Added two new full-content client preview variations (real-time Three.js 3D Vortex Disassembly Cinema + Heavy-Duty Diesel & 1–25 Truck Commercial Fleet Edition), fixed root-relative hub thumbnails and desktop/mobile header & switcher alignment across all 6 variations, deployed to `https://3kpro.services/clients/GreenAuto` (`dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`, commit `ada5016`), and verified 14/14 desktop & mobile viewports via Playwright (`visibleBroken: []`, `overflowX: 0`) (2026-11-07).
 - [x] **GreenAuto Precision Lab mobile alignment repair** — exact preview approved, released source `88c181a`, production READY; 60/60 responsive states and six live file parity checks passed; James accepted live result (2026-10-27). Closeout: `docs/operations/GREENAUTO_MOBILE_RELEASE_2026-10-27.md`.
 - [x] ✅ **Green Auto Technology client preview suite (01–04) + MP4 fluid-dynamics animations** — Built and deployed 4 preview variations at `https://3kpro.services/clients/GreenAuto`, updated `preview-04-wave-flagship` and `preview-03-precision-lab` with `ThrottleBodyCutaway.mp4` + `wave-vortex-animation.mp4` in the "How WAVE™ Technology Works" section and Gemini-remastered Dynojet/Oscilloscope/ASM evidence graphics (2026-10-26)

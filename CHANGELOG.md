@@ -1,23 +1,16 @@
-## 2026-11-07 - Retired Xelora offering and catalog design continuity
-
-- James confirmed Xelora is abandoned and nonfunctioning. Removed the company-site catalog entry, search metadata, structured ownership data, notification dashboard mapping and active preview copy. Its old company marketplace route now resolves to not found; sitemap derives from the remaining catalog. Product source, hosting and historical launch templates remain intact.
-- Factory, product detail and ParaScan beta pages reuse the site's OPERATOR palette, Archivo/JetBrains Mono typography, shared navigation/footer and marketplace primitives. Readiness disclosures and free-beta corrections remain in this release.
-- This decision supersedes historical Xelora flagship/launched claims below. Production publication remains pending approval of the final review URL.
-
-## 2026-11-07 - Marketplace readiness and free-beta corrections
-
-- Applied the same readiness, planned-feature and free-beta pricing disclosures to the separate /factory catalog.
-
-- Show product status on detail pages; present unreleased features as planned and suppress price, purchase and demo actions until available.
-- Clarify medChron as an unavailable development project rather than a working extraction service.
-- Set ParaScan catalog price to zero and explain free-beta duration and future pricing; link to the beta information page.
-- Production publication awaits James's exact-preview approval. Application functionality and billing were not changed.
-
 # CHANGELOG.md - 3kpro.services Company Site
 
 All notable changes to the 3kpro.services company website and marketplace.
 
 ---
+
+## [2026-11-08] — Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography (`dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB`)
+
+- Authored and wired the two-tier **"Tomorrow" 3D Scroll Choreography & Spatial Fly-In Engine** (`gat-motion.css` + `gat-motion.js`) across the entire 6-variation Green Auto Technology suite and hub (`public/clients/GreenAuto/`, `MainBrain/CLIENT_DELIVERIES/`, and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`), deployed from an isolated git worktree on `origin/main` (`f452441`, production `dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB` aliased to `https://3kpro.services/clients/GreenAuto`):
+  - **Subtle Fly-In Tier (`.gat-box`):** Every stat cell, telemetry module, stage card, product card (all 17/43 items, including dynamically filtered/searched cards via `MutationObserver`), video card, blog article card, step card, calculator slider row, and section header flies in smoothly (`660ms`, `cubic-bezier(0.22, 1, 0.36, 1)`) with directional scroll awareness and row/column stagger.
+  - **Impress Fly-In Tier (`.gat-impress-box` — "Unless We Need to Impress"):** Hero hardware showcases, all 6 Hub preview cards, Flagship Combustion Stack banners, CFD Dual MP4 consoles, Interactive Simulators, ROI/Fleet Payback output cards, Dynojet/OWON/ASM Proof cards, and Inquiry consoles fly in with deeper 3D perspective (`perspective(1150px) translate3d(±24px, 46px, -72px) rotateX(8.5deg) rotateY(±4deg) scale(0.945)` over `860ms`) plus an automated diagonal **Specular CNC Light Sweep** (`gat-cnc-sheen`).
+  - **Scroll-Driven Atmosphere & Telemetry:** Added a top 3px glowing **Laser Scroll Progress Beam** (`.gat-scroll-laser`), **3D Hero Ambient Atmosphere** (`.gat-hero-atmosphere`), **Section Laser Horizon Dividers** (`.gat-section-laser`), desktop **Cursor-Tracked Radial Spotlight & 3D Micro-Tilt**, live **Numerical Counter Rollups**, dynamic width fill on Preview 02's `.f-fill` friction bars, continuous vortex dash flow on Preview 06's SVG intake streamlines (`#svg-stream-1/2/3`), and a bottom-right **Motion HUD Pill** (`↻ Replay Motion` + `⏸ Pause`).
+  - **Fixed Windows OS `prefers-reduced-motion` Auto-Kill:** Updated `preview-01-gat-os/styles.css`, `preview-01-gat-os/app.js`, `preview-05-vortex-3d/app.js`, and `preview-06-heritage-fleet/app.js` so Windows 11 OS accessibility flags no longer silently disable CSS transitions, the Three.js 3D WebGL throttle body disassembly, or the GSAP ScrollTrigger intake stage on load.
 
 ## [2026-11-07] — Green Auto Technology 6-Variation Suite Expansion & Live Visual QA Release (`dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`)
 

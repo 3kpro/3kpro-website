@@ -1,17 +1,15 @@
-## 2026-11-07 - Retired Xelora offering and catalog design continuity
+## 2026-11-08 — Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography Deployed (`dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB`)
 
-- James confirmed Xelora is abandoned and nonfunctioning. Removed the company-site catalog entry, search metadata, structured ownership data, notification dashboard mapping and active preview copy. Its old company marketplace route now resolves to not found; sitemap derives from the remaining catalog. Product source, hosting and historical launch templates remain intact.
-- Factory, product detail and ParaScan beta pages reuse the site's OPERATOR palette, Archivo/JetBrains Mono typography, shared navigation/footer and marketplace primitives. Readiness disclosures and free-beta corrections remain in this release.
-- This decision supersedes historical Xelora flagship/launched claims below. Production publication remains pending approval of the final review URL.
-
-## 2026-11-07 - Marketplace readiness correction prepared
-
-- Applied the same readiness, planned-feature and free-beta pricing disclosures to the separate /factory catalog.
-
-Current state: isolated review worktree, production approval pending.
-Changed: medChron description and generic unreleased-product rendering; visible status labels; ParaScan free-beta price and messaging.
-Next: verify the HTTPS review on medChron, ParaScan and preserved FairMerge/Cloud Ledger routes; obtain James's approval of the exact preview before promotion.
-Known limitation: ParaScan's deployed Streamlit app was asleep during the preceding review. No extraction, billing or app wake-up was performed here.
+- **Live URL:** `https://3kpro.services/clients/GreenAuto` (and `/clients/GreenAuto/preview-01-gat-os/index.html` through `/clients/GreenAuto/preview-06-heritage-fleet/index.html`)
+- **Released Source on `origin/main`:** `f452441` (building on `88091f8`, `dd77b1d`, and `ada5016`), deployed from an isolated git worktree so unrelated dirty files in the canonical shared checkout (`C:\DEV\_3KPRO-WEBSITE`) were never published.
+- **Production Deployment:** `dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB` (`READY`, aliased to `https://3kpro.services`). Prior rollback is `dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`.
+- **What Changed:**
+  - Created and wired `gat-motion.css` and `gat-motion.js` across the Suite Hub (`public/clients/GreenAuto/index.html`) and all 6 previews (`preview-01-gat-os` through `preview-06-heritage-fleet`), mirrored to `MainBrain/CLIENT_DELIVERIES/` and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`.
+  - Implemented a two-tier 3D scroll fly-in choreography (`IntersectionObserver` + Web Animations API + `MutationObserver` for filtered catalog/video/blog grids):
+    - **Subtle Tier (`.gat-box`):** Smooth directional 3D fly-in (`660ms`, `cubic-bezier(0.22, 1, 0.36, 1)`) with row/column stagger on every card, stat cell, product card, video card, blog card, step card, calculator slider row, and section header.
+    - **Impress Tier (`.gat-impress-box` — "Unless We Need to Impress"):** Deep 3D perspective fly-in (`860ms`, `cubic-bezier(0.16, 1, 0.3, 1)`) + automated diagonal **Specular CNC Light Sweep** (`gat-cnc-sheen`) on Hero hardware showcases, all 6 Hub preview cards, Flagship Combustion Stack banners, CFD Dual MP4 consoles, Interactive Simulators, ROI/Fleet Payback output cards, Dynojet/OWON/ASM Proof cards, and Inquiry consoles.
+  - Added top 3px glowing **Laser Scroll Progress Beam** (`.gat-scroll-laser`), **3D Hero Ambient Atmosphere** (`.gat-hero-atmosphere`), **Section Laser Horizon Dividers** (`.gat-section-laser`), desktop **Cursor-Tracked Radial Spotlight & 3D Micro-Tilt**, live **Numerical Counter Rollups**, dynamic width fill on Preview 02's `.f-fill` friction bars, continuous vortex dash flow on Preview 06's SVG intake streamlines, and a bottom-right **Motion HUD Pill** (`↻ Replay Motion` + `⏸ Pause`).
+  - Fixed Windows 11 OS `prefers-reduced-motion: reduce` auto-kill in `preview-01-gat-os/styles.css`, `preview-01-gat-os/app.js`, `preview-05-vortex-3d/app.js`, and `preview-06-heritage-fleet/app.js` so animations run by default unless the user explicitly clicks Pause/Reduce Motion.
 
 ## 2026-11-07 — Green Auto Technology 6-Variation Suite Deployed & Verified Live (`dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`)
 
