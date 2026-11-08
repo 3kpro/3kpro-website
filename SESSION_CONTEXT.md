@@ -8,11 +8,11 @@ TEST: Local/hosted builds, typecheck and source/direct-send tests passed; npm au
 
 NEXT: SEO release; client-owned sender separation; final Randall access/recovery/billing/source custody. Old review/static projects retained pending separate cleanup. Full receipt and rollback: `MainBrain/CLIENT_DELIVERIES/last-stop-migration-20261108/MIGRATION_REPORT.md`.
 
-## 2026-11-08 — Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography Deployed (`dpl_41ngusUf4Co3NtALzmtNwrjyJ4rK`)
+## 2026-11-08 — Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography Deployed (`dpl_CLUo9Qjcnid4y5LbYJGjwBiGk5MZ`)
 
 - **Live URL:** `https://3kpro.services/clients/GreenAuto` (and `/clients/GreenAuto/preview-01-gat-os/index.html` through `/clients/GreenAuto/preview-06-heritage-fleet/index.html`)
 - **Released Source on `origin/main`:** `f25ba14` (building on `f452441`, `88091f8`, `dd77b1d`, and `ada5016`), deployed from an isolated git worktree so unrelated dirty files in the canonical shared checkout (`C:\DEV\_3KPRO-WEBSITE`) were never published.
-- **Production Deployment:** `dpl_41ngusUf4Co3NtALzmtNwrjyJ4rK` (`READY`, aliased to `https://3kpro.services`). Prior rollback is `dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`.
+- **Production Deployment:** `dpl_CLUo9Qjcnid4y5LbYJGjwBiGk5MZ` (`READY`, aliased to `https://3kpro.services`). Prior rollback is `dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`.
 - **What Changed:**
   - Excluded `/clients/` from `proxy.ts` Edge middleware and guarded `supabase.auth.getUser()` to `/admin` routes only so static assets under `/clients/GreenAuto` never stall/timeout on paused Supabase calls (`32s` -> `<450ms`). Added fallback rewrites in `next.config.js` (`/clients/:preview(preview-0[1-6]-[^/]+)/:path*`), cache-busted all 6 hub thumbnails (`?v=20261108b`), and suppressed `alt` text overlap (`color: transparent; font-size: 0;`) on `.card-thumb img`.
   - Created and wired `gat-motion.css` and `gat-motion.js` across the Suite Hub (`public/clients/GreenAuto/index.html`) and all 6 previews (`preview-01-gat-os` through `preview-06-heritage-fleet`), mirrored to `MainBrain/CLIENT_DELIVERIES/` and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`.

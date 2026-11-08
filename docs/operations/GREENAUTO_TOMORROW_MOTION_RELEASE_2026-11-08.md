@@ -13,7 +13,7 @@ Upgraded all 6 client previews (`preview-01-gat-os` through `preview-06-heritage
   - `https://3kpro.services/clients/GreenAuto/preview-05-vortex-3d/index.html`
   - `https://3kpro.services/clients/GreenAuto/preview-06-heritage-fleet/index.html`
 - **Released Source on `origin/main`:** `f452441` (motion engine) -> `f25ba14` (`proxy.ts` Edge middleware bypass + `next.config.js` fallback rewrites + hub thumbnail cache-bust) -> `9d44b82` (governance docs).
-- **Production Deployment:** `dpl_41ngusUf4Co3NtALzmtNwrjyJ4rK` (`https://3kpro-website-c6we0tt7f-3kpros-projects.vercel.app`, `READY`, aliased to `https://3kpro.services`).
+- **Production Deployment:** `dpl_CLUo9Qjcnid4y5LbYJGjwBiGk5MZ` (`https://3kpro-website-ebr0vd6wd-3kpros-projects.vercel.app`, `READY`, aliased to `https://3kpro.services`).
 - **Rollback Deployment:** `dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d` (`ada5016`).
 
 ## What Changed

@@ -15,7 +15,7 @@ NEXT: SEO release; client-owned sender separation; final Randall access/recovery
 
 | KPI | Target | Current | Evidence / Blocker |
 |---|---:|---:|---|
-| Production site | Live | Live | GreenAuto 6-variation suite + Tomorrow 3D scroll motion live at `https://3kpro.services/clients/GreenAuto`; release `dpl_41ngusUf4Co3NtALzmtNwrjyJ4rK` (`f25ba14`) READY |
+| Production site | Live | Live | GreenAuto 6-variation suite + Tomorrow 3D scroll motion live at `https://3kpro.services/clients/GreenAuto`; release `dpl_CLUo9Qjcnid4y5LbYJGjwBiGk5MZ` (`55ad595`) READY |
 | Build health | Passing before deploy | Passed 2026-11-08 | Next.js 16.3.0 production build passed (77 static pages + 6-variation GreenAuto client suite) |
 | GreenAuto 6-variation suite | 6 designs + 3D scroll motion + 0 alignment defects | Complete 2026-11-08 | Previews 01–06 + Hub pass 14/14 Playwright desktop (`1440×900`) & mobile (`390×844`) checks (`visibleBroken: []`, `overflowX: 0`) |
 | GreenAuto mobile repair | Accepted / verified | Complete 2026-10-27 | 60/60 responsive states; six live file parity checks; James accepted |
