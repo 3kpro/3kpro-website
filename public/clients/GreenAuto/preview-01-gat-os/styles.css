@@ -1441,12 +1441,10 @@ body {
 }
 .foot a:hover { color: var(--lime); }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+body.gat-motion-paused *, body.gat-motion-paused *::before, body.gat-motion-paused *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
 }
 
 /* UNIFIED 6-PREVIEW RIBBON ALIGNMENT */

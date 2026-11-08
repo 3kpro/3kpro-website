@@ -422,7 +422,7 @@ renderCatalog();
 // REAL-TIME 3D WEBGL THROTTLE BODY & 3-STAGE COMBUSTION STACK ENGINE
 // ============================================================================
 const reducedQuery = matchMedia('(prefers-reduced-motion: reduce)');
-let reduced = reducedQuery.matches;
+let reduced = false;
 let manualMotion = false;
 let running = true;
 let renderer, scene, camera, stackGroup, butterflyValve, coreLattice, coreLight, vortexParticles;

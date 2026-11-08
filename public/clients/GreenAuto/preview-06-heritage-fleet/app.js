@@ -103,7 +103,7 @@
       motionBtn.textContent = val ? "Enable motion" : "Reduce motion";
     }
   }
-  setReduced(reducedQuery.matches);
+  setReduced(false);
   if (motionBtn) {
     motionBtn.addEventListener("click", () => {
       setReduced(!document.body.classList.contains("reduced"));

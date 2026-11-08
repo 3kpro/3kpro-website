@@ -26,21 +26,21 @@
     bootDone = true;
     try { sessionStorage.setItem('gat-os-boot-seen', '1'); } catch (e) {}
     if (introEl) introEl.classList.add('gone');
+    window.dispatchEvent(new CustomEvent('gat:boot-complete'));
   }
 
   if (skipBtn) skipBtn.addEventListener('click', finishBoot);
 
-  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let seen = false;
   try { seen = sessionStorage.getItem('gat-os-boot-seen') === '1'; } catch (e) {}
 
-  if (seen || reducedMotion) {
+  if (seen) {
     finishBoot();
   } else if (termBody) {
     let idx = 0;
     function nextLine() {
       if (bootDone || idx >= BOOT_LINES.length) {
-        setTimeout(finishBoot, 420);
+        setTimeout(finishBoot, 260);
         return;
       }
       const [cls, text] = BOOT_LINES[idx++];
@@ -48,10 +48,10 @@
       if (cls) div.className = cls;
       div.textContent = text;
       termBody.insertBefore(div, termBody.querySelector('.cursor'));
-      setTimeout(nextLine, 150);
+      setTimeout(nextLine, 80);
     }
     nextLine();
-    setTimeout(finishBoot, 3600);
+    setTimeout(finishBoot, 2200);
   }
 
   /* 2. LIVE EASTERN CLOCK */
