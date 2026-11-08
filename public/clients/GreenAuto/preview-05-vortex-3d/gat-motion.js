@@ -341,6 +341,9 @@
       ? 'cubic-bezier(0.16, 1, 0.3, 1)'
       : 'cubic-bezier(0.22, 1, 0.36, 1)';
 
+    // Lock element against observer reset while animating + cooldown buffer
+    el._gatLockUntil = performance.now() + delay + duration + 400;
+
     const keyframes = getFlyInKeyframes(el, isImpress, staggerIndex);
     const anim = el.animate(keyframes, {
       duration,
@@ -372,6 +375,7 @@
   }
 
   function enqueueFlyIn(el) {
+    el._gatLockUntil = performance.now() + 1200;
     if (!batchQueue.includes(el)) {
       batchQueue.push(el);
     }
@@ -380,11 +384,12 @@
     }
   }
 
-  /* 8. INTERSECTION OBSERVER (BI-DIRECTIONAL SCROLL RE-ENTRY) */
+  /* 8. INTERSECTION OBSERVER (BI-DIRECTIONAL SCROLL RE-ENTRY WITH EDGE HYSTERESIS) */
   const boxObserver =
     'IntersectionObserver' in window
       ? new IntersectionObserver(
           (entries) => {
+            const now = performance.now();
             entries.forEach((entry) => {
               const el = entry.target;
               if (entry.isIntersecting) {
@@ -392,9 +397,18 @@
                   enqueueFlyIn(el);
                 }
               } else {
-                // Reset when element leaves viewport below or well above so scrolling back flies it in fresh
+                // Never reset while queued, animating, or within cooldown window
+                // (prevents translateY(+46px) initial keyframe from self-cancelling at viewport bottom edge)
+                if (
+                  activeAnimations.has(el) ||
+                  batchQueue.includes(el) ||
+                  now < (el._gatLockUntil || 0)
+                ) {
+                  return;
+                }
+                // Only reset once element is well off-screen (>140px past viewport edge, far beyond 46px travel)
                 const rect = entry.boundingClientRect;
-                if (rect.top > window.innerHeight * 0.96 || rect.bottom < -80) {
+                if (rect.top > window.innerHeight + 140 || rect.bottom < -140) {
                   el.classList.remove('gat-revealed', 'gat-sheen-fire');
                   if (!motionPaused) {
                     el.classList.add('gat-pending');
@@ -404,8 +418,8 @@
             });
           },
           {
-            threshold: 0.06,
-            rootMargin: '0px 0px -5% 0px'
+            threshold: 0.04,
+            rootMargin: '0px 0px -28px 0px'
           }
         )
       : null;
