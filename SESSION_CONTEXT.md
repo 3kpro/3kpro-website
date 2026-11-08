@@ -21,6 +21,7 @@ NEXT: SEO release; client-owned sender separation; final Randall access/recovery
     - **Impress Tier (`.gat-impress-box` — "Unless We Need to Impress"):** Deep 3D perspective fly-in (`860ms`, `cubic-bezier(0.16, 1, 0.3, 1)`) + automated diagonal **Specular CNC Light Sweep** (`gat-cnc-sheen`) on Hero hardware showcases, all 6 Hub preview cards, Flagship Combustion Stack banners, CFD Dual MP4 consoles, Interactive Simulators, ROI/Fleet Payback output cards, Dynojet/OWON/ASM Proof cards, and Inquiry consoles.
   - Added top 3px glowing **Laser Scroll Progress Beam** (`.gat-scroll-laser`), **3D Hero Ambient Atmosphere** (`.gat-hero-atmosphere`), **Section Laser Horizon Dividers** (`.gat-section-laser`), desktop **Cursor-Tracked Radial Spotlight & 3D Micro-Tilt**, live **Numerical Counter Rollups**, dynamic width fill on Preview 02's `.f-fill` friction bars, continuous vortex dash flow on Preview 06's SVG intake streamlines, and a bottom-right **Motion HUD Pill** (`↻ Replay Motion` + `⏸ Pause`).
   - Fixed Windows 11 OS `prefers-reduced-motion: reduce` auto-kill in `preview-01-gat-os/styles.css`, `preview-01-gat-os/app.js`, `preview-05-vortex-3d/app.js`, and `preview-06-heritage-fleet/app.js` so animations run by default unless the user explicitly clicks Pause/Reduce Motion.
+  - Closeout record: `docs/operations/GREENAUTO_TOMORROW_MOTION_RELEASE_2026-11-08.md`.
 
 ## 2026-11-07 — Green Auto Technology 6-Variation Suite Deployed & Verified Live (`dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`)
 
