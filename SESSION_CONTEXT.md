@@ -1,9 +1,20 @@
-## 2026-11-08 — Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography Deployed (`dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB`)
+## 2026-11-08 - Last Stop Shop production recovered and transferred
+
+STATUS: https://thelaststopshop.com and www are live in Randall's verified Pro team `team_5XNboPepFdNo9Pnsx0KiLztY`. Dedicated project `prj_CFkSO5XRDjiKXOJRnwZq83QyOKmO`, now `the-last-stop-shop-production`, was transferred; company project untouched.
+
+CHANGE: Original published source was proven against downloaded Vercel files and local Git commit `24e8caf`. Corrected standalone source `f6e81ae7e562b32ca85e57455d7268eaf7e2be4e` is published as `dpl_CvetAgF8TrpnVCdJfjiwzcpcaMRY`. Canonical source: `C:\DEV\_3KPRO-GENERAL\MainBrain\CLIENT_DELIVERIES\last-stop-migration-20261108\production`. Do not use the older static package or assume the shared checkout HEAD is this release. James approved retaining the existing Resend sender; direct form submission to the Google Workspace inbox preserved. MX unchanged. Next.js patched to 16.4.5; current noindex retained for the subsequent SEO package.
+
+TEST: Local/hosted builds, typecheck and source/direct-send tests passed; npm audit clean. Desktop/mobile content, assets, typography and hero geometry match the saved pre-move live baseline exactly; booking/payment/404 checks pass; eight public HTTPS route/asset checks pass. One explicitly authorized labeled real form test was accepted by Resend; inbox receipt remains unconfirmed. Fresh API verifies account, completed transfer, source/deployment and both domains. Temporary QA access revoked.
+
+NEXT: SEO release; client-owned sender separation; final Randall access/recovery/billing/source custody. Old review/static projects retained pending separate cleanup. Full receipt and rollback: `MainBrain/CLIENT_DELIVERIES/last-stop-migration-20261108/MIGRATION_REPORT.md`.
+
+## 2026-11-08 — Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography Deployed (`dpl_41ngusUf4Co3NtALzmtNwrjyJ4rK`)
 
 - **Live URL:** `https://3kpro.services/clients/GreenAuto` (and `/clients/GreenAuto/preview-01-gat-os/index.html` through `/clients/GreenAuto/preview-06-heritage-fleet/index.html`)
-- **Released Source on `origin/main`:** `f452441` (building on `88091f8`, `dd77b1d`, and `ada5016`), deployed from an isolated git worktree so unrelated dirty files in the canonical shared checkout (`C:\DEV\_3KPRO-WEBSITE`) were never published.
-- **Production Deployment:** `dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB` (`READY`, aliased to `https://3kpro.services`). Prior rollback is `dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`.
+- **Released Source on `origin/main`:** `f25ba14` (building on `f452441`, `88091f8`, `dd77b1d`, and `ada5016`), deployed from an isolated git worktree so unrelated dirty files in the canonical shared checkout (`C:\DEV\_3KPRO-WEBSITE`) were never published.
+- **Production Deployment:** `dpl_41ngusUf4Co3NtALzmtNwrjyJ4rK` (`READY`, aliased to `https://3kpro.services`). Prior rollback is `dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`.
 - **What Changed:**
+  - Excluded `/clients/` from `proxy.ts` Edge middleware and guarded `supabase.auth.getUser()` to `/admin` routes only so static assets under `/clients/GreenAuto` never stall/timeout on paused Supabase calls (`32s` -> `<450ms`). Added fallback rewrites in `next.config.js` (`/clients/:preview(preview-0[1-6]-[^/]+)/:path*`), cache-busted all 6 hub thumbnails (`?v=20261108b`), and suppressed `alt` text overlap (`color: transparent; font-size: 0;`) on `.card-thumb img`.
   - Created and wired `gat-motion.css` and `gat-motion.js` across the Suite Hub (`public/clients/GreenAuto/index.html`) and all 6 previews (`preview-01-gat-os` through `preview-06-heritage-fleet`), mirrored to `MainBrain/CLIENT_DELIVERIES/` and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`.
   - Implemented a two-tier 3D scroll fly-in choreography (`IntersectionObserver` + Web Animations API + `MutationObserver` for filtered catalog/video/blog grids):
     - **Subtle Tier (`.gat-box`):** Smooth directional 3D fly-in (`660ms`, `cubic-bezier(0.22, 1, 0.36, 1)`) with row/column stagger on every card, stat cell, product card, video card, blog card, step card, calculator slider row, and section header.
@@ -151,3 +162,5 @@ for review, but not yet pushed or deployed.
 
 ## NOTE for next agent (tooling caveat)
 The file-Write/Edit path silently truncated several files this session (homepage, marketplace, and all three doc files were cut short or NUL-padded mid-write). Each was caught via `tsc`/byte-count checks and repaired with bash. **After any large write, verify with `wc -l`/`tsc` before trusting it.**
+
+2026-11-08 Last Stop Shop final custody check: external Vercel domain record also moved to team_5XNboPepFdNo9Pnsx0KiLztY; project and apex/www aliases match; GoDaddy nameservers and Google MX unchanged. See migration report.

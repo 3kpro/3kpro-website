@@ -1,3 +1,13 @@
+## 2026-11-08 - Last Stop Shop production recovered and transferred
+
+STATUS: https://thelaststopshop.com and www are live in Randall's verified Pro team `team_5XNboPepFdNo9Pnsx0KiLztY`. Dedicated project `prj_CFkSO5XRDjiKXOJRnwZq83QyOKmO`, now `the-last-stop-shop-production`, was transferred; company project untouched.
+
+CHANGE: Original published source was proven against downloaded Vercel files and local Git commit `24e8caf`. Corrected standalone source `f6e81ae7e562b32ca85e57455d7268eaf7e2be4e` is published as `dpl_CvetAgF8TrpnVCdJfjiwzcpcaMRY`. Canonical source: `C:\DEV\_3KPRO-GENERAL\MainBrain\CLIENT_DELIVERIES\last-stop-migration-20261108\production`. Do not use the older static package or assume the shared checkout HEAD is this release. James approved retaining the existing Resend sender; direct form submission to the Google Workspace inbox preserved. MX unchanged. Next.js patched to 16.4.5; current noindex retained for the subsequent SEO package.
+
+TEST: Local/hosted builds, typecheck and source/direct-send tests passed; npm audit clean. Desktop/mobile content, assets, typography and hero geometry match the saved pre-move live baseline exactly; booking/payment/404 checks pass; eight public HTTPS route/asset checks pass. One explicitly authorized labeled real form test was accepted by Resend; inbox receipt remains unconfirmed. Fresh API verifies account, completed transfer, source/deployment and both domains. Temporary QA access revoked.
+
+NEXT: SEO release; client-owned sender separation; final Randall access/recovery/billing/source custody. Old review/static projects retained pending separate cleanup. Full receipt and rollback: `MainBrain/CLIENT_DELIVERIES/last-stop-migration-20261108/MIGRATION_REPORT.md`.
+
 # TASKS - 3kpro.services Company Site
 
 ## NOW
@@ -23,7 +33,7 @@
 - [ ] **GetXelora.com SEO audit** — Next site in queue after 3kpro.services
 
 ## COMPLETED
-- [x] **Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography (`dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB`)** — Built and wired the two-tier 3D scroll fly-in & spatial choreography engine (`gat-motion.css` + `gat-motion.js`) across the Suite Hub and Previews 01–06 (`f452441`), fixed Windows OS `prefers-reduced-motion` auto-kill in Previews 01/05/06, deployed to `https://3kpro.services/clients/GreenAuto`, and verified across 14/14 desktop & mobile viewports via Playwright (2026-11-08).
+- [x] **Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography (`dpl_41ngusUf4Co3NtALzmtNwrjyJ4rK`)** — Built and wired the two-tier 3D scroll fly-in & spatial choreography engine (`gat-motion.css` + `gat-motion.js`) across the Suite Hub and Previews 01–06 (`f452441` / `f25ba14`), bypassed `proxy.ts` Supabase Edge middleware on `/clients/` static assets, fixed Windows OS `prefers-reduced-motion` auto-kill in Previews 01/05/06, deployed to `https://3kpro.services/clients/GreenAuto`, and verified across 14/14 desktop & mobile viewports via Playwright (2026-11-08).
 - [x] **Green Auto Technology 6-Variation Suite Expansion & Visual QA Release (`preview-05-vortex-3d` & `preview-06-heritage-fleet`)** — Added two new full-content client preview variations (real-time Three.js 3D Vortex Disassembly Cinema + Heavy-Duty Diesel & 1–25 Truck Commercial Fleet Edition), fixed root-relative hub thumbnails and desktop/mobile header & switcher alignment across all 6 variations, deployed to `https://3kpro.services/clients/GreenAuto` (`dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d`, commit `ada5016`), and verified 14/14 desktop & mobile viewports via Playwright (`visibleBroken: []`, `overflowX: 0`) (2026-11-07).
 - [x] **GreenAuto Precision Lab mobile alignment repair** — exact preview approved, released source `88c181a`, production READY; 60/60 responsive states and six live file parity checks passed; James accepted live result (2026-10-27). Closeout: `docs/operations/GREENAUTO_MOBILE_RELEASE_2026-10-27.md`.
 - [x] ✅ **Green Auto Technology client preview suite (01–04) + MP4 fluid-dynamics animations** — Built and deployed 4 preview variations at `https://3kpro.services/clients/GreenAuto`, updated `preview-04-wave-flagship` and `preview-03-precision-lab` with `ThrottleBodyCutaway.mp4` + `wave-vortex-animation.mp4` in the "How WAVE™ Technology Works" section and Gemini-remastered Dynojet/Oscilloscope/ASM evidence graphics (2026-10-26)
@@ -47,3 +57,5 @@
 - [x] ✅ **Cloud Ledger Marketplace Launch** (2026-02-21)
 - [x] ✅ **FairMerge Beta Launch** (2026-02-11)
 - [x] ✅ **Visual Rebrand Completion** (2026-02-06)
+
+2026-11-08 Last Stop Shop final custody check: external Vercel domain record also moved to team_5XNboPepFdNo9Pnsx0KiLztY; project and apex/www aliases match; GoDaddy nameservers and Google MX unchanged. See migration report.

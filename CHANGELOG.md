@@ -1,12 +1,23 @@
+## 2026-11-08 - Last Stop Shop production recovered and transferred
+
+STATUS: https://thelaststopshop.com and www are live in Randall's verified Pro team `team_5XNboPepFdNo9Pnsx0KiLztY`. Dedicated project `prj_CFkSO5XRDjiKXOJRnwZq83QyOKmO`, now `the-last-stop-shop-production`, was transferred; company project untouched.
+
+CHANGE: Original published source was proven against downloaded Vercel files and local Git commit `24e8caf`. Corrected standalone source `f6e81ae7e562b32ca85e57455d7268eaf7e2be4e` is published as `dpl_CvetAgF8TrpnVCdJfjiwzcpcaMRY`. Canonical source: `C:\DEV\_3KPRO-GENERAL\MainBrain\CLIENT_DELIVERIES\last-stop-migration-20261108\production`. Do not use the older static package or assume the shared checkout HEAD is this release. James approved retaining the existing Resend sender; direct form submission to the Google Workspace inbox preserved. MX unchanged. Next.js patched to 16.4.5; current noindex retained for the subsequent SEO package.
+
+TEST: Local/hosted builds, typecheck and source/direct-send tests passed; npm audit clean. Desktop/mobile content, assets, typography and hero geometry match the saved pre-move live baseline exactly; booking/payment/404 checks pass; eight public HTTPS route/asset checks pass. One explicitly authorized labeled real form test was accepted by Resend; inbox receipt remains unconfirmed. Fresh API verifies account, completed transfer, source/deployment and both domains. Temporary QA access revoked.
+
+NEXT: SEO release; client-owned sender separation; final Randall access/recovery/billing/source custody. Old review/static projects retained pending separate cleanup. Full receipt and rollback: `MainBrain/CLIENT_DELIVERIES/last-stop-migration-20261108/MIGRATION_REPORT.md`.
+
 # CHANGELOG.md - 3kpro.services Company Site
 
 All notable changes to the 3kpro.services company website and marketplace.
 
 ---
 
-## [2026-11-08] — Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography (`dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB`)
+## [2026-11-08] — Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography (`dpl_41ngusUf4Co3NtALzmtNwrjyJ4rK`)
 
-- Authored and wired the two-tier **"Tomorrow" 3D Scroll Choreography & Spatial Fly-In Engine** (`gat-motion.css` + `gat-motion.js`) across the entire 6-variation Green Auto Technology suite and hub (`public/clients/GreenAuto/`, `MainBrain/CLIENT_DELIVERIES/`, and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`), deployed from an isolated git worktree on `origin/main` (`f452441`, production `dpl_6aVxCD5z9ZniWy63KkJ4UHsZVotB` aliased to `https://3kpro.services/clients/GreenAuto`):
+- Authored and wired the two-tier **"Tomorrow" 3D Scroll Choreography & Spatial Fly-In Engine** (`gat-motion.css` + `gat-motion.js`) across the entire 6-variation Green Auto Technology suite and hub (`public/clients/GreenAuto/`, `MainBrain/CLIENT_DELIVERIES/`, and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`), deployed from an isolated git worktree on `origin/main` (`f452441` / `f25ba14`, production `dpl_41ngusUf4Co3NtALzmtNwrjyJ4rK` aliased to `https://3kpro.services/clients/GreenAuto`):
+  - **Fixed Edge Proxy Timeout on `/clients/` Assets (`proxy.ts` & `next.config.js`):** Excluded `/clients/` from `proxy.ts` Edge middleware and restricted `supabase.auth.getUser()` strictly to `/admin` routes so static images/videos under `/clients/GreenAuto` never stall or time out against paused Supabase instances (`32s` -> `<450ms`). Added fallback rewrites in `next.config.js` (`/clients/:preview(preview-0[1-6]-[^/]+)/:path*` and `/clients/greenauto/:path*`), cache-busted hub thumbnails (`?v=20261108b`), and suppressed broken-image `alt` text overlap (`color: transparent; font-size: 0;`) on `.card-thumb img`.
   - **Subtle Fly-In Tier (`.gat-box`):** Every stat cell, telemetry module, stage card, product card (all 17/43 items, including dynamically filtered/searched cards via `MutationObserver`), video card, blog article card, step card, calculator slider row, and section header flies in smoothly (`660ms`, `cubic-bezier(0.22, 1, 0.36, 1)`) with directional scroll awareness and row/column stagger.
   - **Impress Fly-In Tier (`.gat-impress-box` — "Unless We Need to Impress"):** Hero hardware showcases, all 6 Hub preview cards, Flagship Combustion Stack banners, CFD Dual MP4 consoles, Interactive Simulators, ROI/Fleet Payback output cards, Dynojet/OWON/ASM Proof cards, and Inquiry consoles fly in with deeper 3D perspective (`perspective(1150px) translate3d(±24px, 46px, -72px) rotateX(8.5deg) rotateY(±4deg) scale(0.945)` over `860ms`) plus an automated diagonal **Specular CNC Light Sweep** (`gat-cnc-sheen`).
   - **Scroll-Driven Atmosphere & Telemetry:** Added a top 3px glowing **Laser Scroll Progress Beam** (`.gat-scroll-laser`), **3D Hero Ambient Atmosphere** (`.gat-hero-atmosphere`), **Section Laser Horizon Dividers** (`.gat-section-laser`), desktop **Cursor-Tracked Radial Spotlight & 3D Micro-Tilt**, live **Numerical Counter Rollups**, dynamic width fill on Preview 02's `.f-fill` friction bars, continuous vortex dash flow on Preview 06's SVG intake streamlines (`#svg-stream-1/2/3`), and a bottom-right **Motion HUD Pill** (`↻ Replay Motion` + `⏸ Pause`).
@@ -524,3 +535,5 @@ All notable changes to the 3kpro.services company website and marketplace.
 - This CHANGELOG tracks **company site** changes only
 - XELORA product changes: `landing-page/docs/SYSTEM/CHANGELOG.md`
 - Dev/ product changes: `Dev/products/[product]/CHANGELOG.md`
+
+2026-11-08 Last Stop Shop final custody check: external Vercel domain record also moved to team_5XNboPepFdNo9Pnsx0KiLztY; project and apex/www aliases match; GoDaddy nameservers and Google MX unchanged. See migration report.
