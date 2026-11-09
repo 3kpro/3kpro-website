@@ -12,7 +12,7 @@ Upgraded all 6 client previews (`preview-01-gat-os` through `preview-06-heritage
   - `https://3kpro.services/clients/GreenAuto/preview-04-wave-flagship/index.html`
   - `https://3kpro.services/clients/GreenAuto/preview-05-vortex-3d/index.html`
   - `https://3kpro.services/clients/GreenAuto/preview-06-heritage-fleet/index.html`
-- **Released Source on `origin/main`:** `f452441` (motion engine) -> `f25ba14` (`proxy.ts` Edge middleware bypass + `next.config.js` fallback rewrites + hub thumbnail cache-bust) -> `9d44b82` (governance docs).
+- **Released Source on `origin/main`:** `f452441` (motion engine) -> `f25ba14` (`proxy.ts` Edge middleware bypass + `next.config.js` fallback rewrites + hub thumbnail cache-bust) -> `55ad595` (viewport-edge hysteresis & `_gatLockUntil` cooldown lock in `gat-motion.js?v=20261108c`).
 - **Production Deployment:** `dpl_CLUo9Qjcnid4y5LbYJGjwBiGk5MZ` (`https://3kpro-website-ebr0vd6wd-3kpros-projects.vercel.app`, `READY`, aliased to `https://3kpro.services`).
 - **Rollback Deployment:** `dpl_5mUAfgKwtN7PkQkrqRiEgR6FM26d` (`ada5016`).
 
@@ -21,6 +21,7 @@ Upgraded all 6 client previews (`preview-01-gat-os` through `preview-06-heritage
 1. **Two-Tier 3D Scroll Fly-In Choreography (`gat-motion.css` + `gat-motion.js`, 559 Animated Boxes):**
    - **Subtle Fly-In Tier (`.gat-box`):** Directional 3D fly-in (`660ms`, `cubic-bezier(0.22, 1, 0.36, 1)`) with row/column stagger on every stat cell, telemetry module, stage card, product card (including dynamically filtered/searched cards via `MutationObserver`), video card, blog article card, step card, calculator slider row, and section header.
    - **Impress Fly-In Tier (`.gat-impress-box` — "Unless We Need to Impress"):** Deep 3D perspective fly-in (`860ms`, `cubic-bezier(0.16, 1, 0.3, 1)`) + automated diagonal **Specular CNC Light Sweep** (`gat-cnc-sheen`) on Hero hardware showcases, all 6 Hub preview cards, Flagship Combustion Stack banners, CFD Dual MP4 consoles, Interactive Simulators, ROI/Fleet Payback output cards, Dynojet/OWON/ASM Proof cards, and Inquiry consoles.
+   - **Viewport-Edge Hysteresis & Cooldown Lock (`55ad595`, `gat-motion.js?v=20261108c`):** Added an active-animation + `400ms` cooldown lock (`_gatLockUntil`) and a `140px` off-screen hysteresis dead-band (`rect.top > window.innerHeight + 140 || rect.bottom < -140`) in `boxObserver` so the initial `+46px` vertical fly-in offset never self-cancels or oscillates when a row of boxes is parked at the bottom edge of the viewport (`maxFiresPerElement: 1` verified via Playwright).
 2. **Scroll-Driven Atmosphere & Telemetry:**
    - Top 3px glowing **Laser Scroll Progress Beam** (`.gat-scroll-laser`).
    - **3D Hero Ambient Atmosphere** (`.gat-hero-atmosphere`).

@@ -1,3 +1,25 @@
+## 2026-11-08 - KITT final delivery acceptance
+
+SAGE repaired demonstrated KITT workflow/access/source/browser gaps. Default and
+original conversation now execute GPT-6.1 Terra; source-first-delivery is visible
+and full root instructions are injected. Exact client API credential is limited
+to Randall's one project, expires 2027-02-06, and grants no release authority.
+Native source cache is clean at 6b0ef0c6b282feb87b36ea1ec0558d332e660d90.
+Original-conversation live desktop/mobile booking/payment checks passed after
+exact hostname policy repair. Private-network protection remains enforced.
+Full-page screenshots include unrevealed animation regions; separate scrolled
+booking captures were verified. Do not claim universal readiness from this test.
+11 evidence-helper tests, 6 scoped API tests and 8 independent coding-fixture
+contact cases passed. No customer deploy, real email or payment during repair.
+Current live release remains dpl_36jWGEJ7yHkP56WnY7P3TU3ZjWEo, SEO published;
+James already confirmed Randall's test-email receipt. Older noindex/migration
+and missing-inbox notes below are historical. Separate follow-ups: Search
+Console access/submission, independent sender and final Randall custody.
+Revoke/replace temporary token at custody handoff. SAGE retains existing plugin
+shutdown warnings; automatic reload remains off. Future hosts need capability
+preflight, not a private-network bypass. Report:
+/workspace/dev/_3KPRO-GENERAL/MainBrain/INFRA/KITT_RELIABILITY_REPAIR_2026-11-08.md
+
 ## 2026-11-08 - Last Stop Shop production recovered and transferred
 
 STATUS: https://thelaststopshop.com and www are live in Randall's verified Pro team `team_5XNboPepFdNo9Pnsx0KiLztY`. Dedicated project `prj_CFkSO5XRDjiKXOJRnwZq83QyOKmO`, now `the-last-stop-shop-production`, was transferred; company project untouched.
@@ -16,7 +38,8 @@ All notable changes to the 3kpro.services company website and marketplace.
 
 ## [2026-11-08] — Green Auto Technology "Tomorrow" 3D Scroll Motion & Fly-In Choreography (`dpl_CLUo9Qjcnid4y5LbYJGjwBiGk5MZ`)
 
-- Authored and wired the two-tier **"Tomorrow" 3D Scroll Choreography & Spatial Fly-In Engine** (`gat-motion.css` + `gat-motion.js`) across the entire 6-variation Green Auto Technology suite and hub (`public/clients/GreenAuto/`, `MainBrain/CLIENT_DELIVERIES/`, and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`), deployed from an isolated git worktree on `origin/main` (`f452441` / `f25ba14`, production `dpl_CLUo9Qjcnid4y5LbYJGjwBiGk5MZ` aliased to `https://3kpro.services/clients/GreenAuto`):
+- Authored and wired the two-tier **"Tomorrow" 3D Scroll Choreography & Spatial Fly-In Engine** (`gat-motion.css` + `gat-motion.js`) across the entire 6-variation Green Auto Technology suite and hub (`public/clients/GreenAuto/`, `MainBrain/CLIENT_DELIVERIES/`, and `MainBrain/CLIENT_DELIVERIES/green-auto-technology-site/`), deployed from an isolated git worktree on `origin/main` (`f452441` -> `f25ba14` -> `55ad595`, production `dpl_CLUo9Qjcnid4y5LbYJGjwBiGk5MZ` aliased to `https://3kpro.services/clients/GreenAuto`):
+  - **Fixed Viewport-Edge Scroll Boundary Flicker (`gat-motion.js?v=20261108c`):** Added an active-animation + `400ms` cooldown lock (`_gatLockUntil`) and a `140px` off-screen hysteresis dead-band (`rect.top > window.innerHeight + 140 || rect.bottom < -140`) in `boxObserver` so the initial `+46px` vertical fly-in offset never self-cancels or oscillates when a row of boxes is parked at the bottom edge of the viewport (`maxFiresPerElement: 1` verified in Playwright).
   - **Fixed Edge Proxy Timeout on `/clients/` Assets (`proxy.ts` & `next.config.js`):** Excluded `/clients/` from `proxy.ts` Edge middleware and restricted `supabase.auth.getUser()` strictly to `/admin` routes so static images/videos under `/clients/GreenAuto` never stall or time out against paused Supabase instances (`32s` -> `<450ms`). Added fallback rewrites in `next.config.js` (`/clients/:preview(preview-0[1-6]-[^/]+)/:path*` and `/clients/greenauto/:path*`), cache-busted hub thumbnails (`?v=20261108b`), and suppressed broken-image `alt` text overlap (`color: transparent; font-size: 0;`) on `.card-thumb img`.
   - **Subtle Fly-In Tier (`.gat-box`):** Every stat cell, telemetry module, stage card, product card (all 17/43 items, including dynamically filtered/searched cards via `MutationObserver`), video card, blog article card, step card, calculator slider row, and section header flies in smoothly (`660ms`, `cubic-bezier(0.22, 1, 0.36, 1)`) with directional scroll awareness and row/column stagger.
   - **Impress Fly-In Tier (`.gat-impress-box` — "Unless We Need to Impress"):** Hero hardware showcases, all 6 Hub preview cards, Flagship Combustion Stack banners, CFD Dual MP4 consoles, Interactive Simulators, ROI/Fleet Payback output cards, Dynojet/OWON/ASM Proof cards, and Inquiry consoles fly in with deeper 3D perspective (`perspective(1150px) translate3d(±24px, 46px, -72px) rotateX(8.5deg) rotateY(±4deg) scale(0.945)` over `860ms`) plus an automated diagonal **Specular CNC Light Sweep** (`gat-cnc-sheen`).
@@ -537,3 +560,35 @@ All notable changes to the 3kpro.services company website and marketplace.
 - Dev/ product changes: `Dev/products/[product]/CHANGELOG.md`
 
 2026-11-08 Last Stop Shop final custody check: external Vercel domain record also moved to team_5XNboPepFdNo9Pnsx0KiLztY; project and apex/www aliases match; GoDaddy nameservers and Google MX unchanged. See migration report.
+
+## 2026-11-08 - SEO package audit completed; production unchanged
+
+STATUS: Old static SEO package is not ready to deploy into the current Next.js site. Published source remains f6e81ae / deployment dpl_CvetAgF8TrpnVCdJfjiwzcpcaMRY in client Pro project prj_CFkSO5XRDjiKXOJRnwZq83QyOKmO.
+
+CHANGE: Documentation-only audit and exact source/destination release plan saved in docs/SEO_PACKAGE_REVIEW_2026-11-08.md and docs/SEO_RELEASE_PLAN_2026-11-08.md. Original package recovered at d22ee0a; old source and stale target instructions must not be deployed. No runtime, Vercel, crawler, domain, sender or account changes made.
+
+TEST: Original verifier passed, but also incorrectly passed three deliberately broken fixtures: homepage noindex, wrong canonical and malformed JSON-LD. Fresh public route/metadata snapshot confirms the site still has the intentionally retained noindex/disallow policy and no sitemap yet. Crawl-rule conflict, structured-data corrections and unsafe immutable caching were documented against primary sources. Original package and production runtime files preserved.
+
+NEXT: Port SEO-only changes into an isolated branch of the verified production source, replace weak validation with parsed/per-route and negative checks, retain visual/direct-send regressions, then stage in the existing client Pro project. Publication remains pending; Randall inbox receipt still unconfirmed. Full evidence: MainBrain/CLIENT_DELIVERIES/last-stop-seo-review-20261108/.
+
+## 2026-11-08 - SEO-only candidate prepared and privately staged
+
+STATUS: Verified private stage; publication pending Randall email-receipt confirmation and exact SEO release authority. Live source f6e81ae / deployment dpl_CvetAgF8TrpnVCdJfjiwzcpcaMRY unchanged.
+
+CHANGE: Isolated branch codex/last-stop-seo, commit 6b0ef0c6b282feb87b36ea1ec0558d332e660d90, staged deployment dpl_36jWGEJ7yHkP56WnY7P3TU3ZjWEo. Client metadata, truthful entity/service JSON-LD, sitemap, crawl rules and www redirect added without changing approved content/styles/form/sender/payment/dependencies. Correct client Pro team/project preserved. Review: https://the-last-stop-shop-production-nq2fmtrea.vercel.app (Vercel sign-in required).
+
+TEST: Nine focused cases, preservation checks, typecheck/build, strict local route checks and protected hosted SEO checks pass. Three broken-HTML cases now rejected. Hosted desktop/mobile match frozen production baseline with no page errors; booking/payment/404 pass. Temporary QA access revoked; public aliases verified unchanged. Public indexing headers and www behavior require post-promotion checks; Vercel intentionally noindexes unique deployment URLs.
+
+NEXT: Follow docs/SEO_CANDIDATE_HANDOFF_2026-11-08.md and exact release manifest. Promote tested deployment without rebuilding only after the pending confirmations. Search Console access/submission unverified. Source/evidence: MainBrain/CLIENT_DELIVERIES/last-stop-seo-20261108/.
+
+
+## 2026-11-08 - Approved SEO build published and publicly verified
+
+STATUS: PUBLISHED_AND_VERIFIED at https://thelaststopshop.com in Randall's correct Pro team/project. James approved the exact artifact after final checks. Source 6b0ef0c6b282feb87b36ea1ec0558d332e660d90, deployment dpl_36jWGEJ7yHkP56WnY7P3TU3ZjWEo. Promotion without rebuilding; prior dpl_CvetAgF8TrpnVCdJfjiwzcpcaMRY retained for rollback.
+
+CHANGE: Homepage indexing, canonical/social metadata, truthful client/service schema, sitemap/crawler rules and www redirect published. Canonical standalone source merged with exact release; runtime paths verified identical. Visible design, form/sender/payment and dependencies preserved; no extra real email/payment, DNS, billing or custody changes.
+
+TEST: Anonymous public SEO routes, XML sitemap, parsed schema, original PNG, payment/404 noindex and three negative cases PASS. Live www 308 preserves paths/query; apex 200 with no indexing block; legacy redirects preserved. Desktop/mobile exact approved baseline parity, booking/form validation, Cash App payee/QR and back navigation PASS with zero browser page errors; screenshots inspected. Exact-source READY deployment/aliases verified in Pro team; temporary QA bypass count zero. Error-log query since publication completed with zero entries. Randall confirmed the prior labeled test email through James.
+
+NEXT: Verify client-controlled Search Console access and submit https://thelaststopshop.com/sitemap.xml; access/submission and Google indexing/rankings remain unverified. Existing client-owned sender and final Randall login/recovery/billing/source custody follow-ups remain. Current report: MainBrain/CLIENT_DELIVERIES/last-stop-seo-20261108/SEO_PUBLICATION_REPORT.md; source-local copy docs/SEO_PUBLICATION_2026-11-08.md.
+
