@@ -126,3 +126,6 @@ git-cleanup.ps1
 .fuse_hidden*
 *.fuse_hidden*
 3KPRO Design System.zip
+
+# Local editor workspace state (not project source)
+/.obsidian/

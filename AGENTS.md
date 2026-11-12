@@ -7,13 +7,13 @@ last-updated: "2026-08-17"
 status: active
 ---
 
-# CLAUDE.md — 3kpro-website
+# AGENTS.md — 3kpro-website
 
-Agent guide for the **consulting site** pillar. Read the portfolio `CLAUDE.md` and `PROJECT_MAP.md` first; this file is the pillar-specific overlay.
+Repository-specific agent guidance for the 3KPRO.Services website. Start with the public [project README](README.md); broader operational and portfolio instructions are maintained separately.
 
 ## What this pillar is
 
-Public marketing site for the 3KPRO Services consultancy. Next.js app (dev port 3001). Deploys to **3kpro.services**. Separate from the Xelora SaaS landing-page and the Dev marketplace — this is the **company front door**.
+Public marketing site for the 3KPRO Services consultancy. Next.js app (dev port 3001). Deploys to **3kpro.services**. The company front door; separate from internal client workspaces and other products.
 
 ## Stack
 
@@ -28,7 +28,7 @@ Public marketing site for the 3KPRO Services consultancy. Next.js app (dev port 
 
 ```
 3kpro-website\
-├── CLAUDE.md         ← you are here
+├── AGENTS.md         ← you are here
 ├── README.md         ← project overview
 ├── CHANGELOG.md      ← project history
 ├── VISION.md         ← company/site strategy
