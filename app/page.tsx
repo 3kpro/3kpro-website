@@ -341,6 +341,7 @@ export default function Home() {
         <Link href="/" className="logo"><span className="sq" />3KPRO<span style={{ color: 'var(--faint)', fontWeight: 600 }}>·OS</span></Link>
         <div className="nav-links">
           <a href="#services">Services</a>
+          <a href="#work">Our work</a>
           <a href="#products">Products</a>
           <a href="#pricing">Pricing</a>
           <a href="#contact">Contact</a>
@@ -400,6 +401,26 @@ export default function Home() {
                 <p>{item.copy}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CLIENT WORK ===== */}
+      <section id="work">
+        <div className="wrap">
+          <div className="sec-head rev">
+            <span className="tagchip">Client work</span>
+            <h2 className="h2">Built for <span className="out">real work.</span></h2>
+          </div>
+          <div className="dossier rev">
+            <div className="row">
+              <span className="id">Tulsa area</span>
+              <h3>The Last Stop Shop</h3>
+              <div>
+                <p>We helped bring this mobile mechanic website to its own hosting and prepared its local search foundations. Customers can review services, request an appointment, and find payment options from their phone.</p>
+                <a className="btn ghost" style={{ marginTop: 20 }} href="https://thelaststopshop.com/" target="_blank" rel="noopener noreferrer">Visit The Last Stop Shop</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
