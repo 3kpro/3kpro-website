@@ -1,37 +1,22 @@
 'use client'
 
 import ContactForm from '@/components/ContactForm'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 /* ============================================================
    3KPRO — OPERATOR homepage (approved V3, 2026-07-06)
-   Terminal boot intro → amber mission-control deck.
+   Amber mission-control deck.
    ============================================================ */
-
-type BootLine = { cls: string; text: string }
-
-const BOOT: ReadonlyArray<readonly [string, string]> = [
-  ['dim', '3KPRO SYSTEMS BIOS v2026.7 — TULSA CONTROL'],
-  ['', 'initializing operator console .....'],
-  ['ok', '[ OK ]  web systems ............... online'],
-  ['ok', '[ OK ]  workflow automation ....... online'],
-  ['ok', '[ OK ]  ai workspace layer ........ online'],
-  ['ok', '[ OK ]  cloud architecture ........ online'],
-  ['amb', '[ !! ]  duct-tape processes ....... deprecated'],
-  ['ok', '[ OK ]  documentation ............. owner-readable'],
-  ['', 'response target: 24h — operator: direct'],
-  ['amb', 'launching 3KPRO·OS ▸▸▸'],
-]
 
 const services = [
   {
     num: 'SYS-01 / WEB',
-    title: 'Local Estimate Capture',
+    title: 'Website Design for Local Businesses',
     copy: 'Premium business sites, landing pages, local SEO foundations, conversion paths, and handoff docs.',
     points: ['Positioning', 'Responsive build', 'Launch handoff'],
-    href: '/services/local-estimate-capture',
+    href: '/services/website-systems',
   },
   {
     num: 'SYS-02 / AUTO',
@@ -101,62 +86,6 @@ const marqueeItems = [
   'TULSA · REMOTE',
 ]
 
-function sleep(ms: number) {
-  return new Promise<void>((res) => setTimeout(res, ms))
-}
-
-/* ---------- boot intro ---------- */
-function BootIntro({ stage, onSkip, lines }: { stage: string; onSkip: () => void; lines: BootLine[] }) {
-  if (stage === 'gone') return null
-  return (
-    <div className={`op-intro${stage === 'flash' ? ' flash' : ''}`} role="presentation" aria-hidden="true">
-      <div className="term">
-        <div className="term-bar">
-          <span>3KPRO / SYSTEM CONSOLE</span>
-          <span className="dots"><i /><i /><i /></span>
-        </div>
-        <div className="term-body">
-          {lines.map((l, i) => (
-            <div key={i} className={l.cls || undefined}>{l.text}</div>
-          ))}
-          <span className="cursor" />
-        </div>
-      </div>
-      <button type="button" className="skip" onClick={onSkip}>Skip boot ▸</button>
-    </div>
-  )
-}
-
-/* ---------- animated counter ---------- */
-function Count({ end, className }: { end: number; className?: string }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          io.unobserve(entry.target)
-          const dur = 1300
-          const t0 = performance.now()
-          const tick = (t: number) => {
-            const k = Math.min(1, (t - t0) / dur)
-            const eased = 1 - Math.pow(1 - k, 3)
-            el.textContent = String(Math.round(end * eased))
-            if (k < 1) requestAnimationFrame(tick)
-          }
-          requestAnimationFrame(tick)
-        })
-      },
-      { threshold: 0.5 }
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [end])
-  return <span ref={ref} className={className}>0</span>
-}
-
 /* ---------- project drawer (real contact form) ---------- */
 function ProjectDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const ease = [0.22, 1, 0.36, 1] as const
@@ -204,63 +133,9 @@ function ProjectDrawer({ open, onClose }: { open: boolean; onClose: () => void }
 }
 
 export default function Home() {
-  const reduceMotion = useReducedMotion()
-  const [introStage, setIntroStage] = useState<'pending' | 'boot' | 'flash' | 'gone'>('pending')
-  const [bootLines, setBootLines] = useState<BootLine[]>([])
-  const [ready, setReady] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [clock, setClock] = useState('--:--:--')
-  const doneRef = useRef(false)
   const rootRef = useRef<HTMLDivElement>(null)
-
-  const finishIntro = useCallback(() => {
-    if (doneRef.current) return
-    doneRef.current = true
-    try { sessionStorage.setItem('3k-boot-seen', '1') } catch { /* private mode */ }
-    setIntroStage('flash')
-    setReady(true)
-    setTimeout(() => setIntroStage('gone'), 650)
-  }, [])
-
-  /* decide whether to boot */
-  useEffect(() => {
-    let seen = false
-    try { seen = sessionStorage.getItem('3k-boot-seen') === '1' } catch { /* private mode */ }
-    if (seen || reduceMotion) {
-      doneRef.current = true
-      setIntroStage('gone')
-      setReady(true)
-    } else {
-      setIntroStage('boot')
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  /* boot typing sequence */
-  useEffect(() => {
-    if (introStage !== 'boot') return
-    let cancelled = false
-    const shown: BootLine[] = []
-    const run = async () => {
-      for (const [cls, text] of BOOT) {
-        if (cancelled || doneRef.current) return
-        shown.push({ cls, text: '' })
-        const speed = text.startsWith('[') ? 6 : 16
-        for (let i = 1; i <= text.length; i++) {
-          if (cancelled || doneRef.current) return
-          shown[shown.length - 1] = { cls, text: text.slice(0, i) }
-          setBootLines([...shown])
-          await sleep(speed)
-        }
-        await sleep(text.startsWith('[') ? 120 : 300)
-      }
-      await sleep(650)
-      if (!cancelled) finishIntro()
-    }
-    run()
-    const cap = setTimeout(finishIntro, 12000)
-    return () => { cancelled = true; clearTimeout(cap) }
-  }, [introStage, finishIntro])
 
   /* Tulsa clock */
   useEffect(() => {
@@ -298,7 +173,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div ref={rootRef} className={`op${ready ? ' ready' : ''}`}>
+    <div ref={rootRef} className="op ready">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,400..900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
@@ -314,23 +189,6 @@ export default function Home() {
         .op .scan{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.05;
           background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.9) 2px 3px)}
         .op .disp{font-family:var(--disp);font-stretch:118%}
-
-        /* ---- intro ---- */
-        .op-intro{position:fixed;inset:0;z-index:100;background:#070604;display:flex;align-items:center;justify-content:center;padding:24px}
-        .op-intro.flash{animation:opCrt .55s steps(2) forwards}
-        @keyframes opCrt{0%{opacity:1;filter:brightness(1)}30%{filter:brightness(3.4) saturate(0)}60%{transform:scaleY(.004);filter:brightness(6)}100%{opacity:0;transform:scaleY(.002);visibility:hidden}}
-        .op-intro .term{width:min(720px,94vw);border:1px solid rgba(255,171,46,.24);background:rgba(12,11,9,.9);box-shadow:0 0 90px rgba(255,171,46,.09),inset 0 0 60px rgba(0,0,0,.6)}
-        .op-intro .term-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid rgba(255,171,46,.18);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#ffab2e}
-        .op-intro .dots{display:flex;gap:7px}
-        .op-intro .dots i{width:9px;height:9px;border-radius:99px;border:1px solid rgba(255,171,46,.45)}
-        .op-intro .term-body{padding:22px 22px 26px;font-family:'JetBrains Mono',monospace;font-size:clamp(11px,1.5vw,13.5px);line-height:2.05;color:rgba(243,239,230,.82);min-height:320px}
-        .op-intro .ok{color:#57d97c}
-        .op-intro .amb{color:#ffab2e}
-        .op-intro .dim{color:rgba(243,239,230,.3)}
-        .op-intro .cursor{display:inline-block;width:.6em;height:1.1em;background:#ffab2e;vertical-align:text-bottom;animation:opBlink .85s steps(1) infinite}
-        @keyframes opBlink{50%{opacity:0}}
-        .op-intro .skip{position:absolute;bottom:30px;right:34px;background:none;border:1px solid rgba(255,171,46,.3);color:#ffab2e;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:11px 20px;cursor:pointer;transition:.3s}
-        .op-intro .skip:hover{background:#ffab2e;color:#0c0b09}
 
         /* ---- nav ---- */
         .op .topnav{position:fixed;top:0;left:0;right:0;z-index:60;display:grid;grid-template-columns:auto 1fr auto auto;gap:26px;align-items:center;padding:0 clamp(18px,3.5vw,40px);height:66px;background:rgba(12,11,9,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);opacity:0;transform:translateY(-10px);transition:.6s .15s}
@@ -351,16 +209,16 @@ export default function Home() {
         @media(max-width:960px){.op .nav-links,.op .nav-clock{display:none}.op .topnav{grid-template-columns:1fr auto}}
 
         /* ---- hero ---- */
-        .op .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px clamp(18px,4.5vw,56px) 40px;max-width:1360px;margin:0 auto}
+        .op .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:96px clamp(18px,4.5vw,56px) 40px;max-width:1360px;margin:0 auto}
         .op .hero-status{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);padding:10px 18px;background:var(--panel);width:fit-content}
         .op .hero-status .led{width:8px;height:8px;background:var(--ok);border-radius:99px;box-shadow:0 0 12px var(--ok);animation:opBlinkSq 1.8s infinite}
-        .op .h1{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(2.7rem,8.4vw,7.6rem);line-height:.95;letter-spacing:-.01em;text-transform:uppercase;margin:34px 0 0}
+        .op .h1{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(2.5rem,6vw,5.7rem);line-height:.95;letter-spacing:-.01em;text-transform:uppercase;margin:34px 0 0}
         .op .h1 .out{color:transparent;-webkit-text-stroke:1.5px rgba(243,239,230,.85)}
         .op .h1 .amb{color:var(--amber);text-shadow:0 0 60px rgba(255,171,46,.35)}
         .op .hero-sub{display:grid;grid-template-columns:auto 1fr;gap:22px;margin-top:38px;max-width:720px;align-items:start}
         .op .hero-sub .tick{font-family:var(--mono);color:var(--amber);font-size:13px;padding-top:4px}
         .op .hero-sub p{color:var(--dim);font-size:clamp(14.5px,1.5vw,17px);line-height:1.8}
-        .op .hero-ctas{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap}
+        .op .hero-ctas{display:flex;gap:16px;margin-top:28px;flex-wrap:wrap}
         .op .stagger{opacity:0;transform:translateY(24px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
         .op.ready .stagger{opacity:1;transform:none}
         .op.ready .d1{transition-delay:.2s}.op.ready .d2{transition-delay:.38s}.op.ready .d3{transition-delay:.56s}.op.ready .d4{transition-delay:.74s}
@@ -476,7 +334,6 @@ export default function Home() {
 
       <div className="scan" aria-hidden="true" />
 
-      <BootIntro stage={introStage} onSkip={finishIntro} lines={bootLines} />
       <ProjectDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
 
       {/* ===== NAV ===== */}
@@ -490,14 +347,14 @@ export default function Home() {
           <Link href="/pay" style={{ color: 'var(--amb, #f5b942)' }}>Quick Pay</Link>
         </div>
         <div className="nav-clock">TULSA <b suppressHydrationWarning>{clock}</b> CST</div>
-        <button type="button" className="btn nav-cta" onClick={() => setDrawerOpen(true)}>Initiate</button>
+        <button type="button" className="btn nav-cta" onClick={() => setDrawerOpen(true)}>Get in touch</button>
       </nav>
 
       {/* ===== HERO ===== */}
       <header className="hero" id="top">
         <div className="hero-status stagger"><span className="led" />All systems operational — accepting new projects</div>
         <h1 className="h1 stagger d1">
-          Turn local searches<br /><span className="amb">into estimate requests.</span>
+          Website design for<br /><span className="amb">Tulsa businesses.</span>
         </h1>
         <div className="hero-sub stagger d2">
           <span className="tick">&gt;_</span>
@@ -508,9 +365,9 @@ export default function Home() {
           <a className="btn ghost" href="tel:+19188168832">Call 918-816-8832</a>
         </div>
         <div className="rack stagger d4">
-          <div className="mod"><div className="k">Operating since</div><div className="v"><Count end={2010} /></div><div className="s">● STABLE</div></div>
-          <div className="mod"><div className="k">Build lanes</div><div className="v"><Count end={4} /><span className="u"> ACTIVE</span></div><div className="s">● ONLINE</div></div>
-          <div className="mod"><div className="k">Response target</div><div className="v"><Count end={24} /><span className="u">H</span></div><div className="s">● MONITORED</div></div>
+          <div className="mod"><div className="k">Operating since</div><div className="v">2010</div><div className="s">● STABLE</div></div>
+          <div className="mod"><div className="k">Build lanes</div><div className="v">4<span className="u"> ACTIVE</span></div><div className="s">● ONLINE</div></div>
+          <div className="mod"><div className="k">Response target</div><div className="v">24<span className="u">H</span></div><div className="s">● MONITORED</div></div>
           <div className="mod"><div className="k">Coverage</div><div className="v">TULSA<span className="u">+</span></div><div className="s">● REMOTE CAPABLE</div></div>
         </div>
       </header>
@@ -561,7 +418,7 @@ export default function Home() {
                 <h3>{s.title}</h3>
                 <p>{s.copy}</p>
                 <div className="pts">{s.points.map((p) => <i key={p}>{p}</i>)}</div>
-                <span className="go">Open module</span>
+                <span className="go">Explore service</span>
               </Link>
             ))}
           </div>

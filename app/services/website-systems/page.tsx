@@ -5,14 +5,14 @@ import ServiceDetailPage from '../_components/ServiceDetailPage'
 const pageUrl = 'https://3kpro.services/services/website-systems'
 
 export const metadata: Metadata = {
-  title: 'Website Systems for Local Businesses | 3K Pro Services',
+  title: 'Tulsa Website Design for Local Businesses | 3K Pro Services',
   description:
     'Premium business websites, landing pages, local SEO foundations, quote flows, and launch handoff systems for Tulsa and Broken Arrow businesses.',
   alternates: {
     canonical: pageUrl,
   },
   openGraph: {
-    title: 'Website Systems for Local Businesses | 3K Pro Services',
+    title: 'Tulsa Website Design for Local Businesses | 3K Pro Services',
     description:
       'Build a business website that captures leads, explains the offer clearly, and gives local customers an easy next step.',
     url: pageUrl,
@@ -35,11 +35,11 @@ export default function WebsiteSystemsPage() {
     </div>
     <ServiceDetailPage
       eyebrow="Website systems"
-      title="Website Systems"
-      mutedTitle="for local business"
+      title="Website Design"
+      mutedTitle="for Tulsa businesses"
       summary="Your website should not be a brochure nobody trusts. It should explain the offer, prove you are real, capture the right lead, and give your team a clean handoff path after launch."
       pageUrl={pageUrl}
-      primaryCta="Start website blueprint"
+      primaryCta="Request an assessment"
       proof={[
         { value: '3', label: 'Core conversion paths' },
         { value: 'Local', label: 'Tulsa and Broken Arrow SEO' },

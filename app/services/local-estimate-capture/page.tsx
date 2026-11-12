@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
+import Link from 'next/link'
 import SiteNav from '@/components/SiteNav'
 import SiteFooter from '@/components/SiteFooter'
 
@@ -43,6 +44,7 @@ export default function EstimateCapturePage() {
             <li>Page titles, canonical URLs, sitemap treatment, and appropriate structured data.</li>
             <li>Basic inquiry and contact-click measurement, with verification where account access allows.</li>
           </ul>
+          <p className="lede">Looking for a broader website build or redesign? <Link href="/services/website-systems">Explore website design for local businesses.</Link></p>
           <h3>Before you pay</h3>
           <p className="lede">James checks your current site, customer action, account access, and content. You receive a written scope, revision allowance, timeline and any third-party costs. Work starts after that scope and the deposit are agreed. Assessment requests do not charge you.</p>
           <h3>Where this fits</h3>
