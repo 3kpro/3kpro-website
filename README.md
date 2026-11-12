@@ -2,7 +2,7 @@
 
 **Company website for [3KPRO.Services](https://3kpro.services).**
 
-3KPRO helps small and midsize businesses with modern websites and practical automation. This repository contains the company web application, not individual client workspaces or the separate Xelora product.
+3KPRO helps small and midsize businesses with modern websites and practical automation. This repository contains the company web application. Client projects and internal operations are managed separately.
 
 ## Technology
 
