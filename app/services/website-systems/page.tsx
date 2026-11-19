@@ -31,7 +31,7 @@ export default function WebsiteSystemsPage() {
   return (
     <>
     <div style={{background:'#15120c',color:'#fff',padding:'1rem',textAlign:'center'}}>
-      Local Estimate Capture Sprint: $1,500 total, $750 to start. <Link href="/services/local-estimate-capture">See scope and request an assessment →</Link>
+      Local Estimate Capture Sprint: $1,500 total, $750 to start. <Link href="/services/local-estimate-capture" style={{ color: 'var(--amber)', textDecoration: 'underline' }}>See scope and request an assessment →</Link>
     </div>
     <ServiceDetailPage
       eyebrow="Website systems"
@@ -82,7 +82,18 @@ export default function WebsiteSystemsPage() {
             'A focused homepage, key service content, local SEO foundations, contact or quote flow, analytics basics, and launch documentation.',
         },
       ]}
-    />
+    >
+      <section style={{ background: 'var(--panel)' }}>
+        <div className="wrap">
+          <div className="sec-head"><span className="tagchip">Client work</span><h2 className="h2">A site built for <span className="out">real requests.</span></h2></div>
+          <div className="dossier"><div className="row"><span className="id">Tulsa area</span><h3>The Last Stop Shop</h3><div>
+            <p>We helped move this mobile mechanic website to its own hosting and prepared its local search foundations. Customers can review services, request an appointment, and find payment options from their phone.</p>
+            <a className="btn ghost" style={{ marginTop: 20 }} href="https://thelaststopshop.com/" target="_blank" rel="noopener noreferrer">Visit The Last Stop Shop</a>
+          </div></div></div>
+          <p style={{ marginTop: 28 }}>For a focused starting scope, explore the <Link href="/services/local-estimate-capture" style={{ color: 'var(--amber)', textDecoration: 'underline' }}>Local Estimate Capture Sprint</Link>. Serving Broken Arrow? See our <Link href="/services/website-design-broken-arrow" style={{ color: 'var(--amber)', textDecoration: 'underline' }}>Broken Arrow website design page</Link>.</p>
+        </div>
+      </section>
+    </ServiceDetailPage>
     </>
   )
 }

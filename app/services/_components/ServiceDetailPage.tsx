@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 import ContactForm from '@/components/ContactForm'
 import OperatorStyles from '@/components/operator/OperatorStyles'
 
 type ServiceDetailPageProps = {
+  children?: ReactNode
   eyebrow: string
   title: string
   mutedTitle: string
@@ -25,6 +27,7 @@ type ServiceDetailPageProps = {
 }
 
 export default function ServiceDetailPage({
+  children,
   eyebrow,
   title,
   mutedTitle,
@@ -183,6 +186,8 @@ export default function ServiceDetailPage({
           </div>
         </div>
       </section>
+
+      {children}
 
       <section style={{ background: 'var(--panel)' }}>
         <div className="wrap">

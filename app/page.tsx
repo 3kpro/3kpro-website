@@ -134,25 +134,7 @@ function ProjectDrawer({ open, onClose }: { open: boolean; onClose: () => void }
 
 export default function Home() {
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const [clock, setClock] = useState('--:--:--')
   const rootRef = useRef<HTMLDivElement>(null)
-
-  /* Tulsa clock */
-  useEffect(() => {
-    const tick = () => {
-      try {
-        setClock(new Intl.DateTimeFormat('en-US', {
-          hour: '2-digit', minute: '2-digit', second: '2-digit',
-          hour12: false, timeZone: 'America/Chicago',
-        }).format(new Date()))
-      } catch {
-        setClock(new Date().toLocaleTimeString())
-      }
-    }
-    tick()
-    const id = setInterval(tick, 1000)
-    return () => clearInterval(id)
-  }, [])
 
   /* scroll reveals */
   useEffect(() => {
@@ -347,7 +329,7 @@ export default function Home() {
           <a href="#contact">Contact</a>
           <Link href="/pay" style={{ color: 'var(--amb, #f5b942)' }}>Quick Pay</Link>
         </div>
-        <div className="nav-clock">TULSA <b suppressHydrationWarning>{clock}</b> CST</div>
+        <div className="nav-clock" aria-hidden="true" />
         <button type="button" className="btn nav-cta" onClick={() => setDrawerOpen(true)}>Get in touch</button>
       </nav>
 
