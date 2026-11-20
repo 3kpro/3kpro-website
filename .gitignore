@@ -126,3 +126,18 @@ git-cleanup.ps1
 .fuse_hidden*
 *.fuse_hidden*
 3KPRO Design System.zip
+
+# Local editor workspace state (not project source)
+/.obsidian/
+
+# Operational records are maintained in private 3KPRO storage
+/SESSION_CONTEXT.md
+/SCORECARD.md
+/TASKS.md
+/VISION.md
+/SILO_CHARTER.md
+/LOCAL_BUSINESS_SETUP.md
+/OUTREACH_SCRIPT.md
+/QUICKSTART.md
+/docs/CLIENT_WEBSITE_PREVIEW_PROCESS.md
+/docs/operations/

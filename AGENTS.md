@@ -1,95 +1,30 @@
----
-title: "3kpro-website — Agent Guide"
-tags:
-  - pillar/consulting
-  - agent/onboarding
-last-updated: "2026-08-17"
-status: active
----
+# AGENTS.md — 3KPRO.Services Website
 
-# CLAUDE.md — 3kpro-website
+This is the public Next.js/TypeScript **company website** repository. Read [README.md](README.md) and [DEPLOYMENT.md](DEPLOYMENT.md) for the developer-facing overview. This repository is not the source of truth for private customer files, sales scripts, project plans, or operational histories.
 
-Agent guide for the **consulting site** pillar. Read the portfolio `CLAUDE.md` and `PROJECT_MAP.md` first; this file is the pillar-specific overlay.
+## Scope and development
 
-## What this pillar is
+- Website features, routes, components, integrations, accessibility, and SEO belong here.
+- Use Node.js 22.x; `npm ci`, `npm run typecheck`, and `npm run build` are the standard verification commands.
+- Do not mix isolated client working directories, private data, or generated build/audit outputs into this public repository.
+- Operational documentation and historical client records are stored privately under `3kpro/3K_Infra/docs/internal/website/2026-11-12/`. This is a **snapshot**, not an automatically synchronized working directory; consult the current private operations playbook for newer instructions.
 
-Public marketing site for the 3KPRO Services consultancy. Next.js app (dev port 3001). Deploys to **3kpro.services**. Separate from the Xelora SaaS landing-page and the Dev marketplace — this is the **company front door**.
+## Mandatory production release guardrails
 
-## Stack
+**Never assume that an approved pull request or passing CI authorizes publishing.** Production changes require explicit owner approval of the exact reviewed HTTPS deployment.
 
-- Next.js 16 (App Router)
-- Supabase (auth, DB)
-- Stripe (payments — also powers the marketplace links)
-- Upstash Redis (rate limit)
-- Sentry (error monitoring)
-- AI SDK + `@ai-sdk/google` (Gemini integration in components)
+The active release procedure is defined in the privately maintained `MainBrain/PLAYBOOKS/Website_Review_To_Production.md`. If it is unavailable, do not initiate a production release. For client-site work:
 
-## Layout
+1. Start an isolated client worktree through `website_review_release.sh start --client <slug>`, as specified in the private playbook.
+2. Change only authorized client files inside that worktree. Prepare the exact route, expected text, and scoped paths for preview verification.
+3. Produce and verify the HTTPS review URL, including desktop and mobile acceptance criteria.
+4. Obtain explicit owner approval of that **exact** review URL before promoting or releasing.
+5. Use only the prescribed pinned, serialized release procedure and record its deployment, source commit, and rollback identifier in the private operations records.
 
-```
-3kpro-website\
-├── CLAUDE.md         ← you are here
-├── README.md         ← project overview
-├── CHANGELOG.md      ← project history
-├── VISION.md         ← company/site strategy
-├── DEPLOYMENT.md
-├── LOCAL_BUSINESS_SETUP.md
-├── OUTREACH_SCRIPT.md
-├── QUICKSTART.md
-├── app\              ← Next.js App Router routes
-├── components\       ← React components
-├── lib\              ← shared utilities
-├── hooks\
-├── public\
-├── scripts\
-└── docs\
-    └── operations\   ← ops runbooks (salvaged from retired docs/SYSTEM/)
-```
+Never bypass release manifests, CI, scope locks, rollback or route checks. Do not use `next dev`, localhost, or tunnels as the external client review surface. Do not directly call `npm run deploy`, `vercel --prod`, or a floating Vercel CLI version to publish a client release.
 
-## Conventions
+## Documentation and review
 
-- **Changelog.** Every non-trivial change gets a line in `CHANGELOG.md`. Cross-project work additionally goes in the portfolio `CHANGELOG.md`.
-- **Runbooks.** Add operational runbooks to `docs/operations/`. Do not create a new `docs/SYSTEM/` folder — that pattern is retired portfolio-wide.
-- **Strategy.** Site/company strategy edits belong in `VISION.md`, not scattered notes.
-
-## Scope boundaries
-
-- **This pillar owns:** consulting-site content, marketing/SEO for 3kpro.services, company-level integrations (GSC, analytics, business profile), portfolio-root navigation that's about the company (not about Xelora or the marketplace).
-- **This pillar does not own:**
-  - Xelora product features → `landing-page/`
-  - Marketplace product portfolio → `Dev/`
-  - Cross-project notes → `MainBrain/`
-
-## Deploy Workflow (mandatory - every task)
-
-Use the company release lane documented at:
-
-`C:\DEV\_3KPRO-GENERAL\MainBrain\PLAYBOOKS\Website_Review_To_Production.md`
-
-For every new client task:
-
-1. Run `website_review_release.sh start --client <slug>` before editing.
-2. Edit only the returned client worktree, never the shared canonical checkout.
-3. Run `preview` with the exact route, expected client text, and named paths.
-4. Give James the returned HTTPS review URL for desktop/mobile review.
-5. After James approves that exact URL, run `promote` with the same worktree,
-   route, expected text, and paths.
-6. Record the returned source branch, commit, production URL, and rollback URL.
-
-The release lane uses a pinned Vercel CLI, serializes releases, binds approval
-to an exact Git tree, pushes a scoped client branch, promotes without
-rebuilding, verifies production, and automatically restores the prior
-deployment when production verification fails.
-
-**Rules:**
-- Never use `next dev`, localhost, or a tunnel as the client review surface.
-- Never use `npm run deploy`, `vercel --prod`, or `vercel@latest` for client releases.
-- Never commit or push before James approves the exact review URL.
-- Never bypass the release manifest, lock, path scope, CI, or route checks.
-
-## Before declaring a task done
-
-1. Edit `CHANGELOG.md` with a dated entry.
-2. If strategy shifted, update `VISION.md`.
-3. If you created or moved a runbook, note it in `CHANGELOG.md`.
-4. Run the full review-to-production workflow above.
+- Keep this repository's [CHANGELOG.md](CHANGELOG.md) suitable for public viewing; use Git commits and PRs for technical change history.
+- Track private strategy, tasks, scorecards, contact information, and client-delivery records in their access-controlled workspace rather than in public root Markdown.
+- Verify any modified code, avoid committing credentials, and do not claim a successful production deployment from a preview result.
